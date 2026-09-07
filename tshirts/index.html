@@ -95,98 +95,43 @@ nav{
 }
 
 
-/* HERO */
+/* PAGE HEADER */
 
-.hero{
-  min-height:82vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:60px 20px;
+.page-header{
+  padding:75px 6% 50px;
+  border-bottom:1px solid #191919;
 
   background:
-    radial-gradient(circle at center,#252525 0%,#0b0b0b 45%,#000 100%);
+    radial-gradient(circle at center,#202020 0%,#0b0b0b 50%,#050505 100%);
 }
 
-.hero-content{
-  max-width:900px;
-}
-
-.hero-small{
-  color:#999;
-  letter-spacing:6px;
-  font-size:12px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:clamp(80px,14vw,170px);
-  line-height:.85;
-  font-weight:900;
-  letter-spacing:10px;
-}
-
-.hero h2{
-  margin-top:27px;
-  font-size:clamp(20px,3vw,36px);
-  font-weight:400;
-  letter-spacing:8px;
-}
-
-.hero p{
-  max-width:570px;
-  margin:24px auto 35px;
-  color:#999;
-  font-size:14px;
-  line-height:1.8;
-}
-
-.main-btn{
-  display:inline-block;
-  background:#fff;
-  color:#000;
-  padding:17px 32px;
+.page-small{
+  color:#777;
   font-size:11px;
-  font-weight:bold;
-  letter-spacing:3px;
-  transition:.25s;
+  letter-spacing:5px;
+  margin-bottom:15px;
 }
 
-.main-btn:hover{
-  background:#ddd;
-  transform:translateY(-2px);
+.page-header h1{
+  font-size:clamp(48px,8vw,90px);
+  letter-spacing:5px;
+  line-height:1;
+}
+
+.page-header p{
+  color:#888;
+  max-width:520px;
+  line-height:1.8;
+  font-size:13px;
+  margin-top:20px;
 }
 
 
-/* SECTIONS */
+/* PRODUCT SECTION */
 
 section{
-  padding:90px 6%;
+  padding:80px 6%;
 }
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:30px;
-  margin-bottom:45px;
-}
-
-.section-title{
-  font-size:clamp(35px,5vw,65px);
-  letter-spacing:3px;
-}
-
-.section-subtitle{
-  max-width:420px;
-  color:#777;
-  font-size:13px;
-  line-height:1.7;
-}
-
-
-/* PRODUCT */
 
 .product-layout{
   max-width:1250px;
@@ -237,7 +182,7 @@ section{
 }
 
 
-/* FRONT / BACK / MODEL */
+/* VIEW SELECTOR */
 
 .mobile-view-selector{
   margin-top:12px;
@@ -293,6 +238,7 @@ section{
 }
 
 .thumbnail{
+  position:relative;
   border:2px solid transparent;
   background:#eee;
   padding:0;
@@ -336,8 +282,8 @@ section{
 }
 
 .price{
-  font-size:20px;
-  margin-bottom:35px;
+  font-size:22px;
+  margin-bottom:30px;
 }
 
 .divider{
@@ -348,7 +294,7 @@ section{
 }
 
 
-/* OPTIONS */
+/* OPTION HEADING */
 
 .option-heading{
   display:flex;
@@ -364,23 +310,23 @@ section{
 }
 
 
-/* COLORS */
+/* COLOR BUTTONS */
 
 .color-options{
   display:flex;
-  gap:12px;
+  gap:10px;
   flex-wrap:wrap;
 }
 
 .color-button{
-  min-width:135px;
-  padding:14px 18px;
+  min-width:145px;
+  padding:14px 17px;
   border:1px solid #444;
   background:#0d0d0d;
   color:#fff;
   cursor:pointer;
-  font-size:11px;
-  letter-spacing:1.5px;
+  font-size:10px;
+  letter-spacing:1.2px;
   display:flex;
   align-items:center;
   gap:10px;
@@ -396,7 +342,7 @@ section{
   width:17px;
   height:17px;
   border-radius:50%;
-  border:1px solid #555;
+  border:1px solid #666;
   flex:0 0 auto;
 }
 
@@ -418,12 +364,13 @@ section{
 }
 
 .size-button{
-  min-height:48px;
+  min-height:50px;
   border:1px solid #444;
   background:#0d0d0d;
   color:#fff;
   cursor:pointer;
   font-size:12px;
+  font-weight:bold;
   transition:.2s;
 }
 
@@ -473,118 +420,6 @@ section{
 
 .notify-btn:hover{
   background:#ddd;
-}
-
-
-/* BANNER */
-
-.banner{
-  min-height:500px;
-  display:flex;
-  align-items:center;
-  padding:80px 8%;
-
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.2)),
-    radial-gradient(circle at 80% 50%,#333,#111 45%,#050505 80%);
-}
-
-.banner-content{
-  max-width:600px;
-}
-
-.banner h2{
-  font-size:clamp(45px,7vw,90px);
-  line-height:.9;
-  letter-spacing:3px;
-}
-
-.banner p{
-  max-width:500px;
-  margin:25px 0 35px;
-  color:#999;
-  line-height:1.8;
-}
-
-
-/* ABOUT */
-
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:center;
-}
-
-.about-visual{
-  min-height:480px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #222;
-
-  background:
-    radial-gradient(circle,#292929,#0b0b0b 65%);
-}
-
-.about-visual span{
-  font-size:90px;
-  font-weight:900;
-  letter-spacing:10px;
-}
-
-.about-text h2{
-  font-size:48px;
-  margin-bottom:25px;
-}
-
-.about-text p{
-  color:#999;
-  line-height:1.9;
-  margin-bottom:18px;
-}
-
-
-/* NEWSLETTER */
-
-.newsletter{
-  text-align:center;
-}
-
-.newsletter h2{
-  font-size:40px;
-  letter-spacing:3px;
-}
-
-.newsletter p{
-  color:#888;
-  margin:15px 0 30px;
-}
-
-.email-box{
-  max-width:560px;
-  margin:auto;
-  display:flex;
-}
-
-.email-box input{
-  flex:1;
-  background:#0b0b0b;
-  color:#fff;
-  border:1px solid #333;
-  border-right:0;
-  padding:18px;
-  outline:none;
-}
-
-.email-box button{
-  border:0;
-  background:#fff;
-  color:#000;
-  padding:0 28px;
-  cursor:pointer;
-  font-weight:bold;
-  letter-spacing:2px;
 }
 
 
@@ -672,15 +507,11 @@ footer a:hover{
   }
 
   section{
-    padding:65px 5%;
+    padding:50px 5%;
   }
 
-  .section-head{
-    display:block;
-  }
-
-  .section-subtitle{
-    margin-top:15px;
+  .page-header{
+    padding:55px 5% 40px;
   }
 
   .product-layout{
@@ -706,31 +537,11 @@ footer a:hover{
 
   .color-button{
     flex:1;
-    min-width:140px;
-  }
-
-  .about{
-    grid-template-columns:1fr;
-    gap:40px;
+    min-width:145px;
   }
 
   .footer-grid{
     grid-template-columns:1fr;
-  }
-
-  .email-box{
-    display:block;
-  }
-
-  .email-box input{
-    width:100%;
-    border-right:1px solid #333;
-  }
-
-  .email-box button{
-    width:100%;
-    padding:18px;
-    margin-top:10px;
   }
 
 }
@@ -740,25 +551,45 @@ footer a:hover{
 
 @media(max-width:500px){
 
+  .top-bar{
+    font-size:9px;
+    letter-spacing:2px;
+  }
+
   nav{
     height:68px;
+  }
+
+  .logo{
+    font-size:28px;
   }
 
   .nav-links{
     top:68px;
   }
 
-  .hero{
-    min-height:620px;
+  .page-header{
+    padding:45px 5% 35px;
+  }
+
+  .page-header h1{
+    font-size:46px;
+  }
+
+  section{
+    padding:35px 4%;
   }
 
   .main-image-box{
-    min-height:350px;
+    min-height:360px;
   }
 
-  /* FRONT / BACK / MODEL VERY CLEAR */
+  .main-image-box img{
+    max-height:440px;
+  }
 
   .mobile-view-selector{
+    position:relative;
     margin-top:10px;
     padding:14px 12px;
     background:#0b0b0b;
@@ -783,9 +614,14 @@ footer a:hover{
     border-color:#555;
   }
 
+  .view-button.active{
+    background:#fff;
+    color:#000;
+  }
+
   .thumbnail-row{
-    gap:6px;
     margin-top:8px;
+    gap:6px;
   }
 
   .thumbnail{
@@ -796,8 +632,35 @@ footer a:hover{
     height:85px;
   }
 
+  .product-details{
+    padding-top:0;
+  }
+
+  .product-details h2{
+    font-size:30px;
+  }
+
+  .price{
+    font-size:20px;
+  }
+
+  .color-options{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .color-button{
+    width:100%;
+    min-width:0;
+    min-height:50px;
+  }
+
   .size-options{
     grid-template-columns:repeat(3,1fr);
+  }
+
+  .size-button{
+    min-height:52px;
   }
 
 }
@@ -823,10 +686,29 @@ footer a:hover{
 
   <div class="nav-links" id="navLinks">
 
-    <a href="#shop">SHOP</a>
-    <a href="#newdrop">NEW DROP</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
+    <a href="#shop">
+      T-SHIRTS
+    </a>
+
+    <a href="../polo/">
+      POLO
+    </a>
+
+    <a href="#">
+      SHORTS
+    </a>
+
+    <a href="#">
+      PANTS
+    </a>
+
+    <a href="#">
+      HOODIES
+    </a>
+
+    <a href="#">
+      SWEATERS
+    </a>
 
   </div>
 
@@ -841,55 +723,29 @@ footer a:hover{
 </nav>
 
 
-<header class="hero">
+<header class="page-header">
 
-  <div class="hero-content">
-
-    <div class="hero-small">
-      PERFORMANCE / STREETWEAR
-    </div>
-
-    <h1>DEV</h1>
-
-    <h2>BUILT DIFFERENT.</h2>
-
-    <p>
-      Gym wear made for those who refuse to blend in.
-      Oversized fits. Built for training and everything after it.
-    </p>
-
-    <a href="#shop" class="main-btn">
-      SHOP THE DROP
-    </a>
-
+  <div class="page-small">
+    DEV / T-SHIRTS
   </div>
+
+  <h1>
+    T-SHIRTS
+  </h1>
+
+  <p>
+    DEV T-Shirt collection.
+    Built for training, lifestyle and everything after it.
+  </p>
 
 </header>
 
 
 <section id="shop">
 
-  <div class="section-head">
-
-    <h2 class="section-title">
-      THE DROP
-    </h2>
-
-    <p class="section-subtitle">
-      DEV performance streetwear designed for the gym,
-      the street and everything in between.
-    </p>
-
-  </div>
-
-
   <div class="product-layout">
 
-
-    <!-- LEFT SIDE -->
-
     <div class="product-gallery">
-
 
       <div class="main-image-box">
 
@@ -900,13 +756,11 @@ footer a:hover{
         <img
           id="mainProductImage"
           src="../graphic-tee-black-front.jpg.jpeg"
-          alt="DEV Oversized Graphic T-Shirt Black Front"
+          alt="DEV Oversized Graphic Tee Black Front"
         >
 
       </div>
 
-
-      <!-- FRONT / BACK / MODEL DIRECTLY UNDER MAIN IMAGE -->
 
       <div class="mobile-view-selector">
 
@@ -951,10 +805,7 @@ footer a:hover{
       </div>
 
 
-      <!-- THUMBNAILS -->
-
       <div class="thumbnail-row">
-
 
         <button
           class="thumbnail active"
@@ -964,7 +815,7 @@ footer a:hover{
           <img
             id="frontThumbnail"
             src="../graphic-tee-black-front.jpg.jpeg"
-            alt="Front view"
+            alt="T-Shirt front view"
           >
 
         </button>
@@ -978,7 +829,7 @@ footer a:hover{
           <img
             id="backThumbnail"
             src="../graphic-tee-black-back.jpg.jpeg"
-            alt="Back view"
+            alt="T-Shirt back view"
           >
 
         </button>
@@ -992,7 +843,7 @@ footer a:hover{
           <img
             id="modelThumbnail"
             src="../graphic-tee-black-model.jpg.jpeg"
-            alt="Model view"
+            alt="T-Shirt model view"
           >
 
         </button>
@@ -1002,28 +853,26 @@ footer a:hover{
     </div>
 
 
-    <!-- RIGHT SIDE -->
-
     <div class="product-details">
 
       <div class="collection-name">
-        DEV // 001 COLLECTION
+        DEV // T-SHIRT COLLECTION
       </div>
+
 
       <h2>
         DEV OVERSIZED<br>
         GRAPHIC TEE
       </h2>
 
+
       <div class="price">
-        85
+        AED 85
       </div>
 
 
       <div class="divider"></div>
 
-
-      <!-- COLOR -->
 
       <div class="option-heading">
 
@@ -1039,7 +888,6 @@ footer a:hover{
 
 
       <div class="color-options">
-
 
         <button
           class="color-button active"
@@ -1069,8 +917,6 @@ footer a:hover{
 
       <div class="divider"></div>
 
-
-      <!-- SIZE -->
 
       <div class="option-heading">
 
@@ -1102,9 +948,7 @@ footer a:hover{
       </div>
 
 
-      <div
-        class="size-message"
-        id="sizeMessage">
+      <div class="size-message" id="sizeMessage">
         Select your size.
       </div>
 
@@ -1120,7 +964,7 @@ footer a:hover{
 
         <br><br>
 
-        Oversized silhouette designed for training,
+        Designed for training,
         lifestyle and everyday wear.
 
         <br><br>
@@ -1134,106 +978,10 @@ footer a:hover{
         class="notify-btn"
         id="notifyButton"
         type="button">
-
         COMING SOON
-
       </button>
 
     </div>
-
-  </div>
-
-</section>
-
-
-<div class="banner" id="newdrop">
-
-  <div class="banner-content">
-
-    <h2>
-      NO LIMITS.<br>
-      NO EXCUSES.
-    </h2>
-
-    <p>
-      DEV isn't made to fit in.
-      It's made for the people building themselves
-      every single day.
-    </p>
-
-    <a href="#shop" class="main-btn">
-      DISCOVER DEV
-    </a>
-
-  </div>
-
-</div>
-
-
-<section id="about">
-
-  <div class="about">
-
-    <div class="about-visual">
-
-      <span>
-        DEV
-      </span>
-
-    </div>
-
-
-    <div class="about-text">
-
-      <h2>
-        BUILT DIFFERENT.
-      </h2>
-
-      <p>
-        DEV is a UAE gym and streetwear brand created
-        for people who demand more from themselves.
-      </p>
-
-      <p>
-        Oversized silhouettes, comfort and a
-        performance-inspired aesthetic.
-      </p>
-
-      <a href="#shop" class="main-btn">
-        SHOP DEV
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="newsletter" id="contact">
-
-  <h2>
-    JOIN DEV
-  </h2>
-
-  <p>
-    Get early access to drops, restocks and new releases.
-  </p>
-
-  <div class="email-box">
-
-    <input
-      id="emailInput"
-      type="email"
-      placeholder="Enter your email"
-      aria-label="Email address"
-    >
-
-    <button
-      type="button"
-      id="joinButton">
-      JOIN
-    </button>
 
   </div>
 
@@ -1266,15 +1014,27 @@ footer a:hover{
       </h4>
 
       <a href="#shop">
-        New Drop
-      </a>
-
-      <a href="#shop">
         T-Shirts
       </a>
 
       <a href="../polo/">
         Polo
+      </a>
+
+      <a href="#">
+        Shorts
+      </a>
+
+      <a href="#">
+        Pants
+      </a>
+
+      <a href="#">
+        Hoodies
+      </a>
+
+      <a href="#">
+        Sweaters
       </a>
 
     </div>
@@ -1283,19 +1043,11 @@ footer a:hover{
     <div>
 
       <h4>
-        FOLLOW DEV
+        DEV
       </h4>
 
-      <a href="#">
-        Instagram
-      </a>
-
-      <a href="#">
-        TikTok
-      </a>
-
-      <a href="#contact">
-        Contact
+      <a href="../index.html">
+        Home
       </a>
 
     </div>
@@ -1312,8 +1064,6 @@ footer a:hover{
 
 <script>
 
-
-/* PRODUCT DATA */
 
 const products = {
 
@@ -1350,8 +1100,6 @@ let selectedView = "front";
 let selectedSize = null;
 
 
-/* ELEMENTS */
-
 const mainProductImage =
   document.getElementById("mainProductImage");
 
@@ -1377,8 +1125,6 @@ const modelThumbnail =
   document.getElementById("modelThumbnail");
 
 
-/* UPDATE MAIN IMAGE */
-
 function updateMainImage(){
 
   const product =
@@ -1387,10 +1133,8 @@ function updateMainImage(){
   const image =
     product[selectedView];
 
-
   mainProductImage.style.opacity =
     "0";
-
 
   setTimeout(function(){
 
@@ -1398,7 +1142,7 @@ function updateMainImage(){
       image;
 
     mainProductImage.alt =
-      "DEV Oversized Graphic T-Shirt " +
+      "DEV T-Shirt " +
       product.name +
       " " +
       selectedView;
@@ -1408,18 +1152,14 @@ function updateMainImage(){
 
   },120);
 
-
   selectedColorText.textContent =
     product.name;
-
 
   selectedViewText.textContent =
     selectedView.toUpperCase();
 
 }
 
-
-/* UPDATE THUMBNAILS */
 
 function updateThumbnails(){
 
@@ -1437,8 +1177,6 @@ function updateThumbnails(){
 
 }
 
-
-/* UPDATE VIEW BUTTONS */
 
 function updateViewButtons(){
 
@@ -1468,8 +1206,6 @@ function updateViewButtons(){
 }
 
 
-/* COLORS */
-
 document
 .querySelectorAll(".color-button")
 .forEach(function(button){
@@ -1481,7 +1217,6 @@ document
       selectedColor =
         button.dataset.color;
 
-
       document
       .querySelectorAll(".color-button")
       .forEach(function(item){
@@ -1490,12 +1225,9 @@ document
 
       });
 
-
       button.classList.add("active");
 
-
       updateThumbnails();
-
       updateMainImage();
 
     }
@@ -1503,8 +1235,6 @@ document
 
 });
 
-
-/* FRONT / BACK / MODEL */
 
 document
 .querySelectorAll(".view-button")
@@ -1518,7 +1248,6 @@ document
         button.dataset.view;
 
       updateViewButtons();
-
       updateMainImage();
 
     }
@@ -1526,8 +1255,6 @@ document
 
 });
 
-
-/* THUMBNAILS */
 
 document
 .querySelectorAll(".thumbnail")
@@ -1541,7 +1268,6 @@ document
         button.dataset.view;
 
       updateViewButtons();
-
       updateMainImage();
 
     }
@@ -1549,8 +1275,6 @@ document
 
 });
 
-
-/* SIZES */
 
 document
 .querySelectorAll(".size-button")
@@ -1563,7 +1287,6 @@ document
       selectedSize =
         button.textContent.trim();
 
-
       document
       .querySelectorAll(".size-button")
       .forEach(function(item){
@@ -1572,13 +1295,10 @@ document
 
       });
 
-
       button.classList.add("active");
-
 
       selectedSizeText.textContent =
         selectedSize;
-
 
       sizeMessage.textContent =
         "Selected size: " +
@@ -1590,14 +1310,11 @@ document
 });
 
 
-/* MENU */
-
 const menuButton =
   document.getElementById("menuButton");
 
 const navLinks =
   document.getElementById("navLinks");
-
 
 menuButton.addEventListener(
   "click",
@@ -1608,42 +1325,6 @@ menuButton.addEventListener(
   }
 );
 
-
-/* NEWSLETTER */
-
-document
-.getElementById("joinButton")
-.addEventListener(
-  "click",
-  function(){
-
-    const email =
-      document
-      .getElementById("emailInput")
-      .value
-      .trim();
-
-
-    if(email === ""){
-
-      alert(
-        "Please enter your email."
-      );
-
-      return;
-
-    }
-
-
-    alert(
-      "Welcome to DEV. You'll be the first to know about the next drop."
-    );
-
-  }
-);
-
-
-/* COMING SOON */
 
 document
 .getElementById("notifyButton")
@@ -1661,9 +1342,8 @@ document
 
     }
 
-
     alert(
-      "DEV " +
+      "DEV T-SHIRT — " +
       products[selectedColor].name +
       " — Size " +
       selectedSize +
@@ -1673,8 +1353,6 @@ document
   }
 );
 
-
-/* START */
 
 updateThumbnails();
 updateViewButtons();
