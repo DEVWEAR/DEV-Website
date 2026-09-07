@@ -10,10 +10,6 @@
 
 <style>
 
-/* ================================
-   RESET
-================================ */
-
 *{
   margin:0;
   padding:0;
@@ -39,40 +35,25 @@ button{
   font-family:inherit;
 }
 
-
-/* ================================
-   TOP BAR
-================================ */
-
 .top-bar{
   background:#fff;
   color:#000;
   text-align:center;
   padding:10px 15px;
-
   font-size:11px;
   font-weight:bold;
   letter-spacing:3px;
 }
 
-
-/* ================================
-   NAVIGATION
-================================ */
-
 nav{
   position:sticky;
   top:0;
   z-index:1000;
-
   height:78px;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   padding:0 6%;
-
   background:rgba(5,5,5,.96);
   border-bottom:1px solid #1d1d1d;
 }
@@ -107,15 +88,9 @@ nav{
   cursor:pointer;
 }
 
-
-/* ================================
-   PAGE HEADER
-================================ */
-
 .page-header{
   padding:75px 6% 50px;
   border-bottom:1px solid #191919;
-
   background:
     radial-gradient(circle at center,#202020 0%,#0b0b0b 50%,#050505 100%);
 }
@@ -141,11 +116,6 @@ nav{
   margin-top:20px;
 }
 
-
-/* ================================
-   PRODUCT SECTION
-================================ */
-
 section{
   padding:80px 6%;
 }
@@ -153,18 +123,11 @@ section{
 .product-layout{
   max-width:1250px;
   margin:auto;
-
   display:grid;
   grid-template-columns:1.2fr .8fr;
-
   gap:60px;
   align-items:start;
 }
-
-
-/* ================================
-   IMAGE AREA
-================================ */
 
 .product-gallery{
   min-width:0;
@@ -172,14 +135,11 @@ section{
 
 .main-image-box{
   position:relative;
-
   background:#eee;
   min-height:620px;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
   overflow:hidden;
 }
 
@@ -187,10 +147,8 @@ section{
   display:block;
   width:100%;
   height:100%;
-
   max-height:720px;
   object-fit:contain;
-
   transition:opacity .2s ease;
 }
 
@@ -199,21 +157,13 @@ section{
   top:18px;
   left:18px;
   z-index:2;
-
   padding:9px 13px;
-
   background:#000;
   color:#fff;
-
   font-size:10px;
   font-weight:bold;
   letter-spacing:2px;
 }
-
-
-/* ================================
-   VIEW SELECTOR
-================================ */
 
 .mobile-view-selector{
   margin-top:12px;
@@ -223,9 +173,7 @@ section{
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   margin-bottom:10px;
-
   font-size:10px;
   font-weight:bold;
   letter-spacing:2px;
@@ -243,17 +191,13 @@ section{
 
 .view-button{
   min-height:48px;
-
   border:1px solid #444;
   background:#0d0d0d;
   color:#fff;
-
   cursor:pointer;
-
   font-size:11px;
   font-weight:bold;
   letter-spacing:1.5px;
-
   transition:.2s;
 }
 
@@ -264,39 +208,27 @@ section{
   border-color:#fff;
 }
 
-
-/* ================================
-   THUMBNAILS
-================================ */
-
 .thumbnail-row{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
   gap:10px;
   margin-top:10px;
 }
 
 .thumbnail{
   position:relative;
-
   border:2px solid transparent;
   background:#eee;
-
   padding:0;
-
   cursor:pointer;
   overflow:hidden;
-
   min-height:110px;
 }
 
 .thumbnail img{
   display:block;
-
   width:100%;
   height:130px;
-
   object-fit:cover;
 }
 
@@ -304,14 +236,8 @@ section{
   border-color:#fff;
 }
 
-
-/* ================================
-   PRODUCT INFORMATION
-================================ */
-
 .product-details{
   padding-top:10px;
-
   position:sticky;
   top:110px;
 }
@@ -327,7 +253,6 @@ section{
   font-size:clamp(30px,4vw,48px);
   line-height:1.08;
   letter-spacing:2px;
-
   margin-bottom:18px;
 }
 
@@ -339,23 +264,14 @@ section{
 .divider{
   width:100%;
   height:1px;
-
   background:#222;
-
   margin:25px 0;
 }
-
-
-/* ================================
-   OPTION HEADING
-================================ */
 
 .option-heading{
   display:flex;
   justify-content:space-between;
-
   margin-bottom:13px;
-
   font-size:11px;
   font-weight:bold;
   letter-spacing:2px;
@@ -365,11 +281,6 @@ section{
   color:#777;
 }
 
-
-/* ================================
-   COLOR BUTTONS
-================================ */
-
 .color-options{
   display:flex;
   gap:10px;
@@ -378,23 +289,16 @@ section{
 
 .color-button{
   min-width:145px;
-
   padding:14px 17px;
-
   border:1px solid #444;
-
   background:#0d0d0d;
   color:#fff;
-
   cursor:pointer;
-
   font-size:10px;
   letter-spacing:1.2px;
-
   display:flex;
   align-items:center;
   gap:10px;
-
   transition:.2s;
 }
 
@@ -406,10 +310,8 @@ section{
 .color-circle{
   width:17px;
   height:17px;
-
   border-radius:50%;
   border:1px solid #666;
-
   flex:0 0 auto;
 }
 
@@ -425,11 +327,6 @@ section{
   background:#c8b99f;
 }
 
-
-/* ================================
-   SIZE
-================================ */
-
 .size-options{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -438,17 +335,12 @@ section{
 
 .size-button{
   min-height:50px;
-
   border:1px solid #444;
-
   background:#0d0d0d;
   color:#fff;
-
   cursor:pointer;
-
   font-size:12px;
   font-weight:bold;
-
   transition:.2s;
 }
 
@@ -461,22 +353,13 @@ section{
 
 .size-message{
   color:#777;
-
   font-size:11px;
-
   margin-top:10px;
-
   min-height:16px;
 }
 
-
-/* ================================
-   DESCRIPTION
-================================ */
-
 .product-description{
   color:#888;
-
   font-size:13px;
   line-height:1.8;
 }
@@ -485,28 +368,17 @@ section{
   color:#fff;
 }
 
-
-/* ================================
-   COMING SOON
-================================ */
-
 .notify-btn{
   width:100%;
-
   margin-top:30px;
   padding:18px;
-
   border:0;
-
   background:#fff;
   color:#000;
-
   cursor:pointer;
-
   font-size:12px;
   font-weight:bold;
   letter-spacing:3px;
-
   transition:.2s;
 }
 
@@ -514,21 +386,14 @@ section{
   background:#ddd;
 }
 
-
-/* ================================
-   FOOTER
-================================ */
-
 footer{
   padding:60px 6% 30px;
-
   border-top:1px solid #191919;
 }
 
 .footer-grid{
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
-
   gap:50px;
 }
 
@@ -536,33 +401,26 @@ footer{
   font-size:40px;
   font-weight:900;
   letter-spacing:7px;
-
   margin-bottom:15px;
 }
 
 footer p{
   max-width:400px;
-
   color:#777;
-
   font-size:13px;
   line-height:1.8;
 }
 
 footer h4{
   margin-bottom:18px;
-
   font-size:11px;
   letter-spacing:2px;
 }
 
 footer a{
   display:block;
-
   color:#888;
-
   font-size:13px;
-
   margin-bottom:12px;
 }
 
@@ -573,21 +431,12 @@ footer a:hover{
 .copyright{
   margin-top:45px;
   padding-top:25px;
-
   border-top:1px solid #171717;
-
   text-align:center;
-
   color:#555;
-
   font-size:10px;
   letter-spacing:2px;
 }
-
-
-/* ================================
-   TABLET / MOBILE
-================================ */
 
 @media(max-width:900px){
 
@@ -597,20 +446,13 @@ footer a:hover{
 
   .nav-links{
     display:none;
-
     position:absolute;
-
     top:78px;
     left:0;
-
     width:100%;
-
     padding:30px;
-
     flex-direction:column;
-
     background:#080808;
-
     border-bottom:1px solid #222;
   }
 
@@ -659,13 +501,7 @@ footer a:hover{
   .footer-grid{
     grid-template-columns:1fr;
   }
-
 }
-
-
-/* ================================
-   PHONE
-================================ */
 
 @media(max-width:500px){
 
@@ -708,13 +544,9 @@ footer a:hover{
 
   .mobile-view-selector{
     position:relative;
-
     margin-top:10px;
-
     padding:14px 12px;
-
     background:#0b0b0b;
-
     border:1px solid #2b2b2b;
   }
 
@@ -729,14 +561,10 @@ footer a:hover{
 
   .view-button{
     min-height:52px;
-
     padding:0 5px;
-
     font-size:11px;
     font-weight:900;
-
     letter-spacing:1px;
-
     border-color:#555;
   }
 
@@ -778,7 +606,6 @@ footer a:hover{
   .color-button{
     width:100%;
     min-width:0;
-
     min-height:50px;
   }
 
@@ -789,21 +616,17 @@ footer a:hover{
   .size-button{
     min-height:52px;
   }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
-
 
 <nav>
 
@@ -813,7 +636,7 @@ footer a:hover{
 
   <div class="nav-links" id="navLinks">
 
-    <a href="../index.html">
+    <a href="../tshirts/">
       T-SHIRTS
     </a>
 
@@ -889,8 +712,6 @@ footer a:hover{
       </div>
 
 
-      <!-- FRONT / BACK / MODEL DIRECTLY BELOW IMAGE -->
-
       <div class="mobile-view-selector">
 
         <div class="view-title">
@@ -905,27 +726,17 @@ footer a:hover{
 
         </div>
 
-
         <div class="view-options">
 
-          <button
-            class="view-button active"
-            type="button"
-            data-view="front">
+          <button class="view-button active" type="button" data-view="front">
             FRONT
           </button>
 
-          <button
-            class="view-button"
-            type="button"
-            data-view="back">
+          <button class="view-button" type="button" data-view="back">
             BACK
           </button>
 
-          <button
-            class="view-button"
-            type="button"
-            data-view="model">
+          <button class="view-button" type="button" data-view="model">
             MODEL
           </button>
 
@@ -936,45 +747,28 @@ footer a:hover{
 
       <div class="thumbnail-row">
 
-        <button
-          class="thumbnail active"
-          type="button"
-          data-view="front">
-
+        <button class="thumbnail active" type="button" data-view="front">
           <img
             id="frontThumbnail"
             src="../polo-black-front.jpg.jpeg"
             alt="Polo front view"
           >
-
         </button>
 
-
-        <button
-          class="thumbnail"
-          type="button"
-          data-view="back">
-
+        <button class="thumbnail" type="button" data-view="back">
           <img
             id="backThumbnail"
             src="../polo-black-back.jpg.jpeg"
             alt="Polo back view"
           >
-
         </button>
 
-
-        <button
-          class="thumbnail"
-          type="button"
-          data-view="model">
-
+        <button class="thumbnail" type="button" data-view="model">
           <img
             id="modelThumbnail"
             src="../polo-black-model.jpg.jpeg"
             alt="Polo model view"
           >
-
         </button>
 
       </div>
@@ -988,114 +782,61 @@ footer a:hover{
         DEV // POLO COLLECTION
       </div>
 
-
       <h2>
         DEV OVERSIZED<br>
         POLO
       </h2>
 
-
       <div class="price">
         AED 85
       </div>
 
-
       <div class="divider"></div>
 
-
       <div class="option-heading">
-
-        <div>
-          COLOR
-        </div>
-
-        <span id="selectedColorText">
-          BLACK
-        </span>
-
+        <div>COLOR</div>
+        <span id="selectedColorText">BLACK</span>
       </div>
-
 
       <div class="color-options">
 
-        <button
-          class="color-button active"
-          type="button"
-          data-color="black">
-
+        <button class="color-button active" type="button" data-color="black">
           <span class="color-circle black-circle"></span>
-
           BLACK
-
         </button>
 
-
-        <button
-          class="color-button"
-          type="button"
-          data-color="darkOliveGreen">
-
+        <button class="color-button" type="button" data-color="darkOliveGreen">
           <span class="color-circle dark-olive-green-circle"></span>
-
           DARK OLIVE GREEN
-
         </button>
 
-
-        <button
-          class="color-button"
-          type="button"
-          data-color="beige">
-
+        <button class="color-button" type="button" data-color="beige">
           <span class="color-circle beige-circle"></span>
-
           BEIGE
-
         </button>
 
       </div>
-
 
       <div class="divider"></div>
 
-
       <div class="option-heading">
-
-        <div>
-          SELECT SIZE
-        </div>
-
-        <span id="selectedSizeText">
-          —
-        </span>
-
+        <div>SELECT SIZE</div>
+        <span id="selectedSizeText">—</span>
       </div>
-
 
       <div class="size-options">
 
-        <button class="size-button" type="button">
-          M
-        </button>
-
-        <button class="size-button" type="button">
-          L
-        </button>
-
-        <button class="size-button" type="button">
-          XL
-        </button>
+        <button class="size-button" type="button">M</button>
+        <button class="size-button" type="button">L</button>
+        <button class="size-button" type="button">XL</button>
 
       </div>
-
 
       <div class="size-message" id="sizeMessage">
         Select your size.
       </div>
 
-
       <div class="divider"></div>
-
 
       <div class="product-description">
 
@@ -1114,7 +855,6 @@ footer a:hover{
         Dark Olive Green and Beige.
 
       </div>
-
 
       <button
         class="notify-btn"
@@ -1148,14 +888,11 @@ footer a:hover{
 
     </div>
 
-
     <div>
 
-      <h4>
-        SHOP
-      </h4>
+      <h4>SHOP</h4>
 
-      <a href="../index.html">
+      <a href="../tshirts/">
         T-Shirts
       </a>
 
@@ -1181,25 +918,17 @@ footer a:hover{
 
     </div>
 
-
     <div>
 
-      <h4>
-        DEV
-      </h4>
+      <h4>DEV</h4>
 
-      <a href="../index.html#about">
-        About
-      </a>
-
-      <a href="../index.html#contact">
-        Contact
+      <a href="../index.html">
+        Home
       </a>
 
     </div>
 
   </div>
-
 
   <div class="copyright">
     © 2026 DEV. ALL RIGHTS RESERVED.
@@ -1210,68 +939,36 @@ footer a:hover{
 
 <script>
 
-
-/* ================================
-   POLO PRODUCT DATA
-================================ */
-
 const products = {
 
   black:{
-
     name:"BLACK",
-
     front:"../polo-black-front.jpg.jpeg",
-
     back:"../polo-black-back.jpg.jpeg",
-
     model:"../polo-black-model.jpg.jpeg"
-
   },
-
 
   darkOliveGreen:{
-
     name:"DARK OLIVE GREEN",
-
     front:"../polo-dark-olive-green-front.jpg",
-
     back:"../polo-dark-olive-green-back.jpg",
-
     model:"../polo-dark-olive-green-model.jpg"
-
   },
 
-
   beige:{
-
     name:"BEIGE",
-
     front:"../polo-beige-front.jpg",
-
     back:"../polo-beige-back.jpg",
-
     model:"../polo-beige-model.jpg"
-
   }
 
 };
 
 
-/* ================================
-   CURRENT SELECTION
-================================ */
-
 let selectedColor = "black";
-
 let selectedView = "front";
-
 let selectedSize = null;
 
-
-/* ================================
-   ELEMENTS
-================================ */
 
 const mainProductImage =
   document.getElementById("mainProductImage");
@@ -1298,25 +995,16 @@ const modelThumbnail =
   document.getElementById("modelThumbnail");
 
 
-/* ================================
-   UPDATE MAIN IMAGE
-================================ */
-
 function updateMainImage(){
 
-  const product =
-    products[selectedColor];
+  const product = products[selectedColor];
+  const image = product[selectedView];
 
-  const image =
-    product[selectedView];
-
-  mainProductImage.style.opacity =
-    "0";
+  mainProductImage.style.opacity = "0";
 
   setTimeout(function(){
 
-    mainProductImage.src =
-      image;
+    mainProductImage.src = image;
 
     mainProductImage.alt =
       "DEV Polo " +
@@ -1324,8 +1012,7 @@ function updateMainImage(){
       " " +
       selectedView;
 
-    mainProductImage.style.opacity =
-      "1";
+    mainProductImage.style.opacity = "1";
 
   },120);
 
@@ -1338,30 +1025,16 @@ function updateMainImage(){
 }
 
 
-/* ================================
-   UPDATE THUMBNAILS
-================================ */
-
 function updateThumbnails(){
 
-  const product =
-    products[selectedColor];
+  const product = products[selectedColor];
 
-  frontThumbnail.src =
-    product.front;
-
-  backThumbnail.src =
-    product.back;
-
-  modelThumbnail.src =
-    product.model;
+  frontThumbnail.src = product.front;
+  backThumbnail.src = product.back;
+  modelThumbnail.src = product.model;
 
 }
 
-
-/* ================================
-   UPDATE VIEW BUTTONS
-================================ */
 
 function updateViewButtons(){
 
@@ -1375,7 +1048,6 @@ function updateViewButtons(){
     );
 
   });
-
 
   document
   .querySelectorAll(".thumbnail")
@@ -1391,132 +1063,88 @@ function updateViewButtons(){
 }
 
 
-/* ================================
-   COLOR BUTTONS
-================================ */
-
 document
 .querySelectorAll(".color-button")
 .forEach(function(button){
 
-  button.addEventListener(
-    "click",
-    function(){
+  button.addEventListener("click",function(){
 
-      selectedColor =
-        button.dataset.color;
+    selectedColor = button.dataset.color;
 
-      document
-      .querySelectorAll(".color-button")
-      .forEach(function(item){
+    document
+    .querySelectorAll(".color-button")
+    .forEach(function(item){
+      item.classList.remove("active");
+    });
 
-        item.classList.remove("active");
+    button.classList.add("active");
 
-      });
+    updateThumbnails();
+    updateMainImage();
 
-      button.classList.add("active");
-
-      updateThumbnails();
-
-      updateMainImage();
-
-    }
-  );
+  });
 
 });
 
-
-/* ================================
-   VIEW BUTTONS
-================================ */
 
 document
 .querySelectorAll(".view-button")
 .forEach(function(button){
 
-  button.addEventListener(
-    "click",
-    function(){
+  button.addEventListener("click",function(){
 
-      selectedView =
-        button.dataset.view;
+    selectedView = button.dataset.view;
 
-      updateViewButtons();
+    updateViewButtons();
+    updateMainImage();
 
-      updateMainImage();
-
-    }
-  );
+  });
 
 });
 
-
-/* ================================
-   THUMBNAILS
-================================ */
 
 document
 .querySelectorAll(".thumbnail")
 .forEach(function(button){
 
-  button.addEventListener(
-    "click",
-    function(){
+  button.addEventListener("click",function(){
 
-      selectedView =
-        button.dataset.view;
+    selectedView = button.dataset.view;
 
-      updateViewButtons();
+    updateViewButtons();
+    updateMainImage();
 
-      updateMainImage();
-
-    }
-  );
+  });
 
 });
 
-
-/* ================================
-   SIZE BUTTONS
-================================ */
 
 document
 .querySelectorAll(".size-button")
 .forEach(function(button){
 
-  button.addEventListener(
-    "click",
-    function(){
+  button.addEventListener("click",function(){
 
-      selectedSize =
-        button.textContent.trim();
+    selectedSize = button.textContent.trim();
 
-      document
-      .querySelectorAll(".size-button")
-      .forEach(function(item){
+    document
+    .querySelectorAll(".size-button")
+    .forEach(function(item){
+      item.classList.remove("active");
+    });
 
-        item.classList.remove("active");
+    button.classList.add("active");
 
-      });
+    selectedSizeText.textContent =
+      selectedSize;
 
-      button.classList.add("active");
+    sizeMessage.textContent =
+      "Selected size: " + selectedSize;
 
-      selectedSizeText.textContent =
-        selectedSize;
-
-      sizeMessage.textContent =
-        "Selected size: " +
-        selectedSize;
-
-    }
-  );
+  });
 
 });
 
-
-/* ================================
-   MOBILE MENU
-================================ */
 
 const menuButton =
   document.getElementById("menuButton");
@@ -1524,63 +1152,38 @@ const menuButton =
 const navLinks =
   document.getElementById("navLinks");
 
+menuButton.addEventListener("click",function(){
+  navLinks.classList.toggle("active");
+});
 
-menuButton.addEventListener(
-  "click",
-  function(){
-
-    navLinks.classList.toggle("active");
-
-  }
-);
-
-
-/* ================================
-   COMING SOON
-================================ */
 
 document
 .getElementById("notifyButton")
-.addEventListener(
-  "click",
-  function(){
+.addEventListener("click",function(){
 
-    if(!selectedSize){
+  if(!selectedSize){
 
-      alert(
-        "Please select your size first."
-      );
-
-      return;
-
-    }
-
-    alert(
-      "DEV POLO — " +
-      products[selectedColor].name +
-      " — Size " +
-      selectedSize +
-      " is coming soon."
-    );
+    alert("Please select your size first.");
+    return;
 
   }
-);
 
+  alert(
+    "DEV POLO — " +
+    products[selectedColor].name +
+    " — Size " +
+    selectedSize +
+    " is coming soon."
+  );
 
-/* ================================
-   START
-================================ */
+});
+
 
 updateThumbnails();
-
 updateViewButtons();
-
 updateMainImage();
-
 
 </script>
 
-
 </body>
-
 </html>
