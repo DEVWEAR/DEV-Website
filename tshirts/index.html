@@ -2,503 +2,368 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>DEV T-Shirts | Built Different</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
-  background:#050505;
-  color:#fff;
   font-family:Arial, Helvetica, sans-serif;
+  background:#f5f5f3;
+  color:#111;
 }
 
 a{
-  color:inherit;
   text-decoration:none;
+  color:inherit;
 }
-
-button{
-  font-family:inherit;
-}
-
 
 /* TOP BAR */
-
 .top-bar{
   background:#fff;
-  color:#000;
   text-align:center;
-  padding:10px 15px;
+  padding:9px 15px;
   font-size:11px;
-  font-weight:bold;
   letter-spacing:3px;
+  font-weight:700;
 }
 
-
-/* NAVIGATION */
-
+/* NAV */
 nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  height:78px;
+  background:#0c0c0c;
+  color:#fff;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:0 6%;
-  background:rgba(5,5,5,.96);
-  border-bottom:1px solid #1d1d1d;
+  justify-content:space-between;
+  padding:18px 5%;
+  position:relative;
 }
 
 .logo{
-  font-size:34px;
+  font-size:25px;
   font-weight:900;
-  letter-spacing:6px;
+  letter-spacing:4px;
 }
 
 .nav-links{
   display:flex;
-  gap:35px;
+  align-items:center;
+  gap:25px;
 }
 
 .nav-links a{
-  font-size:12px;
-  letter-spacing:2px;
-  transition:.2s;
+  font-size:11px;
+  letter-spacing:1.5px;
+  font-weight:700;
 }
 
 .nav-links a:hover{
-  opacity:.55;
+  opacity:.65;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.nav-icon{
+  font-size:20px;
+  cursor:pointer;
 }
 
 .menu-btn{
   display:none;
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:28px;
+  font-size:22px;
   cursor:pointer;
 }
 
-
 /* PAGE HEADER */
-
 .page-header{
-  padding:75px 6% 50px;
-  border-bottom:1px solid #191919;
-
-  background:
-    radial-gradient(circle at center,#202020 0%,#0b0b0b 50%,#050505 100%);
+  background:#111;
+  color:#fff;
+  padding:38px 5% 34px;
+  border-top:1px solid #292929;
 }
 
-.page-small{
-  color:#777;
-  font-size:11px;
-  letter-spacing:5px;
-  margin-bottom:15px;
+.eyebrow{
+  font-size:10px;
+  letter-spacing:3px;
+  font-weight:700;
+  color:#a8a8a8;
+  margin-bottom:9px;
 }
 
 .page-header h1{
-  font-size:clamp(48px,8vw,90px);
-  letter-spacing:5px;
-  line-height:1;
+  font-size:38px;
+  letter-spacing:2px;
+  margin-bottom:8px;
 }
 
 .page-header p{
-  color:#888;
-  max-width:520px;
-  line-height:1.8;
   font-size:13px;
-  margin-top:20px;
+  color:#aaa;
+  line-height:1.6;
 }
 
-
-/* PRODUCT SECTION */
-
-section{
-  padding:80px 6%;
-}
-
-.product-layout{
+/* PRODUCT */
+.product{
   max-width:1250px;
   margin:auto;
+  padding:55px 5%;
   display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:60px;
+  grid-template-columns:1.1fr .9fr;
+  gap:65px;
   align-items:start;
 }
 
-
-/* IMAGE AREA */
-
-.product-gallery{
-  min-width:0;
+/* IMAGE */
+.product-media{
+  width:100%;
 }
 
-.main-image-box{
-  position:relative;
-  background:#eee;
-  min-height:620px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.main-image-wrap{
+  background:#f5f5f3;
   overflow:hidden;
 }
 
-.main-image-box img{
-  display:block;
+.main-image{
   width:100%;
-  height:100%;
-  max-height:720px;
+  display:block;
+  aspect-ratio:4 / 5;
   object-fit:contain;
-  transition:opacity .2s ease;
+  background:#f5f5f3;
 }
-
-.product-badge{
-  position:absolute;
-  top:18px;
-  left:18px;
-  z-index:2;
-  padding:9px 13px;
-  background:#000;
-  color:#fff;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-
 
 /* VIEW SELECTOR */
-
-.mobile-view-selector{
-  margin-top:12px;
+.view-selector{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid #d2d2cf;
+  border-top:none;
+  background:#fff;
 }
 
-.view-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
+.view-btn{
+  border:none;
+  border-right:1px solid #d2d2cf;
+  background:#fff;
+  padding:15px 5px;
   font-size:10px;
-  font-weight:bold;
   letter-spacing:2px;
+  font-weight:800;
+  cursor:pointer;
 }
 
-.view-title span{
-  color:#888;
+.view-btn:last-child{
+  border-right:none;
 }
 
-.view-options{
+.view-btn.active{
+  background:#111;
+  color:#fff;
+}
+
+/* THUMBNAILS */
+.thumbnails{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
-}
-
-.view-button{
-  min-height:48px;
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:#fff;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:1.5px;
-  transition:.2s;
-}
-
-.view-button:hover,
-.view-button.active{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-
-/* THUMBNAILS */
-
-.thumbnail-row{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
   margin-top:10px;
 }
 
-.thumbnail{
-  position:relative;
-  border:2px solid transparent;
-  background:#eee;
-  padding:0;
+.thumb{
+  border:1px solid transparent;
+  background:#f5f5f3;
   cursor:pointer;
   overflow:hidden;
-  min-height:110px;
 }
 
-.thumbnail img{
-  display:block;
+.thumb.active{
+  border:2px solid #111;
+}
+
+.thumb img{
   width:100%;
-  height:130px;
-  object-fit:cover;
+  height:125px;
+  object-fit:contain;
+  display:block;
+  background:#f5f5f3;
 }
 
-.thumbnail.active{
-  border-color:#fff;
-}
-
-
-/* PRODUCT INFORMATION */
-
-.product-details{
-  padding-top:10px;
-  position:sticky;
-  top:110px;
+/* PRODUCT INFO */
+.product-info{
+  padding-top:8px;
 }
 
 .collection-name{
   font-size:10px;
+  letter-spacing:3px;
   color:#777;
-  letter-spacing:4px;
+  font-weight:700;
+  margin-bottom:13px;
+}
+
+.product-info h2{
+  font-size:34px;
+  line-height:1.05;
+  letter-spacing:1px;
   margin-bottom:15px;
 }
 
-.product-details h2{
-  font-size:clamp(30px,4vw,48px);
-  line-height:1.08;
-  letter-spacing:2px;
-  margin-bottom:18px;
-}
-
 .price{
-  font-size:22px;
-  margin-bottom:30px;
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:32px;
 }
 
-.divider{
-  width:100%;
-  height:1px;
-  background:#222;
-  margin:25px 0;
-}
-
-
-/* OPTION HEADING */
-
-.option-heading{
+.option-title{
   display:flex;
   justify-content:space-between;
-  margin-bottom:13px;
+  align-items:center;
   font-size:11px;
-  font-weight:bold;
-  letter-spacing:2px;
+  letter-spacing:1.5px;
+  font-weight:800;
+  margin-bottom:12px;
 }
 
-.option-heading span{
-  color:#777;
-}
-
-
-/* COLOR BUTTONS */
-
+/* COLORS */
 .color-options{
   display:flex;
   gap:10px;
+  margin-bottom:30px;
   flex-wrap:wrap;
 }
 
-.color-button{
-  min-width:145px;
-  padding:14px 17px;
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:#fff;
-  cursor:pointer;
+.color-btn{
+  border:1px solid #bbb;
+  background:#fff;
+  padding:12px 18px;
   font-size:10px;
-  letter-spacing:1.2px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  transition:.2s;
+  letter-spacing:1px;
+  font-weight:700;
+  cursor:pointer;
 }
 
-.color-button:hover,
-.color-button.active{
-  border-color:#fff;
+.color-btn.active{
+  background:#111;
+  color:#fff;
+  border-color:#111;
 }
 
-.color-circle{
-  width:17px;
-  height:17px;
-  border-radius:50%;
-  border:1px solid #666;
-  flex:0 0 auto;
-}
-
-.black-circle{
-  background:#050505;
-}
-
-.navy-circle{
-  background:#101b34;
-}
-
-
-/* SIZE */
-
+/* SIZES */
 .size-options{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
+  margin-bottom:32px;
 }
 
-.size-button{
-  min-height:50px;
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:#fff;
-  cursor:pointer;
-  font-size:12px;
-  font-weight:bold;
-  transition:.2s;
-}
-
-.size-button:hover,
-.size-button.active{
+.size-btn{
+  border:1px solid #bbb;
   background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-.size-message{
-  color:#777;
+  padding:14px;
   font-size:11px;
-  margin-top:10px;
-  min-height:16px;
+  letter-spacing:1px;
+  font-weight:800;
+  cursor:pointer;
 }
 
+.size-btn.active{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
 
 /* DESCRIPTION */
-
-.product-description{
-  color:#888;
+.description{
+  border-top:1px solid #d0d0cd;
+  padding-top:23px;
+  margin-top:5px;
   font-size:13px;
   line-height:1.8;
+  color:#555;
 }
-
-.product-description strong{
-  color:#fff;
-}
-
 
 /* COMING SOON */
-
-.notify-btn{
+.coming-soon{
   width:100%;
-  margin-top:30px;
+  margin-top:28px;
+  background:#111;
+  color:#fff;
+  border:none;
   padding:18px;
-  border:0;
-  background:#fff;
-  color:#000;
-  cursor:pointer;
-  font-size:12px;
-  font-weight:bold;
+  font-size:11px;
   letter-spacing:3px;
-  transition:.2s;
+  font-weight:800;
+  cursor:default;
 }
-
-.notify-btn:hover{
-  background:#ddd;
-}
-
 
 /* FOOTER */
-
 footer{
-  padding:60px 6% 30px;
-  border-top:1px solid #191919;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:50px;
+  background:#0c0c0c;
+  color:#fff;
+  padding:45px 5%;
+  margin-top:30px;
 }
 
 .footer-logo{
-  font-size:40px;
+  font-size:25px;
   font-weight:900;
-  letter-spacing:7px;
-  margin-bottom:15px;
+  letter-spacing:4px;
+  margin-bottom:20px;
 }
 
-footer p{
-  max-width:400px;
-  color:#777;
-  font-size:13px;
-  line-height:1.8;
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
 }
 
-footer h4{
-  margin-bottom:18px;
+.footer-links a{
+  color:#aaa;
   font-size:11px;
-  letter-spacing:2px;
+  letter-spacing:1px;
 }
 
-footer a{
-  display:block;
-  color:#888;
-  font-size:13px;
-  margin-bottom:12px;
-}
-
-footer a:hover{
-  color:#fff;
-}
-
-.copyright{
-  margin-top:45px;
-  padding-top:25px;
-  border-top:1px solid #171717;
-  text-align:center;
-  color:#555;
+.footer-bottom{
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid #292929;
   font-size:10px;
-  letter-spacing:2px;
+  color:#666;
+  letter-spacing:1px;
 }
 
-
-/* TABLET / MOBILE */
-
-@media(max-width:900px){
+/* MOBILE */
+@media(max-width:850px){
 
   nav{
-    padding:0 5%;
+    padding:16px 5%;
   }
 
   .nav-links{
     display:none;
     position:absolute;
-    top:78px;
+    top:100%;
     left:0;
     width:100%;
-    padding:30px;
+    background:#111;
     flex-direction:column;
-    background:#080808;
-    border-bottom:1px solid #222;
+    align-items:flex-start;
+    padding:25px 5%;
+    gap:22px;
+    z-index:50;
   }
 
-  .nav-links.active{
+  .nav-links.open{
     display:flex;
   }
 
@@ -506,177 +371,36 @@ footer a:hover{
     display:block;
   }
 
-  section{
-    padding:50px 5%;
-  }
-
   .page-header{
-    padding:55px 5% 40px;
-  }
-
-  .product-layout{
-    grid-template-columns:1fr;
-    gap:35px;
-  }
-
-  .main-image-box{
-    min-height:420px;
-  }
-
-  .main-image-box img{
-    max-height:520px;
-  }
-
-  .product-details{
-    position:static;
-  }
-
-  .thumbnail img{
-    height:100px;
-  }
-
-  .color-button{
-    flex:1;
-    min-width:145px;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-
-/* PHONE */
-
-@media(max-width:500px){
-
-  .top-bar{
-    font-size:9px;
-    letter-spacing:2px;
-  }
-
-  nav{
-    height:68px;
-  }
-
-  .logo{
-    font-size:28px;
-  }
-
-  .nav-links{
-    top:68px;
-  }
-
-  .page-header{
-    padding:45px 5% 35px;
+    padding:30px 5%;
   }
 
   .page-header h1{
-    font-size:46px;
+    font-size:29px;
   }
 
-  section{
-    padding:35px 4%;
-  }
-
-  .main-image-box{
-    min-height:360px;
-  }
-
-  .main-image-box img{
-    max-height:440px;
-  }
-
-  .mobile-view-selector{
-    position:relative;
-    margin-top:10px;
-    padding:14px 12px;
-    background:#0b0b0b;
-    border:1px solid #2b2b2b;
-  }
-
-  .view-title{
-    margin-bottom:12px;
-    font-size:10px;
-  }
-
-  .view-options{
-    gap:6px;
-  }
-
-  .view-button{
-    min-height:52px;
-    padding:0 5px;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:1px;
-    border-color:#555;
-  }
-
-  .view-button.active{
-    background:#fff;
-    color:#000;
-  }
-
-  .thumbnail-row{
-    margin-top:8px;
-    gap:6px;
-  }
-
-  .thumbnail{
-    min-height:80px;
-  }
-
-  .thumbnail img{
-    height:85px;
-  }
-
-  .product-details{
-    padding-top:0;
-  }
-
-  .product-details h2{
-    font-size:30px;
-  }
-
-  .price{
-    font-size:20px;
-  }
-
-  .color-options{
-    display:grid;
+  .product{
     grid-template-columns:1fr;
+    padding:28px 4% 45px;
+    gap:35px;
   }
 
-  .color-button{
-    width:100%;
-    min-width:0;
-    min-height:50px;
+  .product-info h2{
+    font-size:28px;
   }
 
-  .size-options{
-    grid-template-columns:repeat(3,1fr);
+  .thumb img{
+    height:100px;
   }
-
-  .size-button{
-    min-height:52px;
-  }
-
 }
-
 </style>
-
 </head>
 
-
 <body>
-
 
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
-
 
 <nav>
 
@@ -685,683 +409,303 @@ footer a:hover{
   </a>
 
   <div class="nav-links" id="navLinks">
-
-    <a href="#shop">
-      T-SHIRTS
-    </a>
-
-    <a href="../polo/">
-      POLO
-    </a>
-
-    <a href="#">
-      SHORTS
-    </a>
-
-    <a href="#">
-      PANTS
-    </a>
-
-    <a href="#">
-      HOODIES
-    </a>
-
-    <a href="#">
-      SWEATERS
-    </a>
-
+    <a href="#shop">T-SHIRTS</a>
+    <a href="../polo/">POLO</a>
+    <a href="#">SHORTS</a>
+    <a href="../baggy-pants/">BAGGY PANTS</a>
+    <a href="#">HOODIES</a>
+    <a href="#">SWEATERS</a>
   </div>
 
-  <button
-    class="menu-btn"
-    id="menuButton"
-    type="button"
-    aria-label="Open menu">
-    ☰
-  </button>
+  <div class="nav-right">
+    <span class="nav-icon">⌕</span>
+    <span class="nav-icon">♡</span>
+    <span class="menu-btn" onclick="toggleMenu()">☰</span>
+  </div>
 
 </nav>
 
+<section class="page-header">
 
-<header class="page-header">
-
-  <div class="page-small">
+  <div class="eyebrow">
     DEV / T-SHIRTS
   </div>
 
-  <h1>
-    T-SHIRTS
-  </h1>
+  <h1>T-SHIRTS</h1>
 
   <p>
-    DEV T-Shirt collection.
-    Built for training, lifestyle and everything after it.
+    DEV T-Shirt collection. Built for training, lifestyle and everything after it.
   </p>
 
-</header>
+</section>
 
+<main class="product" id="shop">
 
-<section id="shop">
+  <section class="product-media">
 
-  <div class="product-layout">
-
-    <div class="product-gallery">
-
-      <div class="main-image-box">
-
-        <span class="product-badge">
-          NEW
-        </span>
-
-        <img
-          id="mainProductImage"
-          src="../graphic-tee-black-front.jpg.jpeg"
-          alt="DEV Oversized Graphic Tee Black Front"
-        >
-
-      </div>
-
-
-      <div class="mobile-view-selector">
-
-        <div class="view-title">
-
-          <div>
-            SELECT VIEW
-          </div>
-
-          <span id="selectedViewText">
-            FRONT
-          </span>
-
-        </div>
-
-
-        <div class="view-options">
-
-          <button
-            class="view-button active"
-            type="button"
-            data-view="front">
-            FRONT
-          </button>
-
-          <button
-            class="view-button"
-            type="button"
-            data-view="back">
-            BACK
-          </button>
-
-          <button
-            class="view-button"
-            type="button"
-            data-view="model">
-            MODEL
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="thumbnail-row">
-
-        <button
-          class="thumbnail active"
-          type="button"
-          data-view="front">
-
-          <img
-            id="frontThumbnail"
-            src="../graphic-tee-black-front.jpg.jpeg"
-            alt="T-Shirt front view"
-          >
-
-        </button>
-
-
-        <button
-          class="thumbnail"
-          type="button"
-          data-view="back">
-
-          <img
-            id="backThumbnail"
-            src="../graphic-tee-black-back.jpg.jpeg"
-            alt="T-Shirt back view"
-          >
-
-        </button>
-
-
-        <button
-          class="thumbnail"
-          type="button"
-          data-view="model">
-
-          <img
-            id="modelThumbnail"
-            src="../graphic-tee-black-model.jpg.jpeg"
-            alt="T-Shirt model view"
-          >
-
-        </button>
-
-      </div>
-
+    <div class="main-image-wrap">
+      <img
+        id="mainImage"
+        class="main-image"
+        src="../graphic-tee-black-front.jpg.jpeg"
+        alt="DEV T-Shirt Black Front"
+      >
     </div>
 
-
-    <div class="product-details">
-
-      <div class="collection-name">
-        DEV // T-SHIRT COLLECTION
-      </div>
-
-
-      <h2>
-        DEV OVERSIZED<br>
-        GRAPHIC TEE
-      </h2>
-
-
-      <div class="price">
-        AED 85
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <div class="option-heading">
-
-        <div>
-          COLOR
-        </div>
-
-        <span id="selectedColorText">
-          BLACK
-        </span>
-
-      </div>
-
-
-      <div class="color-options">
-
-        <button
-          class="color-button active"
-          type="button"
-          data-color="black">
-
-          <span class="color-circle black-circle"></span>
-
-          BLACK
-
-        </button>
-
-
-        <button
-          class="color-button"
-          type="button"
-          data-color="navy">
-
-          <span class="color-circle navy-circle"></span>
-
-          NAVY BLUE
-
-        </button>
-
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <div class="option-heading">
-
-        <div>
-          SELECT SIZE
-        </div>
-
-        <span id="selectedSizeText">
-          —
-        </span>
-
-      </div>
-
-
-      <div class="size-options">
-
-        <button class="size-button" type="button">
-          M
-        </button>
-
-        <button class="size-button" type="button">
-          L
-        </button>
-
-        <button class="size-button" type="button">
-          XL
-        </button>
-
-      </div>
-
-
-      <div class="size-message" id="sizeMessage">
-        Select your size.
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <div class="product-description">
-
-        <strong>
-          DEV Oversized Graphic Tee.
-        </strong>
-
-        <br><br>
-
-        Designed for training,
-        lifestyle and everyday wear.
-
-        <br><br>
-
-        Available in Black and Navy Blue.
-
-      </div>
-
+    <div class="view-selector">
 
       <button
-        class="notify-btn"
-        id="notifyButton"
-        type="button">
-        COMING SOON
+        class="view-btn active"
+        data-view="front"
+        onclick="changeView('front')">
+        FRONT
+      </button>
+
+      <button
+        class="view-btn"
+        data-view="back"
+        onclick="changeView('back')">
+        BACK
+      </button>
+
+      <button
+        class="view-btn"
+        data-view="model"
+        onclick="changeView('model')">
+        MODEL
       </button>
 
     </div>
 
-  </div>
+    <div class="thumbnails">
 
-</section>
+      <div
+        class="thumb active"
+        data-view="front"
+        onclick="changeView('front')">
 
+        <img
+          id="thumbFront"
+          src="../graphic-tee-black-front.jpg.jpeg"
+          alt="Front">
+      </div>
+
+      <div
+        class="thumb"
+        data-view="back"
+        onclick="changeView('back')">
+
+        <img
+          id="thumbBack"
+          src="../graphic-tee-black-back.jpg.jpeg"
+          alt="Back">
+      </div>
+
+      <div
+        class="thumb"
+        data-view="model"
+        onclick="changeView('model')">
+
+        <img
+          id="thumbModel"
+          src="../graphic-tee-black-model.jpg.jpeg"
+          alt="Model">
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="product-info">
+
+    <div class="collection-name">
+      DEV // T-SHIRT COLLECTION
+    </div>
+
+    <h2>DEV OVERSIZED GRAPHIC TEE</h2>
+
+    <div class="price">
+      AED 85
+    </div>
+
+    <div class="option-title">
+      <span>COLOR</span>
+      <span id="selectedColor">BLACK</span>
+    </div>
+
+    <div class="color-options">
+
+      <button
+        class="color-btn active"
+        data-color="black"
+        onclick="changeColor('black')">
+        BLACK
+      </button>
+
+      <button
+        class="color-btn"
+        data-color="navy"
+        onclick="changeColor('navy')">
+        NAVY BLUE
+      </button>
+
+    </div>
+
+    <div class="option-title">
+      <span>SIZE</span>
+      <span id="selectedSize">SELECT SIZE</span>
+    </div>
+
+    <div class="size-options">
+
+      <button
+        class="size-btn"
+        onclick="selectSize(this,'M')">
+        M
+      </button>
+
+      <button
+        class="size-btn"
+        onclick="selectSize(this,'L')">
+        L
+      </button>
+
+      <button
+        class="size-btn"
+        onclick="selectSize(this,'XL')">
+        XL
+      </button>
+
+    </div>
+
+    <div class="description">
+      Oversized graphic tee designed for training, lifestyle and everyday wear.
+      Available in Black and Navy Blue.
+    </div>
+
+    <button class="coming-soon">
+      COMING SOON
+    </button>
+
+  </section>
+
+</main>
 
 <footer>
 
-  <div class="footer-grid">
+  <a href="../index.html" class="footer-logo">
+    DEV
+  </a>
 
-    <div>
-
-      <div class="footer-logo">
-        DEV
-      </div>
-
-      <p>
-        Performance streetwear.
-        Designed in the UAE.
-        Built different.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        SHOP
-      </h4>
-
-      <a href="#shop">
-        T-Shirts
-      </a>
-
-      <a href="../polo/">
-        Polo
-      </a>
-
-      <a href="#">
-        Shorts
-      </a>
-
-      <a href="#">
-        Pants
-      </a>
-
-      <a href="#">
-        Hoodies
-      </a>
-
-      <a href="#">
-        Sweaters
-      </a>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        DEV
-      </h4>
-
-      <a href="../index.html">
-        Home
-      </a>
-
-    </div>
-
+  <div class="footer-links">
+    <a href="#shop">T-Shirts</a>
+    <a href="../polo/">Polo</a>
+    <a href="#">Shorts</a>
+    <a href="../baggy-pants/">Baggy Pants</a>
+    <a href="#">Hoodies</a>
+    <a href="#">Sweaters</a>
   </div>
 
-
-  <div class="copyright">
-    © 2026 DEV. ALL RIGHTS RESERVED.
+  <div class="footer-bottom">
+    ©️ 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
 
-
 <script>
 
+const productImages = {
 
-const products = {
-
-  black:{
-
-    name:"BLACK",
-
+  "black":{
     front:"../graphic-tee-black-front.jpg.jpeg",
-
     back:"../graphic-tee-black-back.jpg.jpeg",
-
     model:"../graphic-tee-black-model.jpg.jpeg"
-
   },
 
-
-  navy:{
-
-    name:"NAVY BLUE",
-
+  "navy":{
     front:"../graphic-tee-navy-front.jpg.jpeg",
-
     back:"../graphic-tee-navy-back.jpg.jpeg",
-
     model:"../graphic-tee-navy-model.jpg.jpeg"
-
   }
 
 };
 
+let currentColor = "black";
+let currentView = "front";
 
-let selectedColor = "black";
-let selectedView = "front";
-let selectedSize = null;
+function changeColor(color){
 
+  currentColor = color;
 
-const mainProductImage =
-  document.getElementById("mainProductImage");
-
-const selectedColorText =
-  document.getElementById("selectedColorText");
-
-const selectedViewText =
-  document.getElementById("selectedViewText");
-
-const selectedSizeText =
-  document.getElementById("selectedSizeText");
-
-const sizeMessage =
-  document.getElementById("sizeMessage");
-
-const frontThumbnail =
-  document.getElementById("frontThumbnail");
-
-const backThumbnail =
-  document.getElementById("backThumbnail");
-
-const modelThumbnail =
-  document.getElementById("modelThumbnail");
-
-
-function updateMainImage(){
-
-  const product =
-    products[selectedColor];
-
-  const image =
-    product[selectedView];
-
-  mainProductImage.style.opacity =
-    "0";
-
-  setTimeout(function(){
-
-    mainProductImage.src =
-      image;
-
-    mainProductImage.alt =
-      "DEV T-Shirt " +
-      product.name +
-      " " +
-      selectedView;
-
-    mainProductImage.style.opacity =
-      "1";
-
-  },120);
-
-  selectedColorText.textContent =
-    product.name;
-
-  selectedViewText.textContent =
-    selectedView.toUpperCase();
-
-}
-
-
-function updateThumbnails(){
-
-  const product =
-    products[selectedColor];
-
-  frontThumbnail.src =
-    product.front;
-
-  backThumbnail.src =
-    product.back;
-
-  modelThumbnail.src =
-    product.model;
-
-}
-
-
-function updateViewButtons(){
-
-  document
-  .querySelectorAll(".view-button")
-  .forEach(function(item){
-
-    item.classList.toggle(
-      "active",
-      item.dataset.view === selectedView
-    );
-
+  document.querySelectorAll(".color-btn").forEach(btn=>{
+    btn.classList.remove("active");
   });
 
-
   document
-  .querySelectorAll(".thumbnail")
-  .forEach(function(item){
+    .querySelector(`[data-color="${color}"]`)
+    .classList.add("active");
 
-    item.classList.toggle(
-      "active",
-      item.dataset.view === selectedView
-    );
+  document.getElementById("selectedColor").textContent =
+    color === "black" ? "BLACK" : "NAVY BLUE";
 
-  });
-
+  updateImages();
 }
 
+function changeView(view){
 
-document
-.querySelectorAll(".color-button")
-.forEach(function(button){
+  currentView = view;
 
-  button.addEventListener(
-    "click",
-    function(){
+  document.querySelectorAll(".view-btn").forEach(btn=>{
+    btn.classList.remove("active");
+  });
 
-      selectedColor =
-        button.dataset.color;
+  document.querySelectorAll(".thumb").forEach(thumb=>{
+    thumb.classList.remove("active");
+  });
 
-      document
-      .querySelectorAll(".color-button")
-      .forEach(function(item){
+  document
+    .querySelector(`.view-btn[data-view="${view}"]`)
+    .classList.add("active");
 
-        item.classList.remove("active");
+  document
+    .querySelector(`.thumb[data-view="${view}"]`)
+    .classList.add("active");
 
-      });
+  document.getElementById("mainImage").src =
+    productImages[currentColor][view];
+}
 
-      button.classList.add("active");
+function updateImages(){
 
-      updateThumbnails();
-      updateMainImage();
+  document.getElementById("thumbFront").src =
+    productImages[currentColor].front;
 
-    }
-  );
+  document.getElementById("thumbBack").src =
+    productImages[currentColor].back;
 
-});
+  document.getElementById("thumbModel").src =
+    productImages[currentColor].model;
 
+  document.getElementById("mainImage").src =
+    productImages[currentColor][currentView];
+}
 
-document
-.querySelectorAll(".view-button")
-.forEach(function(button){
+function selectSize(button,size){
 
-  button.addEventListener(
-    "click",
-    function(){
+  document.querySelectorAll(".size-btn").forEach(btn=>{
+    btn.classList.remove("active");
+  });
 
-      selectedView =
-        button.dataset.view;
+  button.classList.add("active");
 
-      updateViewButtons();
-      updateMainImage();
+  document.getElementById("selectedSize").textContent = size;
+}
 
-    }
-  );
-
-});
-
-
-document
-.querySelectorAll(".thumbnail")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedView =
-        button.dataset.view;
-
-      updateViewButtons();
-      updateMainImage();
-
-    }
-  );
-
-});
-
-
-document
-.querySelectorAll(".size-button")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedSize =
-        button.textContent.trim();
-
-      document
-      .querySelectorAll(".size-button")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-      button.classList.add("active");
-
-      selectedSizeText.textContent =
-        selectedSize;
-
-      sizeMessage.textContent =
-        "Selected size: " +
-        selectedSize;
-
-    }
-  );
-
-});
-
-
-const menuButton =
-  document.getElementById("menuButton");
-
-const navLinks =
-  document.getElementById("navLinks");
-
-menuButton.addEventListener(
-  "click",
-  function(){
-
-    navLinks.classList.toggle("active");
-
-  }
-);
-
-
-document
-.getElementById("notifyButton")
-.addEventListener(
-  "click",
-  function(){
-
-    if(!selectedSize){
-
-      alert(
-        "Please select your size first."
-      );
-
-      return;
-
-    }
-
-    alert(
-      "DEV T-SHIRT — " +
-      products[selectedColor].name +
-      " — Size " +
-      selectedSize +
-      " is coming soon."
-    );
-
-  }
-);
-
-
-updateThumbnails();
-updateViewButtons();
-updateMainImage();
-
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
+}
 
 </script>
 
-
 </body>
-
 </html>
