@@ -35,7 +35,8 @@ a{
   text-decoration:none;
 }
 
-button{
+button,
+input{
   font-family:inherit;
 }
 
@@ -48,11 +49,12 @@ button{
   background:#fff;
   color:#000;
   text-align:center;
+
   padding:10px 15px;
 
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:3px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:4px;
 }
 
 
@@ -65,600 +67,471 @@ nav{
   top:0;
   z-index:1000;
 
-  height:78px;
+  height:82px;
 
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 
-  padding:0 6%;
+  padding:0 5%;
 
-  background:rgba(5,5,5,.96);
-  border-bottom:1px solid #1d1d1d;
+  background:rgba(5,5,5,.97);
+
+  border-bottom:1px solid #1b1b1b;
 }
 
 .logo{
-  font-size:34px;
+  font-size:36px;
   font-weight:900;
-  letter-spacing:6px;
+  letter-spacing:7px;
 }
 
-.nav-links{
+
+/* ================================
+   NAV ACTIONS
+================================ */
+
+.nav-actions{
   display:flex;
-  gap:35px;
+  align-items:center;
+  gap:14px;
 }
 
-.nav-links a{
+
+/* ================================
+   SEARCH
+================================ */
+
+.search-box{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  width:280px;
+}
+
+.search-box input{
+  width:100%;
+  height:44px;
+
+  padding:0 45px 0 18px;
+
+  border:1px solid #333;
+  border-radius:30px;
+
+  background:#111;
+  color:#fff;
+
+  outline:none;
+
   font-size:12px;
-  letter-spacing:2px;
+  letter-spacing:1px;
+
   transition:.2s;
 }
 
-.nav-links a:hover{
-  opacity:.55;
+.search-box input:focus{
+  border-color:#777;
+  background:#161616;
 }
 
-.menu-btn{
-  display:none;
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:28px;
-  cursor:pointer;
+.search-box input::placeholder{
+  color:#777;
+}
+
+.search-icon{
+  position:absolute;
+  right:16px;
+
+  font-size:17px;
+
+  pointer-events:none;
 }
 
 
 /* ================================
-   HERO
+   CART
 ================================ */
 
-.hero{
-  min-height:82vh;
+.cart-button{
+  width:46px;
+  height:46px;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  text-align:center;
-  padding:60px 20px;
+  border:1px solid #333;
+  border-radius:50%;
 
-  background:
-    radial-gradient(circle at center,#252525 0%,#0b0b0b 45%,#000 100%);
+  background:#111;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:19px;
+
+  transition:.2s;
 }
 
-.hero-content{
+.cart-button:hover{
+  background:#fff;
+  color:#000;
+}
+
+
+/* ================================
+   MOBILE SEARCH BUTTON
+================================ */
+
+.mobile-search-button{
+  display:none;
+
+  width:44px;
+  height:44px;
+
+  justify-content:center;
+  align-items:center;
+
+  border:1px solid #333;
+  border-radius:50%;
+
+  background:#111;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:18px;
+}
+
+
+/* ================================
+   MOBILE SEARCH
+================================ */
+
+.mobile-search-panel{
+  display:none;
+
+  position:sticky;
+  top:68px;
+  z-index:999;
+
+  padding:12px 5%;
+
+  background:#080808;
+
+  border-bottom:1px solid #222;
+}
+
+.mobile-search-panel.active{
+  display:block;
+}
+
+.mobile-search-panel input{
+  width:100%;
+  height:48px;
+
+  padding:0 18px;
+
+  background:#111;
+  color:#fff;
+
+  border:1px solid #444;
+  border-radius:25px;
+
+  outline:none;
+
+  font-size:13px;
+}
+
+
+/* ================================
+   BRAND INTRO
+================================ */
+
+.brand-intro{
+  min-height:430px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:80px 6%;
+
+  text-align:center;
+
+  background:
+    radial-gradient(circle at center,#202020 0%,#0b0b0b 48%,#050505 80%);
+}
+
+.brand-content{
   max-width:900px;
 }
 
-.hero-small{
-  color:#999;
-  letter-spacing:6px;
-  font-size:12px;
+.brand-label{
   margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:clamp(80px,14vw,170px);
-  line-height:.85;
-  font-weight:900;
-  letter-spacing:10px;
-}
-
-.hero h2{
-  margin-top:27px;
-
-  font-size:clamp(20px,3vw,36px);
-  font-weight:400;
-  letter-spacing:8px;
-}
-
-.hero p{
-  max-width:570px;
-  margin:24px auto 35px;
-
-  color:#999;
-  font-size:14px;
-  line-height:1.8;
-}
-
-.main-btn{
-  display:inline-block;
-
-  background:#fff;
-  color:#000;
-
-  padding:17px 32px;
-
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:3px;
-
-  transition:.25s;
-}
-
-.main-btn:hover{
-  background:#ddd;
-  transform:translateY(-2px);
-}
-
-
-/* ================================
-   SECTIONS
-================================ */
-
-section{
-  padding:90px 6%;
-}
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-
-  gap:30px;
-  margin-bottom:45px;
-}
-
-.section-title{
-  font-size:clamp(35px,5vw,65px);
-  letter-spacing:3px;
-}
-
-.section-subtitle{
-  max-width:420px;
 
   color:#777;
+
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:6px;
+}
+
+.brand-intro h1{
+  font-size:clamp(48px,8vw,95px);
+
+  line-height:.95;
+
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.brand-intro h2{
+  margin-top:15px;
+
+  font-size:clamp(20px,3vw,34px);
+
+  letter-spacing:6px;
+  font-weight:500;
+}
+
+.brand-intro p{
+  max-width:620px;
+
+  margin:25px auto 0;
+
+  color:#999;
+
   font-size:13px;
-  line-height:1.7;
+  line-height:1.8;
+  letter-spacing:.5px;
 }
 
 
 /* ================================
-   PRODUCT
+   COLLECTIONS
 ================================ */
 
-.product-layout{
-  max-width:1250px;
+.collections{
+  max-width:1500px;
+
   margin:auto;
 
+  padding:70px 4% 100px;
+}
+
+.collections-header{
+  margin-bottom:35px;
+}
+
+.collections-header h2{
+  font-size:clamp(32px,5vw,58px);
+
+  letter-spacing:3px;
+}
+
+.collections-header p{
+  margin-top:10px;
+
+  color:#777;
+
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+
+/* ================================
+   COLLECTION GRID
+================================ */
+
+.collection-grid{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
 
-  gap:60px;
-  align-items:start;
+  grid-template-columns:repeat(2,1fr);
+
+  gap:14px;
 }
 
 
-/* IMAGE AREA */
+/* ================================
+   COLLECTION CARD
+================================ */
 
-.product-gallery{
-  min-width:0;
-}
-
-.main-image-box{
+.collection-card{
   position:relative;
 
-  background:#eee;
-  min-height:620px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  min-height:650px;
 
   overflow:hidden;
+
+  background:#111;
+
+  cursor:pointer;
+
+  border:1px solid #181818;
 }
 
-.main-image-box img{
+.collection-card img{
   display:block;
 
   width:100%;
   height:100%;
 
-  max-height:720px;
-  object-fit:contain;
+  position:absolute;
+  inset:0;
 
-  transition:opacity .2s ease;
+  object-fit:cover;
+
+  transition:
+    transform .6s ease,
+    filter .4s ease;
 }
 
-.product-badge{
+.collection-card::after{
+  content:"";
+
   position:absolute;
-  top:18px;
-  left:18px;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.02) 50%,
+      rgba(0,0,0,.08)
+    );
+
+  pointer-events:none;
+
+  transition:.3s;
+}
+
+.collection-card:hover img{
+  transform:scale(1.035);
+}
+
+.collection-card:hover::after{
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.68),
+      rgba(0,0,0,.03) 55%
+    );
+}
+
+
+/* ================================
+   CARD LABEL
+================================ */
+
+.card-label{
+  position:absolute;
+
+  left:28px;
+  bottom:25px;
+
   z-index:2;
 
-  padding:9px 13px;
-
-  background:#000;
-  color:#fff;
-
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:2px;
+  pointer-events:none;
 }
 
-
-/* THUMBNAILS */
-
-.thumbnail-row{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-
-  gap:10px;
-  margin-top:10px;
-}
-
-.thumbnail{
-  border:2px solid transparent;
-  background:#eee;
-
-  padding:0;
-
-  cursor:pointer;
-  overflow:hidden;
-
-  min-height:110px;
-}
-
-.thumbnail img{
+.card-label span{
   display:block;
-  width:100%;
-  height:130px;
-  object-fit:cover;
-}
 
-.thumbnail.active{
-  border-color:#fff;
-}
+  margin-bottom:7px;
 
+  color:#aaa;
 
-/* PRODUCT INFORMATION */
-
-.product-details{
-  padding-top:10px;
-  position:sticky;
-  top:110px;
-}
-
-.collection-name{
-  font-size:10px;
-  color:#777;
+  font-size:9px;
   letter-spacing:4px;
-  margin-bottom:15px;
 }
 
-.product-details h2{
-  font-size:clamp(30px,4vw,48px);
-  line-height:1.08;
-  letter-spacing:2px;
+.card-label h3{
+  font-size:28px;
 
-  margin-bottom:18px;
-}
-
-.price{
-  font-size:20px;
-  margin-bottom:35px;
-}
-
-.divider{
-  width:100%;
-  height:1px;
-  background:#222;
-
-  margin:25px 0;
+  letter-spacing:3px;
 }
 
 
-/* OPTIONS */
+/* ================================
+   COMING SOON CARD
+================================ */
 
-.option-heading{
-  display:flex;
-  justify-content:space-between;
+.coming-label{
+  position:absolute;
 
-  margin-bottom:13px;
+  top:22px;
+  right:22px;
 
-  font-size:11px;
+  z-index:3;
+
+  padding:9px 12px;
+
+  background:rgba(0,0,0,.75);
+
+  border:1px solid rgba(255,255,255,.25);
+
+  font-size:9px;
   font-weight:bold;
   letter-spacing:2px;
 }
 
-.option-heading span{
-  color:#777;
-}
-
-
-/* COLOR BUTTONS */
-
-.color-options{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.color-button{
-  min-width:135px;
-
-  padding:14px 18px;
-
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:#fff;
-
-  cursor:pointer;
-
-  font-size:11px;
-  letter-spacing:1.5px;
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  transition:.2s;
-}
-
-.color-button:hover,
-.color-button.active{
-  border-color:#fff;
-}
-
-.color-circle{
-  width:17px;
-  height:17px;
-
-  border-radius:50%;
-  border:1px solid #555;
-
-  flex:0 0 auto;
-}
-
-.black-circle{
-  background:#050505;
-}
-
-.navy-circle{
-  background:#101b34;
-}
-
-
-/* VIEW BUTTONS */
-
-.view-options{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-}
-
-.view-button{
-  padding:13px 20px;
-
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:#fff;
-
-  cursor:pointer;
-
-  font-size:11px;
-  letter-spacing:2px;
-
-  transition:.2s;
-}
-
-.view-button:hover,
-.view-button.active{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-
-/* SIZE */
-
-.size-options{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
-}
-
-.size-button{
-  min-height:48px;
-
-  border:1px solid #444;
-
-  background:#0d0d0d;
-  color:#fff;
-
-  cursor:pointer;
-  font-size:12px;
-
-  transition:.2s;
-}
-
-.size-button:hover,
-.size-button.active{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-.size-message{
-  color:#777;
-  font-size:11px;
-  margin-top:10px;
-  min-height:16px;
-}
-
-
-/* PRODUCT DESCRIPTION */
-
-.product-description{
-  color:#888;
-  font-size:13px;
-  line-height:1.8;
-}
-
-.product-description strong{
-  color:#fff;
-}
-
-
-/* COMING BUTTON */
-
-.notify-btn{
-  width:100%;
-
-  margin-top:30px;
-  padding:18px;
-
-  border:0;
-
-  background:#fff;
-  color:#000;
-
-  cursor:pointer;
-
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:3px;
-
-  transition:.2s;
-}
-
-.notify-btn:hover{
-  background:#ddd;
-}
-
 
 /* ================================
-   BANNER
+   SEARCH RESULTS MESSAGE
 ================================ */
 
-.banner{
-  min-height:500px;
+.no-results{
+  display:none;
 
-  display:flex;
-  align-items:center;
+  padding:60px 20px;
 
-  padding:80px 8%;
-
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.2)),
-    radial-gradient(circle at 80% 50%,#333,#111 45%,#050505 80%);
-}
-
-.banner-content{
-  max-width:600px;
-}
-
-.banner h2{
-  font-size:clamp(45px,7vw,90px);
-  line-height:.9;
-  letter-spacing:3px;
-}
-
-.banner p{
-  max-width:500px;
-
-  margin:25px 0 35px;
-
-  color:#999;
-  line-height:1.8;
-}
-
-
-/* ================================
-   ABOUT
-================================ */
-
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-
-  gap:70px;
-  align-items:center;
-}
-
-.about-visual{
-  min-height:480px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border:1px solid #222;
-
-  background:
-    radial-gradient(circle,#292929,#0b0b0b 65%);
-}
-
-.about-visual span{
-  font-size:90px;
-  font-weight:900;
-  letter-spacing:10px;
-}
-
-.about-text h2{
-  font-size:48px;
-  margin-bottom:25px;
-}
-
-.about-text p{
-  color:#999;
-  line-height:1.9;
-
-  margin-bottom:18px;
-}
-
-
-/* ================================
-   NEWSLETTER
-================================ */
-
-.newsletter{
   text-align:center;
-}
 
-.newsletter h2{
-  font-size:40px;
-  letter-spacing:3px;
-}
+  color:#777;
 
-.newsletter p{
-  color:#888;
-  margin:15px 0 30px;
-}
-
-.email-box{
-  max-width:560px;
-  margin:auto;
-
-  display:flex;
-}
-
-.email-box input{
-  flex:1;
-
-  background:#0b0b0b;
-  color:#fff;
-
-  border:1px solid #333;
-  border-right:0;
-
-  padding:18px;
-
-  outline:none;
-}
-
-.email-box button{
-  border:0;
-
-  background:#fff;
-  color:#000;
-
-  padding:0 28px;
-
-  cursor:pointer;
-
-  font-weight:bold;
+  font-size:13px;
   letter-spacing:2px;
+}
+
+.no-results.active{
+  display:block;
+}
+
+
+/* ================================
+   BRAND STRIP
+================================ */
+
+.brand-strip{
+  padding:80px 6%;
+
+  text-align:center;
+
+  border-top:1px solid #171717;
+  border-bottom:1px solid #171717;
+
+  background:#080808;
+}
+
+.brand-strip h2{
+  font-size:clamp(34px,6vw,70px);
+
+  letter-spacing:5px;
+}
+
+.brand-strip p{
+  max-width:580px;
+
+  margin:20px auto 0;
+
+  color:#777;
+
+  line-height:1.8;
+
+  font-size:13px;
 }
 
 
@@ -667,65 +540,97 @@ section{
 ================================ */
 
 footer{
-  padding:60px 6% 30px;
-
-  border-top:1px solid #191919;
+  padding:55px 6% 30px;
 }
 
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
+.footer-content{
+  display:flex;
 
-  gap:50px;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  gap:40px;
 }
 
 .footer-logo{
-  font-size:40px;
+  font-size:36px;
   font-weight:900;
   letter-spacing:7px;
-
-  margin-bottom:15px;
 }
 
-footer p{
-  max-width:400px;
+.footer-text{
+  max-width:380px;
 
-  color:#777;
-  font-size:13px;
+  margin-top:14px;
+
+  color:#666;
+
+  font-size:12px;
   line-height:1.8;
 }
 
-footer h4{
-  margin-bottom:18px;
+.footer-links{
+  display:flex;
+  gap:25px;
+}
+
+.footer-links a{
+  color:#777;
 
   font-size:11px;
   letter-spacing:2px;
+
+  transition:.2s;
 }
 
-footer a{
-  display:block;
-
-  color:#888;
-  font-size:13px;
-
-  margin-bottom:12px;
-}
-
-footer a:hover{
+.footer-links a:hover{
   color:#fff;
 }
 
 .copyright{
   margin-top:45px;
+
   padding-top:25px;
 
   border-top:1px solid #171717;
 
   text-align:center;
 
-  color:#555;
-  font-size:10px;
+  color:#444;
+
+  font-size:9px;
   letter-spacing:2px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media(max-width:900px){
+
+  nav{
+    padding:0 4%;
+  }
+
+  .search-box{
+    width:220px;
+  }
+
+  .brand-intro{
+    min-height:380px;
+
+    padding:65px 5%;
+  }
+
+  .collections{
+    padding:55px 4% 80px;
+  }
+
+  .collection-card{
+    min-height:500px;
+  }
+
 }
 
 
@@ -733,125 +638,157 @@ footer a:hover{
    MOBILE
 ================================ */
 
-@media(max-width:900px){
+@media(max-width:650px){
+
+  .top-bar{
+    padding:9px 10px;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+  }
 
   nav{
-    padding:0 5%;
+    height:68px;
+
+    padding:0 4%;
   }
 
-  .nav-links{
+  .logo{
+    font-size:29px;
+
+    letter-spacing:5px;
+  }
+
+  .search-box{
     display:none;
-
-    position:absolute;
-
-    top:78px;
-    left:0;
-
-    width:100%;
-
-    padding:30px;
-
-    flex-direction:column;
-
-    background:#080808;
-
-    border-bottom:1px solid #222;
   }
 
-  .nav-links.active{
+  .mobile-search-button{
     display:flex;
   }
 
-  .menu-btn{
+  .cart-button{
+    width:44px;
+    height:44px;
+  }
+
+  .nav-actions{
+    gap:8px;
+  }
+
+
+  /* BRAND */
+
+  .brand-intro{
+    min-height:350px;
+
+    padding:55px 6%;
+  }
+
+  .brand-label{
+    font-size:8px;
+
+    letter-spacing:4px;
+  }
+
+  .brand-intro h1{
+    font-size:47px;
+
+    line-height:1;
+  }
+
+  .brand-intro h2{
+    margin-top:13px;
+
+    font-size:17px;
+
+    line-height:1.5;
+
+    letter-spacing:3px;
+  }
+
+  .brand-intro p{
+    margin-top:18px;
+
+    font-size:12px;
+
+    line-height:1.7;
+  }
+
+
+  /* COLLECTIONS */
+
+  .collections{
+    padding:45px 3% 65px;
+  }
+
+  .collections-header{
+    padding:0 2%;
+
+    margin-bottom:25px;
+  }
+
+  .collections-header h2{
+    font-size:32px;
+  }
+
+  .collections-header p{
+    font-size:10px;
+
+    line-height:1.6;
+  }
+
+  .collection-grid{
+    grid-template-columns:1fr;
+
+    gap:9px;
+  }
+
+  .collection-card{
+    min-height:520px;
+  }
+
+  .card-label{
+    left:20px;
+
+    bottom:20px;
+  }
+
+  .card-label h3{
+    font-size:24px;
+  }
+
+
+  /* FOOTER */
+
+  .footer-content{
     display:block;
   }
 
-  section{
-    padding:65px 5%;
-  }
+  .footer-links{
+    margin-top:30px;
 
-  .section-head{
-    display:block;
-  }
+    flex-wrap:wrap;
 
-  .section-subtitle{
-    margin-top:15px;
-  }
-
-  .product-layout{
-    grid-template-columns:1fr;
-    gap:35px;
-  }
-
-  .main-image-box{
-    min-height:420px;
-  }
-
-  .main-image-box img{
-    max-height:520px;
-  }
-
-  .product-details{
-    position:static;
-  }
-
-  .thumbnail img{
-    height:100px;
-  }
-
-  .color-button{
-    flex:1;
-    min-width:140px;
-  }
-
-  .about{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  .email-box{
-    display:block;
-  }
-
-  .email-box input{
-    width:100%;
-    border-right:1px solid #333;
-  }
-
-  .email-box button{
-    width:100%;
-    padding:18px;
-    margin-top:10px;
+    gap:18px;
   }
 
 }
 
 
-@media(max-width:500px){
+/* ================================
+   SMALL PHONE
+================================ */
 
-  .hero{
-    min-height:620px;
+@media(max-width:400px){
+
+  .collection-card{
+    min-height:470px;
   }
 
-  .main-image-box{
-    min-height:350px;
-  }
-
-  .thumbnail img{
-    height:80px;
-  }
-
-  .size-options{
-    grid-template-columns:repeat(5,1fr);
-  }
-
-  .size-button{
-    min-width:0;
-    padding:0;
+  .brand-intro h1{
+    font-size:42px;
   }
 
 }
@@ -879,52 +816,105 @@ footer a:hover{
 
 <nav>
 
-  <a href="#" class="logo">DEV</a>
+  <a href="index.html" class="logo">
+    DEV
+  </a>
 
-  <div class="nav-links" id="navLinks">
 
-    <a href="#shop">SHOP</a>
-    <a href="#newdrop">NEW DROP</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
+  <div class="nav-actions">
+
+
+    <!-- DESKTOP SEARCH -->
+
+    <div class="search-box">
+
+      <input
+        id="desktopSearch"
+        type="search"
+        placeholder="Search products..."
+        aria-label="Search products"
+      >
+
+      <span class="search-icon">
+        ⌕
+      </span>
+
+    </div>
+
+
+    <!-- MOBILE SEARCH -->
+
+    <button
+      class="mobile-search-button"
+      id="mobileSearchButton"
+      type="button"
+      aria-label="Search">
+
+      ⌕
+
+    </button>
+
+
+    <!-- CART -->
+
+    <button
+      class="cart-button"
+      id="cartButton"
+      type="button"
+      aria-label="Shopping cart">
+
+      ♡
+
+    </button>
+
 
   </div>
-
-  <button
-    class="menu-btn"
-    id="menuButton"
-    type="button"
-    aria-label="Open menu">
-    ☰
-  </button>
 
 </nav>
 
 
 <!-- ================================
-     HERO
+     MOBILE SEARCH PANEL
 ================================ -->
 
-<header class="hero">
+<div
+  class="mobile-search-panel"
+  id="mobileSearchPanel">
 
-  <div class="hero-content">
+  <input
+    id="mobileSearch"
+    type="search"
+    placeholder="Search T-Shirts, Polo, Shorts..."
+    aria-label="Search products"
+  >
 
-    <div class="hero-small">
-      PERFORMANCE / STREETWEAR
+</div>
+
+
+<!-- ================================
+     BRAND INTRO
+================================ -->
+
+<header class="brand-intro">
+
+  <div class="brand-content">
+
+    <div class="brand-label">
+      DEV / PERFORMANCE STREETWEAR
     </div>
 
-    <h1>DEV</h1>
+    <h1>
+      BUILT FOR MORE.
+    </h1>
 
-    <h2>BUILT DIFFERENT.</h2>
+    <h2>
+      TRAIN HARD. LIVE DIFFERENT.
+    </h2>
 
     <p>
-      Gym wear made for those who refuse to blend in.
-      Oversized fits. Built for training and everything after it.
+      Performance wear made for training,
+      movement and everything after.
     </p>
-
-    <a href="#shop" class="main-btn">
-      SHOP THE DROP
-    </a>
 
   </div>
 
@@ -932,374 +922,234 @@ footer a:hover{
 
 
 <!-- ================================
-     PRODUCT
+     COLLECTIONS
 ================================ -->
 
-<section id="shop">
-
-  <div class="section-head">
-
-    <h2 class="section-title">
-      THE DROP
-    </h2>
-
-    <p class="section-subtitle">
-      DEV performance streetwear designed for the gym,
-      the street and everything in between.
-    </p>
-
-  </div>
-
-
-  <div class="product-layout">
-
-
-    <!-- LEFT: IMAGES -->
-
-    <div class="product-gallery">
-
-      <div class="main-image-box">
-
-        <span class="product-badge">
-          NEW
-        </span>
-
-        <img
-          id="mainProductImage"
-          src="graphic-tee-black-front.jpg.jpeg"
-          alt="DEV Oversized Graphic T-Shirt Black Front"
-        >
-
-      </div>
-
-
-      <div class="thumbnail-row">
-
-
-        <button
-          class="thumbnail active"
-          type="button"
-          data-view="front">
-
-          <img
-            id="frontThumbnail"
-            src="graphic-tee-black-front.jpg.jpeg"
-            alt="Front view"
-          >
-
-        </button>
-
-
-        <button
-          class="thumbnail"
-          type="button"
-          data-view="back">
-
-          <img
-            id="backThumbnail"
-            src="graphic-tee-black-back.jpg.jpeg"
-            alt="Back view"
-          >
-
-        </button>
-
-
-        <button
-          class="thumbnail"
-          type="button"
-          data-view="model">
-
-          <img
-            id="modelThumbnail"
-            src="graphic-tee-black-model.jpg.jpeg"
-            alt="Model view"
-          >
-
-        </button>
-
-
-      </div>
-
-    </div>
-
-
-    <!-- RIGHT: INFORMATION -->
-
-    <div class="product-details">
-
-      <div class="collection-name">
-        DEV // 001 COLLECTION
-      </div>
-
-      <h2>
-        DEV OVERSIZED<br>
-        GRAPHIC TEE
-      </h2>
-
-      <div class="price">
-        85
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <!-- COLOR -->
-
-      <div class="option-heading">
-
-        <div>COLOR</div>
-
-        <span id="selectedColorText">
-          BLACK
-        </span>
-
-      </div>
-
-
-      <div class="color-options">
-
-
-        <button
-          class="color-button active"
-          type="button"
-          data-color="black">
-
-          <span class="color-circle black-circle"></span>
-
-          BLACK
-
-        </button>
-
-
-        <button
-          class="color-button"
-          type="button"
-          data-color="navy">
-
-          <span class="color-circle navy-circle"></span>
-
-          NAVY BLUE
-
-        </button>
-
-
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <!-- VIEW -->
-
-      <div class="option-heading">
-
-        <div>VIEW</div>
-
-        <span id="selectedViewText">
-          FRONT
-        </span>
-
-      </div>
-
-
-      <div class="view-options">
-
-        <button
-          class="view-button active"
-          type="button"
-          data-view="front">
-          FRONT
-        </button>
-
-        <button
-          class="view-button"
-          type="button"
-          data-view="back">
-          BACK
-        </button>
-
-        <button
-          class="view-button"
-          type="button"
-          data-view="model">
-          MODEL
-        </button>
-
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <!-- SIZE -->
-
-      <div class="option-heading">
-
-        <div>SELECT SIZE</div>
-
-        <span id="selectedSizeText">
-          —
-        </span>
-
-      </div>
-
-
-      <div class="size-options">
-
-       
-        <button class="size-button" type="button">M</button>
-        <button class="size-button" type="button">L</button>
-        <button class="size-button" type="button">XL</button>
-        
-
-      </div>
-
-
-      <div
-        class="size-message"
-        id="sizeMessage">
-        Select your size.
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <div class="product-description">
-
-        <strong>DEV Oversized Graphic Tee.</strong>
-
-        <br><br>
-
-        Oversized silhouette designed for training,
-        lifestyle and everyday wear.
-
-        <br><br>
-
-        Available in Black and Navy Blue.
-
-      </div>
-
-
-      <button
-        class="notify-btn"
-        id="notifyButton"
-        type="button">
-
-        COMING SOON
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================================
-     BANNER
-================================ -->
-
-<div class="banner" id="newdrop">
-
-  <div class="banner-content">
+<main
+  class="collections"
+  id="collections">
+
+  <div class="collections-header">
 
     <h2>
-      NO LIMITS.<br>
-      NO EXCUSES.
+      SHOP DEV
     </h2>
 
     <p>
-      DEV isn't made to fit in.
-      It's made for the people building themselves
-      every single day.
+      SELECT YOUR CATEGORY
     </p>
 
-    <a href="#shop" class="main-btn">
-      DISCOVER DEV
+  </div>
+
+
+  <div
+    class="collection-grid"
+    id="collectionGrid">
+
+
+    <!-- T-SHIRTS -->
+
+    <a
+      href="tshirts/"
+      class="collection-card"
+      data-search="t-shirts tshirts t shirts tee tees">
+
+      <img
+        src="t-shirts.jpeg"
+        alt="DEV T-Shirts"
+      >
+
+      <div class="card-label">
+
+        <span>
+          DEV COLLECTION
+        </span>
+
+        <h3>
+          T-SHIRTS
+        </h3>
+
+      </div>
+
     </a>
 
-  </div>
 
-</div>
+    <!-- POLO -->
+
+    <a
+      href="polo/"
+      class="collection-card"
+      data-search="polo polos oversized polo">
+
+      <img
+        src="polo.jpeg"
+        alt="DEV Polo"
+      >
+
+      <div class="card-label">
+
+        <span>
+          DEV COLLECTION
+        </span>
+
+        <h3>
+          POLO
+        </h3>
+
+      </div>
+
+    </a>
 
 
-<!-- ================================
-     ABOUT
-================================ -->
+    <!-- SHORTS -->
 
-<section id="about">
+    <div
+      class="collection-card"
+      data-search="shorts gym shorts training shorts">
 
-  <div class="about">
+      <img
+        src="shorts.jpeg"
+        alt="DEV Shorts"
+      >
 
-    <div class="about-visual">
+      <div class="coming-label">
+        COMING SOON
+      </div>
 
-      <span>
-        DEV
-      </span>
+      <div class="card-label">
+
+        <span>
+          DEV COLLECTION
+        </span>
+
+        <h3>
+          SHORTS
+        </h3>
+
+      </div>
 
     </div>
 
 
-    <div class="about-text">
+    <!-- BAGGY PANTS -->
 
-      <h2>
-        BUILT DIFFERENT.
-      </h2>
+    <div
+      class="collection-card"
+      data-search="pants baggy pants trousers">
 
-      <p>
-        DEV is a UAE gym and streetwear brand created
-        for people who demand more from themselves.
-      </p>
+      <img
+        src="baggy pants.jpeg"
+        alt="DEV Baggy Pants"
+      >
 
-      <p>
-        Oversized silhouettes, comfort and a
-        performance-inspired aesthetic.
-      </p>
+      <div class="coming-label">
+        COMING SOON
+      </div>
 
-      <a href="#shop" class="main-btn">
-        SHOP DEV
-      </a>
+      <div class="card-label">
+
+        <span>
+          DEV COLLECTION
+        </span>
+
+        <h3>
+          BAGGY PANTS
+        </h3>
+
+      </div>
 
     </div>
 
+
+    <!-- HOODIES -->
+
+    <div
+      class="collection-card"
+      data-search="hoodie hoodies oversized hoodie">
+
+      <img
+        src="hoodies.jpeg"
+        alt="DEV Hoodies"
+      >
+
+      <div class="coming-label">
+        COMING SOON
+      </div>
+
+      <div class="card-label">
+
+        <span>
+          DEV COLLECTION
+        </span>
+
+        <h3>
+          HOODIES
+        </h3>
+
+      </div>
+
+    </div>
+
+
+    <!-- SWEATERS -->
+
+    <div
+      class="collection-card"
+      data-search="sweater sweaters sweatshirt sweatshirts">
+
+      <img
+        src="sweaters.jpeg"
+        alt="DEV Sweaters"
+      >
+
+      <div class="coming-label">
+        COMING SOON
+      </div>
+
+      <div class="card-label">
+
+        <span>
+          DEV COLLECTION
+        </span>
+
+        <h3>
+          SWEATERS
+        </h3>
+
+      </div>
+
+    </div>
+
+
   </div>
 
-</section>
+
+  <div
+    class="no-results"
+    id="noResults">
+
+    NO PRODUCTS FOUND.
+
+  </div>
+
+</main>
 
 
 <!-- ================================
-     CONTACT
+     BRAND STRIP
 ================================ -->
 
-<section class="newsletter" id="contact">
+<section class="brand-strip">
 
   <h2>
-    JOIN DEV
+    DEV
   </h2>
 
   <p>
-    Get early access to drops, restocks and new releases.
+    Built for the gym.
+    Designed for the street.
+    Made for everything after.
   </p>
-
-  <div class="email-box">
-
-    <input
-      id="emailInput"
-      type="email"
-      placeholder="Enter your email"
-      aria-label="Email address"
-    >
-
-    <button
-      type="button"
-      id="joinButton">
-      JOIN
-    </button>
-
-  </div>
 
 </section>
 
@@ -1310,7 +1160,8 @@ footer a:hover{
 
 <footer>
 
-  <div class="footer-grid">
+  <div class="footer-content">
+
 
     <div>
 
@@ -1318,55 +1169,31 @@ footer a:hover{
         DEV
       </div>
 
-      <p>
+      <div class="footer-text">
         Performance streetwear.
         Designed in the UAE.
         Built different.
-      </p>
+      </div>
 
     </div>
 
 
-    <div>
+    <div class="footer-links">
 
-      <h4>
+      <a href="tshirts/">
+        T-SHIRTS
+      </a>
+
+      <a href="polo/">
+        POLO
+      </a>
+
+      <a href="#collections">
         SHOP
-      </h4>
-
-      <a href="#shop">
-        New Drop
-      </a>
-
-      <a href="#shop">
-        T-Shirts
-      </a>
-
-      <a href="#">
-        Size Guide
       </a>
 
     </div>
 
-
-    <div>
-
-      <h4>
-        FOLLOW DEV
-      </h4>
-
-      <a href="#">
-        Instagram
-      </a>
-
-      <a href="#">
-        TikTok
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
-
-    </div>
 
   </div>
 
@@ -1381,365 +1208,113 @@ footer a:hover{
 <script>
 
 /* ================================
-   PRODUCT DATA
+   SEARCH
 ================================ */
 
-const products = {
+const collectionCards =
+  document.querySelectorAll(
+    ".collection-card"
+  );
 
-  black:{
+const desktopSearch =
+  document.getElementById(
+    "desktopSearch"
+  );
 
-    name:"BLACK",
+const mobileSearch =
+  document.getElementById(
+    "mobileSearch"
+  );
 
-    front:"graphic-tee-black-front.jpg.jpeg",
-
-    back:"graphic-tee-black-back.jpg.jpeg",
-
-    model:"graphic-tee-black-model.jpg.jpeg"
-
-  },
+const noResults =
+  document.getElementById(
+    "noResults"
+  );
 
 
-  navy:{
+function searchCollections(value){
 
-    name:"NAVY BLUE",
+  const searchValue =
+    value
+    .toLowerCase()
+    .trim();
 
-    front:"graphic-tee-navy-front.jpg.jpeg",
 
-    back:"graphic-tee-navy-back.jpg.jpeg",
+  let visibleCards = 0;
 
-    model:"graphic-tee-navy-model.jpg.jpeg"
+
+  collectionCards.forEach(
+    function(card){
+
+      const searchTerms =
+        card
+        .dataset
+        .search
+        .toLowerCase();
+
+
+      const matches =
+        searchValue === "" ||
+        searchTerms.includes(
+          searchValue
+        );
+
+
+      if(matches){
+
+        card.style.display = "";
+
+        visibleCards++;
+
+      }else{
+
+        card.style.display = "none";
+
+      }
+
+    }
+  );
+
+
+  if(visibleCards === 0){
+
+    noResults.classList.add(
+      "active"
+    );
+
+  }else{
+
+    noResults.classList.remove(
+      "active"
+    );
 
   }
 
-};
-
-
-let selectedColor = "black";
-
-let selectedView = "front";
-
-let selectedSize = null;
-
-
-/* ================================
-   ELEMENTS
-================================ */
-
-const mainProductImage =
-  document.getElementById("mainProductImage");
-
-const selectedColorText =
-  document.getElementById("selectedColorText");
-
-const selectedViewText =
-  document.getElementById("selectedViewText");
-
-const selectedSizeText =
-  document.getElementById("selectedSizeText");
-
-const sizeMessage =
-  document.getElementById("sizeMessage");
-
-const frontThumbnail =
-  document.getElementById("frontThumbnail");
-
-const backThumbnail =
-  document.getElementById("backThumbnail");
-
-const modelThumbnail =
-  document.getElementById("modelThumbnail");
-
-
-/* ================================
-   UPDATE IMAGE
-================================ */
-
-function updateMainImage(){
-
-  const product =
-    products[selectedColor];
-
-  const image =
-    product[selectedView];
-
-  mainProductImage.style.opacity = "0";
-
-
-  setTimeout(function(){
-
-    mainProductImage.src = image;
-
-    mainProductImage.alt =
-      "DEV Oversized Graphic T-Shirt " +
-      product.name +
-      " " +
-      selectedView;
-
-    mainProductImage.style.opacity = "1";
-
-  },120);
-
-
-  selectedColorText.textContent =
-    product.name;
-
-
-  selectedViewText.textContent =
-    selectedView.toUpperCase();
-
 }
 
 
-/* ================================
-   UPDATE THUMBNAILS
-================================ */
+/* DESKTOP SEARCH */
 
-function updateThumbnails(){
-
-  const product =
-    products[selectedColor];
-
-
-  frontThumbnail.src =
-    product.front;
-
-
-  backThumbnail.src =
-    product.back;
-
-
-  modelThumbnail.src =
-    product.model;
-
-}
-
-
-/* ================================
-   COLORS
-================================ */
-
-document
-.querySelectorAll(".color-button")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedColor =
-        button.dataset.color;
-
-
-      document
-      .querySelectorAll(".color-button")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      button.classList.add("active");
-
-
-      updateThumbnails();
-
-      updateMainImage();
-
-    }
-  );
-
-});
-
-
-/* ================================
-   VIEW BUTTONS
-================================ */
-
-document
-.querySelectorAll(".view-button")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedView =
-        button.dataset.view;
-
-
-      document
-      .querySelectorAll(".view-button")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      button.classList.add("active");
-
-
-      document
-      .querySelectorAll(".thumbnail")
-      .forEach(function(item){
-
-        item.classList.toggle(
-          "active",
-          item.dataset.view === selectedView
-        );
-
-      });
-
-
-      updateMainImage();
-
-    }
-  );
-
-});
-
-
-/* ================================
-   THUMBNAILS
-================================ */
-
-document
-.querySelectorAll(".thumbnail")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedView =
-        button.dataset.view;
-
-
-      document
-      .querySelectorAll(".thumbnail")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      button.classList.add("active");
-
-
-      document
-      .querySelectorAll(".view-button")
-      .forEach(function(item){
-
-        item.classList.toggle(
-          "active",
-          item.dataset.view === selectedView
-        );
-
-      });
-
-
-      updateMainImage();
-
-    }
-  );
-
-});
-
-
-/* ================================
-   SIZES
-================================ */
-
-document
-.querySelectorAll(".size-button")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedSize =
-        button.textContent.trim();
-
-
-      document
-      .querySelectorAll(".size-button")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      button.classList.add("active");
-
-
-      selectedSizeText.textContent =
-        selectedSize;
-
-
-      sizeMessage.textContent =
-        "Selected size: " + selectedSize;
-
-    }
-  );
-
-});
-
-
-/* ================================
-   MENU
-================================ */
-
-const menuButton =
-  document.getElementById("menuButton");
-
-const navLinks =
-  document.getElementById("navLinks");
-
-
-menuButton.addEventListener(
-  "click",
+desktopSearch.addEventListener(
+  "input",
   function(){
 
-    navLinks.classList.toggle("active");
+    searchCollections(
+      desktopSearch.value
+    );
 
   }
 );
 
 
-/* ================================
-   NEWSLETTER
-================================ */
+/* MOBILE SEARCH */
 
-document
-.getElementById("joinButton")
-.addEventListener(
-  "click",
+mobileSearch.addEventListener(
+  "input",
   function(){
 
-    const email =
-      document
-      .getElementById("emailInput")
-      .value
-      .trim();
-
-
-    if(email === ""){
-
-      alert(
-        "Please enter your email."
-      );
-
-      return;
-
-    }
-
-
-    alert(
-      "Welcome to DEV. You'll be the first to know about the next drop."
+    searchCollections(
+      mobileSearch.value
     );
 
   }
@@ -1747,45 +1322,59 @@ document
 
 
 /* ================================
-   COMING SOON
+   MOBILE SEARCH OPEN / CLOSE
 ================================ */
 
-document
-.getElementById("notifyButton")
-.addEventListener(
+const mobileSearchButton =
+  document.getElementById(
+    "mobileSearchButton"
+  );
+
+const mobileSearchPanel =
+  document.getElementById(
+    "mobileSearchPanel"
+  );
+
+
+mobileSearchButton.addEventListener(
   "click",
   function(){
 
-    if(!selectedSize){
+    mobileSearchPanel
+    .classList
+    .toggle("active");
 
-      alert(
-        "Please select your size first."
-      );
 
-      return;
+    if(
+      mobileSearchPanel
+      .classList
+      .contains("active")
+    ){
+
+      mobileSearch.focus();
 
     }
-
-
-    alert(
-      "DEV " +
-      products[selectedColor].name +
-      " — Size " +
-      selectedSize +
-      " is coming soon."
-    );
 
   }
 );
 
 
 /* ================================
-   START
+   CART
 ================================ */
 
-updateThumbnails();
+document
+.getElementById("cartButton")
+.addEventListener(
+  "click",
+  function(){
 
-updateMainImage();
+    alert(
+      "DEV Cart is coming soon."
+    );
+
+  }
+);
 
 </script>
 
