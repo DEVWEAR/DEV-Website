@@ -706,11 +706,6 @@ footer a:hover{
     max-height:440px;
   }
 
-  /*
-    FRONT / BACK / MODEL
-    Extra clear on mobile
-  */
-
   .mobile-view-selector{
     position:relative;
 
@@ -805,18 +800,10 @@ footer a:hover{
 <body>
 
 
-<!-- ================================
-     TOP BAR
-================================ -->
-
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
-
-<!-- ================================
-     NAVIGATION
-================================ -->
 
 <nav>
 
@@ -863,10 +850,6 @@ footer a:hover{
 </nav>
 
 
-<!-- ================================
-     POLO HEADER
-================================ -->
-
 <header class="page-header">
 
   <div class="page-small">
@@ -885,19 +868,11 @@ footer a:hover{
 </header>
 
 
-<!-- ================================
-     PRODUCT
-================================ -->
-
 <section id="shop">
 
   <div class="product-layout">
 
-
-    <!-- LEFT SIDE -->
-
     <div class="product-gallery">
-
 
       <div class="main-image-box">
 
@@ -907,19 +882,14 @@ footer a:hover{
 
         <img
           id="mainProductImage"
-          src="polo-black-front.jpg.jpeg
+          src="../polo-black-front.jpg.jpeg"
           alt="DEV Polo Black Front"
         >
 
       </div>
 
 
-      <!--
-        IMPORTANT:
-        FRONT / BACK / MODEL
-        placed directly under main image
-        for better mobile visibility.
-      -->
+      <!-- FRONT / BACK / MODEL DIRECTLY BELOW IMAGE -->
 
       <div class="mobile-view-selector">
 
@@ -942,29 +912,21 @@ footer a:hover{
             class="view-button active"
             type="button"
             data-view="front">
-
             FRONT
-
           </button>
-
 
           <button
             class="view-button"
             type="button"
             data-view="back">
-
             BACK
-
           </button>
-
 
           <button
             class="view-button"
             type="button"
             data-view="model">
-
             MODEL
-
           </button>
 
         </div>
@@ -972,10 +934,7 @@ footer a:hover{
       </div>
 
 
-      <!-- THUMBNAILS -->
-
       <div class="thumbnail-row">
-
 
         <button
           class="thumbnail active"
@@ -984,7 +943,7 @@ footer a:hover{
 
           <img
             id="frontThumbnail"
-            src="polo-black-front.jpg.jpeg
+            src="../polo-black-front.jpg.jpeg"
             alt="Polo front view"
           >
 
@@ -998,7 +957,7 @@ footer a:hover{
 
           <img
             id="backThumbnail"
-            src="polo-black-back.jpg.jpeg"
+            src="../polo-black-back.jpg.jpeg"
             alt="Polo back view"
           >
 
@@ -1012,22 +971,18 @@ footer a:hover{
 
           <img
             id="modelThumbnail"
-            src="polo-black-model.jpg.jpeg"
+            src="../polo-black-model.jpg.jpeg"
             alt="Polo model view"
           >
 
         </button>
-
 
       </div>
 
     </div>
 
 
-    <!-- RIGHT SIDE -->
-
     <div class="product-details">
-
 
       <div class="collection-name">
         DEV // POLO COLLECTION
@@ -1048,8 +1003,6 @@ footer a:hover{
       <div class="divider"></div>
 
 
-      <!-- COLOR -->
-
       <div class="option-heading">
 
         <div>
@@ -1065,62 +1018,46 @@ footer a:hover{
 
       <div class="color-options">
 
-
-        <!-- BLACK -->
-
         <button
           class="color-button active"
           type="button"
           data-color="black">
 
-          <span
-            class="color-circle black-circle">
-          </span>
+          <span class="color-circle black-circle"></span>
 
           BLACK
 
         </button>
 
 
-        <!-- DARK OLIVE GREEN -->
-
         <button
           class="color-button"
           type="button"
           data-color="darkOliveGreen">
 
-          <span
-            class="color-circle dark-olive-green-circle">
-          </span>
+          <span class="color-circle dark-olive-green-circle"></span>
 
           DARK OLIVE GREEN
 
         </button>
 
 
-        <!-- BEIGE -->
-
         <button
           class="color-button"
           type="button"
           data-color="beige">
 
-          <span
-            class="color-circle beige-circle">
-          </span>
+          <span class="color-circle beige-circle"></span>
 
           BEIGE
 
         </button>
-
 
       </div>
 
 
       <div class="divider"></div>
 
-
-      <!-- SIZE -->
 
       <div class="option-heading">
 
@@ -1137,40 +1074,28 @@ footer a:hover{
 
       <div class="size-options">
 
-        <button
-          class="size-button"
-          type="button">
+        <button class="size-button" type="button">
           M
         </button>
 
-        <button
-          class="size-button"
-          type="button">
+        <button class="size-button" type="button">
           L
         </button>
 
-        <button
-          class="size-button"
-          type="button">
+        <button class="size-button" type="button">
           XL
         </button>
 
       </div>
 
 
-      <div
-        class="size-message"
-        id="sizeMessage">
-
+      <div class="size-message" id="sizeMessage">
         Select your size.
-
       </div>
 
 
       <div class="divider"></div>
 
-
-      <!-- DESCRIPTION -->
 
       <div class="product-description">
 
@@ -1195,11 +1120,8 @@ footer a:hover{
         class="notify-btn"
         id="notifyButton"
         type="button">
-
         COMING SOON
-
       </button>
-
 
     </div>
 
@@ -1208,14 +1130,9 @@ footer a:hover{
 </section>
 
 
-<!-- ================================
-     FOOTER
-================================ -->
-
 <footer>
 
   <div class="footer-grid">
-
 
     <div>
 
@@ -1281,7 +1198,6 @@ footer a:hover{
 
     </div>
 
-
   </div>
 
 
@@ -1301,16 +1217,15 @@ footer a:hover{
 
 const products = {
 
-
   black:{
 
     name:"BLACK",
 
-    front:"polo-black-front.jpg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg.jpeg",
+    front:"../polo-black-front.jpg.jpeg",
 
-    back:"polo-black-back.jpg.jpeg",
+    back:"../polo-black-back.jpg.jpeg",
 
-    model:"polo-black-model.jpg.jpeg"
+    model:"../polo-black-model.jpg.jpeg"
 
   },
 
@@ -1319,11 +1234,11 @@ const products = {
 
     name:"DARK OLIVE GREEN",
 
-    front:"polo-dark-olive-green-front.jpg",
+    front:"../polo-dark-olive-green-front.jpg",
 
-    back:"polo-dark-olive-green-back.jpg",
+    back:"../polo-dark-olive-green-back.jpg",
 
-    model:"polo-dark-olive-green-model.jpg"
+    model:"../polo-dark-olive-green-model.jpg"
 
   },
 
@@ -1332,14 +1247,13 @@ const products = {
 
     name:"BEIGE",
 
-    front:"polo-beige-front.jpg",
+    front:"../polo-beige-front.jpg",
 
-    back:"polo-beige-back.jpg",
+    back:"../polo-beige-back.jpg",
 
-    model:"polo-beige-model.jpg"
+    model:"../polo-beige-model.jpg"
 
   }
-
 
 };
 
@@ -1396,10 +1310,8 @@ function updateMainImage(){
   const image =
     product[selectedView];
 
-
   mainProductImage.style.opacity =
     "0";
-
 
   setTimeout(function(){
 
@@ -1412,16 +1324,13 @@ function updateMainImage(){
       " " +
       selectedView;
 
-
     mainProductImage.style.opacity =
       "1";
 
   },120);
 
-
   selectedColorText.textContent =
     product.name;
-
 
   selectedViewText.textContent =
     selectedView.toUpperCase();
@@ -1438,14 +1347,11 @@ function updateThumbnails(){
   const product =
     products[selectedColor];
 
-
   frontThumbnail.src =
     product.front;
 
-
   backThumbnail.src =
     product.back;
-
 
   modelThumbnail.src =
     product.model;
@@ -1500,7 +1406,6 @@ document
       selectedColor =
         button.dataset.color;
 
-
       document
       .querySelectorAll(".color-button")
       .forEach(function(item){
@@ -1509,9 +1414,7 @@ document
 
       });
 
-
       button.classList.add("active");
-
 
       updateThumbnails();
 
@@ -1538,7 +1441,6 @@ document
       selectedView =
         button.dataset.view;
 
-
       updateViewButtons();
 
       updateMainImage();
@@ -1563,7 +1465,6 @@ document
 
       selectedView =
         button.dataset.view;
-
 
       updateViewButtons();
 
@@ -1590,7 +1491,6 @@ document
       selectedSize =
         button.textContent.trim();
 
-
       document
       .querySelectorAll(".size-button")
       .forEach(function(item){
@@ -1599,13 +1499,10 @@ document
 
       });
 
-
       button.classList.add("active");
-
 
       selectedSizeText.textContent =
         selectedSize;
-
 
       sizeMessage.textContent =
         "Selected size: " +
@@ -1657,7 +1554,6 @@ document
       return;
 
     }
-
 
     alert(
       "DEV POLO — " +
