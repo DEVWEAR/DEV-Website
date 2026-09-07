@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DEV Polo | Built Different</title>
+
+<style>
+
+/* ================================
+   RESET
+================================ */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#050505;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font-family:inherit;
+}
+
+
+/* ================================
+   TOP BAR
+================================ */
+
+.top-bar{
+  background:#fff;
+  color:#000;
+  text-align:center;
+  padding:10px 15px;
+
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  height:78px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:0 6%;
+
+  background:rgba(5,5,5,.96);
+  border-bottom:1px solid #1d1d1d;
+}
+
+.logo{
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:6px;
+}
+
+.nav-links{
+  display:flex;
+  gap:35px;
+}
+
+.nav-links a{
+  font-size:12px;
+  letter-spacing:2px;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  opacity:.55;
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:28px;
+  cursor:pointer;
+}
+
+
+/* ================================
+   PAGE HEADER
+================================ */
+
+.page-header{
+  padding:75px 6% 50px;
+  border-bottom:1px solid #191919;
+
+  background:
+    radial-gradient(circle at center,#202020 0%,#0b0b0b 50%,#050505 100%);
+}
+
+.page-small{
+  color:#777;
+  font-size:11px;
+  letter-spacing:5px;
+  margin-bottom:15px;
+}
+
+.page-header h1{
+  font-size:clamp(48px,8vw,90px);
+  letter-spacing:5px;
+  line-height:1;
+}
+
+.page-header p{
+  color:#888;
+  max-width:520px;
+  line-height:1.8;
+  font-size:13px;
+  margin-top:20px;
+}
+
+
+/* ================================
+   PRODUCT SECTION
+================================ */
+
+section{
+  padding:80px 6%;
+}
+
+.product-layout{
+  max-width:1250px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+
+  gap:60px;
+  align-items:start;
+}
+
+
+/* ================================
+   IMAGE AREA
+================================ */
+
+.product-gallery{
+  min-width:0;
+}
+
+.main-image-box{
+  position:relative;
+
+  background:#eee;
+  min-height:620px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  overflow:hidden;
+}
+
+.main-image-box img{
+  display:block;
+  width:100%;
+  height:100%;
+
+  max-height:720px;
+  object-fit:contain;
+
+  transition:opacity .2s ease;
+}
+
+.product-badge{
+  position:absolute;
+  top:18px;
+  left:18px;
+  z-index:2;
+
+  padding:9px 13px;
+
+  background:#000;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+
+/* ================================
+   VIEW SELECTOR
+================================ */
+
+.mobile-view-selector{
+  margin-top:12px;
+}
+
+.view-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:10px;
+
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.view-title span{
+  color:#888;
+}
+
+.view-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.view-button{
+  min-height:48px;
+
+  border:1px solid #444;
+  background:#0d0d0d;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+
+  transition:.2s;
+}
+
+.view-button:hover,
+.view-button.active{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+
+/* ================================
+   THUMBNAILS
+================================ */
+
+.thumbnail-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:10px;
+  margin-top:10px;
+}
+
+.thumbnail{
+  position:relative;
+
+  border:2px solid transparent;
+  background:#eee;
+
+  padding:0;
+
+  cursor:pointer;
+  overflow:hidden;
+
+  min-height:110px;
+}
+
+.thumbnail img{
+  display:block;
+
+  width:100%;
+  height:130px;
+
+  object-fit:cover;
+}
+
+.thumbnail.active{
+  border-color:#fff;
+}
+
+
+/* ================================
+   PRODUCT INFORMATION
+================================ */
+
+.product-details{
+  padding-top:10px;
+
+  position:sticky;
+  top:110px;
+}
+
+.collection-name{
+  font-size:10px;
+  color:#777;
+  letter-spacing:4px;
+  margin-bottom:15px;
+}
+
+.product-details h2{
+  font-size:clamp(30px,4vw,48px);
+  line-height:1.08;
+  letter-spacing:2px;
+
+  margin-bottom:18px;
+}
+
+.price{
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+.divider{
+  width:100%;
+  height:1px;
+
+  background:#222;
+
+  margin:25px 0;
+}
+
+
+/* ================================
+   OPTION HEADING
+================================ */
+
+.option-heading{
+  display:flex;
+  justify-content:space-between;
+
+  margin-bottom:13px;
+
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.option-heading span{
+  color:#777;
+}
+
+
+/* ================================
+   COLOR BUTTONS
+================================ */
+
+.color-options{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.color-button{
+  min-width:145px;
+
+  padding:14px 17px;
+
+  border:1px solid #444;
+
+  background:#0d0d0d;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:10px;
+  letter-spacing:1.2px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  transition:.2s;
+}
+
+.color-button:hover,
+.color-button.active{
+  border-color:#fff;
+}
+
+.color-circle{
+  width:17px;
+  height:17px;
+
+  border-radius:50%;
+  border:1px solid #666;
+
+  flex:0 0 auto;
+}
+
+.black-circle{
+  background:#050505;
+}
+
+.dark-olive-green-circle{
+  background:#3f452b;
+}
+
+.beige-circle{
+  background:#c8b99f;
+}
+
+
+/* ================================
+   SIZE
+================================ */
+
+.size-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.size-button{
+  min-height:50px;
+
+  border:1px solid #444;
+
+  background:#0d0d0d;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:12px;
+  font-weight:bold;
+
+  transition:.2s;
+}
+
+.size-button:hover,
+.size-button.active{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+.size-message{
+  color:#777;
+
+  font-size:11px;
+
+  margin-top:10px;
+
+  min-height:16px;
+}
+
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.product-description{
+  color:#888;
+
+  font-size:13px;
+  line-height:1.8;
+}
+
+.product-description strong{
+  color:#fff;
+}
+
+
+/* ================================
+   COMING SOON
+================================ */
+
+.notify-btn{
+  width:100%;
+
+  margin-top:30px;
+  padding:18px;
+
+  border:0;
+
+  background:#fff;
+  color:#000;
+
+  cursor:pointer;
+
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:3px;
+
+  transition:.2s;
+}
+
+.notify-btn:hover{
+  background:#ddd;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+  padding:60px 6% 30px;
+
+  border-top:1px solid #191919;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+
+  gap:50px;
+}
+
+.footer-logo{
+  font-size:40px;
+  font-weight:900;
+  letter-spacing:7px;
+
+  margin-bottom:15px;
+}
+
+footer p{
+  max-width:400px;
+
+  color:#777;
+
+  font-size:13px;
+  line-height:1.8;
+}
+
+footer h4{
+  margin-bottom:18px;
+
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+footer a{
+  display:block;
+
+  color:#888;
+
+  font-size:13px;
+
+  margin-bottom:12px;
+}
+
+footer a:hover{
+  color:#fff;
+}
+
+.copyright{
+  margin-top:45px;
+  padding-top:25px;
+
+  border-top:1px solid #171717;
+
+  text-align:center;
+
+  color:#555;
+
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+
+/* ================================
+   TABLET / MOBILE
+================================ */
+
+@media(max-width:900px){
+
+  nav{
+    padding:0 5%;
+  }
+
+  .nav-links{
+    display:none;
+
+    position:absolute;
+
+    top:78px;
+    left:0;
+
+    width:100%;
+
+    padding:30px;
+
+    flex-direction:column;
+
+    background:#080808;
+
+    border-bottom:1px solid #222;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  section{
+    padding:50px 5%;
+  }
+
+  .page-header{
+    padding:55px 5% 40px;
+  }
+
+  .product-layout{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .main-image-box{
+    min-height:420px;
+  }
+
+  .main-image-box img{
+    max-height:520px;
+  }
+
+  .product-details{
+    position:static;
+  }
+
+  .thumbnail img{
+    height:100px;
+  }
+
+  .color-button{
+    flex:1;
+    min-width:145px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ================================
+   PHONE
+================================ */
+
+@media(max-width:500px){
+
+  .top-bar{
+    font-size:9px;
+    letter-spacing:2px;
+  }
+
+  nav{
+    height:68px;
+  }
+
+  .logo{
+    font-size:28px;
+  }
+
+  .nav-links{
+    top:68px;
+  }
+
+  .page-header{
+    padding:45px 5% 35px;
+  }
+
+  .page-header h1{
+    font-size:46px;
+  }
+
+  section{
+    padding:35px 4%;
+  }
+
+  .main-image-box{
+    min-height:360px;
+  }
+
+  .main-image-box img{
+    max-height:440px;
+  }
+
+  /*
+    FRONT / BACK / MODEL
+    Extra clear on mobile
+  */
+
+  .mobile-view-selector{
+    position:relative;
+
+    margin-top:10px;
+
+    padding:14px 12px;
+
+    background:#0b0b0b;
+
+    border:1px solid #2b2b2b;
+  }
+
+  .view-title{
+    margin-bottom:12px;
+    font-size:10px;
+  }
+
+  .view-options{
+    gap:6px;
+  }
+
+  .view-button{
+    min-height:52px;
+
+    padding:0 5px;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    border-color:#555;
+  }
+
+  .view-button.active{
+    background:#fff;
+    color:#000;
+  }
+
+  .thumbnail-row{
+    margin-top:8px;
+    gap:6px;
+  }
+
+  .thumbnail{
+    min-height:80px;
+  }
+
+  .thumbnail img{
+    height:85px;
+  }
+
+  .product-details{
+    padding-top:0;
+  }
+
+  .product-details h2{
+    font-size:30px;
+  }
+
+  .price{
+    font-size:20px;
+  }
+
+  .color-options{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .color-button{
+    width:100%;
+    min-width:0;
+
+    min-height:50px;
+  }
+
+  .size-options{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .size-button{
+    min-height:52px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     TOP BAR
+================================ -->
+
+<div class="top-bar">
+  DEV — BUILT DIFFERENT
+</div>
+
+
+<!-- ================================
+     NAVIGATION
+================================ -->
+
+<nav>
+
+  <a href="../index.html" class="logo">
+    DEV
+  </a>
+
+  <div class="nav-links" id="navLinks">
+
+    <a href="../index.html">
+      T-SHIRTS
+    </a>
+
+    <a href="#shop">
+      POLO
+    </a>
+
+    <a href="#">
+      SHORTS
+    </a>
+
+    <a href="#">
+      PANTS
+    </a>
+
+    <a href="#">
+      HOODIES
+    </a>
+
+    <a href="#">
+      SWEATERS
+    </a>
+
+  </div>
+
+  <button
+    class="menu-btn"
+    id="menuButton"
+    type="button"
+    aria-label="Open menu">
+    ☰
+  </button>
+
+</nav>
+
+
+<!-- ================================
+     POLO HEADER
+================================ -->
+
+<header class="page-header">
+
+  <div class="page-small">
+    DEV / POLO
+  </div>
+
+  <h1>
+    POLO
+  </h1>
+
+  <p>
+    DEV Polo collection.
+    Built for training, lifestyle and everything after it.
+  </p>
+
+</header>
+
+
+<!-- ================================
+     PRODUCT
+================================ -->
+
+<section id="shop">
+
+  <div class="product-layout">
+
+
+    <!-- LEFT SIDE -->
+
+    <div class="product-gallery">
+
+
+      <div class="main-image-box">
+
+        <span class="product-badge">
+          NEW
+        </span>
+
+        <img
+          id="mainProductImage"
+          src="polo-black-front.jpg"
+          alt="DEV Polo Black Front"
+        >
+
+      </div>
+
+
+      <!--
+        IMPORTANT:
+        FRONT / BACK / MODEL
+        placed directly under main image
+        for better mobile visibility.
+      -->
+
+      <div class="mobile-view-selector">
+
+        <div class="view-title">
+
+          <div>
+            SELECT VIEW
+          </div>
+
+          <span id="selectedViewText">
+            FRONT
+          </span>
+
+        </div>
+
+
+        <div class="view-options">
+
+          <button
+            class="view-button active"
+            type="button"
+            data-view="front">
+
+            FRONT
+
+          </button>
+
+
+          <button
+            class="view-button"
+            type="button"
+            data-view="back">
+
+            BACK
+
+          </button>
+
+
+          <button
+            class="view-button"
+            type="button"
+            data-view="model">
+
+            MODEL
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- THUMBNAILS -->
+
+      <div class="thumbnail-row">
+
+
+        <button
+          class="thumbnail active"
+          type="button"
+          data-view="front">
+
+          <img
+            id="frontThumbnail"
+            src="polo-black-front.jpg"
+            alt="Polo front view"
+          >
+
+        </button>
+
+
+        <button
+          class="thumbnail"
+          type="button"
+          data-view="back">
+
+          <img
+            id="backThumbnail"
+            src="polo-black-back.jpg"
+            alt="Polo back view"
+          >
+
+        </button>
+
+
+        <button
+          class="thumbnail"
+          type="button"
+          data-view="model">
+
+          <img
+            id="modelThumbnail"
+            src="polo-black-model.jpg"
+            alt="Polo model view"
+          >
+
+        </button>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="product-details">
+
+
+      <div class="collection-name">
+        DEV // POLO COLLECTION
+      </div>
+
+
+      <h2>
+        DEV OVERSIZED<br>
+        POLO
+      </h2>
+
+
+      <div class="price">
+        AED 85
+      </div>
+
+
+      <div class="divider"></div>
+
+
+      <!-- COLOR -->
+
+      <div class="option-heading">
+
+        <div>
+          COLOR
+        </div>
+
+        <span id="selectedColorText">
+          BLACK
+        </span>
+
+      </div>
+
+
+      <div class="color-options">
+
+
+        <!-- BLACK -->
+
+        <button
+          class="color-button active"
+          type="button"
+          data-color="black">
+
+          <span
+            class="color-circle black-circle">
+          </span>
+
+          BLACK
+
+        </button>
+
+
+        <!-- DARK OLIVE GREEN -->
+
+        <button
+          class="color-button"
+          type="button"
+          data-color="darkOliveGreen">
+
+          <span
+            class="color-circle dark-olive-green-circle">
+          </span>
+
+          DARK OLIVE GREEN
+
+        </button>
+
+
+        <!-- BEIGE -->
+
+        <button
+          class="color-button"
+          type="button"
+          data-color="beige">
+
+          <span
+            class="color-circle beige-circle">
+          </span>
+
+          BEIGE
+
+        </button>
+
+
+      </div>
+
+
+      <div class="divider"></div>
+
+
+      <!-- SIZE -->
+
+      <div class="option-heading">
+
+        <div>
+          SELECT SIZE
+        </div>
+
+        <span id="selectedSizeText">
+          —
+        </span>
+
+      </div>
+
+
+      <div class="size-options">
+
+        <button
+          class="size-button"
+          type="button">
+          M
+        </button>
+
+        <button
+          class="size-button"
+          type="button">
+          L
+        </button>
+
+        <button
+          class="size-button"
+          type="button">
+          XL
+        </button>
+
+      </div>
+
+
+      <div
+        class="size-message"
+        id="sizeMessage">
+
+        Select your size.
+
+      </div>
+
+
+      <div class="divider"></div>
+
+
+      <!-- DESCRIPTION -->
+
+      <div class="product-description">
+
+        <strong>
+          DEV Oversized Polo.
+        </strong>
+
+        <br><br>
+
+        Designed for training,
+        lifestyle and everyday wear.
+
+        <br><br>
+
+        Available in Black,
+        Dark Olive Green and Beige.
+
+      </div>
+
+
+      <button
+        class="notify-btn"
+        id="notifyButton"
+        type="button">
+
+        COMING SOON
+
+      </button>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+  <div class="footer-grid">
+
+
+    <div>
+
+      <div class="footer-logo">
+        DEV
+      </div>
+
+      <p>
+        Performance streetwear.
+        Designed in the UAE.
+        Built different.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        SHOP
+      </h4>
+
+      <a href="../index.html">
+        T-Shirts
+      </a>
+
+      <a href="#shop">
+        Polo
+      </a>
+
+      <a href="#">
+        Shorts
+      </a>
+
+      <a href="#">
+        Pants
+      </a>
+
+      <a href="#">
+        Hoodies
+      </a>
+
+      <a href="#">
+        Sweaters
+      </a>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        DEV
+      </h4>
+
+      <a href="../index.html#about">
+        About
+      </a>
+
+      <a href="../index.html#contact">
+        Contact
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 DEV. ALL RIGHTS RESERVED.
+  </div>
+
+</footer>
+
+
+<script>
+
+
+/* ================================
+   POLO PRODUCT DATA
+================================ */
+
+const products = {
+
+
+  black:{
+
+    name:"BLACK",
+
+    front:"polo-black-front.jpg",
+
+    back:"polo-black-back.jpg",
+
+    model:"polo-black-model.jpg"
+
+  },
+
+
+  darkOliveGreen:{
+
+    name:"DARK OLIVE GREEN",
+
+    front:"polo-dark-olive-green-front.jpg",
+
+    back:"polo-dark-olive-green-back.jpg",
+
+    model:"polo-dark-olive-green-model.jpg"
+
+  },
+
+
+  beige:{
+
+    name:"BEIGE",
+
+    front:"polo-beige-front.jpg",
+
+    back:"polo-beige-back.jpg",
+
+    model:"polo-beige-model.jpg"
+
+  }
+
+
+};
+
+
+/* ================================
+   CURRENT SELECTION
+================================ */
+
+let selectedColor = "black";
+
+let selectedView = "front";
+
+let selectedSize = null;
+
+
+/* ================================
+   ELEMENTS
+================================ */
+
+const mainProductImage =
+  document.getElementById("mainProductImage");
+
+const selectedColorText =
+  document.getElementById("selectedColorText");
+
+const selectedViewText =
+  document.getElementById("selectedViewText");
+
+const selectedSizeText =
+  document.getElementById("selectedSizeText");
+
+const sizeMessage =
+  document.getElementById("sizeMessage");
+
+const frontThumbnail =
+  document.getElementById("frontThumbnail");
+
+const backThumbnail =
+  document.getElementById("backThumbnail");
+
+const modelThumbnail =
+  document.getElementById("modelThumbnail");
+
+
+/* ================================
+   UPDATE MAIN IMAGE
+================================ */
+
+function updateMainImage(){
+
+  const product =
+    products[selectedColor];
+
+  const image =
+    product[selectedView];
+
+
+  mainProductImage.style.opacity =
+    "0";
+
+
+  setTimeout(function(){
+
+    mainProductImage.src =
+      image;
+
+    mainProductImage.alt =
+      "DEV Polo " +
+      product.name +
+      " " +
+      selectedView;
+
+
+    mainProductImage.style.opacity =
+      "1";
+
+  },120);
+
+
+  selectedColorText.textContent =
+    product.name;
+
+
+  selectedViewText.textContent =
+    selectedView.toUpperCase();
+
+}
+
+
+/* ================================
+   UPDATE THUMBNAILS
+================================ */
+
+function updateThumbnails(){
+
+  const product =
+    products[selectedColor];
+
+
+  frontThumbnail.src =
+    product.front;
+
+
+  backThumbnail.src =
+    product.back;
+
+
+  modelThumbnail.src =
+    product.model;
+
+}
+
+
+/* ================================
+   UPDATE VIEW BUTTONS
+================================ */
+
+function updateViewButtons(){
+
+  document
+  .querySelectorAll(".view-button")
+  .forEach(function(item){
+
+    item.classList.toggle(
+      "active",
+      item.dataset.view === selectedView
+    );
+
+  });
+
+
+  document
+  .querySelectorAll(".thumbnail")
+  .forEach(function(item){
+
+    item.classList.toggle(
+      "active",
+      item.dataset.view === selectedView
+    );
+
+  });
+
+}
+
+
+/* ================================
+   COLOR BUTTONS
+================================ */
+
+document
+.querySelectorAll(".color-button")
+.forEach(function(button){
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      selectedColor =
+        button.dataset.color;
+
+
+      document
+      .querySelectorAll(".color-button")
+      .forEach(function(item){
+
+        item.classList.remove("active");
+
+      });
+
+
+      button.classList.add("active");
+
+
+      updateThumbnails();
+
+      updateMainImage();
+
+    }
+  );
+
+});
+
+
+/* ================================
+   VIEW BUTTONS
+================================ */
+
+document
+.querySelectorAll(".view-button")
+.forEach(function(button){
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      selectedView =
+        button.dataset.view;
+
+
+      updateViewButtons();
+
+      updateMainImage();
+
+    }
+  );
+
+});
+
+
+/* ================================
+   THUMBNAILS
+================================ */
+
+document
+.querySelectorAll(".thumbnail")
+.forEach(function(button){
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      selectedView =
+        button.dataset.view;
+
+
+      updateViewButtons();
+
+      updateMainImage();
+
+    }
+  );
+
+});
+
+
+/* ================================
+   SIZE BUTTONS
+================================ */
+
+document
+.querySelectorAll(".size-button")
+.forEach(function(button){
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      selectedSize =
+        button.textContent.trim();
+
+
+      document
+      .querySelectorAll(".size-button")
+      .forEach(function(item){
+
+        item.classList.remove("active");
+
+      });
+
+
+      button.classList.add("active");
+
+
+      selectedSizeText.textContent =
+        selectedSize;
+
+
+      sizeMessage.textContent =
+        "Selected size: " +
+        selectedSize;
+
+    }
+  );
+
+});
+
+
+/* ================================
+   MOBILE MENU
+================================ */
+
+const menuButton =
+  document.getElementById("menuButton");
+
+const navLinks =
+  document.getElementById("navLinks");
+
+
+menuButton.addEventListener(
+  "click",
+  function(){
+
+    navLinks.classList.toggle("active");
+
+  }
+);
+
+
+/* ================================
+   COMING SOON
+================================ */
+
+document
+.getElementById("notifyButton")
+.addEventListener(
+  "click",
+  function(){
+
+    if(!selectedSize){
+
+      alert(
+        "Please select your size first."
+      );
+
+      return;
+
+    }
+
+
+    alert(
+      "DEV POLO — " +
+      products[selectedColor].name +
+      " — Size " +
+      selectedSize +
+      " is coming soon."
+    );
+
+  }
+);
+
+
+/* ================================
+   START
+================================ */
+
+updateThumbnails();
+
+updateViewButtons();
+
+updateMainImage();
+
+
+</script>
+
+
+</body>
+
+</html>
