@@ -6,13 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DEV | Built Different</title>
+<title>DEV T-Shirts | Built Different</title>
 
 <style>
-
-/* ================================
-   RESET
-================================ */
 
 *{
   margin:0;
@@ -40,39 +36,30 @@ button{
 }
 
 
-/* ================================
-   TOP BAR
-================================ */
+/* TOP BAR */
 
 .top-bar{
   background:#fff;
   color:#000;
   text-align:center;
   padding:10px 15px;
-
   font-size:11px;
   font-weight:bold;
   letter-spacing:3px;
 }
 
 
-/* ================================
-   NAVIGATION
-================================ */
+/* NAVIGATION */
 
 nav{
   position:sticky;
   top:0;
   z-index:1000;
-
   height:78px;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   padding:0 6%;
-
   background:rgba(5,5,5,.96);
   border-bottom:1px solid #1d1d1d;
 }
@@ -108,17 +95,13 @@ nav{
 }
 
 
-/* ================================
-   HERO
-================================ */
+/* HERO */
 
 .hero{
   min-height:82vh;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
   text-align:center;
   padding:60px 20px;
 
@@ -146,7 +129,6 @@ nav{
 
 .hero h2{
   margin-top:27px;
-
   font-size:clamp(20px,3vw,36px);
   font-weight:400;
   letter-spacing:8px;
@@ -155,7 +137,6 @@ nav{
 .hero p{
   max-width:570px;
   margin:24px auto 35px;
-
   color:#999;
   font-size:14px;
   line-height:1.8;
@@ -163,16 +144,12 @@ nav{
 
 .main-btn{
   display:inline-block;
-
   background:#fff;
   color:#000;
-
   padding:17px 32px;
-
   font-size:11px;
   font-weight:bold;
   letter-spacing:3px;
-
   transition:.25s;
 }
 
@@ -182,9 +159,7 @@ nav{
 }
 
 
-/* ================================
-   SECTIONS
-================================ */
+/* SECTIONS */
 
 section{
   padding:90px 6%;
@@ -194,7 +169,6 @@ section{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-
   gap:30px;
   margin-bottom:45px;
 }
@@ -206,24 +180,19 @@ section{
 
 .section-subtitle{
   max-width:420px;
-
   color:#777;
   font-size:13px;
   line-height:1.7;
 }
 
 
-/* ================================
-   PRODUCT
-================================ */
+/* PRODUCT */
 
 .product-layout{
   max-width:1250px;
   margin:auto;
-
   display:grid;
   grid-template-columns:1.2fr .8fr;
-
   gap:60px;
   align-items:start;
 }
@@ -237,26 +206,20 @@ section{
 
 .main-image-box{
   position:relative;
-
   background:#eee;
   min-height:620px;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
   overflow:hidden;
 }
 
 .main-image-box img{
   display:block;
-
   width:100%;
   height:100%;
-
   max-height:720px;
   object-fit:contain;
-
   transition:opacity .2s ease;
 }
 
@@ -265,15 +228,58 @@ section{
   top:18px;
   left:18px;
   z-index:2;
-
   padding:9px 13px;
-
   background:#000;
   color:#fff;
-
   font-size:10px;
   font-weight:bold;
   letter-spacing:2px;
+}
+
+
+/* FRONT / BACK / MODEL */
+
+.mobile-view-selector{
+  margin-top:12px;
+}
+
+.view-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.view-title span{
+  color:#888;
+}
+
+.view-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.view-button{
+  min-height:48px;
+  border:1px solid #444;
+  background:#0d0d0d;
+  color:#fff;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+  transition:.2s;
+}
+
+.view-button:hover,
+.view-button.active{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
 }
 
 
@@ -282,7 +288,6 @@ section{
 .thumbnail-row{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
   gap:10px;
   margin-top:10px;
 }
@@ -290,12 +295,9 @@ section{
 .thumbnail{
   border:2px solid transparent;
   background:#eee;
-
   padding:0;
-
   cursor:pointer;
   overflow:hidden;
-
   min-height:110px;
 }
 
@@ -330,7 +332,6 @@ section{
   font-size:clamp(30px,4vw,48px);
   line-height:1.08;
   letter-spacing:2px;
-
   margin-bottom:18px;
 }
 
@@ -343,7 +344,6 @@ section{
   width:100%;
   height:1px;
   background:#222;
-
   margin:25px 0;
 }
 
@@ -353,9 +353,7 @@ section{
 .option-heading{
   display:flex;
   justify-content:space-between;
-
   margin-bottom:13px;
-
   font-size:11px;
   font-weight:bold;
   letter-spacing:2px;
@@ -366,7 +364,7 @@ section{
 }
 
 
-/* COLOR BUTTONS */
+/* COLORS */
 
 .color-options{
   display:flex;
@@ -376,22 +374,16 @@ section{
 
 .color-button{
   min-width:135px;
-
   padding:14px 18px;
-
   border:1px solid #444;
   background:#0d0d0d;
   color:#fff;
-
   cursor:pointer;
-
   font-size:11px;
   letter-spacing:1.5px;
-
   display:flex;
   align-items:center;
   gap:10px;
-
   transition:.2s;
 }
 
@@ -403,10 +395,8 @@ section{
 .color-circle{
   width:17px;
   height:17px;
-
   border-radius:50%;
   border:1px solid #555;
-
   flex:0 0 auto;
 }
 
@@ -419,56 +409,21 @@ section{
 }
 
 
-/* VIEW BUTTONS */
-
-.view-options{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-}
-
-.view-button{
-  padding:13px 20px;
-
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:#fff;
-
-  cursor:pointer;
-
-  font-size:11px;
-  letter-spacing:2px;
-
-  transition:.2s;
-}
-
-.view-button:hover,
-.view-button.active{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-
 /* SIZE */
 
 .size-options{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:8px;
 }
 
 .size-button{
   min-height:48px;
-
   border:1px solid #444;
-
   background:#0d0d0d;
   color:#fff;
-
   cursor:pointer;
   font-size:12px;
-
   transition:.2s;
 }
 
@@ -487,7 +442,7 @@ section{
 }
 
 
-/* PRODUCT DESCRIPTION */
+/* DESCRIPTION */
 
 .product-description{
   color:#888;
@@ -500,25 +455,19 @@ section{
 }
 
 
-/* COMING BUTTON */
+/* COMING SOON */
 
 .notify-btn{
   width:100%;
-
   margin-top:30px;
   padding:18px;
-
   border:0;
-
   background:#fff;
   color:#000;
-
   cursor:pointer;
-
   font-size:12px;
   font-weight:bold;
   letter-spacing:3px;
-
   transition:.2s;
 }
 
@@ -527,16 +476,12 @@ section{
 }
 
 
-/* ================================
-   BANNER
-================================ */
+/* BANNER */
 
 .banner{
   min-height:500px;
-
   display:flex;
   align-items:center;
-
   padding:80px 8%;
 
   background:
@@ -556,33 +501,26 @@ section{
 
 .banner p{
   max-width:500px;
-
   margin:25px 0 35px;
-
   color:#999;
   line-height:1.8;
 }
 
 
-/* ================================
-   ABOUT
-================================ */
+/* ABOUT */
 
 .about{
   display:grid;
   grid-template-columns:1fr 1fr;
-
   gap:70px;
   align-items:center;
 }
 
 .about-visual{
   min-height:480px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border:1px solid #222;
 
   background:
@@ -603,14 +541,11 @@ section{
 .about-text p{
   color:#999;
   line-height:1.9;
-
   margin-bottom:18px;
 }
 
 
-/* ================================
-   NEWSLETTER
-================================ */
+/* NEWSLETTER */
 
 .newsletter{
   text-align:center;
@@ -629,53 +564,40 @@ section{
 .email-box{
   max-width:560px;
   margin:auto;
-
   display:flex;
 }
 
 .email-box input{
   flex:1;
-
   background:#0b0b0b;
   color:#fff;
-
   border:1px solid #333;
   border-right:0;
-
   padding:18px;
-
   outline:none;
 }
 
 .email-box button{
   border:0;
-
   background:#fff;
   color:#000;
-
   padding:0 28px;
-
   cursor:pointer;
-
   font-weight:bold;
   letter-spacing:2px;
 }
 
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 
 footer{
   padding:60px 6% 30px;
-
   border-top:1px solid #191919;
 }
 
 .footer-grid{
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
-
   gap:50px;
 }
 
@@ -683,13 +605,11 @@ footer{
   font-size:40px;
   font-weight:900;
   letter-spacing:7px;
-
   margin-bottom:15px;
 }
 
 footer p{
   max-width:400px;
-
   color:#777;
   font-size:13px;
   line-height:1.8;
@@ -697,17 +617,14 @@ footer p{
 
 footer h4{
   margin-bottom:18px;
-
   font-size:11px;
   letter-spacing:2px;
 }
 
 footer a{
   display:block;
-
   color:#888;
   font-size:13px;
-
   margin-bottom:12px;
 }
 
@@ -718,20 +635,15 @@ footer a:hover{
 .copyright{
   margin-top:45px;
   padding-top:25px;
-
   border-top:1px solid #171717;
-
   text-align:center;
-
   color:#555;
   font-size:10px;
   letter-spacing:2px;
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+/* TABLET / MOBILE */
 
 @media(max-width:900px){
 
@@ -741,20 +653,13 @@ footer a:hover{
 
   .nav-links{
     display:none;
-
     position:absolute;
-
     top:78px;
     left:0;
-
     width:100%;
-
     padding:30px;
-
     flex-direction:column;
-
     background:#080808;
-
     border-bottom:1px solid #222;
   }
 
@@ -831,7 +736,17 @@ footer a:hover{
 }
 
 
+/* PHONE */
+
 @media(max-width:500px){
+
+  nav{
+    height:68px;
+  }
+
+  .nav-links{
+    top:68px;
+  }
 
   .hero{
     min-height:620px;
@@ -841,17 +756,48 @@ footer a:hover{
     min-height:350px;
   }
 
+  /* FRONT / BACK / MODEL VERY CLEAR */
+
+  .mobile-view-selector{
+    margin-top:10px;
+    padding:14px 12px;
+    background:#0b0b0b;
+    border:1px solid #2b2b2b;
+  }
+
+  .view-title{
+    margin-bottom:12px;
+    font-size:10px;
+  }
+
+  .view-options{
+    gap:6px;
+  }
+
+  .view-button{
+    min-height:52px;
+    padding:0 5px;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+    border-color:#555;
+  }
+
+  .thumbnail-row{
+    gap:6px;
+    margin-top:8px;
+  }
+
+  .thumbnail{
+    min-height:80px;
+  }
+
   .thumbnail img{
-    height:80px;
+    height:85px;
   }
 
   .size-options{
-    grid-template-columns:repeat(5,1fr);
-  }
-
-  .size-button{
-    min-width:0;
-    padding:0;
+    grid-template-columns:repeat(3,1fr);
   }
 
 }
@@ -864,22 +810,16 @@ footer a:hover{
 <body>
 
 
-<!-- ================================
-     TOP BAR
-================================ -->
-
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
 
-<!-- ================================
-     NAVIGATION
-================================ -->
-
 <nav>
 
-  <a href="#" class="logo">DEV</a>
+  <a href="../index.html" class="logo">
+    DEV
+  </a>
 
   <div class="nav-links" id="navLinks">
 
@@ -900,10 +840,6 @@ footer a:hover{
 
 </nav>
 
-
-<!-- ================================
-     HERO
-================================ -->
 
 <header class="hero">
 
@@ -931,10 +867,6 @@ footer a:hover{
 </header>
 
 
-<!-- ================================
-     PRODUCT
-================================ -->
-
 <section id="shop">
 
   <div class="section-head">
@@ -954,9 +886,10 @@ footer a:hover{
   <div class="product-layout">
 
 
-    <!-- LEFT: IMAGES -->
+    <!-- LEFT SIDE -->
 
     <div class="product-gallery">
+
 
       <div class="main-image-box">
 
@@ -966,12 +899,59 @@ footer a:hover{
 
         <img
           id="mainProductImage"
-          src="graphic-tee-black-front.jpg.jpeg"
+          src="../graphic-tee-black-front.jpg.jpeg"
           alt="DEV Oversized Graphic T-Shirt Black Front"
         >
 
       </div>
 
+
+      <!-- FRONT / BACK / MODEL DIRECTLY UNDER MAIN IMAGE -->
+
+      <div class="mobile-view-selector">
+
+        <div class="view-title">
+
+          <div>
+            SELECT VIEW
+          </div>
+
+          <span id="selectedViewText">
+            FRONT
+          </span>
+
+        </div>
+
+
+        <div class="view-options">
+
+          <button
+            class="view-button active"
+            type="button"
+            data-view="front">
+            FRONT
+          </button>
+
+          <button
+            class="view-button"
+            type="button"
+            data-view="back">
+            BACK
+          </button>
+
+          <button
+            class="view-button"
+            type="button"
+            data-view="model">
+            MODEL
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- THUMBNAILS -->
 
       <div class="thumbnail-row">
 
@@ -983,7 +963,7 @@ footer a:hover{
 
           <img
             id="frontThumbnail"
-            src="graphic-tee-black-front.jpg.jpeg"
+            src="../graphic-tee-black-front.jpg.jpeg"
             alt="Front view"
           >
 
@@ -997,7 +977,7 @@ footer a:hover{
 
           <img
             id="backThumbnail"
-            src="graphic-tee-black-back.jpg.jpeg"
+            src="../graphic-tee-black-back.jpg.jpeg"
             alt="Back view"
           >
 
@@ -1011,19 +991,18 @@ footer a:hover{
 
           <img
             id="modelThumbnail"
-            src="graphic-tee-black-model.jpg.jpeg"
+            src="../graphic-tee-black-model.jpg.jpeg"
             alt="Model view"
           >
 
         </button>
-
 
       </div>
 
     </div>
 
 
-    <!-- RIGHT: INFORMATION -->
+    <!-- RIGHT SIDE -->
 
     <div class="product-details">
 
@@ -1048,7 +1027,9 @@ footer a:hover{
 
       <div class="option-heading">
 
-        <div>COLOR</div>
+        <div>
+          COLOR
+        </div>
 
         <span id="selectedColorText">
           BLACK
@@ -1083,49 +1064,6 @@ footer a:hover{
 
         </button>
 
-
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <!-- VIEW -->
-
-      <div class="option-heading">
-
-        <div>VIEW</div>
-
-        <span id="selectedViewText">
-          FRONT
-        </span>
-
-      </div>
-
-
-      <div class="view-options">
-
-        <button
-          class="view-button active"
-          type="button"
-          data-view="front">
-          FRONT
-        </button>
-
-        <button
-          class="view-button"
-          type="button"
-          data-view="back">
-          BACK
-        </button>
-
-        <button
-          class="view-button"
-          type="button"
-          data-view="model">
-          MODEL
-        </button>
-
       </div>
 
 
@@ -1136,7 +1074,9 @@ footer a:hover{
 
       <div class="option-heading">
 
-        <div>SELECT SIZE</div>
+        <div>
+          SELECT SIZE
+        </div>
 
         <span id="selectedSizeText">
           —
@@ -1147,11 +1087,17 @@ footer a:hover{
 
       <div class="size-options">
 
-       
-        <button class="size-button" type="button">M</button>
-        <button class="size-button" type="button">L</button>
-        <button class="size-button" type="button">XL</button>
-        
+        <button class="size-button" type="button">
+          M
+        </button>
+
+        <button class="size-button" type="button">
+          L
+        </button>
+
+        <button class="size-button" type="button">
+          XL
+        </button>
 
       </div>
 
@@ -1168,7 +1114,9 @@ footer a:hover{
 
       <div class="product-description">
 
-        <strong>DEV Oversized Graphic Tee.</strong>
+        <strong>
+          DEV Oversized Graphic Tee.
+        </strong>
 
         <br><br>
 
@@ -1198,10 +1146,6 @@ footer a:hover{
 </section>
 
 
-<!-- ================================
-     BANNER
-================================ -->
-
 <div class="banner" id="newdrop">
 
   <div class="banner-content">
@@ -1225,10 +1169,6 @@ footer a:hover{
 
 </div>
 
-
-<!-- ================================
-     ABOUT
-================================ -->
 
 <section id="about">
 
@@ -1270,10 +1210,6 @@ footer a:hover{
 </section>
 
 
-<!-- ================================
-     CONTACT
-================================ -->
-
 <section class="newsletter" id="contact">
 
   <h2>
@@ -1303,10 +1239,6 @@ footer a:hover{
 
 </section>
 
-
-<!-- ================================
-     FOOTER
-================================ -->
 
 <footer>
 
@@ -1341,8 +1273,8 @@ footer a:hover{
         T-Shirts
       </a>
 
-      <a href="#">
-        Size Guide
+      <a href="../polo/">
+        Polo
       </a>
 
     </div>
@@ -1380,9 +1312,8 @@ footer a:hover{
 
 <script>
 
-/* ================================
-   PRODUCT DATA
-================================ */
+
+/* PRODUCT DATA */
 
 const products = {
 
@@ -1390,11 +1321,11 @@ const products = {
 
     name:"BLACK",
 
-    front:"graphic-tee-black-front.jpg.jpeg",
+    front:"../graphic-tee-black-front.jpg.jpeg",
 
-    back:"graphic-tee-black-back.jpg.jpeg",
+    back:"../graphic-tee-black-back.jpg.jpeg",
 
-    model:"graphic-tee-black-model.jpg.jpeg"
+    model:"../graphic-tee-black-model.jpg.jpeg"
 
   },
 
@@ -1403,11 +1334,11 @@ const products = {
 
     name:"NAVY BLUE",
 
-    front:"graphic-tee-navy-front.jpg.jpeg",
+    front:"../graphic-tee-navy-front.jpg.jpeg",
 
-    back:"graphic-tee-navy-back.jpg.jpeg",
+    back:"../graphic-tee-navy-back.jpg.jpeg",
 
-    model:"graphic-tee-navy-model.jpg.jpeg"
+    model:"../graphic-tee-navy-model.jpg.jpeg"
 
   }
 
@@ -1415,15 +1346,11 @@ const products = {
 
 
 let selectedColor = "black";
-
 let selectedView = "front";
-
 let selectedSize = null;
 
 
-/* ================================
-   ELEMENTS
-================================ */
+/* ELEMENTS */
 
 const mainProductImage =
   document.getElementById("mainProductImage");
@@ -1450,9 +1377,7 @@ const modelThumbnail =
   document.getElementById("modelThumbnail");
 
 
-/* ================================
-   UPDATE IMAGE
-================================ */
+/* UPDATE MAIN IMAGE */
 
 function updateMainImage(){
 
@@ -1462,12 +1387,15 @@ function updateMainImage(){
   const image =
     product[selectedView];
 
-  mainProductImage.style.opacity = "0";
+
+  mainProductImage.style.opacity =
+    "0";
 
 
   setTimeout(function(){
 
-    mainProductImage.src = image;
+    mainProductImage.src =
+      image;
 
     mainProductImage.alt =
       "DEV Oversized Graphic T-Shirt " +
@@ -1475,7 +1403,8 @@ function updateMainImage(){
       " " +
       selectedView;
 
-    mainProductImage.style.opacity = "1";
+    mainProductImage.style.opacity =
+      "1";
 
   },120);
 
@@ -1490,23 +1419,18 @@ function updateMainImage(){
 }
 
 
-/* ================================
-   UPDATE THUMBNAILS
-================================ */
+/* UPDATE THUMBNAILS */
 
 function updateThumbnails(){
 
   const product =
     products[selectedColor];
 
-
   frontThumbnail.src =
     product.front;
 
-
   backThumbnail.src =
     product.back;
-
 
   modelThumbnail.src =
     product.model;
@@ -1514,9 +1438,37 @@ function updateThumbnails(){
 }
 
 
-/* ================================
-   COLORS
-================================ */
+/* UPDATE VIEW BUTTONS */
+
+function updateViewButtons(){
+
+  document
+  .querySelectorAll(".view-button")
+  .forEach(function(item){
+
+    item.classList.toggle(
+      "active",
+      item.dataset.view === selectedView
+    );
+
+  });
+
+
+  document
+  .querySelectorAll(".thumbnail")
+  .forEach(function(item){
+
+    item.classList.toggle(
+      "active",
+      item.dataset.view === selectedView
+    );
+
+  });
+
+}
+
+
+/* COLORS */
 
 document
 .querySelectorAll(".color-button")
@@ -1552,9 +1504,7 @@ document
 });
 
 
-/* ================================
-   VIEW BUTTONS
-================================ */
+/* FRONT / BACK / MODEL */
 
 document
 .querySelectorAll(".view-button")
@@ -1567,30 +1517,7 @@ document
       selectedView =
         button.dataset.view;
 
-
-      document
-      .querySelectorAll(".view-button")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      button.classList.add("active");
-
-
-      document
-      .querySelectorAll(".thumbnail")
-      .forEach(function(item){
-
-        item.classList.toggle(
-          "active",
-          item.dataset.view === selectedView
-        );
-
-      });
-
+      updateViewButtons();
 
       updateMainImage();
 
@@ -1600,9 +1527,7 @@ document
 });
 
 
-/* ================================
-   THUMBNAILS
-================================ */
+/* THUMBNAILS */
 
 document
 .querySelectorAll(".thumbnail")
@@ -1615,30 +1540,7 @@ document
       selectedView =
         button.dataset.view;
 
-
-      document
-      .querySelectorAll(".thumbnail")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      button.classList.add("active");
-
-
-      document
-      .querySelectorAll(".view-button")
-      .forEach(function(item){
-
-        item.classList.toggle(
-          "active",
-          item.dataset.view === selectedView
-        );
-
-      });
-
+      updateViewButtons();
 
       updateMainImage();
 
@@ -1648,9 +1550,7 @@ document
 });
 
 
-/* ================================
-   SIZES
-================================ */
+/* SIZES */
 
 document
 .querySelectorAll(".size-button")
@@ -1681,7 +1581,8 @@ document
 
 
       sizeMessage.textContent =
-        "Selected size: " + selectedSize;
+        "Selected size: " +
+        selectedSize;
 
     }
   );
@@ -1689,9 +1590,7 @@ document
 });
 
 
-/* ================================
-   MENU
-================================ */
+/* MENU */
 
 const menuButton =
   document.getElementById("menuButton");
@@ -1710,9 +1609,7 @@ menuButton.addEventListener(
 );
 
 
-/* ================================
-   NEWSLETTER
-================================ */
+/* NEWSLETTER */
 
 document
 .getElementById("joinButton")
@@ -1746,9 +1643,7 @@ document
 );
 
 
-/* ================================
-   COMING SOON
-================================ */
+/* COMING SOON */
 
 document
 .getElementById("notifyButton")
@@ -1779,13 +1674,12 @@ document
 );
 
 
-/* ================================
-   START
-================================ */
+/* START */
 
 updateThumbnails();
-
+updateViewButtons();
 updateMainImage();
+
 
 </script>
 
