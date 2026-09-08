@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DEV Polo | Built Different</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
@@ -20,7 +17,7 @@ html{
 }
 
 body{
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   background:#f7f7f5;
   color:#111;
 }
@@ -30,18 +27,15 @@ body.cart-open{
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 button{
   font-family:inherit;
 }
 
-
-/* ================================
-   TOP BAR
-================================ */
+/* TOP BAR */
 
 .top-bar{
   background:#fff;
@@ -52,19 +46,16 @@ button{
   font-weight:800;
 }
 
-
-/* ================================
-   NAV
-================================ */
+/* NAV */
 
 nav{
-  background:#0c0c0c;
-  color:#fff;
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:18px 5%;
-  position:relative;
+  background:#0c0c0c;
+  color:#fff;
 }
 
 .logo{
@@ -81,8 +72,8 @@ nav{
 
 .nav-links a{
   font-size:11px;
-  letter-spacing:1.5px;
   font-weight:700;
+  letter-spacing:1.5px;
 }
 
 .nav-links a:hover{
@@ -92,32 +83,23 @@ nav{
 .nav-right{
   display:flex;
   align-items:center;
-  gap:13px;
+  gap:12px;
 }
 
 .nav-icon{
   font-size:20px;
-  cursor:pointer;
 }
 
 .menu-btn{
   display:none;
-  font-size:22px;
   cursor:pointer;
+  font-size:22px;
 }
 
-
-/* ================================
-   CART BUTTON
-================================ */
-
-.cart-nav-button{
+.cart-button{
   position:relative;
   width:40px;
   height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   border:1px solid #333;
   border-radius:50%;
   background:#171717;
@@ -148,15 +130,12 @@ nav{
   display:flex;
 }
 
-
-/* ================================
-   PAGE HEADER
-================================ */
+/* HEADER */
 
 .page-header{
+  padding:48px 5% 42px;
   background:#111;
   color:#fff;
-  padding:48px 5% 42px;
   border-top:1px solid #262626;
 }
 
@@ -166,17 +145,17 @@ nav{
 }
 
 .eyebrow{
-  font-size:9px;
-  letter-spacing:3px;
-  color:#999;
-  font-weight:800;
   margin-bottom:10px;
+  color:#999;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
 }
 
 .page-header h1{
+  margin-bottom:10px;
   font-size:clamp(34px,5vw,58px);
   letter-spacing:2px;
-  margin-bottom:10px;
 }
 
 .page-header p{
@@ -185,19 +164,15 @@ nav{
   line-height:1.7;
 }
 
-
-/* ================================
-   COLLECTION BAR
-================================ */
+/* COLLECTION */
 
 .collection-bar{
   max-width:1400px;
   margin:auto;
   padding:25px 4% 15px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:20px;
+  align-items:center;
 }
 
 .collection-title{
@@ -207,16 +182,13 @@ nav{
 }
 
 .collection-count{
+  color:#777;
   font-size:10px;
   font-weight:800;
   letter-spacing:2px;
-  color:#777;
 }
 
-
-/* ================================
-   PRODUCT GRID
-================================ */
+/* GRID */
 
 .product-grid{
   max-width:1400px;
@@ -226,11 +198,6 @@ nav{
   grid-template-columns:repeat(3,1fr);
   gap:34px 12px;
 }
-
-
-/* ================================
-   PRODUCT CARD
-================================ */
 
 .product-card{
   cursor:pointer;
@@ -265,34 +232,23 @@ nav{
   height:100%;
   display:block;
   object-fit:contain;
-  object-position:center;
 }
-
-
-/* ================================
-   CARD ARROWS
-================================ */
 
 .card-arrow{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
+  z-index:5;
   width:36px;
   height:36px;
-  border:none;
+  border:0;
   border-radius:50%;
   background:rgba(255,255,255,.9);
-  color:#111;
   font-size:19px;
   font-weight:900;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   cursor:pointer;
-  z-index:5;
   opacity:0;
-  transition:opacity .25s ease;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  transition:.2s;
 }
 
 .product-card-image:hover .card-arrow{
@@ -307,28 +263,23 @@ nav{
   right:10px;
 }
 
-
-/* ================================
-   CARD DOTS
-================================ */
-
 .card-dots{
   position:absolute;
   left:50%;
   bottom:13px;
   transform:translateX(-50%);
+  z-index:6;
   display:flex;
   gap:7px;
-  z-index:6;
 }
 
 .card-dot{
   width:7px;
   height:7px;
-  border-radius:50%;
-  border:none;
-  background:rgba(17,17,17,.25);
   padding:0;
+  border:0;
+  border-radius:50%;
+  background:rgba(17,17,17,.25);
   cursor:pointer;
 }
 
@@ -336,28 +287,17 @@ nav{
   background:#111;
 }
 
-
-/* ================================
-   SWIPE LABEL
-================================ */
-
 .swipe-label{
   position:absolute;
-  right:12px;
   top:12px;
+  right:12px;
   z-index:5;
-  background:rgba(255,255,255,.92);
-  color:#111;
   padding:7px 9px;
+  background:rgba(255,255,255,.92);
   font-size:7px;
   font-weight:900;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   PRODUCT CARD INFO
-================================ */
 
 .product-card-info{
   padding:14px 3px 0;
@@ -366,7 +306,6 @@ nav{
 .product-card-name{
   font-size:13px;
   font-weight:900;
-  letter-spacing:.4px;
   line-height:1.4;
 }
 
@@ -383,10 +322,7 @@ nav{
   letter-spacing:1px;
 }
 
-
-/* ================================
-   PRODUCT DETAIL
-================================ */
+/* DETAIL */
 
 .product-detail{
   display:none;
@@ -408,65 +344,47 @@ nav{
   align-items:start;
 }
 
-
-/* ================================
-   PRODUCT MEDIA
-================================ */
-
-.product-media{
-  width:100%;
-}
-
 .main-image-wrap{
   background:#f5f5f3;
   overflow:hidden;
 }
 
 .main-image{
-  display:block;
   width:100%;
   aspect-ratio:4 / 5;
+  display:block;
   object-fit:contain;
   background:#f5f5f3;
 }
 
-
-/* ================================
-   FRONT / BACK / MODEL
-================================ */
+/* FRONT BACK MODEL */
 
 .view-selector{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   border:1px solid #d0d0cd;
-  border-top:none;
-  background:#fff;
+  border-top:0;
 }
 
 .view-btn{
-  border:none;
+  padding:15px 5px;
+  border:0;
   border-right:1px solid #d0d0cd;
   background:#fff;
-  padding:15px 5px;
   font-size:10px;
-  letter-spacing:2px;
   font-weight:900;
+  letter-spacing:2px;
   cursor:pointer;
 }
 
 .view-btn:last-child{
-  border-right:none;
+  border-right:0;
 }
 
 .view-btn.active{
   background:#111;
   color:#fff;
 }
-
-
-/* ================================
-   THUMBNAILS
-================================ */
 
 .thumbnails{
   display:grid;
@@ -476,10 +394,10 @@ nav{
 }
 
 .thumb{
+  overflow:hidden;
   border:1px solid transparent;
   background:#f5f5f3;
   cursor:pointer;
-  overflow:hidden;
 }
 
 .thumb.active{
@@ -489,38 +407,34 @@ nav{
 .thumb img{
   width:100%;
   height:125px;
-  object-fit:contain;
   display:block;
+  object-fit:contain;
 }
 
-
-/* ================================
-   PRODUCT INFO
-================================ */
+/* INFO */
 
 .product-info{
   padding-top:5px;
 }
 
 .collection-name{
+  margin-bottom:14px;
   color:#777;
   font-size:9px;
   font-weight:800;
   letter-spacing:3px;
-  margin-bottom:14px;
 }
 
 .product-info h2{
+  margin-bottom:16px;
   font-size:clamp(30px,4vw,44px);
   line-height:1.05;
-  letter-spacing:.5px;
-  margin-bottom:16px;
 }
 
 .price{
+  margin-bottom:34px;
   font-size:20px;
   font-weight:900;
-  margin-bottom:34px;
 }
 
 .option-title{
@@ -533,22 +447,17 @@ nav{
   letter-spacing:1.5px;
 }
 
-
-/* ================================
-   COLOR
-================================ */
-
 .color-options{
   display:flex;
-  gap:8px;
   flex-wrap:wrap;
+  gap:8px;
   margin-bottom:30px;
 }
 
 .color-btn{
-  background:#fff;
-  border:1px solid #aaa;
   padding:12px 18px;
+  border:1px solid #aaa;
+  background:#fff;
   font-size:10px;
   font-weight:800;
   letter-spacing:1px;
@@ -560,11 +469,6 @@ nav{
   color:#fff;
   border-color:#111;
 }
-
-
-/* ================================
-   SIZE
-================================ */
 
 .size-options{
   display:grid;
@@ -588,103 +492,74 @@ nav{
   border-color:#111;
 }
 
-
-/* ================================
-   DESCRIPTION
-================================ */
-
-.description{
-  border-top:1px solid #ddd;
-  margin-top:8px;
-  padding-top:22px;
-  color:#555;
-  font-size:13px;
-  line-height:1.8;
-}
-
-
-/* ================================
-   ADD TO BAG
-================================ */
-
-.add-to-bag{
-  width:100%;
-  border:none;
-  background:#111;
-  color:#fff;
-  margin-top:22px;
-  padding:18px;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:3px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.add-to-bag:hover{
-  background:#292929;
-}
-
-.add-to-bag.added{
-  background:#1d6d3c;
-}
-
-
-/* ================================
-   SIZE ERROR
-================================ */
-
 .size-error{
   display:none;
   margin-top:-15px;
   margin-bottom:18px;
-  padding:12px 14px;
-  border:1px solid #d6baba;
-  background:#fff6f6;
-  color:#8d2727;
+  padding:12px;
+  border:1px solid #d8b4b4;
+  background:#fff5f5;
+  color:#8c2929;
   font-size:10px;
-  font-weight:800;
-  letter-spacing:1px;
+  font-weight:900;
 }
 
 .size-error.active{
   display:block;
 }
 
+.description{
+  margin-top:8px;
+  padding-top:22px;
+  border-top:1px solid #ddd;
+  color:#555;
+  font-size:13px;
+  line-height:1.8;
+}
 
-/* ================================
-   BACK BUTTON
-================================ */
+.add-to-bag{
+  width:100%;
+  margin-top:22px;
+  padding:18px;
+  border:0;
+  background:#111;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+  cursor:pointer;
+}
+
+.add-to-bag.added{
+  background:#1d6d3c;
+}
 
 .back-products{
   width:100%;
   margin-top:10px;
+  padding:15px;
   border:1px solid #bbb;
   background:#fff;
-  padding:15px;
   font-size:10px;
   font-weight:900;
   letter-spacing:2px;
   cursor:pointer;
 }
 
-
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 
 footer{
+  padding:50px 5%;
   background:#0c0c0c;
   color:#fff;
-  padding:50px 5%;
 }
 
 .footer-logo{
   display:block;
+  margin-bottom:20px;
   font-size:26px;
   font-weight:900;
   letter-spacing:5px;
-  margin-bottom:20px;
 }
 
 .footer-links{
@@ -698,23 +573,15 @@ footer{
   font-size:11px;
 }
 
-.footer-links a:hover{
-  color:#fff;
-}
-
 .footer-bottom{
-  border-top:1px solid #292929;
   margin-top:30px;
   padding-top:20px;
+  border-top:1px solid #292929;
   color:#666;
   font-size:9px;
-  letter-spacing:1px;
 }
 
-
-/* ================================
-   SHARED CART
-================================ */
+/* CART */
 
 .cart-overlay{
   position:fixed;
@@ -773,8 +640,8 @@ footer{
   border-radius:50%;
   background:#111;
   color:#fff;
-  cursor:pointer;
   font-size:21px;
+  cursor:pointer;
 }
 
 .cart-items{
@@ -869,13 +736,12 @@ footer{
 
 .remove-item{
   margin-top:10px;
-  padding:0;
   border:0;
   background:none;
   color:#777;
-  cursor:pointer;
   font-size:9px;
   text-decoration:underline;
+  cursor:pointer;
 }
 
 .cart-footer{
@@ -889,7 +755,6 @@ footer{
   margin-bottom:16px;
   font-size:12px;
   font-weight:900;
-  letter-spacing:1px;
 }
 
 .checkout-button{
@@ -900,12 +765,10 @@ footer{
   color:#000;
   font-weight:900;
   letter-spacing:2px;
-  cursor:pointer;
 }
 
 .checkout-button:disabled{
   opacity:.35;
-  cursor:default;
 }
 
 .cart-note{
@@ -913,45 +776,30 @@ footer{
   color:#555;
   text-align:center;
   font-size:9px;
-  line-height:1.6;
 }
 
-
-/* ================================
-   TABLET
-================================ */
+/* RESPONSIVE */
 
 @media(max-width:1000px){
-
   .product-grid{
     grid-template-columns:repeat(2,1fr);
   }
-
 }
 
-
-/* ================================
-   MOBILE
-================================ */
-
 @media(max-width:850px){
-
-  nav{
-    padding:16px 5%;
-  }
 
   .nav-links{
     display:none;
     position:absolute;
     top:100%;
     left:0;
+    z-index:50;
     width:100%;
+    padding:25px 5%;
     background:#111;
     flex-direction:column;
     align-items:flex-start;
-    padding:25px 5%;
     gap:22px;
-    z-index:50;
   }
 
   .nav-links.open{
@@ -962,12 +810,1614 @@ footer{
     display:block;
   }
 
-  .page-header{
-    padding:35px 5%;
-  }
-
   .product-detail-inner{
     grid-template-columns:1fr;
     padding:30px 4% 55px;
     gap:35px;
   }
+
+  .card-arrow{
+    display:none;
+  }
+}
+
+@media(max-width:600px){
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    padding:5px 3% 60px;
+    gap:25px 7px;
+  }
+
+  .product-card-name,
+  .product-card-price{
+    font-size:10px;
+  }
+
+  .product-card-color{
+    font-size:8px;
+  }
+
+  .thumb img{
+    height:100px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  DEV — BUILT DIFFERENT
+</div>
+
+<nav>
+
+  <a href="/DEV-Website/" class="logo">
+    DEV
+  </a>
+
+  <div class="nav-links" id="navLinks">
+
+    <a href="/DEV-Website/tshirts/">
+      T-SHIRTS
+    </a>
+
+    <a href="/DEV-Website/polo/">
+      POLO
+    </a>
+
+    <a href="/DEV-Website/shorts/">
+      SHORTS
+    </a>
+
+    <a href="/DEV-Website/baggy-pants/">
+      BAGGY PANTS
+    </a>
+
+    <a href="#">
+      HOODIES
+    </a>
+
+    <a href="#">
+      SWEATERS
+    </a>
+
+  </div>
+
+  <div class="nav-right">
+
+    <span class="nav-icon">⌕</span>
+
+    <span class="nav-icon">♡</span>
+
+    <button
+      class="cart-button"
+      id="cartButton"
+      type="button">
+      🛒
+
+      <span
+        class="cart-count"
+        id="cartCount">
+        0
+      </span>
+    </button>
+
+    <span
+      class="menu-btn"
+      onclick="toggleMenu()">
+      ☰
+    </span>
+
+  </div>
+
+</nav>
+
+<section class="page-header">
+
+  <div class="page-header-top">
+
+    <div class="eyebrow">
+      DEV / SHOP
+    </div>
+
+    <h1>
+      POLO
+    </h1>
+
+    <p>
+      Built for training. Designed for lifestyle.
+      Made for everything after.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="collection-bar" id="products">
+
+  <div class="collection-title">
+    DEV POLO
+  </div>
+
+  <div class="collection-count">
+    3 COLORS
+  </div>
+
+</section>
+
+<section class="product-grid">
+
+  <!-- BLACK -->
+
+  <article class="product-card">
+
+    <div class="product-card-image" data-card="black">
+
+      <div class="swipe-label">
+        SWIPE
+      </div>
+
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../polo-black-front.jfif"
+            alt="DEV Polo Black Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../polo-black-back.jfif"
+            alt="DEV Polo Black Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../polo-black-model.jpg.jpeg"
+            alt="DEV Polo Black Model">
+        </div>
+
+      </div>
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'black')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'black')">
+        ›
+      </button>
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'black',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'black',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'black',2)">
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('black')">
+
+      <div class="product-card-name">
+        DEV OVERSIZED POLO
+      </div>
+
+      <div class="product-card-price">
+        AED 85
+      </div>
+
+      <div class="product-card-color">
+        BLACK
+      </div>
+
+    </div>
+
+  </article>
+
+  <!-- OLIVE -->
+
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="dark-olive-green">
+
+      <div class="swipe-label">
+        SWIPE
+      </div>
+
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../polo-olive-front.jfif"
+            alt="DEV Polo Olive Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../polo-olive-back.jfif"
+            alt="DEV Polo Olive Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../polo-dark-olive-green-model.jpg.jpeg"
+            alt="DEV Polo Olive Model">
+        </div>
+
+      </div>
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'dark-olive-green')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'dark-olive-green')">
+        ›
+      </button>
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'dark-olive-green',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'dark-olive-green',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'dark-olive-green',2)">
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('dark-olive-green')">
+
+      <div class="product-card-name">
+        DEV OVERSIZED POLO
+      </div>
+
+      <div class="product-card-price">
+        AED 85
+      </div>
+
+      <div class="product-card-color">
+        DARK OLIVE GREEN
+      </div>
+
+    </div>
+
+  </article>
+
+  <!-- BEIGE -->
+
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="beige">
+
+      <div class="swipe-label">
+        SWIPE
+      </div>
+
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../polo-beige-front.jfif"
+            alt="DEV Polo Beige Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../polo-beige-back.jfif"
+            alt="DEV Polo Beige Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../polo-beige-model.jpeg"
+            alt="DEV Polo Beige Model">
+        </div>
+
+      </div>
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'beige')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'beige')">
+        ›
+      </button>
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'beige',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'beige',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'beige',2)">
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('beige')">
+
+      <div class="product-card-name">
+        DEV OVERSIZED POLO
+      </div>
+
+      <div class="product-card-price">
+        AED 85
+      </div>
+
+      <div class="product-card-color">
+        BEIGE
+      </div>
+
+    </div>
+
+  </article>
+
+</section>
+
+<section
+  class="product-detail"
+  id="productDetail">
+
+  <div class="product-detail-inner">
+
+    <section>
+
+      <div class="main-image-wrap">
+
+        <img
+          id="mainImage"
+          class="main-image"
+          src="../polo-black-front.jfif"
+          alt="DEV Polo">
+
+      </div>
+
+      <div class="view-selector">
+
+        <button
+          class="view-btn active"
+          data-view="front"
+          onclick="changeView('front')">
+          FRONT
+        </button>
+
+        <button
+          class="view-btn"
+          data-view="back"
+          onclick="changeView('back')">
+          BACK
+        </button>
+
+        <button
+          class="view-btn"
+          data-view="model"
+          onclick="changeView('model')">
+          MODEL
+        </button>
+
+      </div>
+
+      <div class="thumbnails">
+
+        <div
+          class="thumb active"
+          data-view="front"
+          onclick="changeView('front')">
+
+          <img
+            id="thumbFront"
+            src="../polo-black-front.jfif"
+            alt="Front">
+
+        </div>
+
+        <div
+          class="thumb"
+          data-view="back"
+          onclick="changeView('back')">
+
+          <img
+            id="thumbBack"
+            src="../polo-black-back.jfif"
+            alt="Back">
+
+        </div>
+
+        <div
+          class="thumb"
+          data-view="model"
+          onclick="changeView('model')">
+
+          <img
+            id="thumbModel"
+            src="../polo-black-model.jpg.jpeg"
+            alt="Model">
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="product-info">
+
+      <div class="collection-name">
+        DEV // POLO COLLECTION
+      </div>
+
+      <h2>
+        DEV OVERSIZED POLO
+      </h2>
+
+      <div class="price">
+        AED 85
+      </div>
+
+      <div class="option-title">
+
+        <span>
+          COLOR
+        </span>
+
+        <span id="selectedColor">
+          BLACK
+        </span>
+
+      </div>
+
+      <div class="color-options">
+
+        <button
+          class="color-btn active"
+          data-color="black"
+          onclick="changeColor('black')">
+          BLACK
+        </button>
+
+        <button
+          class="color-btn"
+          data-color="dark-olive-green"
+          onclick="changeColor('dark-olive-green')">
+          DARK OLIVE GREEN
+        </button>
+
+        <button
+          class="color-btn"
+          data-color="beige"
+          onclick="changeColor('beige')">
+          BEIGE
+        </button>
+
+      </div>
+
+      <div class="option-title">
+
+        <span>
+          SIZE
+        </span>
+
+        <span id="selectedSize">
+          SELECT SIZE
+        </span>
+
+      </div>
+
+      <div class="size-options">
+
+        <button
+          class="size-btn"
+          onclick="selectSize(this,'M')">
+          M
+        </button>
+
+        <button
+          class="size-btn"
+          onclick="selectSize(this,'L')">
+          L
+        </button>
+
+        <button
+          class="size-btn"
+          onclick="selectSize(this,'XL')">
+          XL
+        </button>
+
+      </div>
+
+      <div
+        class="size-error"
+        id="sizeError">
+        PLEASE SELECT A SIZE FIRST.
+      </div>
+
+      <div class="description">
+        Oversized polo designed for training,
+        lifestyle and everyday wear.
+        Available in Black, Dark Olive Green and Beige.
+      </div>
+
+      <button
+        class="add-to-bag"
+        id="addToBagButton"
+        onclick="addToBag()">
+        ADD TO BAG
+      </button>
+
+      <button
+        class="back-products"
+        onclick="backToProducts()">
+        ← BACK TO POLO
+      </button>
+
+    </section>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <a
+    href="/DEV-Website/"
+    class="footer-logo">
+    DEV
+  </a>
+
+  <div class="footer-links">
+
+    <a href="/DEV-Website/">
+      MEN
+    </a>
+
+    <a href="/DEV-Website/women/">
+      WOMEN
+    </a>
+
+    <a href="/DEV-Website/tshirts/">
+      T-Shirts
+    </a>
+
+    <a href="/DEV-Website/polo/">
+      Polo
+    </a>
+
+    <a href="/DEV-Website/shorts/">
+      Shorts
+    </a>
+
+    <a href="/DEV-Website/baggy-pants/">
+      Baggy Pants
+    </a>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 DEV. BUILT DIFFERENT.
+  </div>
+
+</footer>
+
+<div
+  class="cart-overlay"
+  id="cartOverlay">
+</div>
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer">
+
+  <div class="cart-header">
+
+    <div class="cart-title">
+      YOUR BAG
+    </div>
+
+    <button
+      class="cart-close"
+      id="cartClose">
+      ×
+    </button>
+
+  </div>
+
+  <div
+    class="cart-items"
+    id="cartItems">
+  </div>
+
+  <div class="cart-footer">
+
+    <div class="cart-subtotal">
+
+      <span>
+        SUBTOTAL
+      </span>
+
+      <span id="cartSubtotal">
+        AED 0
+      </span>
+
+    </div>
+
+    <button
+      class="checkout-button"
+      id="checkoutButton"
+      disabled>
+      CHECKOUT
+    </button>
+
+    <div class="cart-note">
+      MEN + WOMEN ITEMS STAY TOGETHER IN ONE DEV BAG.
+    </div>
+
+  </div>
+
+</aside>
+
+<script>
+
+/* PRODUCT DATA */
+
+const productImages = {
+
+  black:{
+    label:"BLACK",
+    front:"../polo-black-front.jfif",
+    back:"../polo-black-back.jfif",
+    model:"../polo-black-model.jpg.jpeg",
+    cartImage:"/DEV-Website/polo-black-front.jfif"
+  },
+
+  "dark-olive-green":{
+    label:"DARK OLIVE GREEN",
+    front:"../polo-olive-front.jfif",
+    back:"../polo-olive-back.jfif",
+    model:"../polo-dark-olive-green-model.jpg.jpeg",
+    cartImage:"/DEV-Website/polo-olive-front.jfif"
+  },
+
+  beige:{
+    label:"BEIGE",
+    front:"../polo-beige-front.jfif",
+    back:"../polo-beige-back.jfif",
+    model:"../polo-beige-model.jpeg",
+    cartImage:"/DEV-Website/polo-beige-front.jfif"
+  }
+
+};
+
+let currentColor = "black";
+let currentView = "front";
+let selectedSize = null;
+
+const cardState = {
+  black:0,
+  "dark-olive-green":0,
+  beige:0
+};
+
+/* CARD SLIDER */
+
+function updateCard(color){
+
+  const card =
+    document.querySelector(
+      `[data-card="${color}"]`
+    );
+
+  if(!card){
+    return;
+  }
+
+  const track =
+    card.querySelector(".card-track");
+
+  const dots =
+    card.querySelectorAll(".card-dot");
+
+  track.style.transform =
+    `translateX(-${cardState[color] * 100}%)`;
+
+  dots.forEach(function(dot,index){
+
+    dot.classList.toggle(
+      "active",
+      index === cardState[color]
+    );
+
+  });
+
+}
+
+function cardNext(event,color){
+
+  event.stopPropagation();
+
+  cardState[color] =
+    (cardState[color] + 1) % 3;
+
+  updateCard(color);
+
+}
+
+function cardPrev(event,color){
+
+  event.stopPropagation();
+
+  cardState[color] =
+    (cardState[color] + 2) % 3;
+
+  updateCard(color);
+
+}
+
+function cardGoTo(event,color,index){
+
+  event.stopPropagation();
+
+  cardState[color] = index;
+
+  updateCard(color);
+
+}
+
+/* PRODUCT CARD CLICK */
+
+document
+.querySelectorAll(".product-card-image")
+.forEach(function(card){
+
+  let startX = 0;
+  let startY = 0;
+
+  card.addEventListener(
+    "touchstart",
+    function(event){
+
+      const touch =
+        event.touches[0];
+
+      startX =
+        touch.clientX;
+
+      startY =
+        touch.clientY;
+
+    },
+    {passive:true}
+  );
+
+  card.addEventListener(
+    "touchend",
+    function(event){
+
+      const touch =
+        event.changedTouches[0];
+
+      const diffX =
+        touch.clientX - startX;
+
+      const diffY =
+        touch.clientY - startY;
+
+      const color =
+        card.dataset.card;
+
+      if(
+        Math.abs(diffX) > 45 &&
+        Math.abs(diffX) > Math.abs(diffY)
+      ){
+
+        if(diffX < 0){
+
+          cardState[color] =
+            (cardState[color] + 1) % 3;
+
+        }else{
+
+          cardState[color] =
+            (cardState[color] + 2) % 3;
+
+        }
+
+        updateCard(color);
+
+      }else{
+
+        openProduct(color);
+
+      }
+
+    },
+    {passive:true}
+  );
+
+  card.addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target.closest(".card-arrow") ||
+        event.target.closest(".card-dot")
+      ){
+        return;
+      }
+
+      if("ontouchstart" in window){
+        return;
+      }
+
+      openProduct(
+        card.dataset.card
+      );
+
+    }
+  );
+
+});
+
+/* OPEN PRODUCT */
+
+function openProduct(color){
+
+  currentColor = color;
+  currentView = "front";
+  selectedSize = null;
+
+  document
+  .getElementById("selectedSize")
+  .textContent =
+    "SELECT SIZE";
+
+  document
+  .querySelectorAll(".size-btn")
+  .forEach(function(btn){
+
+    btn.classList.remove("active");
+
+  });
+
+  document
+  .getElementById("sizeError")
+  .classList
+  .remove("active");
+
+  renderColor();
+
+  updateImages();
+
+  const detail =
+    document.getElementById(
+      "productDetail"
+    );
+
+  detail.classList.add("active");
+
+  setTimeout(function(){
+
+    detail.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },50);
+
+}
+
+/* COLOR */
+
+function changeColor(color){
+
+  currentColor = color;
+  currentView = "front";
+  selectedSize = null;
+
+  document
+  .getElementById("selectedSize")
+  .textContent =
+    "SELECT SIZE";
+
+  document
+  .querySelectorAll(".size-btn")
+  .forEach(function(btn){
+
+    btn.classList.remove("active");
+
+  });
+
+  document
+  .getElementById("sizeError")
+  .classList
+  .remove("active");
+
+  renderColor();
+
+  updateImages();
+
+}
+
+function renderColor(){
+
+  document
+  .querySelectorAll(".color-btn")
+  .forEach(function(btn){
+
+    btn.classList.toggle(
+      "active",
+      btn.dataset.color === currentColor
+    );
+
+  });
+
+  document
+  .getElementById("selectedColor")
+  .textContent =
+    productImages[currentColor].label;
+
+}
+
+/* VIEW */
+
+function changeView(view){
+
+  currentView = view;
+
+  document
+  .querySelectorAll(".view-btn")
+  .forEach(function(btn){
+
+    btn.classList.toggle(
+      "active",
+      btn.dataset.view === view
+    );
+
+  });
+
+  document
+  .querySelectorAll(".thumb")
+  .forEach(function(thumb){
+
+    thumb.classList.toggle(
+      "active",
+      thumb.dataset.view === view
+    );
+
+  });
+
+  updateMainImage();
+
+}
+
+function updateImages(){
+
+  const images =
+    productImages[currentColor];
+
+  document.getElementById("thumbFront").src =
+    images.front;
+
+  document.getElementById("thumbBack").src =
+    images.back;
+
+  document.getElementById("thumbModel").src =
+    images.model;
+
+  changeView("front");
+
+}
+
+function updateMainImage(){
+
+  document
+  .getElementById("mainImage")
+  .src =
+    productImages[currentColor][currentView];
+
+}
+
+/* SIZE */
+
+function selectSize(button,size){
+
+  selectedSize = size;
+
+  document
+  .querySelectorAll(".size-btn")
+  .forEach(function(btn){
+
+    btn.classList.remove("active");
+
+  });
+
+  button.classList.add("active");
+
+  document
+  .getElementById("selectedSize")
+  .textContent =
+    size;
+
+  document
+  .getElementById("sizeError")
+  .classList
+  .remove("active");
+
+}
+
+/* BACK */
+
+function backToProducts(){
+
+  document
+  .getElementById("products")
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+/* MENU */
+
+function toggleMenu(){
+
+  document
+  .getElementById("navLinks")
+  .classList
+  .toggle("open");
+
+}
+
+/* SHARED CART */
+
+const DEV_CART_KEY =
+  "dev_cart_v1";
+
+function getCart(){
+
+  try{
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          DEV_CART_KEY
+        )
+      );
+
+    return Array.isArray(data)
+      ? data
+      : [];
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+function saveCart(cart){
+
+  localStorage.setItem(
+    DEV_CART_KEY,
+    JSON.stringify(cart)
+  );
+
+  renderCart();
+
+}
+
+function formatPrice(price){
+
+  const value =
+    Number(price) || 0;
+
+  return "AED " +
+    value.toFixed(
+      value % 1 === 0 ? 0 : 2
+    );
+
+}
+
+/* ADD TO BAG */
+
+function addToBag(){
+
+  if(!selectedSize){
+
+    document
+    .getElementById("sizeError")
+    .classList
+    .add("active");
+
+    return;
+
+  }
+
+  const cart =
+    getCart();
+
+  const product =
+    productImages[currentColor];
+
+  const id =
+    "dev-polo-" +
+    currentColor +
+    "-" +
+    selectedSize;
+
+  const existing =
+    cart.findIndex(
+      item => item.id === id
+    );
+
+  if(existing !== -1){
+
+    cart[existing].quantity =
+      Number(cart[existing].quantity || 1) + 1;
+
+  }else{
+
+    cart.push({
+
+      id:id,
+
+      productId:
+        "dev-oversized-polo",
+
+      name:
+        "DEV OVERSIZED POLO",
+
+      section:
+        "MEN",
+
+      category:
+        "POLO",
+
+      color:
+        product.label,
+
+      size:
+        selectedSize,
+
+      price:
+        85,
+
+      quantity:
+        1,
+
+      image:
+        product.cartImage
+
+    });
+
+  }
+
+  saveCart(cart);
+
+  const button =
+    document.getElementById(
+      "addToBagButton"
+    );
+
+  button.textContent =
+    "ADDED TO BAG ✓";
+
+  button.classList.add("added");
+
+  setTimeout(function(){
+
+    button.textContent =
+      "ADD TO BAG";
+
+    button.classList.remove("added");
+
+    openCart();
+
+  },500);
+
+}
+
+/* CART ELEMENTS */
+
+const cartButton =
+  document.getElementById(
+    "cartButton"
+  );
+
+const cartCount =
+  document.getElementById(
+    "cartCount"
+  );
+
+const cartDrawer =
+  document.getElementById(
+    "cartDrawer"
+  );
+
+const cartOverlay =
+  document.getElementById(
+    "cartOverlay"
+  );
+
+const cartClose =
+  document.getElementById(
+    "cartClose"
+  );
+
+const cartItems =
+  document.getElementById(
+    "cartItems"
+  );
+
+const cartSubtotal =
+  document.getElementById(
+    "cartSubtotal"
+  );
+
+const checkoutButton =
+  document.getElementById(
+    "checkoutButton"
+  );
+
+function openCart(){
+
+  renderCart();
+
+  cartDrawer.classList.add("active");
+  cartOverlay.classList.add("active");
+
+  document.body
+  .classList
+  .add("cart-open");
+
+}
+
+function closeCart(){
+
+  cartDrawer.classList.remove("active");
+  cartOverlay.classList.remove("active");
+
+  document.body
+  .classList
+  .remove("cart-open");
+
+}
+
+function changeQuantity(index,amount){
+
+  const cart =
+    getCart();
+
+  if(!cart[index]){
+    return;
+  }
+
+  const current =
+    Number(
+      cart[index].quantity || 1
+    );
+
+  const next =
+    current + amount;
+
+  if(next <= 0){
+
+    cart.splice(index,1);
+
+  }else{
+
+    cart[index].quantity =
+      next;
+
+  }
+
+  saveCart(cart);
+
+}
+
+function removeItem(index){
+
+  const cart =
+    getCart();
+
+  cart.splice(index,1);
+
+  saveCart(cart);
+
+}
+
+function renderCart(){
+
+  const cart =
+    getCart();
+
+  const totalQuantity =
+    cart.reduce(
+      (total,item) =>
+        total +
+        Number(item.quantity || 1),
+      0
+    );
+
+  const subtotal =
+    cart.reduce(
+      (total,item) =>
+        total +
+        (
+          Number(item.price || 0) *
+          Number(item.quantity || 1)
+        ),
+      0
+    );
+
+  cartCount.textContent =
+    totalQuantity;
+
+  cartCount
+  .classList
+  .toggle(
+    "active",
+    totalQuantity > 0
+  );
+
+  cartSubtotal.textContent =
+    formatPrice(subtotal);
+
+  checkoutButton.disabled =
+    cart.length === 0;
+
+  if(cart.length === 0){
+
+    cartItems.innerHTML = `
+
+      <div class="cart-empty">
+
+        <strong>
+          YOUR BAG IS EMPTY
+        </strong>
+
+        <span>
+          Shop MEN or WOMEN.
+          Everything stays together
+          in the same DEV bag.
+        </span>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  cartItems.innerHTML =
+    cart.map(function(item,index){
+
+      return `
+
+        <div class="cart-item">
+
+          ${
+            item.image
+            ?
+            `
+            <img
+              class="cart-item-image"
+              src="${item.image}"
+              alt="${item.name}">
+            `
+            :
+            `
+            <div class="cart-item-image"></div>
+            `
+          }
+
+          <div>
+
+            <div class="cart-item-name">
+              ${item.name || "DEV PRODUCT"}
+            </div>
+
+            <div class="cart-item-meta">
+              ${item.section || "DEV"}
+              ·
+              ${item.color || "—"}
+              ·
+              SIZE ${item.size || "—"}
+            </div>
+
+            <div class="cart-item-row">
+
+              <div class="quantity">
+
+                <button
+                  data-action="minus"
+                  data-index="${index}">
+                  −
+                </button>
+
+                <span>
+                  ${item.quantity || 1}
+                </span>
+
+                <button
+                  data-action="plus"
+                  data-index="${index}">
+                  +
+                </button>
+
+              </div>
+
+              <div class="cart-item-price">
+
+                ${
+                  formatPrice(
+                    Number(item.price || 0) *
+                    Number(item.quantity || 1)
+                  )
+                }
+
+              </div>
+
+            </div>
+
+            <button
+              class="remove-item"
+              data-action="remove"
+              data-index="${index}">
+              REMOVE
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+cartItems.addEventListener(
+  "click",
+  function(event){
+
+    const button =
+      event.target.closest(
+        "[data-action]"
+      );
+
+    if(!button){
+      return;
+    }
+
+    const index =
+      Number(button.dataset.index);
+
+    const action =
+      button.dataset.action;
+
+    if(action === "plus"){
+      changeQuantity(index,1);
+    }
+
+    if(action === "minus"){
+      changeQuantity(index,-1);
+    }
+
+    if(action === "remove"){
+      removeItem(index);
+    }
+
+  }
+);
+
+cartButton.addEventListener(
+  "click",
+  openCart
+);
+
+cartClose.addEventListener(
+  "click",
+  closeCart
+);
+
+cartOverlay.addEventListener(
+  "click",
+  closeCart
+);
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+      closeCart();
+    }
+
+  }
+);
+
+checkoutButton.addEventListener(
+  "click",
+  function(){
+
+    alert(
+      "DEV Checkout will be connected later."
+    );
+
+  }
+);
+
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(event.key === DEV_CART_KEY){
+      renderCart();
+    }
+
+  }
+);
+
+renderCart();
+
+</script>
+
+</body>
+</html>
