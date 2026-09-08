@@ -38,6 +38,11 @@ button{
   font-family:inherit;
 }
 
+
+/* =========================
+   TOP BAR
+========================= */
+
 .top-bar{
   background:#fff;
   text-align:center;
@@ -47,59 +52,97 @@ button{
   font-weight:800;
 }
 
+
+/* =========================
+   NAV
+========================= */
+
 nav{
-  background:#0c0c0c;
-  color:#fff;
+  position:relative;
+  z-index:1000;
+  min-height:76px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:18px 5%;
-  position:relative;
+  gap:28px;
+  padding:0 5%;
+  background:#0c0c0c;
+  color:#fff;
+  border-bottom:1px solid #1f1f1f;
 }
 
 .logo{
-  font-size:26px;
+  flex-shrink:0;
+  font-size:28px;
   font-weight:900;
   letter-spacing:5px;
 }
 
-.nav-links{
+.gender-nav{
   display:flex;
   align-items:center;
   gap:26px;
 }
 
-.nav-links a{
-  font-size:11px;
-  letter-spacing:1.5px;
-  font-weight:700;
+.gender-nav a{
+  position:relative;
+  padding:31px 0 27px;
+  color:#888;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
-.nav-links a:hover{
-  opacity:.65;
+.gender-nav a:hover,
+.gender-nav a.active{
+  color:#fff;
+}
+
+.gender-nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:19px;
+  height:1px;
+  background:#fff;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-left:auto;
+}
+
+.nav-links a{
+  color:#aaa;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.3px;
+}
+
+.nav-links a:hover,
+.nav-links a.current{
+  color:#fff;
 }
 
 .nav-right{
   display:flex;
   align-items:center;
-  gap:12px;
-}
-
-.nav-icon{
-  font-size:20px;
-  cursor:pointer;
+  gap:10px;
 }
 
 .menu-btn{
   display:none;
-  font-size:22px;
+  color:#fff;
   cursor:pointer;
+  font-size:22px;
 }
 
 .cart-button{
   position:relative;
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -133,6 +176,11 @@ nav{
   display:flex;
 }
 
+
+/* =========================
+   PAGE HEADER
+========================= */
+
 .page-header{
   background:#111;
   color:#fff;
@@ -165,6 +213,11 @@ nav{
   line-height:1.7;
 }
 
+
+/* =========================
+   COLLECTION BAR
+========================= */
+
 .collection-bar{
   max-width:1400px;
   margin:auto;
@@ -187,6 +240,11 @@ nav{
   letter-spacing:2px;
   color:#777;
 }
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
 
 .product-grid{
   max-width:1400px;
@@ -327,6 +385,11 @@ nav{
   letter-spacing:1px;
 }
 
+
+/* =========================
+   PRODUCT DETAIL
+========================= */
+
 .product-detail{
   display:none;
   background:#fff;
@@ -359,6 +422,11 @@ nav{
   object-fit:contain;
   background:#f5f5f3;
 }
+
+
+/* =========================
+   FRONT / BACK / MODEL
+========================= */
 
 .view-selector{
   display:grid;
@@ -412,6 +480,11 @@ nav{
   object-fit:contain;
   display:block;
 }
+
+
+/* =========================
+   PRODUCT INFO
+========================= */
 
 .product-info{
   padding-top:5px;
@@ -547,43 +620,115 @@ nav{
   cursor:pointer;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
-  background:#0c0c0c;
+  padding:70px 6% 30px;
+  background:#050505;
   color:#fff;
-  padding:50px 5%;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;
+  gap:50px;
+}
+
+.footer-brand{
+  max-width:320px;
 }
 
 .footer-logo{
-  display:block;
-  font-size:26px;
+  font-size:36px;
   font-weight:900;
-  letter-spacing:5px;
+  letter-spacing:7px;
+}
+
+.footer-text{
+  max-width:310px;
+  margin-top:16px;
+  color:#666;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.footer-column h4{
   margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid #1c1c1c;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
 }
 
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
+.footer-column a,
+.footer-column .footer-disabled{
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin-bottom:14px;
+  color:#777;
+  font-size:10px;
+  letter-spacing:1.3px;
+  line-height:1.5;
+  transition:.2s;
 }
 
-.footer-links a{
-  color:#aaa;
-  font-size:11px;
-}
-
-.footer-links a:hover{
+.footer-column a:hover{
   color:#fff;
 }
 
-.footer-bottom{
-  border-top:1px solid #292929;
-  margin-top:30px;
-  padding-top:20px;
-  color:#666;
-  font-size:9px;
-  letter-spacing:1px;
+.footer-disabled{
+  color:#444 !important;
+  cursor:default;
 }
+
+.footer-social-link{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+}
+
+.social-mark{
+  width:28px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border:1px solid #272727;
+  border-radius:50%;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+
+.social-handle{
+  display:block;
+  margin-top:4px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:.6px;
+}
+
+.copyright{
+  margin-top:55px;
+  padding-top:25px;
+  border-top:1px solid #171717;
+  text-align:center;
+  color:#444;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+
+/* =========================
+   CART
+========================= */
 
 .cart-overlay{
   position:fixed;
@@ -783,6 +928,32 @@ footer{
   line-height:1.6;
 }
 
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1150px){
+
+  .nav-links{
+    gap:14px;
+  }
+
+  .nav-links a{
+    font-size:8px;
+  }
+
+  .footer-top{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .footer-brand{
+    grid-column:1 / -1;
+    max-width:500px;
+  }
+
+}
+
 @media(max-width:1000px){
 
   .product-grid{
@@ -794,7 +965,28 @@ footer{
 @media(max-width:850px){
 
   nav{
-    padding:16px 5%;
+    min-height:68px;
+    padding:0 4%;
+    gap:16px;
+  }
+
+  .logo{
+    font-size:27px;
+  }
+
+  .gender-nav{
+    gap:18px;
+    margin-left:auto;
+  }
+
+  .gender-nav a{
+    padding:27px 0 24px;
+    font-size:9px;
+    letter-spacing:1.5px;
+  }
+
+  .gender-nav a.active::after{
+    bottom:17px;
   }
 
   .nav-links{
@@ -802,17 +994,23 @@ footer{
     position:absolute;
     top:100%;
     left:0;
+    z-index:50;
     width:100%;
+    margin:0;
+    padding:25px 5%;
     background:#111;
+    border-top:1px solid #242424;
     flex-direction:column;
     align-items:flex-start;
-    padding:25px 5%;
     gap:22px;
-    z-index:50;
   }
 
   .nav-links.open{
     display:flex;
+  }
+
+  .nav-links a{
+    font-size:10px;
   }
 
   .menu-btn{
@@ -843,7 +1041,60 @@ footer{
 
 }
 
+@media(max-width:700px){
+
+  footer{
+    padding:50px 6% 25px;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:42px 24px;
+  }
+
+  .footer-brand{
+    grid-column:1 / -1;
+  }
+
+  .footer-column h4{
+    margin-bottom:16px;
+  }
+
+  .footer-column a,
+  .footer-column .footer-disabled{
+    margin-bottom:13px;
+    font-size:9px;
+  }
+
+  .copyright{
+    margin-top:40px;
+  }
+
+}
+
 @media(max-width:600px){
+
+  nav{
+    gap:10px;
+  }
+
+  .logo{
+    font-size:25px;
+    letter-spacing:4px;
+  }
+
+  .gender-nav{
+    gap:13px;
+  }
+
+  .gender-nav a{
+    font-size:8px;
+  }
+
+  .cart-button{
+    width:40px;
+    height:40px;
+  }
 
   .collection-bar{
     padding:20px 3% 12px;
@@ -855,10 +1106,7 @@ footer{
     gap:25px 7px;
   }
 
-  .product-card-name{
-    font-size:10px;
-  }
-
+  .product-card-name,
   .product-card-price{
     font-size:10px;
   }
@@ -896,13 +1144,38 @@ footer{
   DEV — BUILT DIFFERENT
 </div>
 
+
+<!-- =========================
+     NAV
+========================= -->
+
 <nav>
 
-  <a href="/DEV-Website/" class="logo">
+  <a
+    href="/DEV-Website/"
+    class="logo">
     DEV
   </a>
 
-  <div class="nav-links" id="navLinks">
+
+  <div class="gender-nav">
+
+    <a
+      href="/DEV-Website/"
+      class="active">
+      MEN
+    </a>
+
+    <a href="/DEV-Website/women/">
+      WOMEN
+    </a>
+
+  </div>
+
+
+  <div
+    class="nav-links"
+    id="navLinks">
 
     <a href="/DEV-Website/tshirts/">
       T-SHIRTS
@@ -912,7 +1185,9 @@ footer{
       POLO
     </a>
 
-    <a href="/DEV-Website/shorts/">
+    <a
+      href="/DEV-Website/shorts/"
+      class="current">
       SHORTS
     </a>
 
@@ -930,20 +1205,15 @@ footer{
 
   </div>
 
+
   <div class="nav-right">
-
-    <span class="nav-icon">
-      ⌕
-    </span>
-
-    <span class="nav-icon">
-      ♡
-    </span>
 
     <button
       class="cart-button"
       id="cartButton"
-      type="button">
+      type="button"
+      aria-label="Shopping bag">
+
       🛒
 
       <span
@@ -951,6 +1221,7 @@ footer{
         id="cartCount">
         0
       </span>
+
     </button>
 
     <span
@@ -963,6 +1234,10 @@ footer{
 
 </nav>
 
+
+<!-- =========================
+     PAGE HEADER
+========================= -->
 
 <section class="page-header">
 
@@ -986,6 +1261,10 @@ footer{
 </section>
 
 
+<!-- =========================
+     COLLECTION
+========================= -->
+
 <section
   class="collection-bar"
   id="products">
@@ -1000,6 +1279,10 @@ footer{
 
 </section>
 
+
+<!-- =========================
+     PRODUCT GRID
+========================= -->
 
 <section class="product-grid">
 
@@ -1099,6 +1382,10 @@ footer{
 </section>
 
 
+<!-- =========================
+     PRODUCT DETAIL
+========================= -->
+
 <section
   class="product-detail"
   id="productDetail">
@@ -1184,6 +1471,7 @@ footer{
 
     </section>
 
+
     <section class="product-info">
 
       <div class="collection-name">
@@ -1198,6 +1486,7 @@ footer{
         AED 80
       </div>
 
+
       <div class="option-title">
 
         <span>
@@ -1210,6 +1499,7 @@ footer{
 
       </div>
 
+
       <div class="color-options">
 
         <button
@@ -1219,6 +1509,7 @@ footer{
         </button>
 
       </div>
+
 
       <div class="option-title">
 
@@ -1231,6 +1522,7 @@ footer{
         </span>
 
       </div>
+
 
       <div class="size-options">
 
@@ -1248,16 +1540,19 @@ footer{
 
       </div>
 
+
       <div
         class="size-error"
         id="sizeError">
         PLEASE SELECT A SIZE FIRST.
       </div>
 
+
       <div class="description">
         Training shorts designed for unrestricted movement and comfort.
         Built for the gym, lifestyle and everyday wear.
       </div>
+
 
       <button
         class="add-to-bag"
@@ -1266,6 +1561,7 @@ footer{
         onclick="addToBag()">
         ADD TO BAG
       </button>
+
 
       <button
         class="back-products"
@@ -1280,53 +1576,160 @@ footer{
 </section>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-  <a
-    href="/DEV-Website/"
-    class="footer-logo">
-    DEV
-  </a>
+  <div class="footer-top">
 
-  <div class="footer-links">
 
-    <a href="/DEV-Website/">
-      MEN
-    </a>
+    <div class="footer-brand">
 
-    <a href="/DEV-Website/women/">
-      WOMEN
-    </a>
+      <a
+        href="/DEV-Website/"
+        class="footer-logo">
+        DEV
+      </a>
 
-    <a href="/DEV-Website/tshirts/">
-      T-Shirts
-    </a>
+      <div class="footer-text">
+        Performance streetwear.
+        Designed in the UAE.
+        Built for training,
+        lifestyle and everything after.
+      </div>
 
-    <a href="/DEV-Website/polo/">
-      Polo
-    </a>
+    </div>
 
-    <a href="/DEV-Website/shorts/">
-      Shorts
-    </a>
 
-    <a href="/DEV-Website/baggy-pants/">
-      Baggy Pants
-    </a>
+    <div class="footer-column">
+
+      <h4>
+        MEN
+      </h4>
+
+      <a href="/DEV-Website/tshirts/">
+        T-SHIRTS
+      </a>
+
+      <a href="/DEV-Website/polo/">
+        POLO
+      </a>
+
+      <a href="/DEV-Website/shorts/">
+        SHORTS
+      </a>
+
+      <a href="/DEV-Website/baggy-pants/">
+        BAGGY PANTS
+      </a>
+
+      <span class="footer-disabled">
+        HOODIES
+      </span>
+
+      <span class="footer-disabled">
+        SWEATERS
+      </span>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        WOMEN
+      </h4>
+
+      <a href="/DEV-Website/women/">
+        TOPS
+      </a>
+
+      <a href="/DEV-Website/women/">
+        LEGGINGS
+      </a>
+
+      <a href="/DEV-Website/women/">
+        SHORTS
+      </a>
+
+      <a href="/DEV-Website/women/">
+        SETS
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        HELP
+      </h4>
+
+      <a
+        href="https://wa.me/971541420200"
+        target="_blank"
+        rel="noopener noreferrer">
+        WHATSAPP
+      </a>
+
+      <a href="mailto:Deavwear9@gmail.com">
+        EMAIL
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        FOLLOW DEV
+      </h4>
+
+      <a
+        class="footer-social-link"
+        href="https://www.tiktok.com/@dev.aj7?_r=1&_t=ZS-99ZXh3XItms"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <span class="social-mark">
+          ♪
+        </span>
+
+        <span>
+
+          TIKTOK
+
+          <span class="social-handle">
+            @dev.aj7
+          </span>
+
+        </span>
+
+      </a>
+
+    </div>
 
   </div>
 
-  <div class="footer-bottom">
-    ©️ 2026 DEV. BUILT DIFFERENT.
+
+  <div class="copyright">
+    © 2026 DEV. ALL RIGHTS RESERVED.
   </div>
 
 </footer>
 
 
+<!-- =========================
+     CART
+========================= -->
+
 <div
   class="cart-overlay"
   id="cartOverlay">
 </div>
+
 
 <aside
   class="cart-drawer"
@@ -1347,10 +1750,12 @@ footer{
 
   </div>
 
+
   <div
     class="cart-items"
     id="cartItems">
   </div>
+
 
   <div class="cart-footer">
 
@@ -1366,6 +1771,7 @@ footer{
 
     </div>
 
+
     <button
       class="checkout-button"
       id="checkoutButton"
@@ -1373,6 +1779,7 @@ footer{
       disabled>
       CHECKOUT
     </button>
+
 
     <div class="cart-note">
       MEN + WOMEN ITEMS STAY TOGETHER
@@ -1385,6 +1792,10 @@ footer{
 
 
 <script>
+
+/* =========================
+   PRODUCT DATA
+========================= */
 
 const productImages = {
 
@@ -1399,15 +1810,24 @@ const productImages = {
 };
 
 
-let currentColor = "black";
-let currentView = "front";
-let selectedSize = null;
+let currentColor =
+  "black";
+
+let currentView =
+  "front";
+
+let selectedSize =
+  null;
 
 
 const cardState = {
   black:0
 };
 
+
+/* =========================
+   CARD SLIDER
+========================= */
 
 function updateCard(color){
 
@@ -1433,14 +1853,16 @@ function updateCard(color){
   track.style.transform =
     `translateX(-${cardState[color] * 100}%)`;
 
-  dots.forEach(function(dot,index){
+  dots.forEach(
+    function(dot,index){
 
-    dot.classList.toggle(
-      "active",
-      index === cardState[color]
-    );
+      dot.classList.toggle(
+        "active",
+        index === cardState[color]
+      );
 
-  });
+    }
+  );
 
 }
 
@@ -1481,6 +1903,10 @@ function cardGoTo(event,color,index){
 }
 
 
+/* =========================
+   TOUCH / CLICK
+========================= */
+
 document
 .querySelectorAll(
   ".product-card-image"
@@ -1507,11 +1933,14 @@ document
     {passive:true}
   );
 
+
   card.addEventListener(
     "touchend",
     function(event){
 
-      if(!event.changedTouches.length){
+      if(
+        !event.changedTouches.length
+      ){
         return;
       }
 
@@ -1527,20 +1956,28 @@ document
       const color =
         card.dataset.card;
 
+
       if(
         Math.abs(diffX) > 45 &&
-        Math.abs(diffX) > Math.abs(diffY)
+        Math.abs(diffX) >
+        Math.abs(diffY)
       ){
 
         if(diffX < 0){
 
           cardState[color] =
-            (cardState[color] + 1) % 3;
+            (
+              cardState[color] +
+              1
+            ) % 3;
 
         }else{
 
           cardState[color] =
-            (cardState[color] + 2) % 3;
+            (
+              cardState[color] +
+              2
+            ) % 3;
 
         }
 
@@ -1556,18 +1993,25 @@ document
     {passive:true}
   );
 
+
   card.addEventListener(
     "click",
     function(event){
 
       if(
-        event.target.closest(".card-arrow") ||
-        event.target.closest(".card-dot")
+        event.target.closest(
+          ".card-arrow"
+        ) ||
+        event.target.closest(
+          ".card-dot"
+        )
       ){
         return;
       }
 
-      if("ontouchstart" in window){
+      if(
+        "ontouchstart" in window
+      ){
         return;
       }
 
@@ -1581,6 +2025,10 @@ document
 });
 
 
+/* =========================
+   OPEN PRODUCT
+========================= */
+
 function openProduct(color){
 
   currentColor =
@@ -1592,12 +2040,14 @@ function openProduct(color){
   selectedSize =
     null;
 
+
   document
   .getElementById(
     "selectedSize"
   )
   .textContent =
     "SELECT SIZE";
+
 
   document
   .querySelectorAll(
@@ -1611,6 +2061,7 @@ function openProduct(color){
 
   });
 
+
   document
   .getElementById(
     "sizeError"
@@ -1620,30 +2071,41 @@ function openProduct(color){
     "active"
   );
 
+
   renderColor();
 
   updateImages();
+
 
   const detail =
     document.getElementById(
       "productDetail"
     );
 
+
   detail.classList.add(
     "active"
   );
 
-  setTimeout(function(){
 
-    detail.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+  setTimeout(
+    function(){
 
-  },50);
+      detail.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },
+    50
+  );
 
 }
 
+
+/* =========================
+   COLOR
+========================= */
 
 function renderColor(){
 
@@ -1659,10 +2121,15 @@ function renderColor(){
 }
 
 
+/* =========================
+   VIEW
+========================= */
+
 function changeView(view){
 
   currentView =
     view;
+
 
   document
   .querySelectorAll(
@@ -1672,10 +2139,12 @@ function changeView(view){
 
     btn.classList.toggle(
       "active",
-      btn.dataset.view === view
+      btn.dataset.view ===
+      view
     );
 
   });
+
 
   document
   .querySelectorAll(
@@ -1685,10 +2154,12 @@ function changeView(view){
 
     thumb.classList.toggle(
       "active",
-      thumb.dataset.view === view
+      thumb.dataset.view ===
+      view
     );
 
   });
+
 
   updateMainImage();
 
@@ -1702,12 +2173,14 @@ function updateImages(){
       currentColor
     ];
 
+
   document
   .getElementById(
     "thumbFront"
   )
   .src =
     images.front;
+
 
   document
   .getElementById(
@@ -1716,12 +2189,14 @@ function updateImages(){
   .src =
     images.back;
 
+
   document
   .getElementById(
     "thumbModel"
   )
   .src =
     images.model;
+
 
   changeView(
     "front"
@@ -1746,10 +2221,18 @@ function updateMainImage(){
 }
 
 
-function selectSize(button,size){
+/* =========================
+   SIZE
+========================= */
+
+function selectSize(
+  button,
+  size
+){
 
   selectedSize =
     size;
+
 
   document
   .querySelectorAll(
@@ -1763,11 +2246,13 @@ function selectSize(button,size){
 
   });
 
+
   button
   .classList
   .add(
     "active"
   );
+
 
   document
   .getElementById(
@@ -1775,6 +2260,7 @@ function selectSize(button,size){
   )
   .textContent =
     size;
+
 
   document
   .getElementById(
@@ -1788,6 +2274,10 @@ function selectSize(button,size){
 }
 
 
+/* =========================
+   BACK TO PRODUCTS
+========================= */
+
 function backToProducts(){
 
   document
@@ -1800,6 +2290,10 @@ function backToProducts(){
 
 }
 
+
+/* =========================
+   MENU
+========================= */
 
 function toggleMenu(){
 
@@ -1815,9 +2309,9 @@ function toggleMenu(){
 }
 
 
-/* ================================
+/* =========================
    SHARED CART
-================================ */
+========================= */
 
 const DEV_CART_KEY =
   "dev_cart_v1";
@@ -1878,6 +2372,24 @@ function formatPrice(price){
 }
 
 
+function getItemQuantity(item){
+
+  return Math.max(
+    1,
+    Number(
+      item.quantity ??
+      item.qty ??
+      1
+    ) || 1
+  );
+
+}
+
+
+/* =========================
+   ADD TO BAG
+========================= */
+
 function addToBag(){
 
   if(!selectedSize){
@@ -1895,19 +2407,23 @@ function addToBag(){
 
   }
 
+
   const cart =
     getCart();
+
 
   const product =
     productImages[
       currentColor
     ];
 
+
   const id =
     "dev-training-shorts-" +
     currentColor +
     "-" +
     selectedSize;
+
 
   const existing =
     cart.findIndex(
@@ -1918,22 +2434,19 @@ function addToBag(){
       }
     );
 
+
   if(existing !== -1){
 
     cart[
       existing
     ].quantity =
-      Number(
-        cart[
-          existing
-        ].quantity ||
-        cart[
-          existing
-        ].qty ||
-        1
+      getItemQuantity(
+        cart[existing]
       ) + 1;
 
-    delete cart[existing].qty;
+    delete cart[
+      existing
+    ].qty;
 
   }else{
 
@@ -1972,12 +2485,15 @@ function addToBag(){
 
   }
 
+
   saveCart(cart);
+
 
   const button =
     document.getElementById(
       "addToBagButton"
     );
+
 
   button.textContent =
     "ADDED TO BAG ✓";
@@ -1986,21 +2502,29 @@ function addToBag(){
     "added"
   );
 
-  setTimeout(function(){
 
-    button.textContent =
-      "ADD TO BAG";
+  setTimeout(
+    function(){
 
-    button.classList.remove(
-      "added"
-    );
+      button.textContent =
+        "ADD TO BAG";
 
-    openCart();
+      button.classList.remove(
+        "added"
+      );
 
-  },500);
+      openCart();
+
+    },
+    500
+  );
 
 }
 
+
+/* =========================
+   CART ELEMENTS
+========================= */
 
 const cartButton =
   document.getElementById(
@@ -2043,16 +2567,9 @@ const checkoutButton =
   );
 
 
-function getItemQuantity(item){
-
-  return Number(
-    item.quantity ??
-    item.qty ??
-    1
-  );
-
-}
-
+/* =========================
+   CART OPEN / CLOSE
+========================= */
 
 function openCart(){
 
@@ -2090,22 +2607,34 @@ function closeCart(){
 }
 
 
-function changeQuantity(index,amount){
+/* =========================
+   CART QUANTITY
+========================= */
+
+function changeQuantity(
+  index,
+  amount
+){
 
   const cart =
     getCart();
 
+
   if(!cart[index]){
     return;
   }
+
 
   const current =
     getItemQuantity(
       cart[index]
     );
 
+
   const next =
-    current + amount;
+    current +
+    amount;
+
 
   if(next <= 0){
 
@@ -2116,12 +2645,17 @@ function changeQuantity(index,amount){
 
   }else{
 
-    cart[index].quantity =
+    cart[
+      index
+    ].quantity =
       next;
 
-    delete cart[index].qty;
+    delete cart[
+      index
+    ].qty;
 
   }
+
 
   saveCart(cart);
 
@@ -2133,35 +2667,56 @@ function removeItem(index){
   const cart =
     getCart();
 
+
+  if(!cart[index]){
+    return;
+  }
+
+
   cart.splice(
     index,
     1
   );
+
 
   saveCart(cart);
 
 }
 
 
+/* =========================
+   RENDER CART
+========================= */
+
 function renderCart(){
 
   const cart =
     getCart();
 
+
   const totalQuantity =
     cart.reduce(
-      function(total,item){
+      function(
+        total,
+        item
+      ){
 
         return total +
-          getItemQuantity(item);
+          getItemQuantity(
+            item
+          );
 
       },
       0
     );
 
+
   const subtotal =
     cart.reduce(
-      function(total,item){
+      function(
+        total,
+        item
+      ){
 
         return total +
           (
@@ -2169,15 +2724,19 @@ function renderCart(){
               item.price || 0
             )
             *
-            getItemQuantity(item)
+            getItemQuantity(
+              item
+            )
           );
 
       },
       0
     );
 
+
   cartCount.textContent =
     totalQuantity;
+
 
   cartCount
   .classList
@@ -2186,13 +2745,16 @@ function renderCart(){
     totalQuantity > 0
   );
 
+
   cartSubtotal.textContent =
     formatPrice(
       subtotal
     );
 
+
   checkoutButton.disabled =
     cart.length === 0;
+
 
   if(cart.length === 0){
 
@@ -2219,9 +2781,13 @@ function renderCart(){
 
   }
 
+
   cartItems.innerHTML =
     cart.map(
-      function(item,index){
+      function(
+        item,
+        index
+      ){
 
         const name =
           item.name ||
@@ -2240,7 +2806,9 @@ function renderCart(){
           "—";
 
         const quantity =
-          getItemQuantity(item);
+          getItemQuantity(
+            item
+          );
 
         const price =
           Number(
@@ -2251,6 +2819,7 @@ function renderCart(){
           item.image ||
           "";
 
+
         return `
 
           <div class="cart-item">
@@ -2259,16 +2828,16 @@ function renderCart(){
               image
               ?
               `
-              <img
-                class="cart-item-image"
-                src="${image}"
-                alt="${name}">
+                <img
+                  class="cart-item-image"
+                  src="${image}"
+                  alt="${name}">
               `
               :
               `
-              <div
-                class="cart-item-image">
-              </div>
+                <div
+                  class="cart-item-image">
+                </div>
               `
             }
 
@@ -2346,6 +2915,10 @@ function renderCart(){
 }
 
 
+/* =========================
+   CART ACTIONS
+========================= */
+
 cartItems.addEventListener(
   "click",
   function(event){
@@ -2355,17 +2928,21 @@ cartItems.addEventListener(
         "[data-action]"
       );
 
+
     if(!button){
       return;
     }
+
 
     const index =
       Number(
         button.dataset.index
       );
 
+
     const action =
       button.dataset.action;
+
 
     if(action === "plus"){
 
@@ -2376,6 +2953,7 @@ cartItems.addEventListener(
 
     }
 
+
     if(action === "minus"){
 
       changeQuantity(
@@ -2384,6 +2962,7 @@ cartItems.addEventListener(
       );
 
     }
+
 
     if(action === "remove"){
 
@@ -2419,7 +2998,10 @@ document.addEventListener(
   "keydown",
   function(event){
 
-    if(event.key === "Escape"){
+    if(
+      event.key ===
+      "Escape"
+    ){
 
       closeCart();
 
@@ -2429,9 +3011,9 @@ document.addEventListener(
 );
 
 
-/* ================================
+/* =========================
    CHECKOUT
-================================ */
+========================= */
 
 checkoutButton.addEventListener(
   "click",
@@ -2440,9 +3022,13 @@ checkoutButton.addEventListener(
     const cart =
       getCart();
 
-    if(cart.length === 0){
+
+    if(
+      cart.length === 0
+    ){
       return;
     }
+
 
     window.location.href =
       "/DEV-Website/checkout/";
@@ -2451,9 +3037,9 @@ checkoutButton.addEventListener(
 );
 
 
-/* ================================
-   SYNC CART
-================================ */
+/* =========================
+   CART SYNC
+========================= */
 
 window.addEventListener(
   "storage",
@@ -2471,6 +3057,10 @@ window.addEventListener(
   }
 );
 
+
+/* =========================
+   START
+========================= */
 
 renderCart();
 
