@@ -254,19 +254,9 @@ nav{
   object-position:center;
 }
 
-
-/* ================================
-   YEAH BUDDY SIZE FIX
-================================ */
-
 .product-card-image[data-card="yeahBuddy"] .card-slide img{
   transform:scale(.88);
 }
-
-
-/* ================================
-   BADGE
-================================ */
 
 .product-badge{
   position:absolute;
@@ -281,11 +271,6 @@ nav{
   letter-spacing:1.5px;
 }
 
-
-/* ================================
-   SWIPE LABEL
-================================ */
-
 .swipe-label{
   position:absolute;
   right:12px;
@@ -298,11 +283,6 @@ nav{
   font-weight:900;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   CARD ARROWS
-================================ */
 
 .card-arrow{
   position:absolute;
@@ -338,11 +318,6 @@ nav{
   right:10px;
 }
 
-
-/* ================================
-   DOTS
-================================ */
-
 .card-dots{
   position:absolute;
   left:50%;
@@ -366,11 +341,6 @@ nav{
 .card-dot.active{
   background:#111;
 }
-
-
-/* ================================
-   PRODUCT CARD INFO
-================================ */
 
 .product-card-info{
   padding:14px 3px 0;
@@ -421,11 +391,6 @@ nav{
   align-items:start;
 }
 
-
-/* ================================
-   PRODUCT MEDIA
-================================ */
-
 .product-media{
   width:100%;
 }
@@ -475,11 +440,6 @@ nav{
   background:#111;
   color:#fff;
 }
-
-
-/* ================================
-   THUMBNAILS
-================================ */
 
 .thumbnails{
   display:grid;
@@ -545,11 +505,6 @@ nav{
   letter-spacing:1.5px;
 }
 
-
-/* ================================
-   COLORS
-================================ */
-
 .color-options{
   display:flex;
   gap:8px;
@@ -572,11 +527,6 @@ nav{
   color:#fff;
   border-color:#111;
 }
-
-
-/* ================================
-   SIZES
-================================ */
 
 .size-options{
   display:grid;
@@ -615,11 +565,6 @@ nav{
   letter-spacing:.5px;
 }
 
-
-/* ================================
-   DESCRIPTION
-================================ */
-
 .description{
   border-top:1px solid #ddd;
   margin-top:8px;
@@ -638,11 +583,6 @@ nav{
   font-weight:900;
   letter-spacing:1.3px;
 }
-
-
-/* ================================
-   ACTION
-================================ */
 
 .action-button{
   width:100%;
@@ -677,11 +617,6 @@ nav{
   display:block;
 }
 
-
-/* ================================
-   BACK
-================================ */
-
 .back-products{
   width:100%;
   margin-top:10px;
@@ -696,7 +631,7 @@ nav{
 
 
 /* ================================
-   CART OVERLAY
+   CART
 ================================ */
 
 .cart-overlay{
@@ -713,11 +648,6 @@ nav{
   opacity:1;
   visibility:visible;
 }
-
-
-/* ================================
-   CART DRAWER
-================================ */
 
 .cart-drawer{
   position:fixed;
@@ -946,11 +876,6 @@ footer{
   letter-spacing:1px;
 }
 
-
-/* ================================
-   TABLET
-================================ */
-
 @media(max-width:1000px){
 
   .product-grid{
@@ -958,11 +883,6 @@ footer{
   }
 
 }
-
-
-/* ================================
-   MOBILE
-================================ */
 
 @media(max-width:850px){
 
@@ -1019,11 +939,6 @@ footer{
   }
 
 }
-
-
-/* ================================
-   PHONE
-================================ */
 
 @media(max-width:600px){
 
@@ -1097,7 +1012,6 @@ footer{
   DEV — BUILT DIFFERENT
 </div>
 
-
 <nav>
 
   <a href="../index.html" class="logo">DEV</a>
@@ -1129,7 +1043,6 @@ footer{
 
 </nav>
 
-
 <section class="page-header">
 
   <div class="page-header-top">
@@ -1149,7 +1062,6 @@ footer{
 
 </section>
 
-
 <section class="collection-bar" id="products">
 
   <div class="collection-title">
@@ -1161,7 +1073,6 @@ footer{
   </div>
 
 </section>
-
 
 <section class="product-grid">
 
@@ -1196,20 +1107,9 @@ footer{
 
     <div class="card-dots">
 
-      <button
-        class="card-dot active"
-        onclick="cardGoTo(event,'closeEyes',0)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'closeEyes',1)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'closeEyes',2)">
-      </button>
+      <button class="card-dot active" onclick="cardGoTo(event,'closeEyes',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',2)"></button>
 
     </div>
 
@@ -1264,20 +1164,9 @@ footer{
 
     <div class="card-dots">
 
-      <button
-        class="card-dot active"
-        onclick="cardGoTo(event,'yujiroJack',0)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'yujiroJack',1)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'yujiroJack',2)">
-      </button>
+      <button class="card-dot active" onclick="cardGoTo(event,'yujiroJack',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',2)"></button>
 
     </div>
 
@@ -1332,20 +1221,9 @@ footer{
 
     <div class="card-dots">
 
-      <button
-        class="card-dot active"
-        onclick="cardGoTo(event,'yeahBuddy',0)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'yeahBuddy',1)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'yeahBuddy',2)">
-      </button>
+      <button class="card-dot active" onclick="cardGoTo(event,'yeahBuddy',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',2)"></button>
 
     </div>
 
@@ -1399,20 +1277,9 @@ footer{
 
     <div class="card-dots">
 
-      <button
-        class="card-dot active"
-        onclick="cardGoTo(event,'originalGraphic',0)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'originalGraphic',1)">
-      </button>
-
-      <button
-        class="card-dot"
-        onclick="cardGoTo(event,'originalGraphic',2)">
-      </button>
+      <button class="card-dot active" onclick="cardGoTo(event,'originalGraphic',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',2)"></button>
 
     </div>
 
@@ -1459,24 +1326,15 @@ footer{
 
   <div class="view-selector">
 
-    <button
-      class="view-btn active"
-      data-view="front"
-      onclick="changeView('front')">
+    <button class="view-btn active" data-view="front" onclick="changeView('front')">
       FRONT
     </button>
 
-    <button
-      class="view-btn"
-      data-view="back"
-      onclick="changeView('back')">
+    <button class="view-btn" data-view="back" onclick="changeView('back')">
       BACK
     </button>
 
-    <button
-      class="view-btn"
-      data-view="model"
-      onclick="changeView('model')">
+    <button class="view-btn" data-view="model" onclick="changeView('model')">
       MODEL
     </button>
 
@@ -1484,40 +1342,16 @@ footer{
 
   <div class="thumbnails">
 
-    <div
-      class="thumb active"
-      data-view="front"
-      onclick="changeView('front')">
-
-      <img
-        id="thumbFront"
-        src="../close-eyes-front.jfif"
-        alt="Front">
-
+    <div class="thumb active" data-view="front" onclick="changeView('front')">
+      <img id="thumbFront" src="../close-eyes-front.jfif" alt="Front">
     </div>
 
-    <div
-      class="thumb"
-      data-view="back"
-      onclick="changeView('back')">
-
-      <img
-        id="thumbBack"
-        src="../close-eyes-back.jfif"
-        alt="Back">
-
+    <div class="thumb" data-view="back" onclick="changeView('back')">
+      <img id="thumbBack" src="../close-eyes-back.jfif" alt="Back">
     </div>
 
-    <div
-      class="thumb"
-      data-view="model"
-      onclick="changeView('model')">
-
-      <img
-        id="thumbModel"
-        src="../close-eyes-model.jpeg"
-        alt="Model">
-
+    <div class="thumb" data-view="model" onclick="changeView('model')">
+      <img id="thumbModel" src="../close-eyes-model.jpeg" alt="Model">
     </div>
 
   </div>
@@ -1540,48 +1374,22 @@ footer{
   </div>
 
   <div class="option-title">
-
     <span>COLOR</span>
-
-    <span id="selectedColor">
-      WHITE
-    </span>
-
+    <span id="selectedColor">WHITE</span>
   </div>
 
-  <div
-    class="color-options"
-    id="colorOptions">
-  </div>
-
+  <div class="color-options" id="colorOptions"></div>
 
   <div class="option-title">
-
     <span>SIZE</span>
-
-    <span id="selectedSize">
-      SELECT SIZE
-    </span>
-
+    <span id="selectedSize">SELECT SIZE</span>
   </div>
 
-  <div
-    class="size-options"
-    id="sizeOptions">
-  </div>
+  <div class="size-options" id="sizeOptions"></div>
 
+  <div class="description" id="productDescription"></div>
 
-  <div
-    class="description"
-    id="productDescription">
-  </div>
-
-
-  <div
-    class="stock-note"
-    id="stockNote">
-  </div>
-
+  <div class="stock-note" id="stockNote"></div>
 
   <button
     class="action-button"
@@ -1590,13 +1398,11 @@ footer{
     SELECT SIZE
   </button>
 
-
   <div
     class="added-message"
     id="addedMessage">
     ADDED TO BAG
   </div>
-
 
   <button
     class="back-products"
@@ -1635,16 +1441,12 @@ footer{
 </footer>
 
 
-<!-- CART OVERLAY -->
-
 <div
   class="cart-overlay"
   id="cartOverlay"
   onclick="closeCart()">
 </div>
 
-
-<!-- CART DRAWER -->
 
 <aside
   class="cart-drawer"
@@ -1664,12 +1466,10 @@ footer{
 
   </div>
 
-
   <div
     class="cart-items"
     id="cartItems">
   </div>
-
 
   <div class="cart-footer">
 
@@ -1694,7 +1494,7 @@ footer{
     </button>
 
     <div class="checkout-note">
-      SECURE CHECKOUT COMING SOON
+      DEV SECURE CHECKOUT
     </div>
 
   </div>
@@ -1742,13 +1542,9 @@ closeEyes:{
   },
 
   sizes:[
-
     {name:"M",available:true},
-
     {name:"L",available:true},
-
     {name:"XL",available:true}
-
   ],
 
   description:
@@ -1792,13 +1588,9 @@ yujiroJack:{
   },
 
   sizes:[
-
     {name:"M",available:true},
-
     {name:"L",available:true},
-
     {name:"XL",available:true}
-
   ],
 
   description:
@@ -1842,15 +1634,10 @@ yeahBuddy:{
   },
 
   sizes:[
-
     {name:"M",available:false},
-
     {name:"L",available:false},
-
     {name:"XL",available:false},
-
     {name:"XXL",available:true}
-
   ],
 
   description:
@@ -1910,13 +1697,9 @@ originalGraphic:{
   },
 
   sizes:[
-
     {name:"M",available:true},
-
     {name:"L",available:true},
-
     {name:"XL",available:true}
-
   ],
 
   description:
@@ -1930,48 +1713,31 @@ originalGraphic:{
 
 
 let currentProduct="closeEyes";
-
-let currentColor=
-  products[currentProduct].defaultColor;
-
+let currentColor=products[currentProduct].defaultColor;
 let currentView="front";
-
 let selectedSize=null;
 
 
 const cardState={
-
   closeEyes:0,
-
   yujiroJack:0,
-
   yeahBuddy:0,
-
   originalGraphic:0
-
 };
 
 
-/* ================================
-   PRODUCT CARDS
-================================ */
-
 function updateCard(productKey){
 
-  const card=
-    document.querySelector(
-      `[data-card="${productKey}"]`
-    );
+  const card=document.querySelector(
+    `[data-card="${productKey}"]`
+  );
 
   if(!card){
     return;
   }
 
-  const track=
-    card.querySelector(".card-track");
-
-  const dots=
-    card.querySelectorAll(".card-dot");
+  const track=card.querySelector(".card-track");
+  const dots=card.querySelectorAll(".card-dot");
 
   track.style.transform=
     `translateX(-${cardState[productKey]*100}%)`;
@@ -2023,93 +1789,59 @@ function cardGoTo(event,productKey,index){
 }
 
 
-/* ================================
-   MOBILE SWIPE
-================================ */
-
 document
 .querySelectorAll(".product-card-image")
 .forEach(function(card){
 
-  const productKey=
-    card.dataset.card;
+  const productKey=card.dataset.card;
 
   let startX=0;
-
   let startY=0;
-
   let moved=false;
-
 
   card.addEventListener(
     "touchstart",
     function(event){
 
-      const touch=
-        event.touches[0];
+      const touch=event.touches[0];
 
-      startX=
-        touch.clientX;
-
-      startY=
-        touch.clientY;
-
+      startX=touch.clientX;
+      startY=touch.clientY;
       moved=false;
 
     },
     {passive:true}
   );
 
-
   card.addEventListener(
     "touchmove",
     function(event){
 
-      const touch=
-        event.touches[0];
+      const touch=event.touches[0];
 
-      const diffX=
-        touch.clientX-startX;
+      const diffX=touch.clientX-startX;
+      const diffY=touch.clientY-startY;
 
-      const diffY=
-        touch.clientY-startY;
-
-      if(
-        Math.abs(diffX)>
-        Math.abs(diffY)
-      ){
-
+      if(Math.abs(diffX)>Math.abs(diffY)){
         moved=true;
-
       }
 
     },
     {passive:true}
   );
 
-
   card.addEventListener(
     "touchend",
     function(event){
 
-      if(
-        !event.changedTouches.length
-      ){
-
+      if(!event.changedTouches.length){
         return;
-
       }
 
-      const endX=
-        event.changedTouches[0].clientX;
+      const endX=event.changedTouches[0].clientX;
+      const diffX=endX-startX;
 
-      const diffX=
-        endX-startX;
-
-
-      if(
-        Math.abs(diffX)>45
-      ){
+      if(Math.abs(diffX)>45){
 
         if(diffX<0){
 
@@ -2146,27 +1878,19 @@ document
     "click",
     function(event){
 
-      if(
-        event.target.closest(".card-arrow")
-      ){
+      if(event.target.closest(".card-arrow")){
         return;
       }
 
-      if(
-        event.target.closest(".card-dot")
-      ){
+      if(event.target.closest(".card-dot")){
         return;
       }
 
-      if(
-        "ontouchstart" in window
-      ){
+      if("ontouchstart" in window){
         return;
       }
 
-      openProduct(
-        card.dataset.card
-      );
+      openProduct(card.dataset.card);
 
     }
   );
@@ -2174,50 +1898,34 @@ document
 });
 
 
-/* ================================
-   OPEN PRODUCT
-================================ */
-
 function openProduct(productKey){
 
-  currentProduct=
-    productKey;
+  currentProduct=productKey;
 
   currentColor=
     products[productKey].defaultColor;
 
-  currentView=
-    "front";
-
-  selectedSize=
-    null;
+  currentView="front";
+  selectedSize=null;
 
   document
   .getElementById("selectedSize")
-  .textContent=
-    "SELECT SIZE";
+  .textContent="SELECT SIZE";
 
   hideAddedMessage();
 
   renderProduct();
 
   const detail=
-    document.getElementById(
-      "productDetail"
-    );
+    document.getElementById("productDetail");
 
-  detail.classList.add(
-    "active"
-  );
+  detail.classList.add("active");
 
   setTimeout(function(){
 
     detail.scrollIntoView({
-
       behavior:"smooth",
-
       block:"start"
-
     });
 
   },50);
@@ -2225,183 +1933,111 @@ function openProduct(productKey){
 }
 
 
-/* ================================
-   RENDER PRODUCT
-================================ */
-
 function renderProduct(){
 
-  const product=
-    products[currentProduct];
+  const product=products[currentProduct];
 
-  document
-  .getElementById("productName")
-  .textContent=
+  document.getElementById("productName").textContent=
     product.name;
 
-  document
-  .getElementById("productPrice")
-  .textContent=
+  document.getElementById("productPrice").textContent=
     product.price;
 
-  document
-  .getElementById("productDescription")
-  .textContent=
+  document.getElementById("productDescription").textContent=
     product.description;
 
-  document
-  .getElementById("stockNote")
-  .textContent=
+  document.getElementById("stockNote").textContent=
     product.stock;
 
   renderColors();
-
   renderSizes();
-
   updateImages();
-
   updateActionButton();
 
 }
 
 
-/* ================================
-   COLORS
-================================ */
-
 function renderColors(){
 
-  const product=
-    products[currentProduct];
+  const product=products[currentProduct];
 
   const container=
-    document.getElementById(
-      "colorOptions"
-    );
+    document.getElementById("colorOptions");
 
   container.innerHTML="";
-
 
   Object
   .keys(product.colors)
   .forEach(function(colorKey){
 
-    const color=
-      product.colors[colorKey];
+    const color=product.colors[colorKey];
 
     const button=
-      document.createElement(
-        "button"
-      );
+      document.createElement("button");
 
-    button.className=
-      "color-btn";
+    button.className="color-btn";
 
-    if(
-      colorKey===currentColor
-    ){
-
-      button.classList.add(
-        "active"
-      );
-
+    if(colorKey===currentColor){
+      button.classList.add("active");
     }
 
-    button.textContent=
-      color.label;
+    button.textContent=color.label;
 
-    button.onclick=
-      function(){
+    button.onclick=function(){
+      changeColor(colorKey);
+    };
 
-        changeColor(
-          colorKey
-        );
-
-      };
-
-    container.appendChild(
-      button
-    );
+    container.appendChild(button);
 
   });
-
 
   document
   .getElementById("selectedColor")
   .textContent=
-    product
-    .colors[currentColor]
-    .label;
+    product.colors[currentColor].label;
 
 }
 
 
 function changeColor(color){
 
-  currentColor=
-    color;
-
-  currentView=
-    "front";
-
-  selectedSize=
-    null;
+  currentColor=color;
+  currentView="front";
+  selectedSize=null;
 
   document
   .getElementById("selectedSize")
-  .textContent=
-    "SELECT SIZE";
+  .textContent="SELECT SIZE";
 
   hideAddedMessage();
 
   renderColors();
-
   renderSizes();
-
   updateImages();
-
   updateActionButton();
 
 }
 
 
-/* ================================
-   SIZES
-================================ */
-
 function renderSizes(){
 
-  const product=
-    products[currentProduct];
+  const product=products[currentProduct];
 
   const container=
-    document.getElementById(
-      "sizeOptions"
-    );
+    document.getElementById("sizeOptions");
 
   container.innerHTML="";
 
-
-  product
-  .sizes
-  .forEach(function(size){
+  product.sizes.forEach(function(size){
 
     const button=
-      document.createElement(
-        "button"
-      );
+      document.createElement("button");
 
-    button.className=
-      "size-btn";
+    button.className="size-btn";
 
+    if(!size.available){
 
-    if(
-      !size.available
-    ){
-
-      button.classList.add(
-        "sold-out"
-      );
+      button.classList.add("sold-out");
 
       button.innerHTML=
         size.name+
@@ -2409,24 +2045,15 @@ function renderSizes(){
 
     }else{
 
-      button.textContent=
-        size.name;
+      button.textContent=size.name;
 
-      button.onclick=
-        function(){
-
-          selectSize(
-            button,
-            size.name
-          );
-
-        };
+      button.onclick=function(){
+        selectSize(button,size.name);
+      };
 
     }
 
-    container.appendChild(
-      button
-    );
+    container.appendChild(button);
 
   });
 
@@ -2435,27 +2062,21 @@ function renderSizes(){
 
 function selectSize(button,size){
 
-  selectedSize=
-    size;
+  selectedSize=size;
 
   document
   .querySelectorAll(".size-btn")
   .forEach(function(btn){
 
-    btn.classList.remove(
-      "active"
-    );
+    btn.classList.remove("active");
 
   });
 
-  button.classList.add(
-    "active"
-  );
+  button.classList.add("active");
 
   document
   .getElementById("selectedSize")
-  .textContent=
-    size;
+  .textContent=size;
 
   hideAddedMessage();
 
@@ -2464,22 +2085,15 @@ function selectSize(button,size){
 }
 
 
-/* ================================
-   VIEWS
-================================ */
-
 function changeView(view){
 
-  currentView=
-    view;
+  currentView=view;
 
   document
   .querySelectorAll(".view-btn")
   .forEach(function(btn){
 
-    btn.classList.remove(
-      "active"
-    );
+    btn.classList.remove("active");
 
   });
 
@@ -2487,9 +2101,7 @@ function changeView(view){
   .querySelectorAll(".thumb")
   .forEach(function(thumb){
 
-    thumb.classList.remove(
-      "active"
-    );
+    thumb.classList.remove("active");
 
   });
 
@@ -2497,26 +2109,18 @@ function changeView(view){
   .querySelector(
     `.view-btn[data-view="${view}"]`
   )
-  .classList.add(
-    "active"
-  );
+  .classList.add("active");
 
   document
   .querySelector(
     `.thumb[data-view="${view}"]`
   )
-  .classList.add(
-    "active"
-  );
+  .classList.add("active");
 
   updateMainImage();
 
 }
 
-
-/* ================================
-   IMAGES
-================================ */
 
 function updateImages(){
 
@@ -2525,64 +2129,44 @@ function updateImages(){
     .colors[currentColor]
     .images;
 
-  document
-  .getElementById("thumbFront")
-  .src=
+  document.getElementById("thumbFront").src=
     images.front;
 
-  document
-  .getElementById("thumbBack")
-  .src=
+  document.getElementById("thumbBack").src=
     images.back;
 
-  document
-  .getElementById("thumbModel")
-  .src=
+  document.getElementById("thumbModel").src=
     images.model;
 
-  currentView=
-    "front";
-
+  currentView="front";
 
   document
   .querySelectorAll(".view-btn")
   .forEach(function(btn){
 
-    btn.classList.remove(
-      "active"
-    );
+    btn.classList.remove("active");
 
   });
-
 
   document
   .querySelectorAll(".thumb")
   .forEach(function(thumb){
 
-    thumb.classList.remove(
-      "active"
-    );
+    thumb.classList.remove("active");
 
   });
-
 
   document
   .querySelector(
     '.view-btn[data-view="front"]'
   )
-  .classList.add(
-    "active"
-  );
-
+  .classList.add("active");
 
   document
   .querySelector(
     '.thumb[data-view="front"]'
   )
-  .classList.add(
-    "active"
-  );
-
+  .classList.add("active");
 
   updateMainImage();
 
@@ -2598,8 +2182,7 @@ function updateMainImage(){
 
   document
   .getElementById("mainImage")
-  .src=
-    image;
+  .src=image;
 
   document
   .getElementById("mainImage")
@@ -2611,50 +2194,29 @@ function updateMainImage(){
 }
 
 
-/* ================================
-   ACTION BUTTON
-================================ */
-
 function updateActionButton(){
 
   const button=
-    document.getElementById(
-      "actionButton"
-    );
+    document.getElementById("actionButton");
 
   if(selectedSize){
-
-    button.textContent=
-      "ADD TO BAG";
-
+    button.textContent="ADD TO BAG";
   }else{
-
-    button.textContent=
-      "SELECT SIZE";
-
+    button.textContent="SELECT SIZE";
   }
 
 }
 
 
-/* ================================
-   ADD TO BAG
-================================ */
-
 function handleAction(){
 
-  if(
-    !selectedSize
-  ){
+  if(!selectedSize){
 
-    alert(
-      "Please select your size."
-    );
+    alert("Please select your size.");
 
     return;
 
   }
-
 
   const product=
     products[currentProduct];
@@ -2665,7 +2227,6 @@ function handleAction(){
   const cart=
     getCart();
 
-
   const itemId=
     "dev-tshirt-"+
     product.id+
@@ -2674,14 +2235,12 @@ function handleAction(){
     "-"+
     selectedSize;
 
-
   const existing=
     cart.find(function(item){
 
       return item.id===itemId;
 
     });
-
 
   if(existing){
 
@@ -2724,7 +2283,6 @@ function handleAction(){
 
   }
 
-
   saveCart(cart);
 
   showAddedMessage();
@@ -2734,26 +2292,16 @@ function handleAction(){
 }
 
 
-/* ================================
-   ADDED MESSAGE
-================================ */
-
 function showAddedMessage(){
 
   const message=
-    document.getElementById(
-      "addedMessage"
-    );
+    document.getElementById("addedMessage");
 
-  message.classList.add(
-    "show"
-  );
+  message.classList.add("show");
 
   setTimeout(function(){
 
-    message.classList.remove(
-      "show"
-    );
+    message.classList.remove("show");
 
   },2000);
 
@@ -2763,19 +2311,11 @@ function showAddedMessage(){
 function hideAddedMessage(){
 
   document
-  .getElementById(
-    "addedMessage"
-  )
-  .classList.remove(
-    "show"
-  );
+  .getElementById("addedMessage")
+  .classList.remove("show");
 
 }
 
-
-/* ================================
-   CART STORAGE
-================================ */
 
 function getCart(){
 
@@ -2783,9 +2323,7 @@ function getCart(){
 
     const stored=
       JSON.parse(
-        localStorage.getItem(
-          CART_KEY
-        )
+        localStorage.getItem(CART_KEY)
       );
 
     return Array.isArray(stored)
@@ -2813,10 +2351,6 @@ function saveCart(cart){
 }
 
 
-/* ================================
-   IMAGE PATH
-================================ */
-
 function toAbsoluteImage(path){
 
   try{
@@ -2835,10 +2369,6 @@ function toAbsoluteImage(path){
 }
 
 
-/* ================================
-   CART QUANTITY
-================================ */
-
 function getItemQuantity(item){
 
   return Number(
@@ -2850,43 +2380,28 @@ function getItemQuantity(item){
 }
 
 
-/* ================================
-   RENDER CART
-================================ */
-
 function renderCart(){
 
-  const cart=
-    getCart();
+  const cart=getCart();
 
   const container=
-    document.getElementById(
-      "cartItems"
-    );
+    document.getElementById("cartItems");
 
   const count=
-    document.getElementById(
-      "cartCount"
-    );
+    document.getElementById("cartCount");
 
   const totalElement=
-    document.getElementById(
-      "cartTotal"
-    );
-
+    document.getElementById("cartTotal");
 
   let totalQuantity=0;
-
   let totalPrice=0;
-
 
   cart.forEach(function(item){
 
     const quantity=
       getItemQuantity(item);
 
-    totalQuantity+=
-      quantity;
+    totalQuantity+=quantity;
 
     totalPrice+=
       Number(item.price || 0)*
@@ -2894,18 +2409,13 @@ function renderCart(){
 
   });
 
-
-  count.textContent=
-    totalQuantity;
+  count.textContent=totalQuantity;
 
   totalElement.textContent=
     "AED "+
     totalPrice;
 
-
-  if(
-    cart.length===0
-  ){
+  if(cart.length===0){
 
     container.innerHTML=
       '<div class="cart-empty">'+
@@ -2917,242 +2427,160 @@ function renderCart(){
 
   }
 
-
   container.innerHTML="";
 
+  cart.forEach(function(item,index){
 
-  cart.forEach(
-    function(item,index){
+    const quantity=
+      getItemQuantity(item);
 
-      const quantity=
-        getItemQuantity(item);
+    const itemElement=
+      document.createElement("div");
 
-      const itemElement=
-        document.createElement(
-          "div"
-        );
+    itemElement.className="cart-item";
 
-      itemElement.className=
-        "cart-item";
+    itemElement.innerHTML=
 
+      '<img '+
+      'class="cart-item-image" '+
+      'src="'+escapeHtml(item.image || "")+'" '+
+      'alt="'+escapeHtml(item.name || "DEV Product")+'">'+
 
-      itemElement.innerHTML=
+      '<div class="cart-item-info">'+
 
-        '<img '+
-        'class="cart-item-image" '+
-        'src="'+
-        escapeHtml(
-          item.image || ""
-        )+
-        '" '+
-        'alt="'+
-        escapeHtml(
-          item.name || "DEV Product"
-        )+
-        '">'+
+        '<div class="cart-item-name">'+
+          escapeHtml(item.name || "DEV PRODUCT")+
+        '</div>'+
 
-        '<div class="cart-item-info">'+
+        '<div class="cart-item-meta">'+
 
-          '<div class="cart-item-name">'+
-            escapeHtml(
-              item.name || "DEV PRODUCT"
-            )+
-          '</div>'+
+          escapeHtml(item.section || "")+
 
-          '<div class="cart-item-meta">'+
+          (
+            item.category
+            ? " / "+escapeHtml(item.category)
+            : ""
+          )+
 
-            escapeHtml(
-              item.section || ""
-            )+
+          '<br>'+
 
-            (
-              item.category
-              ? " / "+
-                escapeHtml(
-                  item.category
-                )
-              : ""
-            )+
+          (
+            item.color
+            ? escapeHtml(item.color)
+            : ""
+          )+
 
-            '<br>'+
+          (
+            item.size
+            ? " · SIZE "+escapeHtml(item.size)
+            : ""
+          )+
 
-            (
-              item.color
-              ? escapeHtml(
-                  item.color
-                )
-              : ""
-            )+
+        '</div>'+
 
-            (
-              item.size
-              ? " · SIZE "+
-                escapeHtml(
-                  item.size
-                )
-              : ""
-            )+
+        '<div class="cart-item-price">'+
+          'AED '+
+          (
+            Number(item.price || 0)*
+            quantity
+          )+
+        '</div>'+
 
-          '</div>'+
+        '<div class="cart-item-controls">'+
 
-          '<div class="cart-item-price">'+
-            'AED '+
-            (
-              Number(
-                item.price || 0
-              )*
-              quantity
-            )+
-          '</div>'+
+          '<div class="quantity-control">'+
 
-          '<div class="cart-item-controls">'+
+            '<button '+
+              'class="quantity-btn" '+
+              'onclick="changeQuantity('+index+',-1)">'+
+              '−'+
+            '</button>'+
 
-            '<div class="quantity-control">'+
-
-              '<button '+
-                'class="quantity-btn" '+
-                'onclick="changeQuantity('+
-                index+
-                ',-1)">'+
-                '−'+
-              '</button>'+
-
-              '<div class="quantity-value">'+
-                quantity+
-              '</div>'+
-
-              '<button '+
-                'class="quantity-btn" '+
-                'onclick="changeQuantity('+
-                index+
-                ',1)">'+
-                '+'+
-              '</button>'+
-
+            '<div class="quantity-value">'+
+              quantity+
             '</div>'+
 
             '<button '+
-              'class="remove-item" '+
-              'onclick="removeCartItem('+
-              index+
-              ')">'+
-              'REMOVE'+
+              'class="quantity-btn" '+
+              'onclick="changeQuantity('+index+',1)">'+
+              '+'+
             '</button>'+
 
           '</div>'+
 
-        '</div>';
+          '<button '+
+            'class="remove-item" '+
+            'onclick="removeCartItem('+index+')">'+
+            'REMOVE'+
+          '</button>'+
 
+        '</div>'+
 
-      container.appendChild(
-        itemElement
-      );
+      '</div>';
 
-    }
-  );
+    container.appendChild(itemElement);
+
+  });
 
 }
 
 
-/* ================================
-   CHANGE QUANTITY
-================================ */
-
 function changeQuantity(index,change){
 
-  const cart=
-    getCart();
+  const cart=getCart();
 
-  if(
-    !cart[index]
-  ){
+  if(!cart[index]){
     return;
   }
 
-
   let quantity=
-    getItemQuantity(
-      cart[index]
-    );
+    getItemQuantity(cart[index]);
 
-  quantity+=
-    change;
+  quantity+=change;
 
+  if(quantity<=0){
 
-  if(
-    quantity<=0
-  ){
-
-    cart.splice(
-      index,
-      1
-    );
+    cart.splice(index,1);
 
   }else{
 
-    cart[index].quantity=
-      quantity;
+    cart[index].quantity=quantity;
 
     delete cart[index].qty;
 
   }
 
-
   saveCart(cart);
 
 }
 
-
-/* ================================
-   REMOVE CART ITEM
-================================ */
 
 function removeCartItem(index){
 
-  const cart=
-    getCart();
+  const cart=getCart();
 
-  if(
-    !cart[index]
-  ){
+  if(!cart[index]){
     return;
   }
 
-  cart.splice(
-    index,
-    1
-  );
+  cart.splice(index,1);
 
   saveCart(cart);
 
 }
 
-
-/* ================================
-   OPEN / CLOSE CART
-================================ */
 
 function openCart(){
 
   document
-  .getElementById(
-    "cartDrawer"
-  )
-  .classList.add(
-    "open"
-  );
+  .getElementById("cartDrawer")
+  .classList.add("open");
 
   document
-  .getElementById(
-    "cartOverlay"
-  )
-  .classList.add(
-    "open"
-  );
+  .getElementById("cartOverlay")
+  .classList.add("open");
 
-  document.body.classList.add(
-    "cart-open"
-  );
+  document.body.classList.add("cart-open");
 
   renderCart();
 
@@ -3162,24 +2590,14 @@ function openCart(){
 function closeCart(){
 
   document
-  .getElementById(
-    "cartDrawer"
-  )
-  .classList.remove(
-    "open"
-  );
+  .getElementById("cartDrawer")
+  .classList.remove("open");
 
   document
-  .getElementById(
-    "cartOverlay"
-  )
-  .classList.remove(
-    "open"
-  );
+  .getElementById("cartOverlay")
+  .classList.remove("open");
 
-  document.body.classList.remove(
-    "cart-open"
-  );
+  document.body.classList.remove("cart-open");
 
 }
 
@@ -3190,31 +2608,21 @@ function closeCart(){
 
 function checkout(){
 
-  const cart=
-    getCart();
+  const cart=getCart();
 
-  if(
-    cart.length===0
-  ){
+  if(cart.length===0){
 
-    alert(
-      "Your bag is empty."
-    );
+    alert("Your bag is empty.");
 
     return;
 
   }
 
-  alert(
-    "DEV checkout will be connected soon."
-  );
+  window.location.href=
+    "/DEV-Website/checkout/";
 
 }
 
-
-/* ================================
-   ESCAPE HTML
-================================ */
 
 function escapeHtml(value){
 
@@ -3228,65 +2636,49 @@ function escapeHtml(value){
 }
 
 
-/* ================================
-   BACK TO PRODUCTS
-================================ */
-
 function backToProducts(){
 
   document
-  .getElementById(
-    "products"
-  )
+  .getElementById("products")
   .scrollIntoView({
-
     behavior:"smooth"
-
   });
 
 }
 
 
-/* ================================
-   MOBILE MENU
-================================ */
-
 function toggleMenu(){
 
   document
-  .getElementById(
-    "navLinks"
-  )
-  .classList.toggle(
-    "open"
-  );
+  .getElementById("navLinks")
+  .classList.toggle("open");
 
 }
 
-
-/* ================================
-   ESC KEY
-================================ */
 
 document.addEventListener(
   "keydown",
   function(event){
 
-    if(
-      event.key==="Escape"
-    ){
-
+    if(event.key==="Escape"){
       closeCart();
-
     }
 
   }
 );
 
 
-/* ================================
-   INITIAL CART
-================================ */
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(event.key===CART_KEY){
+      renderCart();
+    }
+
+  }
+);
+
 
 renderCart();
 
