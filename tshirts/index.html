@@ -25,6 +25,10 @@ body{
   color:#111;
 }
 
+body.cart-open{
+  overflow:hidden;
+}
+
 a{
   text-decoration:none;
   color:inherit;
@@ -61,6 +65,7 @@ nav{
   justify-content:space-between;
   padding:18px 5%;
   position:relative;
+  z-index:20;
 }
 
 .logo{
@@ -94,6 +99,33 @@ nav{
 .nav-icon{
   font-size:20px;
   cursor:pointer;
+}
+
+.cart-button{
+  border:none;
+  background:transparent;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.cart-count{
+  min-width:20px;
+  height:20px;
+  padding:0 5px;
+  border-radius:20px;
+  background:#fff;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  font-weight:900;
 }
 
 .menu-btn{
@@ -225,7 +257,6 @@ nav{
 
 /* ================================
    YEAH BUDDY SIZE FIX
-   CARD ONLY
 ================================ */
 
 .product-card-image[data-card="yeahBuddy"] .card-slide img{
@@ -630,6 +661,22 @@ nav{
   background:#292929;
 }
 
+.added-message{
+  display:none;
+  margin-top:10px;
+  padding:12px;
+  background:#f1f1ef;
+  border:1px solid #ddd;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-align:center;
+}
+
+.added-message.show{
+  display:block;
+}
+
 
 /* ================================
    BACK
@@ -645,6 +692,219 @@ nav{
   font-weight:900;
   letter-spacing:2px;
   cursor:pointer;
+}
+
+
+/* ================================
+   CART OVERLAY
+================================ */
+
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:998;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s ease;
+}
+
+.cart-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* ================================
+   CART DRAWER
+================================ */
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  width:min(430px,100%);
+  height:100vh;
+  background:#fff;
+  z-index:999;
+  transform:translateX(100%);
+  transition:transform .3s ease;
+  display:flex;
+  flex-direction:column;
+  box-shadow:-10px 0 30px rgba(0,0,0,.15);
+}
+
+.cart-drawer.open{
+  transform:translateX(0);
+}
+
+.cart-header{
+  background:#111;
+  color:#fff;
+  padding:22px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.cart-header-title{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.cart-close{
+  border:none;
+  background:transparent;
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+  line-height:1;
+}
+
+.cart-items{
+  flex:1;
+  overflow-y:auto;
+  padding:10px 20px 20px;
+}
+
+.cart-empty{
+  padding:70px 10px;
+  text-align:center;
+  color:#777;
+  font-size:11px;
+  letter-spacing:1px;
+  line-height:1.8;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+  padding:18px 0;
+  border-bottom:1px solid #ddd;
+}
+
+.cart-item-image{
+  width:90px;
+  height:112px;
+  background:#f5f5f3;
+  object-fit:contain;
+  display:block;
+}
+
+.cart-item-info{
+  min-width:0;
+}
+
+.cart-item-name{
+  font-size:11px;
+  font-weight:900;
+  line-height:1.45;
+}
+
+.cart-item-meta{
+  margin-top:7px;
+  color:#777;
+  font-size:9px;
+  letter-spacing:.5px;
+  line-height:1.6;
+}
+
+.cart-item-price{
+  margin-top:8px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.cart-item-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:12px;
+}
+
+.quantity-control{
+  display:flex;
+  align-items:center;
+  border:1px solid #ccc;
+}
+
+.quantity-btn{
+  width:30px;
+  height:30px;
+  border:none;
+  background:#fff;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.quantity-value{
+  min-width:30px;
+  text-align:center;
+  font-size:10px;
+  font-weight:900;
+}
+
+.remove-item{
+  border:none;
+  background:transparent;
+  text-decoration:underline;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+  cursor:pointer;
+  color:#777;
+}
+
+.cart-footer{
+  border-top:1px solid #ddd;
+  padding:20px;
+  background:#fff;
+}
+
+.cart-total-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:15px;
+}
+
+.cart-total-label{
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.cart-total{
+  font-size:17px;
+  font-weight:900;
+}
+
+.checkout-button{
+  width:100%;
+  border:none;
+  background:#111;
+  color:#fff;
+  padding:18px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+.checkout-button:hover{
+  background:#292929;
+}
+
+.checkout-note{
+  margin-top:10px;
+  text-align:center;
+  color:#888;
+  font-size:8px;
+  letter-spacing:.7px;
 }
 
 
@@ -692,9 +952,11 @@ footer{
 ================================ */
 
 @media(max-width:1000px){
+
   .product-grid{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 
@@ -751,6 +1013,11 @@ footer{
   .card-arrow{
     display:none;
   }
+
+  .nav-icon{
+    display:none;
+  }
+
 }
 
 
@@ -809,6 +1076,16 @@ footer{
   .size-options{
     grid-template-columns:repeat(2,1fr);
   }
+
+  .cart-item{
+    grid-template-columns:80px 1fr;
+  }
+
+  .cart-item-image{
+    width:80px;
+    height:100px;
+  }
+
 }
 
 </style>
@@ -819,6 +1096,7 @@ footer{
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
+
 
 <nav>
 
@@ -839,6 +1117,11 @@ footer{
 
     <span class="nav-icon">⌕</span>
     <span class="nav-icon">♡</span>
+
+    <button class="cart-button" onclick="openCart()">
+      BAG
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
 
     <span class="menu-btn" onclick="toggleMenu()">☰</span>
 
@@ -912,9 +1195,22 @@ footer{
     <button class="card-arrow right" onclick="cardNext(event,'closeEyes')">›</button>
 
     <div class="card-dots">
-      <button class="card-dot active" onclick="cardGoTo(event,'closeEyes',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',2)"></button>
+
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'closeEyes',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'closeEyes',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'closeEyes',2)">
+      </button>
+
     </div>
 
   </div>
@@ -967,9 +1263,22 @@ footer{
     <button class="card-arrow right" onclick="cardNext(event,'yujiroJack')">›</button>
 
     <div class="card-dots">
-      <button class="card-dot active" onclick="cardGoTo(event,'yujiroJack',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',2)"></button>
+
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'yujiroJack',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yujiroJack',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yujiroJack',2)">
+      </button>
+
     </div>
 
   </div>
@@ -1022,9 +1331,22 @@ footer{
     <button class="card-arrow right" onclick="cardNext(event,'yeahBuddy')">›</button>
 
     <div class="card-dots">
-      <button class="card-dot active" onclick="cardGoTo(event,'yeahBuddy',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',2)"></button>
+
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'yeahBuddy',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yeahBuddy',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yeahBuddy',2)">
+      </button>
+
     </div>
 
   </div>
@@ -1076,9 +1398,22 @@ footer{
     <button class="card-arrow right" onclick="cardNext(event,'originalGraphic')">›</button>
 
     <div class="card-dots">
-      <button class="card-dot active" onclick="cardGoTo(event,'originalGraphic',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',2)"></button>
+
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'originalGraphic',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'originalGraphic',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'originalGraphic',2)">
+      </button>
+
     </div>
 
   </div>
@@ -1113,24 +1448,35 @@ footer{
 <section class="product-media">
 
   <div class="main-image-wrap">
+
     <img
       id="mainImage"
       class="main-image"
       src="../close-eyes-front.jfif"
       alt="DEV Product">
+
   </div>
 
   <div class="view-selector">
 
-    <button class="view-btn active" data-view="front" onclick="changeView('front')">
+    <button
+      class="view-btn active"
+      data-view="front"
+      onclick="changeView('front')">
       FRONT
     </button>
 
-    <button class="view-btn" data-view="back" onclick="changeView('back')">
+    <button
+      class="view-btn"
+      data-view="back"
+      onclick="changeView('back')">
       BACK
     </button>
 
-    <button class="view-btn" data-view="model" onclick="changeView('model')">
+    <button
+      class="view-btn"
+      data-view="model"
+      onclick="changeView('model')">
       MODEL
     </button>
 
@@ -1138,16 +1484,40 @@ footer{
 
   <div class="thumbnails">
 
-    <div class="thumb active" data-view="front" onclick="changeView('front')">
-      <img id="thumbFront" src="../close-eyes-front.jfif" alt="Front">
+    <div
+      class="thumb active"
+      data-view="front"
+      onclick="changeView('front')">
+
+      <img
+        id="thumbFront"
+        src="../close-eyes-front.jfif"
+        alt="Front">
+
     </div>
 
-    <div class="thumb" data-view="back" onclick="changeView('back')">
-      <img id="thumbBack" src="../close-eyes-back.jfif" alt="Back">
+    <div
+      class="thumb"
+      data-view="back"
+      onclick="changeView('back')">
+
+      <img
+        id="thumbBack"
+        src="../close-eyes-back.jfif"
+        alt="Back">
+
     </div>
 
-    <div class="thumb" data-view="model" onclick="changeView('model')">
-      <img id="thumbModel" src="../close-eyes-model.jpeg" alt="Model">
+    <div
+      class="thumb"
+      data-view="model"
+      onclick="changeView('model')">
+
+      <img
+        id="thumbModel"
+        src="../close-eyes-model.jpeg"
+        alt="Model">
+
     </div>
 
   </div>
@@ -1170,22 +1540,48 @@ footer{
   </div>
 
   <div class="option-title">
+
     <span>COLOR</span>
-    <span id="selectedColor">WHITE</span>
+
+    <span id="selectedColor">
+      WHITE
+    </span>
+
   </div>
 
-  <div class="color-options" id="colorOptions"></div>
+  <div
+    class="color-options"
+    id="colorOptions">
+  </div>
+
 
   <div class="option-title">
+
     <span>SIZE</span>
-    <span id="selectedSize">SELECT SIZE</span>
+
+    <span id="selectedSize">
+      SELECT SIZE
+    </span>
+
   </div>
 
-  <div class="size-options" id="sizeOptions"></div>
+  <div
+    class="size-options"
+    id="sizeOptions">
+  </div>
 
-  <div class="description" id="productDescription"></div>
 
-  <div class="stock-note" id="stockNote"></div>
+  <div
+    class="description"
+    id="productDescription">
+  </div>
+
+
+  <div
+    class="stock-note"
+    id="stockNote">
+  </div>
+
 
   <button
     class="action-button"
@@ -1194,13 +1590,24 @@ footer{
     SELECT SIZE
   </button>
 
-  <button class="back-products" onclick="backToProducts()">
+
+  <div
+    class="added-message"
+    id="addedMessage">
+    ADDED TO BAG
+  </div>
+
+
+  <button
+    class="back-products"
+    onclick="backToProducts()">
     ← BACK TO T-SHIRTS
   </button>
 
 </section>
 
 </div>
+
 </section>
 
 
@@ -1228,187 +1635,354 @@ footer{
 </footer>
 
 
+<!-- CART OVERLAY -->
+
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+  onclick="closeCart()">
+</div>
+
+
+<!-- CART DRAWER -->
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer">
+
+  <div class="cart-header">
+
+    <div class="cart-header-title">
+      YOUR BAG
+    </div>
+
+    <button
+      class="cart-close"
+      onclick="closeCart()">
+      ×
+    </button>
+
+  </div>
+
+
+  <div
+    class="cart-items"
+    id="cartItems">
+  </div>
+
+
+  <div class="cart-footer">
+
+    <div class="cart-total-row">
+
+      <div class="cart-total-label">
+        TOTAL
+      </div>
+
+      <div
+        class="cart-total"
+        id="cartTotal">
+        AED 0
+      </div>
+
+    </div>
+
+    <button
+      class="checkout-button"
+      onclick="checkout()">
+      CHECKOUT
+    </button>
+
+    <div class="checkout-note">
+      SECURE CHECKOUT COMING SOON
+    </div>
+
+  </div>
+
+</aside>
+
+
 <script>
 
-const products = {
+const CART_KEY="dev_cart_v1";
+
+
+const products={
 
 closeEyes:{
+
+  id:"close-eyes",
 
   name:"CLOSE YOUR EYES TEE",
 
   price:"AED 75",
 
+  priceValue:75,
+
   defaultColor:"white",
 
   colors:{
+
     white:{
+
       label:"WHITE",
+
       images:{
+
         front:"../close-eyes-front.jfif",
+
         back:"../close-eyes-back.jfif",
+
         model:"../close-eyes-model.jpeg"
+
       }
+
     }
+
   },
 
   sizes:[
+
     {name:"M",available:true},
+
     {name:"L",available:true},
+
     {name:"XL",available:true}
+
   ],
 
   description:
     "Oversized statement tee made for those who keep winning whether they are watched or not. Built for training, lifestyle and everyday wear.",
 
   stock:"M / L / XL AVAILABLE"
+
 },
 
 
 yujiroJack:{
 
+  id:"yujiro-jack",
+
   name:"YUJIRO × JACK HANMA TEE",
 
   price:"AED 85",
 
+  priceValue:85,
+
   defaultColor:"black",
 
   colors:{
+
     black:{
+
       label:"BLACK",
+
       images:{
+
         front:"../yujiro-jack-front.jfif",
+
         back:"../yujiro-jack-back.jpeg",
+
         model:"../yujiro-jack-model.jpeg"
+
       }
+
     }
+
   },
 
   sizes:[
+
     {name:"M",available:true},
+
     {name:"L",available:true},
+
     {name:"XL",available:true}
+
   ],
 
   description:
     "An oversized graphic tee built around raw strength, intensity and the relentless DEV mindset. Designed for training and lifestyle wear.",
 
   stock:"M / L / XL AVAILABLE"
+
 },
 
 
 yeahBuddy:{
 
+  id:"yeah-buddy",
+
   name:"YEAH BUDDY TEE",
 
   price:"AED 75",
 
+  priceValue:75,
+
   defaultColor:"black",
 
   colors:{
+
     black:{
+
       label:"BLACK",
+
       images:{
+
         front:"../yeah-buddy-front.jfif",
+
         back:"../yeah-buddy-back.jpeg",
+
         model:"../yeah-buddy-model.jpeg"
+
       }
+
     }
+
   },
 
   sizes:[
+
     {name:"M",available:false},
+
     {name:"L",available:false},
+
     {name:"XL",available:false},
+
     {name:"XXL",available:true}
+
   ],
 
   description:
     "YEAH BUDDY. Made for the ones who came to lift heavy, push harder and leave excuses behind. Oversized DEV training and lifestyle tee.",
 
   stock:"XXL AVAILABLE — M / L / XL SOLD OUT"
+
 },
 
 
 originalGraphic:{
 
+  id:"dev-oversized-graphic-tee",
+
   name:"DEV OVERSIZED GRAPHIC TEE",
 
   price:"AED 85",
+
+  priceValue:85,
 
   defaultColor:"black",
 
   colors:{
 
     black:{
+
       label:"BLACK",
+
       images:{
+
         front:"../graphic-tee-black-front.jpg.jpeg",
+
         back:"../graphic-tee-black-back.jpg.jpeg",
+
         model:"../graphic-tee-black-model.jpg.jpeg"
+
       }
+
     },
 
     navy:{
+
       label:"NAVY BLUE",
+
       images:{
+
         front:"../graphic-tee-navy-front.jpg.jpeg",
+
         back:"../graphic-tee-navy-back.jpg.jpeg",
+
         model:"../graphic-tee-navy-model.jpg.jpeg"
+
       }
+
     }
 
   },
 
   sizes:[
+
     {name:"M",available:true},
+
     {name:"L",available:true},
+
     {name:"XL",available:true}
+
   ],
 
   description:
     "Oversized graphic tee designed for training, lifestyle and everyday wear. Available in Black and Navy Blue.",
 
   stock:"M / L / XL AVAILABLE"
+
 }
 
 };
 
 
 let currentProduct="closeEyes";
-let currentColor=products[currentProduct].defaultColor;
+
+let currentColor=
+  products[currentProduct].defaultColor;
+
 let currentView="front";
+
 let selectedSize=null;
 
 
 const cardState={
+
   closeEyes:0,
+
   yujiroJack:0,
+
   yeahBuddy:0,
+
   originalGraphic:0
+
 };
 
 
+/* ================================
+   PRODUCT CARDS
+================================ */
+
 function updateCard(productKey){
 
-  const card=document.querySelector(
-    `[data-card="${productKey}"]`
-  );
+  const card=
+    document.querySelector(
+      `[data-card="${productKey}"]`
+    );
 
   if(!card){
     return;
   }
 
-  const track=card.querySelector(".card-track");
-  const dots=card.querySelectorAll(".card-dot");
+  const track=
+    card.querySelector(".card-track");
+
+  const dots=
+    card.querySelectorAll(".card-dot");
 
   track.style.transform=
     `translateX(-${cardState[productKey]*100}%)`;
 
   dots.forEach(function(dot,index){
+
     dot.classList.toggle(
       "active",
       index===cardState[productKey]
     );
+
   });
 
 }
@@ -1449,123 +2023,201 @@ function cardGoTo(event,productKey,index){
 }
 
 
-document.querySelectorAll(".product-card-image").forEach(function(card){
+/* ================================
+   MOBILE SWIPE
+================================ */
 
-  const productKey=card.dataset.card;
+document
+.querySelectorAll(".product-card-image")
+.forEach(function(card){
+
+  const productKey=
+    card.dataset.card;
 
   let startX=0;
+
   let startY=0;
+
   let moved=false;
 
-  card.addEventListener("touchstart",function(event){
 
-    const touch=event.touches[0];
+  card.addEventListener(
+    "touchstart",
+    function(event){
 
-    startX=touch.clientX;
-    startY=touch.clientY;
-    moved=false;
+      const touch=
+        event.touches[0];
 
-  },{passive:true});
+      startX=
+        touch.clientX;
 
+      startY=
+        touch.clientY;
 
-  card.addEventListener("touchmove",function(event){
+      moved=false;
 
-    const touch=event.touches[0];
-
-    const diffX=touch.clientX-startX;
-    const diffY=touch.clientY-startY;
-
-    if(Math.abs(diffX)>Math.abs(diffY)){
-      moved=true;
-    }
-
-  },{passive:true});
+    },
+    {passive:true}
+  );
 
 
-  card.addEventListener("touchend",function(event){
+  card.addEventListener(
+    "touchmove",
+    function(event){
 
-    if(!event.changedTouches.length){
-      return;
-    }
+      const touch=
+        event.touches[0];
 
-    const endX=event.changedTouches[0].clientX;
-    const diffX=endX-startX;
+      const diffX=
+        touch.clientX-startX;
 
-    if(Math.abs(diffX)>45){
+      const diffY=
+        touch.clientY-startY;
 
-      if(diffX<0){
+      if(
+        Math.abs(diffX)>
+        Math.abs(diffY)
+      ){
 
-        cardState[productKey]=
-          (cardState[productKey]+1)%3;
-
-      }else{
-
-        cardState[productKey]=
-          (cardState[productKey]+2)%3;
+        moved=true;
 
       }
 
-      updateCard(productKey);
+    },
+    {passive:true}
+  );
 
-    }else if(!moved){
 
-      openProduct(productKey);
+  card.addEventListener(
+    "touchend",
+    function(event){
 
-    }
+      if(
+        !event.changedTouches.length
+      ){
 
-  },{passive:true});
+        return;
+
+      }
+
+      const endX=
+        event.changedTouches[0].clientX;
+
+      const diffX=
+        endX-startX;
+
+
+      if(
+        Math.abs(diffX)>45
+      ){
+
+        if(diffX<0){
+
+          cardState[productKey]=
+            (cardState[productKey]+1)%3;
+
+        }else{
+
+          cardState[productKey]=
+            (cardState[productKey]+2)%3;
+
+        }
+
+        updateCard(productKey);
+
+      }else if(!moved){
+
+        openProduct(productKey);
+
+      }
+
+    },
+    {passive:true}
+  );
 
 });
 
 
-document.querySelectorAll(".product-card-image").forEach(function(card){
+document
+.querySelectorAll(".product-card-image")
+.forEach(function(card){
 
-  card.addEventListener("click",function(event){
+  card.addEventListener(
+    "click",
+    function(event){
 
-    if(event.target.closest(".card-arrow")){
-      return;
+      if(
+        event.target.closest(".card-arrow")
+      ){
+        return;
+      }
+
+      if(
+        event.target.closest(".card-dot")
+      ){
+        return;
+      }
+
+      if(
+        "ontouchstart" in window
+      ){
+        return;
+      }
+
+      openProduct(
+        card.dataset.card
+      );
+
     }
-
-    if(event.target.closest(".card-dot")){
-      return;
-    }
-
-    if("ontouchstart" in window){
-      return;
-    }
-
-    openProduct(card.dataset.card);
-
-  });
+  );
 
 });
 
+
+/* ================================
+   OPEN PRODUCT
+================================ */
 
 function openProduct(productKey){
 
-  currentProduct=productKey;
+  currentProduct=
+    productKey;
 
   currentColor=
     products[productKey].defaultColor;
 
-  currentView="front";
-  selectedSize=null;
+  currentView=
+    "front";
 
-  document.getElementById("selectedSize").textContent=
+  selectedSize=
+    null;
+
+  document
+  .getElementById("selectedSize")
+  .textContent=
     "SELECT SIZE";
+
+  hideAddedMessage();
 
   renderProduct();
 
   const detail=
-    document.getElementById("productDetail");
+    document.getElementById(
+      "productDetail"
+    );
 
-  detail.classList.add("active");
+  detail.classList.add(
+    "active"
+  );
 
   setTimeout(function(){
 
     detail.scrollIntoView({
+
       behavior:"smooth",
+
       block:"start"
+
     });
 
   },50);
@@ -1573,104 +2225,183 @@ function openProduct(productKey){
 }
 
 
+/* ================================
+   RENDER PRODUCT
+================================ */
+
 function renderProduct(){
 
-  const product=products[currentProduct];
+  const product=
+    products[currentProduct];
 
-  document.getElementById("productName").textContent=
+  document
+  .getElementById("productName")
+  .textContent=
     product.name;
 
-  document.getElementById("productPrice").textContent=
+  document
+  .getElementById("productPrice")
+  .textContent=
     product.price;
 
-  document.getElementById("productDescription").textContent=
+  document
+  .getElementById("productDescription")
+  .textContent=
     product.description;
 
-  document.getElementById("stockNote").textContent=
+  document
+  .getElementById("stockNote")
+  .textContent=
     product.stock;
 
   renderColors();
+
   renderSizes();
+
   updateImages();
+
   updateActionButton();
 
 }
 
 
+/* ================================
+   COLORS
+================================ */
+
 function renderColors(){
 
-  const product=products[currentProduct];
+  const product=
+    products[currentProduct];
 
   const container=
-    document.getElementById("colorOptions");
+    document.getElementById(
+      "colorOptions"
+    );
 
   container.innerHTML="";
 
-  Object.keys(product.colors).forEach(function(colorKey){
 
-    const color=product.colors[colorKey];
+  Object
+  .keys(product.colors)
+  .forEach(function(colorKey){
+
+    const color=
+      product.colors[colorKey];
 
     const button=
-      document.createElement("button");
+      document.createElement(
+        "button"
+      );
 
-    button.className="color-btn";
+    button.className=
+      "color-btn";
 
-    if(colorKey===currentColor){
-      button.classList.add("active");
+    if(
+      colorKey===currentColor
+    ){
+
+      button.classList.add(
+        "active"
+      );
+
     }
 
-    button.textContent=color.label;
+    button.textContent=
+      color.label;
 
-    button.onclick=function(){
-      changeColor(colorKey);
-    };
+    button.onclick=
+      function(){
 
-    container.appendChild(button);
+        changeColor(
+          colorKey
+        );
+
+      };
+
+    container.appendChild(
+      button
+    );
 
   });
 
-  document.getElementById("selectedColor").textContent=
-    product.colors[currentColor].label;
+
+  document
+  .getElementById("selectedColor")
+  .textContent=
+    product
+    .colors[currentColor]
+    .label;
 
 }
 
 
 function changeColor(color){
 
-  currentColor=color;
-  currentView="front";
-  selectedSize=null;
+  currentColor=
+    color;
 
-  document.getElementById("selectedSize").textContent=
+  currentView=
+    "front";
+
+  selectedSize=
+    null;
+
+  document
+  .getElementById("selectedSize")
+  .textContent=
     "SELECT SIZE";
 
+  hideAddedMessage();
+
   renderColors();
+
   renderSizes();
+
   updateImages();
+
   updateActionButton();
 
 }
 
 
+/* ================================
+   SIZES
+================================ */
+
 function renderSizes(){
 
-  const product=products[currentProduct];
+  const product=
+    products[currentProduct];
 
   const container=
-    document.getElementById("sizeOptions");
+    document.getElementById(
+      "sizeOptions"
+    );
 
   container.innerHTML="";
 
-  product.sizes.forEach(function(size){
+
+  product
+  .sizes
+  .forEach(function(size){
 
     const button=
-      document.createElement("button");
+      document.createElement(
+        "button"
+      );
 
-    button.className="size-btn";
+    button.className=
+      "size-btn";
 
-    if(!size.available){
 
-      button.classList.add("sold-out");
+    if(
+      !size.available
+    ){
+
+      button.classList.add(
+        "sold-out"
+      );
 
       button.innerHTML=
         size.name+
@@ -1678,15 +2409,24 @@ function renderSizes(){
 
     }else{
 
-      button.textContent=size.name;
+      button.textContent=
+        size.name;
 
-      button.onclick=function(){
-        selectSize(button,size.name);
-      };
+      button.onclick=
+        function(){
+
+          selectSize(
+            button,
+            size.name
+          );
+
+        };
 
     }
 
-    container.appendChild(button);
+    container.appendChild(
+      button
+    );
 
   });
 
@@ -1695,46 +2435,88 @@ function renderSizes(){
 
 function selectSize(button,size){
 
-  selectedSize=size;
+  selectedSize=
+    size;
 
-  document.querySelectorAll(".size-btn").forEach(function(btn){
-    btn.classList.remove("active");
+  document
+  .querySelectorAll(".size-btn")
+  .forEach(function(btn){
+
+    btn.classList.remove(
+      "active"
+    );
+
   });
 
-  button.classList.add("active");
+  button.classList.add(
+    "active"
+  );
 
-  document.getElementById("selectedSize").textContent=
+  document
+  .getElementById("selectedSize")
+  .textContent=
     size;
+
+  hideAddedMessage();
 
   updateActionButton();
 
 }
 
 
+/* ================================
+   VIEWS
+================================ */
+
 function changeView(view){
 
-  currentView=view;
+  currentView=
+    view;
 
-  document.querySelectorAll(".view-btn").forEach(function(btn){
-    btn.classList.remove("active");
+  document
+  .querySelectorAll(".view-btn")
+  .forEach(function(btn){
+
+    btn.classList.remove(
+      "active"
+    );
+
   });
 
-  document.querySelectorAll(".thumb").forEach(function(thumb){
-    thumb.classList.remove("active");
+  document
+  .querySelectorAll(".thumb")
+  .forEach(function(thumb){
+
+    thumb.classList.remove(
+      "active"
+    );
+
   });
 
-  document.querySelector(
+  document
+  .querySelector(
     `.view-btn[data-view="${view}"]`
-  ).classList.add("active");
+  )
+  .classList.add(
+    "active"
+  );
 
-  document.querySelector(
+  document
+  .querySelector(
     `.thumb[data-view="${view}"]`
-  ).classList.add("active");
+  )
+  .classList.add(
+    "active"
+  );
 
   updateMainImage();
 
 }
 
+
+/* ================================
+   IMAGES
+================================ */
 
 function updateImages(){
 
@@ -1743,32 +2525,64 @@ function updateImages(){
     .colors[currentColor]
     .images;
 
-  document.getElementById("thumbFront").src=
+  document
+  .getElementById("thumbFront")
+  .src=
     images.front;
 
-  document.getElementById("thumbBack").src=
+  document
+  .getElementById("thumbBack")
+  .src=
     images.back;
 
-  document.getElementById("thumbModel").src=
+  document
+  .getElementById("thumbModel")
+  .src=
     images.model;
 
-  currentView="front";
+  currentView=
+    "front";
 
-  document.querySelectorAll(".view-btn").forEach(function(btn){
-    btn.classList.remove("active");
+
+  document
+  .querySelectorAll(".view-btn")
+  .forEach(function(btn){
+
+    btn.classList.remove(
+      "active"
+    );
+
   });
 
-  document.querySelectorAll(".thumb").forEach(function(thumb){
-    thumb.classList.remove("active");
+
+  document
+  .querySelectorAll(".thumb")
+  .forEach(function(thumb){
+
+    thumb.classList.remove(
+      "active"
+    );
+
   });
 
-  document.querySelector(
+
+  document
+  .querySelector(
     '.view-btn[data-view="front"]'
-  ).classList.add("active");
+  )
+  .classList.add(
+    "active"
+  );
 
-  document.querySelector(
+
+  document
+  .querySelector(
     '.thumb[data-view="front"]'
-  ).classList.add("active");
+  )
+  .classList.add(
+    "active"
+  );
+
 
   updateMainImage();
 
@@ -1782,10 +2596,14 @@ function updateMainImage(){
     .colors[currentColor]
     .images[currentView];
 
-  document.getElementById("mainImage").src=
+  document
+  .getElementById("mainImage")
+  .src=
     image;
 
-  document.getElementById("mainImage").alt=
+  document
+  .getElementById("mainImage")
+  .alt=
     products[currentProduct].name+
     " "+
     currentView;
@@ -1793,58 +2611,684 @@ function updateMainImage(){
 }
 
 
+/* ================================
+   ACTION BUTTON
+================================ */
+
 function updateActionButton(){
 
   const button=
-    document.getElementById("actionButton");
+    document.getElementById(
+      "actionButton"
+    );
 
   if(selectedSize){
 
-    button.textContent="ADD TO BAG";
+    button.textContent=
+      "ADD TO BAG";
 
   }else{
 
-    button.textContent="SELECT SIZE";
+    button.textContent=
+      "SELECT SIZE";
 
   }
 
 }
 
 
+/* ================================
+   ADD TO BAG
+================================ */
+
 function handleAction(){
 
-  if(!selectedSize){
+  if(
+    !selectedSize
+  ){
 
-    alert("Please select your size.");
+    alert(
+      "Please select your size."
+    );
+
+    return;
+
+  }
+
+
+  const product=
+    products[currentProduct];
+
+  const color=
+    product.colors[currentColor];
+
+  const cart=
+    getCart();
+
+
+  const itemId=
+    "dev-tshirt-"+
+    product.id+
+    "-"+
+    currentColor+
+    "-"+
+    selectedSize;
+
+
+  const existing=
+    cart.find(function(item){
+
+      return item.id===itemId;
+
+    });
+
+
+  if(existing){
+
+    existing.quantity=
+      Number(
+        existing.quantity ??
+        existing.qty ??
+        1
+      )+1;
+
+    delete existing.qty;
+
+  }else{
+
+    cart.push({
+
+      id:itemId,
+
+      productId:product.id,
+
+      name:product.name,
+
+      section:"MEN",
+
+      category:"T-SHIRTS",
+
+      color:color.label,
+
+      size:selectedSize,
+
+      price:product.priceValue,
+
+      quantity:1,
+
+      image:toAbsoluteImage(
+        color.images.front
+      )
+
+    });
+
+  }
+
+
+  saveCart(cart);
+
+  showAddedMessage();
+
+  openCart();
+
+}
+
+
+/* ================================
+   ADDED MESSAGE
+================================ */
+
+function showAddedMessage(){
+
+  const message=
+    document.getElementById(
+      "addedMessage"
+    );
+
+  message.classList.add(
+    "show"
+  );
+
+  setTimeout(function(){
+
+    message.classList.remove(
+      "show"
+    );
+
+  },2000);
+
+}
+
+
+function hideAddedMessage(){
+
+  document
+  .getElementById(
+    "addedMessage"
+  )
+  .classList.remove(
+    "show"
+  );
+
+}
+
+
+/* ================================
+   CART STORAGE
+================================ */
+
+function getCart(){
+
+  try{
+
+    const stored=
+      JSON.parse(
+        localStorage.getItem(
+          CART_KEY
+        )
+      );
+
+    return Array.isArray(stored)
+      ? stored
+      : [];
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function saveCart(cart){
+
+  localStorage.setItem(
+    CART_KEY,
+    JSON.stringify(cart)
+  );
+
+  renderCart();
+
+}
+
+
+/* ================================
+   IMAGE PATH
+================================ */
+
+function toAbsoluteImage(path){
+
+  try{
+
+    return new URL(
+      path,
+      window.location.href
+    ).href;
+
+  }catch(error){
+
+    return path;
+
+  }
+
+}
+
+
+/* ================================
+   CART QUANTITY
+================================ */
+
+function getItemQuantity(item){
+
+  return Number(
+    item.quantity ??
+    item.qty ??
+    1
+  );
+
+}
+
+
+/* ================================
+   RENDER CART
+================================ */
+
+function renderCart(){
+
+  const cart=
+    getCart();
+
+  const container=
+    document.getElementById(
+      "cartItems"
+    );
+
+  const count=
+    document.getElementById(
+      "cartCount"
+    );
+
+  const totalElement=
+    document.getElementById(
+      "cartTotal"
+    );
+
+
+  let totalQuantity=0;
+
+  let totalPrice=0;
+
+
+  cart.forEach(function(item){
+
+    const quantity=
+      getItemQuantity(item);
+
+    totalQuantity+=
+      quantity;
+
+    totalPrice+=
+      Number(item.price || 0)*
+      quantity;
+
+  });
+
+
+  count.textContent=
+    totalQuantity;
+
+  totalElement.textContent=
+    "AED "+
+    totalPrice;
+
+
+  if(
+    cart.length===0
+  ){
+
+    container.innerHTML=
+      '<div class="cart-empty">'+
+      'YOUR BAG IS EMPTY.<br>'+
+      'ADD SOMETHING BUILT DIFFERENT.'+
+      '</div>';
+
+    return;
+
+  }
+
+
+  container.innerHTML="";
+
+
+  cart.forEach(
+    function(item,index){
+
+      const quantity=
+        getItemQuantity(item);
+
+      const itemElement=
+        document.createElement(
+          "div"
+        );
+
+      itemElement.className=
+        "cart-item";
+
+
+      itemElement.innerHTML=
+
+        '<img '+
+        'class="cart-item-image" '+
+        'src="'+
+        escapeHtml(
+          item.image || ""
+        )+
+        '" '+
+        'alt="'+
+        escapeHtml(
+          item.name || "DEV Product"
+        )+
+        '">'+
+
+        '<div class="cart-item-info">'+
+
+          '<div class="cart-item-name">'+
+            escapeHtml(
+              item.name || "DEV PRODUCT"
+            )+
+          '</div>'+
+
+          '<div class="cart-item-meta">'+
+
+            escapeHtml(
+              item.section || ""
+            )+
+
+            (
+              item.category
+              ? " / "+
+                escapeHtml(
+                  item.category
+                )
+              : ""
+            )+
+
+            '<br>'+
+
+            (
+              item.color
+              ? escapeHtml(
+                  item.color
+                )
+              : ""
+            )+
+
+            (
+              item.size
+              ? " · SIZE "+
+                escapeHtml(
+                  item.size
+                )
+              : ""
+            )+
+
+          '</div>'+
+
+          '<div class="cart-item-price">'+
+            'AED '+
+            (
+              Number(
+                item.price || 0
+              )*
+              quantity
+            )+
+          '</div>'+
+
+          '<div class="cart-item-controls">'+
+
+            '<div class="quantity-control">'+
+
+              '<button '+
+                'class="quantity-btn" '+
+                'onclick="changeQuantity('+
+                index+
+                ',-1)">'+
+                '−'+
+              '</button>'+
+
+              '<div class="quantity-value">'+
+                quantity+
+              '</div>'+
+
+              '<button '+
+                'class="quantity-btn" '+
+                'onclick="changeQuantity('+
+                index+
+                ',1)">'+
+                '+'+
+              '</button>'+
+
+            '</div>'+
+
+            '<button '+
+              'class="remove-item" '+
+              'onclick="removeCartItem('+
+              index+
+              ')">'+
+              'REMOVE'+
+            '</button>'+
+
+          '</div>'+
+
+        '</div>';
+
+
+      container.appendChild(
+        itemElement
+      );
+
+    }
+  );
+
+}
+
+
+/* ================================
+   CHANGE QUANTITY
+================================ */
+
+function changeQuantity(index,change){
+
+  const cart=
+    getCart();
+
+  if(
+    !cart[index]
+  ){
+    return;
+  }
+
+
+  let quantity=
+    getItemQuantity(
+      cart[index]
+    );
+
+  quantity+=
+    change;
+
+
+  if(
+    quantity<=0
+  ){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }else{
+
+    cart[index].quantity=
+      quantity;
+
+    delete cart[index].qty;
+
+  }
+
+
+  saveCart(cart);
+
+}
+
+
+/* ================================
+   REMOVE CART ITEM
+================================ */
+
+function removeCartItem(index){
+
+  const cart=
+    getCart();
+
+  if(
+    !cart[index]
+  ){
+    return;
+  }
+
+  cart.splice(
+    index,
+    1
+  );
+
+  saveCart(cart);
+
+}
+
+
+/* ================================
+   OPEN / CLOSE CART
+================================ */
+
+function openCart(){
+
+  document
+  .getElementById(
+    "cartDrawer"
+  )
+  .classList.add(
+    "open"
+  );
+
+  document
+  .getElementById(
+    "cartOverlay"
+  )
+  .classList.add(
+    "open"
+  );
+
+  document.body.classList.add(
+    "cart-open"
+  );
+
+  renderCart();
+
+}
+
+
+function closeCart(){
+
+  document
+  .getElementById(
+    "cartDrawer"
+  )
+  .classList.remove(
+    "open"
+  );
+
+  document
+  .getElementById(
+    "cartOverlay"
+  )
+  .classList.remove(
+    "open"
+  );
+
+  document.body.classList.remove(
+    "cart-open"
+  );
+
+}
+
+
+/* ================================
+   CHECKOUT
+================================ */
+
+function checkout(){
+
+  const cart=
+    getCart();
+
+  if(
+    cart.length===0
+  ){
+
+    alert(
+      "Your bag is empty."
+    );
 
     return;
 
   }
 
   alert(
-    products[currentProduct].name+
-    " — Size "+
-    selectedSize+
-    "\n\nDEV checkout will be connected soon."
+    "DEV checkout will be connected soon."
   );
 
 }
 
 
+/* ================================
+   ESCAPE HTML
+================================ */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* ================================
+   BACK TO PRODUCTS
+================================ */
+
 function backToProducts(){
 
-  document.getElementById("products").scrollIntoView({
+  document
+  .getElementById(
+    "products"
+  )
+  .scrollIntoView({
+
     behavior:"smooth"
+
   });
 
 }
 
 
+/* ================================
+   MOBILE MENU
+================================ */
+
 function toggleMenu(){
 
-  document.getElementById("navLinks").classList.toggle("open");
+  document
+  .getElementById(
+    "navLinks"
+  )
+  .classList.toggle(
+    "open"
+  );
 
 }
+
+
+/* ================================
+   ESC KEY
+================================ */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key==="Escape"
+    ){
+
+      closeCart();
+
+    }
+
+  }
+);
+
+
+/* ================================
+   INITIAL CART
+================================ */
+
+renderCart();
 
 </script>
 
