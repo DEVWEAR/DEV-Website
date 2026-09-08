@@ -20,7 +20,7 @@ html{
 }
 
 body{
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   background:#f7f7f5;
   color:#111;
 }
@@ -39,9 +39,7 @@ button{
 }
 
 
-/* ================================
-   TOP BAR
-================================ */
+/* TOP BAR */
 
 .top-bar{
   background:#fff;
@@ -53,91 +51,126 @@ button{
 }
 
 
-/* ================================
-   NAV
-================================ */
+/* NAV */
 
 nav{
-  background:#0c0c0c;
-  color:#fff;
+  position:relative;
+  z-index:1000;
+  min-height:76px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:18px 5%;
-  position:relative;
-  z-index:20;
+  gap:28px;
+  padding:0 5%;
+  background:#0c0c0c;
+  color:#fff;
+  border-bottom:1px solid #1f1f1f;
 }
 
 .logo{
-  font-size:26px;
+  flex-shrink:0;
+  font-size:28px;
   font-weight:900;
   letter-spacing:5px;
 }
 
-.nav-links{
+.gender-nav{
   display:flex;
   align-items:center;
   gap:26px;
 }
 
-.nav-links a{
-  font-size:11px;
-  letter-spacing:1.5px;
-  font-weight:700;
+.gender-nav a{
+  position:relative;
+  padding:31px 0 27px;
+  color:#888;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
-.nav-links a:hover{
-  opacity:.65;
+.gender-nav a:hover,
+.gender-nav a.active{
+  color:#fff;
+}
+
+.gender-nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:19px;
+  height:1px;
+  background:#fff;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-left:auto;
+}
+
+.nav-links a{
+  color:#aaa;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.3px;
+}
+
+.nav-links a:hover,
+.nav-links a.current{
+  color:#fff;
 }
 
 .nav-right{
   display:flex;
   align-items:center;
-  gap:18px;
-}
-
-.nav-icon{
-  font-size:20px;
-  cursor:pointer;
-}
-
-.cart-button{
-  border:none;
-  background:transparent;
-  color:#fff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.5px;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.cart-count{
-  min-width:20px;
-  height:20px;
-  padding:0 5px;
-  border-radius:20px;
-  background:#fff;
-  color:#111;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:9px;
-  font-weight:900;
+  gap:10px;
 }
 
 .menu-btn{
   display:none;
-  font-size:22px;
+  color:#fff;
   cursor:pointer;
+  font-size:22px;
+}
+
+.cart-button{
+  position:relative;
+  width:42px;
+  height:42px;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#171717;
+  color:#fff;
+  cursor:pointer;
+  font-size:17px;
+}
+
+.cart-count{
+  display:none;
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  background:#fff;
+  color:#000;
+  border:1px solid #000;
+  font-size:9px;
+  font-weight:900;
+}
+
+.cart-count.active{
+  display:flex;
 }
 
 
-/* ================================
-   PAGE HEADER
-================================ */
+/* PAGE HEADER */
 
 .page-header{
   background:#111;
@@ -172,9 +205,7 @@ nav{
 }
 
 
-/* ================================
-   COLLECTION BAR
-================================ */
+/* COLLECTION BAR */
 
 .collection-bar{
   max-width:1400px;
@@ -200,9 +231,7 @@ nav{
 }
 
 
-/* ================================
-   PRODUCT GRID
-================================ */
+/* PRODUCT GRID */
 
 .product-grid{
   max-width:1400px;
@@ -214,9 +243,7 @@ nav{
 }
 
 
-/* ================================
-   PRODUCT CARD
-================================ */
+/* PRODUCT CARD */
 
 .product-card{
   cursor:pointer;
@@ -367,9 +394,7 @@ nav{
 }
 
 
-/* ================================
-   PRODUCT DETAIL
-================================ */
+/* PRODUCT DETAIL */
 
 .product-detail{
   display:none;
@@ -409,9 +434,7 @@ nav{
 }
 
 
-/* ================================
-   FRONT / BACK / MODEL
-================================ */
+/* FRONT BACK MODEL */
 
 .view-selector{
   display:grid;
@@ -466,9 +489,7 @@ nav{
 }
 
 
-/* ================================
-   PRODUCT INFO
-================================ */
+/* PRODUCT INFO */
 
 .product-info{
   padding-top:5px;
@@ -630,15 +651,116 @@ nav{
 }
 
 
-/* ================================
-   CART
-================================ */
+/* FOOTER */
+
+footer{
+  padding:70px 6% 30px;
+  background:#050505;
+  color:#fff;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;
+  gap:50px;
+}
+
+.footer-brand{
+  max-width:320px;
+}
+
+.footer-logo{
+  font-size:36px;
+  font-weight:900;
+  letter-spacing:7px;
+}
+
+.footer-text{
+  max-width:310px;
+  margin-top:16px;
+  color:#666;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.footer-column h4{
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid #1c1c1c;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.footer-column a,
+.footer-column .footer-disabled{
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin-bottom:14px;
+  color:#777;
+  font-size:10px;
+  letter-spacing:1.3px;
+  line-height:1.5;
+  transition:.2s;
+}
+
+.footer-column a:hover{
+  color:#fff;
+}
+
+.footer-disabled{
+  color:#444 !important;
+  cursor:default;
+}
+
+.footer-social-link{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+}
+
+.social-mark{
+  width:28px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border:1px solid #272727;
+  border-radius:50%;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+
+.social-handle{
+  display:block;
+  margin-top:4px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:.6px;
+}
+
+.copyright{
+  margin-top:55px;
+  padding-top:25px;
+  border-top:1px solid #171717;
+  text-align:center;
+  color:#444;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+
+/* CART */
 
 .cart-overlay{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.55);
-  z-index:998;
+  z-index:1998;
   opacity:0;
   visibility:hidden;
   transition:.3s ease;
@@ -656,7 +778,7 @@ nav{
   width:min(430px,100%);
   height:100vh;
   background:#fff;
-  z-index:999;
+  z-index:1999;
   transform:translateX(100%);
   transition:transform .3s ease;
   display:flex;
@@ -838,42 +960,27 @@ nav{
 }
 
 
-/* ================================
-   FOOTER
-================================ */
+/* RESPONSIVE */
 
-footer{
-  background:#0c0c0c;
-  color:#fff;
-  padding:50px 5%;
-}
+@media(max-width:1150px){
 
-.footer-logo{
-  display:block;
-  font-size:26px;
-  font-weight:900;
-  letter-spacing:5px;
-  margin-bottom:20px;
-}
+  .nav-links{
+    gap:14px;
+  }
 
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-}
+  .nav-links a{
+    font-size:8px;
+  }
 
-.footer-links a{
-  color:#aaa;
-  font-size:11px;
-}
+  .footer-top{
+    grid-template-columns:repeat(4,1fr);
+  }
 
-.footer-bottom{
-  border-top:1px solid #292929;
-  margin-top:30px;
-  padding-top:20px;
-  color:#666;
-  font-size:9px;
-  letter-spacing:1px;
+  .footer-brand{
+    grid-column:1 / -1;
+    max-width:500px;
+  }
+
 }
 
 @media(max-width:1000px){
@@ -887,7 +994,28 @@ footer{
 @media(max-width:850px){
 
   nav{
-    padding:16px 5%;
+    min-height:68px;
+    padding:0 4%;
+    gap:16px;
+  }
+
+  .logo{
+    font-size:27px;
+  }
+
+  .gender-nav{
+    gap:18px;
+    margin-left:auto;
+  }
+
+  .gender-nav a{
+    padding:27px 0 24px;
+    font-size:9px;
+    letter-spacing:1.5px;
+  }
+
+  .gender-nav a.active::after{
+    bottom:17px;
   }
 
   .nav-links{
@@ -895,17 +1023,23 @@ footer{
     position:absolute;
     top:100%;
     left:0;
+    z-index:50;
     width:100%;
+    margin:0;
+    padding:25px 5%;
     background:#111;
+    border-top:1px solid #242424;
     flex-direction:column;
     align-items:flex-start;
-    padding:25px 5%;
     gap:22px;
-    z-index:50;
   }
 
   .nav-links.open{
     display:flex;
+  }
+
+  .nav-links a{
+    font-size:10px;
   }
 
   .menu-btn{
@@ -934,13 +1068,62 @@ footer{
     display:none;
   }
 
-  .nav-icon{
-    display:none;
+}
+
+@media(max-width:700px){
+
+  footer{
+    padding:50px 6% 25px;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:42px 24px;
+  }
+
+  .footer-brand{
+    grid-column:1 / -1;
+  }
+
+  .footer-column h4{
+    margin-bottom:16px;
+  }
+
+  .footer-column a,
+  .footer-column .footer-disabled{
+    margin-bottom:13px;
+    font-size:9px;
+  }
+
+  .copyright{
+    margin-top:40px;
   }
 
 }
 
 @media(max-width:600px){
+
+  nav{
+    gap:10px;
+  }
+
+  .logo{
+    font-size:25px;
+    letter-spacing:4px;
+  }
+
+  .gender-nav{
+    gap:13px;
+  }
+
+  .gender-nav a{
+    font-size:8px;
+  }
+
+  .cart-button{
+    width:40px;
+    height:40px;
+  }
 
   .collection-bar{
     padding:20px 3% 12px;
@@ -952,10 +1135,7 @@ footer{
     gap:25px 7px;
   }
 
-  .product-card-name{
-    font-size:10px;
-  }
-
+  .product-card-name,
   .product-card-price{
     font-size:10px;
   }
@@ -1012,36 +1192,85 @@ footer{
   DEV — BUILT DIFFERENT
 </div>
 
+
 <nav>
 
-  <a href="../index.html" class="logo">DEV</a>
+  <a href="/DEV-Website/" class="logo">
+    DEV
+  </a>
+
+  <div class="gender-nav">
+
+    <a
+      href="/DEV-Website/"
+      class="active">
+      MEN
+    </a>
+
+    <a href="/DEV-Website/women/">
+      WOMEN
+    </a>
+
+  </div>
 
   <div class="nav-links" id="navLinks">
 
-    <a href="#products">T-SHIRTS</a>
-    <a href="../polo/">POLO</a>
-    <a href="../shorts/">SHORTS</a>
-    <a href="../baggy-pants/">BAGGY PANTS</a>
-    <a href="#">HOODIES</a>
-    <a href="#">SWEATERS</a>
+    <a
+      href="/DEV-Website/tshirts/"
+      class="current">
+      T-SHIRTS
+    </a>
+
+    <a href="/DEV-Website/polo/">
+      POLO
+    </a>
+
+    <a href="/DEV-Website/shorts/">
+      SHORTS
+    </a>
+
+    <a href="/DEV-Website/baggy-pants/">
+      BAGGY PANTS
+    </a>
+
+    <a href="#">
+      HOODIES
+    </a>
+
+    <a href="#">
+      SWEATERS
+    </a>
 
   </div>
 
   <div class="nav-right">
 
-    <span class="nav-icon">⌕</span>
-    <span class="nav-icon">♡</span>
+    <button
+      class="cart-button"
+      type="button"
+      onclick="openCart()"
+      aria-label="Shopping bag">
 
-    <button class="cart-button" onclick="openCart()">
-      BAG
-      <span class="cart-count" id="cartCount">0</span>
+      🛒
+
+      <span
+        class="cart-count"
+        id="cartCount">
+        0
+      </span>
+
     </button>
 
-    <span class="menu-btn" onclick="toggleMenu()">☰</span>
+    <span
+      class="menu-btn"
+      onclick="toggleMenu()">
+      ☰
+    </span>
 
   </div>
 
 </nav>
+
 
 <section class="page-header">
 
@@ -1051,7 +1280,9 @@ footer{
       DEV / SHOP
     </div>
 
-    <h1>T-SHIRTS</h1>
+    <h1>
+      T-SHIRTS
+    </h1>
 
     <p>
       Built for training. Designed for the street.
@@ -1062,7 +1293,10 @@ footer{
 
 </section>
 
-<section class="collection-bar" id="products">
+
+<section
+  class="collection-bar"
+  id="products">
 
   <div class="collection-title">
     DEV T-SHIRTS
@@ -1074,6 +1308,7 @@ footer{
 
 </section>
 
+
 <section class="product-grid">
 
 
@@ -1081,41 +1316,76 @@ footer{
 
 <article class="product-card">
 
-  <div class="product-card-image" data-card="closeEyes">
+  <div
+    class="product-card-image"
+    data-card="closeEyes">
 
-    <div class="product-badge">NEW</div>
-    <div class="swipe-label">SWIPE</div>
+    <div class="product-badge">
+      NEW
+    </div>
+
+    <div class="swipe-label">
+      SWIPE
+    </div>
 
     <div class="card-track">
 
       <div class="card-slide">
-        <img src="../close-eyes-front.jfif" alt="Close Your Eyes Tee Front">
+        <img
+          src="../close-eyes-front.jfif"
+          alt="Close Your Eyes Tee Front">
       </div>
 
       <div class="card-slide">
-        <img src="../close-eyes-back.jfif" alt="Close Your Eyes Tee Back">
+        <img
+          src="../close-eyes-back.jfif"
+          alt="Close Your Eyes Tee Back">
       </div>
 
       <div class="card-slide">
-        <img src="../close-eyes-model.jpeg" alt="Close Your Eyes Tee Model">
+        <img
+          src="../close-eyes-model.jpeg"
+          alt="Close Your Eyes Tee Model">
       </div>
 
     </div>
 
-    <button class="card-arrow left" onclick="cardPrev(event,'closeEyes')">‹</button>
-    <button class="card-arrow right" onclick="cardNext(event,'closeEyes')">›</button>
+    <button
+      class="card-arrow left"
+      onclick="cardPrev(event,'closeEyes')">
+      ‹
+    </button>
+
+    <button
+      class="card-arrow right"
+      onclick="cardNext(event,'closeEyes')">
+      ›
+    </button>
 
     <div class="card-dots">
 
-      <button class="card-dot active" onclick="cardGoTo(event,'closeEyes',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',2)"></button>
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'closeEyes',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'closeEyes',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'closeEyes',2)">
+      </button>
 
     </div>
 
   </div>
 
-  <div class="product-card-info" onclick="openProduct('closeEyes')">
+  <div
+    class="product-card-info"
+    onclick="openProduct('closeEyes')">
 
     <div class="product-card-name">
       CLOSE YOUR EYES TEE
@@ -1138,41 +1408,76 @@ footer{
 
 <article class="product-card">
 
-  <div class="product-card-image" data-card="yujiroJack">
+  <div
+    class="product-card-image"
+    data-card="yujiroJack">
 
-    <div class="product-badge">NEW</div>
-    <div class="swipe-label">SWIPE</div>
+    <div class="product-badge">
+      NEW
+    </div>
+
+    <div class="swipe-label">
+      SWIPE
+    </div>
 
     <div class="card-track">
 
       <div class="card-slide">
-        <img src="../yujiro-jack-front.jfif" alt="Yujiro Jack Hanma Tee Front">
+        <img
+          src="../yujiro-jack-front.jfif"
+          alt="Yujiro Jack Hanma Tee Front">
       </div>
 
       <div class="card-slide">
-        <img src="../yujiro-jack-back.jpeg" alt="Yujiro Jack Hanma Tee Back">
+        <img
+          src="../yujiro-jack-back.jpeg"
+          alt="Yujiro Jack Hanma Tee Back">
       </div>
 
       <div class="card-slide">
-        <img src="../yujiro-jack-model.jpeg" alt="Yujiro Jack Hanma Tee Model">
+        <img
+          src="../yujiro-jack-model.jpeg"
+          alt="Yujiro Jack Hanma Tee Model">
       </div>
 
     </div>
 
-    <button class="card-arrow left" onclick="cardPrev(event,'yujiroJack')">‹</button>
-    <button class="card-arrow right" onclick="cardNext(event,'yujiroJack')">›</button>
+    <button
+      class="card-arrow left"
+      onclick="cardPrev(event,'yujiroJack')">
+      ‹
+    </button>
+
+    <button
+      class="card-arrow right"
+      onclick="cardNext(event,'yujiroJack')">
+      ›
+    </button>
 
     <div class="card-dots">
 
-      <button class="card-dot active" onclick="cardGoTo(event,'yujiroJack',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',2)"></button>
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'yujiroJack',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yujiroJack',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yujiroJack',2)">
+      </button>
 
     </div>
 
   </div>
 
-  <div class="product-card-info" onclick="openProduct('yujiroJack')">
+  <div
+    class="product-card-info"
+    onclick="openProduct('yujiroJack')">
 
     <div class="product-card-name">
       YUJIRO × JACK HANMA TEE
@@ -1195,41 +1500,76 @@ footer{
 
 <article class="product-card">
 
-  <div class="product-card-image" data-card="yeahBuddy">
+  <div
+    class="product-card-image"
+    data-card="yeahBuddy">
 
-    <div class="product-badge">XXL ONLY</div>
-    <div class="swipe-label">SWIPE</div>
+    <div class="product-badge">
+      XXL ONLY
+    </div>
+
+    <div class="swipe-label">
+      SWIPE
+    </div>
 
     <div class="card-track">
 
       <div class="card-slide">
-        <img src="../yeah-buddy-front.jfif" alt="Yeah Buddy Tee Front">
+        <img
+          src="../yeah-buddy-front.jfif"
+          alt="Yeah Buddy Tee Front">
       </div>
 
       <div class="card-slide">
-        <img src="../yeah-buddy-back.jpeg" alt="Yeah Buddy Tee Back">
+        <img
+          src="../yeah-buddy-back.jpeg"
+          alt="Yeah Buddy Tee Back">
       </div>
 
       <div class="card-slide">
-        <img src="../yeah-buddy-model.jpeg" alt="Yeah Buddy Tee Model">
+        <img
+          src="../yeah-buddy-model.jpeg"
+          alt="Yeah Buddy Tee Model">
       </div>
 
     </div>
 
-    <button class="card-arrow left" onclick="cardPrev(event,'yeahBuddy')">‹</button>
-    <button class="card-arrow right" onclick="cardNext(event,'yeahBuddy')">›</button>
+    <button
+      class="card-arrow left"
+      onclick="cardPrev(event,'yeahBuddy')">
+      ‹
+    </button>
+
+    <button
+      class="card-arrow right"
+      onclick="cardNext(event,'yeahBuddy')">
+      ›
+    </button>
 
     <div class="card-dots">
 
-      <button class="card-dot active" onclick="cardGoTo(event,'yeahBuddy',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',2)"></button>
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'yeahBuddy',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yeahBuddy',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'yeahBuddy',2)">
+      </button>
 
     </div>
 
   </div>
 
-  <div class="product-card-info" onclick="openProduct('yeahBuddy')">
+  <div
+    class="product-card-info"
+    onclick="openProduct('yeahBuddy')">
 
     <div class="product-card-name">
       YEAH BUDDY TEE
@@ -1252,40 +1592,72 @@ footer{
 
 <article class="product-card">
 
-  <div class="product-card-image" data-card="originalGraphic">
+  <div
+    class="product-card-image"
+    data-card="originalGraphic">
 
-    <div class="swipe-label">SWIPE</div>
+    <div class="swipe-label">
+      SWIPE
+    </div>
 
     <div class="card-track">
 
       <div class="card-slide">
-        <img src="../graphic-tee-black-front.jpg.jpeg" alt="DEV Oversized Graphic Tee Front">
+        <img
+          src="../graphic-tee-black-front.jpg.jpeg"
+          alt="DEV Oversized Graphic Tee Front">
       </div>
 
       <div class="card-slide">
-        <img src="../graphic-tee-black-back.jpg.jpeg" alt="DEV Oversized Graphic Tee Back">
+        <img
+          src="../graphic-tee-black-back.jpg.jpeg"
+          alt="DEV Oversized Graphic Tee Back">
       </div>
 
       <div class="card-slide">
-        <img src="../graphic-tee-black-model.jpg.jpeg" alt="DEV Oversized Graphic Tee Model">
+        <img
+          src="../graphic-tee-black-model.jpg.jpeg"
+          alt="DEV Oversized Graphic Tee Model">
       </div>
 
     </div>
 
-    <button class="card-arrow left" onclick="cardPrev(event,'originalGraphic')">‹</button>
-    <button class="card-arrow right" onclick="cardNext(event,'originalGraphic')">›</button>
+    <button
+      class="card-arrow left"
+      onclick="cardPrev(event,'originalGraphic')">
+      ‹
+    </button>
+
+    <button
+      class="card-arrow right"
+      onclick="cardNext(event,'originalGraphic')">
+      ›
+    </button>
 
     <div class="card-dots">
 
-      <button class="card-dot active" onclick="cardGoTo(event,'originalGraphic',0)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',1)"></button>
-      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',2)"></button>
+      <button
+        class="card-dot active"
+        onclick="cardGoTo(event,'originalGraphic',0)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'originalGraphic',1)">
+      </button>
+
+      <button
+        class="card-dot"
+        onclick="cardGoTo(event,'originalGraphic',2)">
+      </button>
 
     </div>
 
   </div>
 
-  <div class="product-card-info" onclick="openProduct('originalGraphic')">
+  <div
+    class="product-card-info"
+    onclick="openProduct('originalGraphic')">
 
     <div class="product-card-name">
       DEV OVERSIZED GRAPHIC TEE
@@ -1306,9 +1678,11 @@ footer{
 </section>
 
 
-<!-- PRODUCT DETAILS -->
+<!-- PRODUCT DETAIL -->
 
-<section class="product-detail" id="productDetail">
+<section
+  class="product-detail"
+  id="productDetail">
 
 <div class="product-detail-inner">
 
@@ -1326,15 +1700,24 @@ footer{
 
   <div class="view-selector">
 
-    <button class="view-btn active" data-view="front" onclick="changeView('front')">
+    <button
+      class="view-btn active"
+      data-view="front"
+      onclick="changeView('front')">
       FRONT
     </button>
 
-    <button class="view-btn" data-view="back" onclick="changeView('back')">
+    <button
+      class="view-btn"
+      data-view="back"
+      onclick="changeView('back')">
       BACK
     </button>
 
-    <button class="view-btn" data-view="model" onclick="changeView('model')">
+    <button
+      class="view-btn"
+      data-view="model"
+      onclick="changeView('model')">
       MODEL
     </button>
 
@@ -1342,16 +1725,40 @@ footer{
 
   <div class="thumbnails">
 
-    <div class="thumb active" data-view="front" onclick="changeView('front')">
-      <img id="thumbFront" src="../close-eyes-front.jfif" alt="Front">
+    <div
+      class="thumb active"
+      data-view="front"
+      onclick="changeView('front')">
+
+      <img
+        id="thumbFront"
+        src="../close-eyes-front.jfif"
+        alt="Front">
+
     </div>
 
-    <div class="thumb" data-view="back" onclick="changeView('back')">
-      <img id="thumbBack" src="../close-eyes-back.jfif" alt="Back">
+    <div
+      class="thumb"
+      data-view="back"
+      onclick="changeView('back')">
+
+      <img
+        id="thumbBack"
+        src="../close-eyes-back.jfif"
+        alt="Back">
+
     </div>
 
-    <div class="thumb" data-view="model" onclick="changeView('model')">
-      <img id="thumbModel" src="../close-eyes-model.jpeg" alt="Model">
+    <div
+      class="thumb"
+      data-view="model"
+      onclick="changeView('model')">
+
+      <img
+        id="thumbModel"
+        src="../close-eyes-model.jpeg"
+        alt="Model">
+
     </div>
 
   </div>
@@ -1369,27 +1776,55 @@ footer{
     CLOSE YOUR EYES TEE
   </h2>
 
-  <div class="price" id="productPrice">
+  <div
+    class="price"
+    id="productPrice">
     AED 75
   </div>
 
   <div class="option-title">
-    <span>COLOR</span>
-    <span id="selectedColor">WHITE</span>
+
+    <span>
+      COLOR
+    </span>
+
+    <span id="selectedColor">
+      WHITE
+    </span>
+
   </div>
 
-  <div class="color-options" id="colorOptions"></div>
+  <div
+    class="color-options"
+    id="colorOptions">
+  </div>
 
   <div class="option-title">
-    <span>SIZE</span>
-    <span id="selectedSize">SELECT SIZE</span>
+
+    <span>
+      SIZE
+    </span>
+
+    <span id="selectedSize">
+      SELECT SIZE
+    </span>
+
   </div>
 
-  <div class="size-options" id="sizeOptions"></div>
+  <div
+    class="size-options"
+    id="sizeOptions">
+  </div>
 
-  <div class="description" id="productDescription"></div>
+  <div
+    class="description"
+    id="productDescription">
+  </div>
 
-  <div class="stock-note" id="stockNote"></div>
+  <div
+    class="stock-note"
+    id="stockNote">
+  </div>
 
   <button
     class="action-button"
@@ -1417,29 +1852,149 @@ footer{
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
-<a href="../index.html" class="footer-logo">
-  DEV
-</a>
+  <div class="footer-top">
 
-<div class="footer-links">
 
-  <a href="#products">T-Shirts</a>
-  <a href="../polo/">Polo</a>
-  <a href="../shorts/">Shorts</a>
-  <a href="../baggy-pants/">Baggy Pants</a>
-  <a href="#">Hoodies</a>
-  <a href="#">Sweaters</a>
+    <div class="footer-brand">
 
-</div>
+      <a
+        href="/DEV-Website/"
+        class="footer-logo">
+        DEV
+      </a>
 
-<div class="footer-bottom">
-  ©️ 2026 DEV. BUILT DIFFERENT.
-</div>
+      <div class="footer-text">
+        Performance streetwear.
+        Designed in the UAE.
+        Built for training,
+        lifestyle and everything after.
+      </div>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        MEN
+      </h4>
+
+      <a href="/DEV-Website/tshirts/">
+        T-SHIRTS
+      </a>
+
+      <a href="/DEV-Website/polo/">
+        POLO
+      </a>
+
+      <a href="/DEV-Website/shorts/">
+        SHORTS
+      </a>
+
+      <a href="/DEV-Website/baggy-pants/">
+        BAGGY PANTS
+      </a>
+
+      <span class="footer-disabled">
+        HOODIES
+      </span>
+
+      <span class="footer-disabled">
+        SWEATERS
+      </span>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        WOMEN
+      </h4>
+
+      <a href="/DEV-Website/women/">
+        TOPS
+      </a>
+
+      <a href="/DEV-Website/women/">
+        LEGGINGS
+      </a>
+
+      <a href="/DEV-Website/women/">
+        SHORTS
+      </a>
+
+      <a href="/DEV-Website/women/">
+        SETS
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        HELP
+      </h4>
+
+      <a
+        href="https://wa.me/971541420200"
+        target="_blank"
+        rel="noopener noreferrer">
+        WHATSAPP
+      </a>
+
+      <a href="mailto:Deavwear9@gmail.com">
+        EMAIL
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        FOLLOW DEV
+      </h4>
+
+      <a
+        class="footer-social-link"
+        href="https://www.tiktok.com/@dev.aj7?_r=1&_t=ZS-99ZXh3XItms"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <span class="social-mark">
+          ♪
+        </span>
+
+        <span>
+
+          TIKTOK
+
+          <span class="social-handle">
+            @dev.aj7
+          </span>
+
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 DEV. ALL RIGHTS RESERVED.
+  </div>
 
 </footer>
 
+
+<!-- CART -->
 
 <div
   class="cart-overlay"
@@ -1494,7 +2049,7 @@ footer{
     </button>
 
     <div class="checkout-note">
-      DEV SECURE CHECKOUT
+      MEN + WOMEN ITEMS STAY TOGETHER IN ONE DEV BAG.
     </div>
 
   </div>
@@ -2245,11 +2800,7 @@ function handleAction(){
   if(existing){
 
     existing.quantity=
-      Number(
-        existing.quantity ??
-        existing.qty ??
-        1
-      )+1;
+      getItemQuantity(existing)+1;
 
     delete existing.qty;
 
@@ -2371,10 +2922,13 @@ function toAbsoluteImage(path){
 
 function getItemQuantity(item){
 
-  return Number(
-    item.quantity ??
-    item.qty ??
-    1
+  return Math.max(
+    1,
+    Number(
+      item.quantity ??
+      item.qty ??
+      1
+    ) || 1
   );
 
 }
@@ -2409,7 +2963,13 @@ function renderCart(){
 
   });
 
-  count.textContent=totalQuantity;
+  count.textContent=
+    totalQuantity;
+
+  count.classList.toggle(
+    "active",
+    totalQuantity>0
+  );
 
   totalElement.textContent=
     "AED "+
@@ -2437,7 +2997,8 @@ function renderCart(){
     const itemElement=
       document.createElement("div");
 
-    itemElement.className="cart-item";
+    itemElement.className=
+      "cart-item";
 
     itemElement.innerHTML=
 
@@ -2544,7 +3105,8 @@ function changeQuantity(index,change){
 
   }else{
 
-    cart[index].quantity=quantity;
+    cart[index].quantity=
+      quantity;
 
     delete cart[index].qty;
 
@@ -2580,7 +3142,8 @@ function openCart(){
   .getElementById("cartOverlay")
   .classList.add("open");
 
-  document.body.classList.add("cart-open");
+  document.body
+  .classList.add("cart-open");
 
   renderCart();
 
@@ -2597,14 +3160,13 @@ function closeCart(){
   .getElementById("cartOverlay")
   .classList.remove("open");
 
-  document.body.classList.remove("cart-open");
+  document.body
+  .classList.remove("cart-open");
 
 }
 
 
-/* ================================
-   CHECKOUT
-================================ */
+/* CHECKOUT */
 
 function checkout(){
 
