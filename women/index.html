@@ -330,104 +330,75 @@ nav{
 
 
 /* =========================
-   COMING SOON CARDS
+   WOMEN CATEGORY CARDS
 ========================= */
 
 .collection-card{
   position:relative;
-  min-height:560px;
+  width:100%;
+  aspect-ratio:3 / 2;
   overflow:hidden;
-  border:1px solid #1c1c1c;
-
-  background:
-    radial-gradient(
-      circle at center,
-      #1b1b1b,
-      #0c0c0c 65%
-    );
+  border:1px solid #242424;
+  background:#0b0b0b;
 }
 
-.collection-card::before{
-  content:"";
+.collection-card img{
   position:absolute;
-  width:250px;
-  height:250px;
-  top:50%;
-  left:50%;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(45deg);
-
-  border:1px solid #242424;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  transition:
+    transform .45s ease,
+    filter .45s ease;
 }
 
 .collection-card::after{
   content:"";
   position:absolute;
   inset:0;
-
+  z-index:1;
+  pointer-events:none;
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.7),
-      transparent 60%
+      rgba(0,0,0,.12),
+      transparent 45%
     );
 }
 
-.placeholder-logo{
-  position:absolute;
-  top:50%;
-  left:50%;
-
-  transform:
-    translate(-50%,-50%);
-
-  color:#191919;
-
-  font-size:
-    clamp(75px,12vw,170px);
-
-  font-weight:900;
-  letter-spacing:12px;
+.collection-card:hover img{
+  transform:scale(1.02);
+  filter:brightness(1.04);
 }
 
-.card-label{
-  position:absolute;
-  z-index:3;
-  left:28px;
-  bottom:25px;
-}
 
-.card-label span{
-  display:block;
-  margin-bottom:7px;
-  color:#888;
-  font-size:9px;
-  letter-spacing:4px;
-}
-
-.card-label h3{
-  font-size:28px;
-  letter-spacing:3px;
-}
+/* =========================
+   COMING SOON LABEL
+========================= */
 
 .coming-label{
   position:absolute;
   z-index:3;
-  top:22px;
-  right:22px;
+  top:18px;
+  right:18px;
 
   padding:9px 12px;
 
-  border:1px solid #333;
+  border:1px solid rgba(255,255,255,.45);
 
   background:
     rgba(0,0,0,.75);
 
+  color:#fff;
+
   font-size:9px;
   font-weight:900;
   letter-spacing:2px;
+
+  backdrop-filter:blur(5px);
 }
 
 
@@ -921,11 +892,19 @@ footer{
     grid-template-columns:
       1fr;
 
-    gap:9px;
+    gap:12px;
   }
 
   .collection-card{
-    min-height:500px;
+    aspect-ratio:3 / 2;
+  }
+
+  .coming-label{
+    top:12px;
+    right:12px;
+    padding:7px 9px;
+    font-size:7px;
+    letter-spacing:1.5px;
   }
 
   .footer-content{
@@ -957,10 +936,6 @@ footer{
     display:none;
   }
 
-  .collection-card{
-    min-height:470px;
-  }
-
 }
 
 </style>
@@ -971,14 +946,18 @@ footer{
 <body>
 
 
-<!-- TOP BAR -->
+<!-- =========================
+     TOP BAR
+========================= -->
 
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -1055,7 +1034,9 @@ footer{
 </nav>
 
 
-<!-- MOBILE SEARCH -->
+<!-- =========================
+     MOBILE SEARCH
+========================= -->
 
 <div
   class="mobile-search-panel"
@@ -1070,7 +1051,9 @@ footer{
 </div>
 
 
-<!-- WOMEN HERO -->
+<!-- =========================
+     WOMEN HERO
+========================= -->
 
 <header class="women-hero">
 
@@ -1099,7 +1082,9 @@ footer{
 </header>
 
 
-<!-- COLLECTIONS -->
+<!-- =========================
+     COLLECTIONS
+========================= -->
 
 <main
   class="collections"
@@ -1124,117 +1109,81 @@ footer{
     id="collectionGrid">
 
 
-    <!-- TOPS -->
+    <!-- =========================
+         TOPS
+    ========================= -->
 
     <div
       class="collection-card"
-      data-search="tops t shirts tshirts gym tops women">
+      data-search="tops t shirts tshirts gym tops women dev women">
 
-      <div class="placeholder-logo">
-        DEV
-      </div>
+      <img
+        src="../women-tops.png"
+        alt="DEV Women Tops"
+        loading="lazy">
 
       <div class="coming-label">
         COMING SOON
-      </div>
-
-      <div class="card-label">
-
-        <span>
-          DEV WOMEN
-        </span>
-
-        <h3>
-          TOPS
-        </h3>
-
       </div>
 
     </div>
 
 
-    <!-- LEGGINGS -->
+    <!-- =========================
+         LEGGINGS
+    ========================= -->
 
     <div
       class="collection-card"
-      data-search="leggings tights women training">
+      data-search="leggings tights women training gym dev women">
 
-      <div class="placeholder-logo">
-        DEV
-      </div>
+      <img
+        src="../women-leggings.png"
+        alt="DEV Women Leggings"
+        loading="lazy">
 
       <div class="coming-label">
         COMING SOON
-      </div>
-
-      <div class="card-label">
-
-        <span>
-          DEV WOMEN
-        </span>
-
-        <h3>
-          LEGGINGS
-        </h3>
-
       </div>
 
     </div>
 
 
-    <!-- SHORTS -->
+    <!-- =========================
+         SHORTS
+    ========================= -->
 
     <div
       class="collection-card"
-      data-search="shorts women gym training">
+      data-search="shorts women gym training dev women">
 
-      <div class="placeholder-logo">
-        DEV
-      </div>
+      <img
+        src="../women-shorts.png"
+        alt="DEV Women Shorts"
+        loading="lazy">
 
       <div class="coming-label">
         COMING SOON
-      </div>
-
-      <div class="card-label">
-
-        <span>
-          DEV WOMEN
-        </span>
-
-        <h3>
-          SHORTS
-        </h3>
-
       </div>
 
     </div>
 
 
-    <!-- SETS -->
+    <!-- =========================
+         SETS
+    ========================= -->
 
     <div
       class="collection-card"
-      data-search="sets matching sets women gym">
+      data-search="sets matching sets women gym training dev women">
 
-      <div class="placeholder-logo">
-        DEV
-      </div>
+      <img
+        src="../women-sets.png"
+        alt="DEV Women Sets"
+        loading="lazy">
 
       <div class="coming-label">
         COMING SOON
-      </div>
-
-      <div class="card-label">
-
-        <span>
-          DEV WOMEN
-        </span>
-
-        <h3>
-          SETS
-        </h3>
-
       </div>
 
     </div>
@@ -1253,7 +1202,9 @@ footer{
 </main>
 
 
-<!-- BRAND STRIP -->
+<!-- =========================
+     BRAND STRIP
+========================= -->
 
 <section class="brand-strip">
 
@@ -1270,7 +1221,9 @@ footer{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1343,7 +1296,8 @@ footer{
     <button
       class="cart-close"
       id="cartClose"
-      type="button">
+      type="button"
+      aria-label="Close shopping bag">
 
       ×
 
@@ -1616,7 +1570,9 @@ function formatPrice(price){
 }
 
 
-/* CART ELEMENTS */
+/* =========================
+   CART ELEMENTS
+========================= */
 
 const cartButton =
   document.getElementById(
@@ -1659,7 +1615,9 @@ const checkoutButton =
   );
 
 
-/* OPEN CART */
+/* =========================
+   OPEN CART
+========================= */
 
 function openCart(){
 
@@ -1686,7 +1644,9 @@ function openCart(){
 }
 
 
-/* CLOSE CART */
+/* =========================
+   CLOSE CART
+========================= */
 
 function closeCart(){
 
@@ -1711,7 +1671,9 @@ function closeCart(){
 }
 
 
-/* CHANGE QUANTITY */
+/* =========================
+   CHANGE QUANTITY
+========================= */
 
 function changeQuantity(
   index,
@@ -1762,7 +1724,9 @@ function changeQuantity(
 }
 
 
-/* REMOVE ITEM */
+/* =========================
+   REMOVE ITEM
+========================= */
 
 function removeItem(index){
 
@@ -1781,7 +1745,9 @@ function removeItem(index){
 }
 
 
-/* RENDER CART */
+/* =========================
+   RENDER CART
+========================= */
 
 function renderDevCart(){
 
@@ -1861,7 +1827,9 @@ function renderDevCart(){
     cart.length === 0;
 
 
-  /* EMPTY CART */
+  /* =========================
+     EMPTY CART
+  ========================= */
 
   if(cart.length === 0){
 
@@ -1891,7 +1859,9 @@ function renderDevCart(){
   }
 
 
-  /* CART PRODUCTS */
+  /* =========================
+     CART PRODUCTS
+  ========================= */
 
   cartItems.innerHTML =
     cart.map(
@@ -2062,7 +2032,9 @@ function renderDevCart(){
 }
 
 
-/* CART BUTTON ACTIONS */
+/* =========================
+   CART BUTTON ACTIONS
+========================= */
 
 cartItems.addEventListener(
   "click",
@@ -2121,7 +2093,9 @@ cartItems.addEventListener(
 );
 
 
-/* OPEN / CLOSE */
+/* =========================
+   OPEN / CLOSE
+========================= */
 
 cartButton.addEventListener(
   "click",
@@ -2141,7 +2115,9 @@ cartOverlay.addEventListener(
 );
 
 
-/* ESCAPE */
+/* =========================
+   ESCAPE
+========================= */
 
 document.addEventListener(
   "keydown",
@@ -2157,7 +2133,9 @@ document.addEventListener(
 );
 
 
-/* CHECKOUT */
+/* =========================
+   CHECKOUT
+========================= */
 
 checkoutButton.addEventListener(
   "click",
@@ -2171,7 +2149,9 @@ checkoutButton.addEventListener(
 );
 
 
-/* SYNC CART */
+/* =========================
+   SYNC CART
+========================= */
 
 window.addEventListener(
   "storage",
@@ -2190,7 +2170,9 @@ window.addEventListener(
 );
 
 
-/* START */
+/* =========================
+   START
+========================= */
 
 renderDevCart();
 
