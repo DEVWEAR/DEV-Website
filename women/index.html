@@ -22,7 +22,7 @@ html{
 body{
   background:#050505;
   color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 body.cart-open{
@@ -48,10 +48,10 @@ input{
   background:#fff;
   color:#000;
   text-align:center;
-  padding:9px 15px;
+  padding:10px 15px;
   font-size:10px;
   font-weight:900;
-  letter-spacing:3px;
+  letter-spacing:4px;
 }
 
 
@@ -63,73 +63,61 @@ nav{
   position:sticky;
   top:0;
   z-index:1000;
-  min-height:76px;
+  min-height:82px;
   display:flex;
   align-items:center;
-  gap:28px;
   padding:0 5%;
-  background:rgba(5,5,5,.98);
-  border-bottom:1px solid #1f1f1f;
+  background:rgba(5,5,5,.97);
+  border-bottom:1px solid #1b1b1b;
 }
 
 .logo{
   flex-shrink:0;
-  font-size:28px;
+  font-size:36px;
   font-weight:900;
-  letter-spacing:5px;
+  letter-spacing:7px;
 }
 
-.nav-links{
+
+/* RIGHT SIDE */
+
+.nav-right{
+  margin-left:auto;
   display:flex;
   align-items:center;
-  gap:22px;
+  gap:20px;
 }
 
-.nav-links a{
+
+/* MEN / WOMEN */
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.main-nav a{
+  position:relative;
+  padding:33px 0 29px;
   color:#888;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:1.3px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2.5px;
   transition:.2s;
 }
 
-.nav-links a:hover{
+.main-nav a:hover,
+.main-nav a.active{
   color:#fff;
 }
 
-.nav-divider{
-  width:1px;
-  height:28px;
-  background:#333;
-  flex-shrink:0;
-}
-
-.gender-nav{
-  display:flex;
-  align-items:center;
-  gap:24px;
-}
-
-.gender-nav a{
-  position:relative;
-  padding:31px 0 27px;
-  color:#888;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.gender-nav a:hover,
-.gender-nav a.active{
-  color:#fff;
-}
-
-.gender-nav a.active::after{
+.main-nav a.active::after{
   content:"";
   position:absolute;
   left:0;
   right:0;
-  bottom:19px;
+  bottom:20px;
   height:1px;
   background:#fff;
 }
@@ -140,7 +128,6 @@ nav{
 ========================= */
 
 .nav-actions{
-  margin-left:auto;
   display:flex;
   align-items:center;
   gap:10px;
@@ -153,12 +140,12 @@ nav{
 
 .search-box{
   position:relative;
-  width:210px;
+  width:250px;
 }
 
 .search-box input{
   width:100%;
-  height:42px;
+  height:44px;
   padding:0 42px 0 17px;
   border:1px solid #333;
   border-radius:30px;
@@ -223,17 +210,17 @@ nav{
 .cart-button,
 .mobile-search-button{
   position:relative;
-  width:42px;
-  height:42px;
+  width:46px;
+  height:46px;
   flex-shrink:0;
   align-items:center;
   justify-content:center;
   border:1px solid #333;
   border-radius:50%;
-  background:#171717;
+  background:#111;
   color:#fff;
   cursor:pointer;
-  font-size:17px;
+  font-size:18px;
 }
 
 .cart-button{
@@ -243,8 +230,8 @@ nav{
 .cart-count{
   display:none;
   position:absolute;
-  top:-5px;
-  right:-5px;
+  top:-4px;
+  right:-4px;
   min-width:18px;
   height:18px;
   padding:0 5px;
@@ -353,7 +340,7 @@ nav{
 
 
 /* =========================
-   CATEGORY CARDS
+   WOMEN CATEGORY CARDS
 ========================= */
 
 .collection-card{
@@ -774,14 +761,6 @@ footer{
 
 @media(max-width:1150px){
 
-  .nav-links{
-    gap:14px;
-  }
-
-  .nav-links a{
-    font-size:8px;
-  }
-
   .footer-top{
     grid-template-columns:repeat(4,1fr);
   }
@@ -810,39 +789,33 @@ footer{
    MOBILE
 ========================= */
 
-@media(max-width:850px){
+@media(max-width:700px){
 
   nav{
     min-height:68px;
     padding:0 4%;
-    gap:12px;
   }
 
   .logo{
-    font-size:27px;
+    font-size:29px;
     letter-spacing:5px;
   }
 
-  .nav-links{
-    display:none;
+  .nav-right{
+    gap:10px;
   }
 
-  .nav-divider{
-    display:none;
-  }
-
-  .gender-nav{
+  .main-nav{
     gap:17px;
-    margin-left:auto;
   }
 
-  .gender-nav a{
+  .main-nav a{
     padding:27px 0 24px;
     font-size:9px;
     letter-spacing:1.5px;
   }
 
-  .gender-nav a.active::after{
+  .main-nav a.active::after{
     bottom:17px;
   }
 
@@ -852,10 +825,8 @@ footer{
     height:42px;
   }
 
-}
 
-
-@media(max-width:700px){
+  /* COMPACT HERO */
 
   .women-hero{
     min-height:210px;
@@ -948,7 +919,7 @@ footer{
 @media(max-width:450px){
 
   nav{
-    gap:9px;
+    padding:0 3%;
   }
 
   .logo{
@@ -956,11 +927,15 @@ footer{
     letter-spacing:4px;
   }
 
-  .gender-nav{
+  .nav-right{
+    gap:8px;
+  }
+
+  .main-nav{
     gap:12px;
   }
 
-  .gender-nav a{
+  .main-nav a{
     font-size:8px;
   }
 
@@ -1000,6 +975,10 @@ footer{
 </div>
 
 
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
 
   <a
@@ -1009,103 +988,79 @@ footer{
   </a>
 
 
-  <div class="nav-links">
-
-    <a href="/DEV-Website/tshirts/">
-      T-SHIRTS
-    </a>
-
-    <a href="/DEV-Website/polo/">
-      POLO
-    </a>
-
-    <a href="/DEV-Website/shorts/">
-      SHORTS
-    </a>
-
-    <a href="/DEV-Website/baggy-pants/">
-      BAGGY PANTS
-    </a>
-
-    <a href="#">
-      HOODIES
-    </a>
-
-    <a href="#">
-      SWEATERS
-    </a>
-
-  </div>
+  <div class="nav-right">
 
 
-  <div class="nav-divider"></div>
+    <!-- MEN / WOMEN DIRECTLY BESIDE SEARCH -->
 
+    <div class="main-nav">
 
-  <div class="gender-nav">
+      <a href="/DEV-Website/">
+        MEN
+      </a>
 
-    <a href="/DEV-Website/">
-      MEN
-    </a>
-
-    <a
-      href="/DEV-Website/women/"
-      class="active">
-      WOMEN
-    </a>
-
-  </div>
-
-
-  <div class="nav-actions">
-
-
-    <div class="search-box">
-
-      <input
-        id="desktopSearch"
-        type="search"
-        placeholder="Search women..."
-        aria-label="Search women">
-
-      <span class="search-icon">
-        ⌕
-
-      </span>
+      <a
+        href="/DEV-Website/women/"
+        class="active">
+        WOMEN
+      </a>
 
     </div>
 
 
-    <button
-      class="mobile-search-button"
-      id="mobileSearchButton"
-      type="button"
-      aria-label="Search">
-
-      ⌕
-
-    </button>
+    <div class="nav-actions">
 
 
-    <button
-      class="cart-button"
-      id="cartButton"
-      type="button"
-      aria-label="Shopping bag">
+      <div class="search-box">
 
-      🛒
+        <input
+          id="desktopSearch"
+          type="search"
+          placeholder="Search women..."
+          aria-label="Search women">
 
-      <span
-        class="cart-count"
-        id="cartCount">
-        0
-      </span>
+        <span class="search-icon">
+          ⌕
+        </span>
 
-    </button>
+      </div>
+
+
+      <button
+        class="mobile-search-button"
+        id="mobileSearchButton"
+        type="button"
+        aria-label="Search">
+        ⌕
+      </button>
+
+
+      <button
+        class="cart-button"
+        id="cartButton"
+        type="button"
+        aria-label="Shopping bag">
+
+        🛒
+
+        <span
+          class="cart-count"
+          id="cartCount">
+          0
+        </span>
+
+      </button>
+
+    </div>
 
   </div>
 
 </nav>
 
+
+<!-- =========================
+     MOBILE SEARCH
+========================= -->
 
 <div
   class="mobile-search-panel"
@@ -1119,6 +1074,10 @@ footer{
 
 </div>
 
+
+<!-- =========================
+     WOMEN HERO
+========================= -->
 
 <header class="women-hero">
 
@@ -1147,6 +1106,10 @@ footer{
 </header>
 
 
+<!-- =========================
+     COLLECTIONS
+========================= -->
+
 <main
   class="collections"
   id="collections">
@@ -1170,6 +1133,8 @@ footer{
     id="collectionGrid">
 
 
+    <!-- TOPS -->
+
     <div
       class="collection-card"
       data-search="tops t shirts tshirts gym tops women dev women">
@@ -1185,6 +1150,8 @@ footer{
 
     </div>
 
+
+    <!-- LEGGINGS -->
 
     <div
       class="collection-card"
@@ -1202,6 +1169,8 @@ footer{
     </div>
 
 
+    <!-- SHORTS -->
+
     <div
       class="collection-card"
       data-search="shorts women gym training dev women">
@@ -1217,6 +1186,8 @@ footer{
 
     </div>
 
+
+    <!-- SETS -->
 
     <div
       class="collection-card"
@@ -1247,6 +1218,10 @@ footer{
 </main>
 
 
+<!-- =========================
+     BRAND STRIP
+========================= -->
+
 <section class="brand-strip">
 
   <h2>
@@ -1261,6 +1236,10 @@ footer{
 
 </section>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1403,6 +1382,10 @@ footer{
 </footer>
 
 
+<!-- =========================
+     CART
+========================= -->
+
 <div
   class="cart-overlay"
   id="cartOverlay">
@@ -1426,9 +1409,7 @@ footer{
       id="cartClose"
       type="button"
       aria-label="Close shopping bag">
-
       ×
-
     </button>
 
   </div>
@@ -1460,9 +1441,7 @@ footer{
       id="checkoutButton"
       type="button"
       disabled>
-
       CHECKOUT
-
     </button>
 
 
@@ -1483,22 +1462,22 @@ footer{
    SEARCH
 ========================= */
 
-const cards=
+const cards =
   document.querySelectorAll(
     ".collection-card"
   );
 
-const desktopSearch=
+const desktopSearch =
   document.getElementById(
     "desktopSearch"
   );
 
-const mobileSearch=
+const mobileSearch =
   document.getElementById(
     "mobileSearch"
   );
 
-const noResults=
+const noResults =
   document.getElementById(
     "noResults"
   );
@@ -1506,17 +1485,18 @@ const noResults=
 
 function searchCollections(value){
 
-  const query=
+  const query =
     value
     .toLowerCase()
     .trim();
 
-  let visible=0;
+  let visible = 0;
+
 
   cards.forEach(
     function(card){
 
-      const terms=
+      const terms =
         (
           card.dataset.search
           ||
@@ -1524,12 +1504,12 @@ function searchCollections(value){
         )
         .toLowerCase();
 
-      const match=
-        query===""
+      const match =
+        query === ""
         ||
         terms.includes(query);
 
-      card.style.display=
+      card.style.display =
         match
         ?
         ""
@@ -1543,11 +1523,12 @@ function searchCollections(value){
     }
   );
 
+
   noResults
   .classList
   .toggle(
     "active",
-    visible===0
+    visible === 0
   );
 
 }
@@ -1581,12 +1562,12 @@ mobileSearch.addEventListener(
    MOBILE SEARCH
 ========================= */
 
-const mobileSearchButton=
+const mobileSearchButton =
   document.getElementById(
     "mobileSearchButton"
   );
 
-const mobileSearchPanel=
+const mobileSearchPanel =
   document.getElementById(
     "mobileSearchPanel"
   );
@@ -1622,7 +1603,7 @@ mobileSearchButton.addEventListener(
    SHARED CART
 ========================= */
 
-const DEV_CART_KEY=
+const DEV_CART_KEY =
   "dev_cart_v1";
 
 
@@ -1630,7 +1611,7 @@ function getDevCart(){
 
   try{
 
-    const data=
+    const data =
       JSON.parse(
         localStorage.getItem(
           DEV_CART_KEY
@@ -1680,14 +1661,14 @@ function getItemQuantity(item){
 
 function formatPrice(price){
 
-  const value=
+  const value =
     Number(price)
     ||
     0;
 
-  return "AED "+
+  return "AED " +
     value.toFixed(
-      value%1===0
+      value % 1 === 0
       ?
       0
       :
@@ -1701,42 +1682,42 @@ function formatPrice(price){
    CART ELEMENTS
 ========================= */
 
-const cartButton=
+const cartButton =
   document.getElementById(
     "cartButton"
   );
 
-const cartCount=
+const cartCount =
   document.getElementById(
     "cartCount"
   );
 
-const cartDrawer=
+const cartDrawer =
   document.getElementById(
     "cartDrawer"
   );
 
-const cartOverlay=
+const cartOverlay =
   document.getElementById(
     "cartOverlay"
   );
 
-const cartClose=
+const cartClose =
   document.getElementById(
     "cartClose"
   );
 
-const cartItems=
+const cartItems =
   document.getElementById(
     "cartItems"
   );
 
-const cartSubtotal=
+const cartSubtotal =
   document.getElementById(
     "cartSubtotal"
   );
 
-const checkoutButton=
+const checkoutButton =
   document.getElementById(
     "checkoutButton"
   );
@@ -1819,23 +1800,22 @@ function changeQuantity(
   amount
 ){
 
-  const cart=
+  const cart =
     getDevCart();
 
   if(!cart[index]){
     return;
   }
 
-  const current=
+  const current =
     getItemQuantity(
       cart[index]
     );
 
-  const newQuantity=
-    current+
-    amount;
+  const newQuantity =
+    current + amount;
 
-  if(newQuantity<=0){
+  if(newQuantity <= 0){
 
     cart.splice(
       index,
@@ -1844,16 +1824,14 @@ function changeQuantity(
 
   }else{
 
-    cart[index].quantity=
+    cart[index].quantity =
       newQuantity;
 
     delete cart[index].qty;
 
   }
 
-  saveDevCart(
-    cart
-  );
+  saveDevCart(cart);
 
 }
 
@@ -1864,7 +1842,7 @@ function changeQuantity(
 
 function removeItem(index){
 
-  const cart=
+  const cart =
     getDevCart();
 
   if(!cart[index]){
@@ -1876,9 +1854,7 @@ function removeItem(index){
     1
   );
 
-  saveDevCart(
-    cart
-  );
+  saveDevCart(cart);
 
 }
 
@@ -1889,14 +1865,15 @@ function removeItem(index){
 
 function renderDevCart(){
 
-  const cart=
+  const cart =
     getDevCart();
 
-  const totalQuantity=
+
+  const totalQuantity =
     cart.reduce(
       function(total,item){
 
-        return total+
+        return total +
           getItemQuantity(
             item
           );
@@ -1905,51 +1882,57 @@ function renderDevCart(){
       0
     );
 
-  const subtotal=
+
+  const subtotal =
     cart.reduce(
       function(total,item){
 
-        const price=
+        const price =
           Number(
             item.price
           )
           ||
           0;
 
-        const quantity=
+        const quantity =
           getItemQuantity(
             item
           );
 
-        return total+
-          price*
+        return total +
+          price *
           quantity;
 
       },
       0
     );
 
-  cartCount.textContent=
+
+  cartCount.textContent =
     totalQuantity;
+
 
   cartCount
   .classList
   .toggle(
     "active",
-    totalQuantity>0
+    totalQuantity > 0
   );
 
-  cartSubtotal.textContent=
+
+  cartSubtotal.textContent =
     formatPrice(
       subtotal
     );
 
-  checkoutButton.disabled=
-    cart.length===0;
 
-  if(cart.length===0){
+  checkoutButton.disabled =
+    cart.length === 0;
 
-    cartItems.innerHTML=`
+
+  if(cart.length === 0){
+
+    cartItems.innerHTML = `
 
       <div class="cart-empty">
 
@@ -1972,48 +1955,41 @@ function renderDevCart(){
 
   }
 
-  cartItems.innerHTML=
+
+  cartItems.innerHTML =
     cart.map(
       function(item,index){
 
-        const name=
-          item.name
-          ||
+        const name =
+          item.name ||
           "DEV PRODUCT";
 
-        const section=
-          item.section
-          ||
+        const section =
+          item.section ||
           "DEV";
 
-        const color=
-          item.color
-          ||
+        const color =
+          item.color ||
           "—";
 
-        const size=
-          item.size
-          ||
+        const size =
+          item.size ||
           "—";
 
-        const quantity=
+        const quantity =
           getItemQuantity(
             item
           );
 
-        const price=
+        const price =
           Number(
             item.price
-          )
-          ||
-          0;
+          ) || 0;
 
-        const image=
-          item.image
-          ||
-          "";
+        const image =
+          item.image || "";
 
-        const imageHTML=
+        const imageHTML =
           image
           ?
           `
@@ -2028,6 +2004,7 @@ function renderDevCart(){
               class="cart-item-image">
             </div>
           `;
+
 
         return `
 
@@ -2076,14 +2053,11 @@ function renderDevCart(){
                 </div>
 
                 <div class="cart-item-price">
-
                   ${
                     formatPrice(
-                      price*
-                      quantity
+                      price * quantity
                     )
                   }
-
                 </div>
 
               </div>
@@ -2093,9 +2067,7 @@ function renderDevCart(){
                 type="button"
                 data-action="remove"
                 data-index="${index}">
-
                 REMOVE
-
               </button>
 
             </div>
@@ -2119,7 +2091,7 @@ cartItems.addEventListener(
   "click",
   function(event){
 
-    const button=
+    const button =
       event.target.closest(
         "[data-action]"
       );
@@ -2128,15 +2100,15 @@ cartItems.addEventListener(
       return;
     }
 
-    const index=
+    const index =
       Number(
         button.dataset.index
       );
 
-    const action=
+    const action =
       button.dataset.action;
 
-    if(action==="plus"){
+    if(action === "plus"){
 
       changeQuantity(
         index,
@@ -2145,7 +2117,7 @@ cartItems.addEventListener(
 
     }
 
-    if(action==="minus"){
+    if(action === "minus"){
 
       changeQuantity(
         index,
@@ -2154,7 +2126,7 @@ cartItems.addEventListener(
 
     }
 
-    if(action==="remove"){
+    if(action === "remove"){
 
       removeItem(
         index
@@ -2192,7 +2164,7 @@ document.addEventListener(
   "keydown",
   function(event){
 
-    if(event.key==="Escape"){
+    if(event.key === "Escape"){
 
       closeCart();
 
@@ -2216,14 +2188,14 @@ checkoutButton.addEventListener(
   "click",
   function(){
 
-    const cart=
+    const cart =
       getDevCart();
 
-    if(cart.length===0){
+    if(cart.length === 0){
       return;
     }
 
-    window.location.href=
+    window.location.href =
       "/DEV-Website/checkout/";
 
   }
@@ -2239,7 +2211,7 @@ window.addEventListener(
   function(event){
 
     if(
-      event.key===
+      event.key ===
       DEV_CART_KEY
     ){
 
