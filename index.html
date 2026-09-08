@@ -22,7 +22,7 @@ html{
 body{
   background:#050505;
   color:#fff;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body.cart-open{
@@ -438,13 +438,18 @@ nav{
 ========================= */
 
 footer{
-  padding:55px 6% 30px;
+  padding:70px 6% 30px;
+  background:#050505;
 }
 
-.footer-content{
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
+.footer-top{
+  display:grid;
+  grid-template-columns:1.3fr repeat(4,1fr);
+  gap:55px;
+}
+
+.footer-brand{
+  max-width:300px;
 }
 
 .footer-logo{
@@ -454,31 +459,73 @@ footer{
 }
 
 .footer-text{
-  max-width:350px;
-  margin-top:14px;
+  max-width:300px;
+  margin-top:16px;
   color:#666;
   font-size:12px;
-  line-height:1.8;
+  line-height:1.9;
 }
 
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:24px;
+.footer-column h4{
+  margin-bottom:20px;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
 }
 
-.footer-links a{
+.footer-column a,
+.footer-column .footer-disabled{
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin-bottom:13px;
   color:#777;
-  font-size:11px;
-  letter-spacing:2px;
+  font-size:10px;
+  letter-spacing:1.3px;
+  line-height:1.5;
+  transition:.2s;
 }
 
-.footer-links a:hover{
+.footer-column a:hover{
   color:#fff;
 }
 
+.footer-column .footer-disabled{
+  color:#444;
+  cursor:default;
+}
+
+.footer-contact-value{
+  display:block;
+  margin-top:4px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:.6px;
+  text-transform:none;
+}
+
+.footer-social-link{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+}
+
+.social-mark{
+  width:28px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #272727;
+  border-radius:50%;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+
 .copyright{
-  margin-top:45px;
+  margin-top:55px;
   padding-top:25px;
   border-top:1px solid #171717;
   text-align:center;
@@ -674,10 +721,12 @@ footer{
   color:#000;
   font-weight:900;
   letter-spacing:2px;
+  cursor:pointer;
 }
 
 .checkout-button:disabled{
   opacity:.35;
+  cursor:not-allowed;
 }
 
 .cart-note{
@@ -690,8 +739,21 @@ footer{
 
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
+
+@media(max-width:1100px){
+
+  .footer-top{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .footer-brand{
+    grid-column:1 / -1;
+    max-width:500px;
+  }
+
+}
 
 @media(max-width:1000px){
 
@@ -704,6 +766,11 @@ footer{
   }
 
 }
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -738,24 +805,58 @@ footer{
     height:42px;
   }
 
+
+  /* SMALLER MOBILE INTRO */
+
   .brand-intro{
-    min-height:350px;
-    padding:55px 6%;
+    min-height:245px;
+    padding:36px 6% 38px;
   }
 
   .brand-label{
-    font-size:8px;
-    letter-spacing:4px;
+    margin-bottom:13px;
+    font-size:7px;
+    letter-spacing:3px;
   }
 
   .brand-intro h1{
-    font-size:46px;
+    font-size:40px;
+    line-height:.98;
+    letter-spacing:1px;
   }
 
   .brand-intro h2{
-    font-size:16px;
-    line-height:1.5;
-    letter-spacing:3px;
+    margin-top:10px;
+    font-size:13px;
+    line-height:1.4;
+    letter-spacing:2.5px;
+  }
+
+  .brand-intro p{
+    max-width:320px;
+    margin-top:14px;
+    font-size:10px;
+    line-height:1.6;
+  }
+
+
+  /* COLLECTIONS */
+
+  .collections{
+    padding:32px 3% 65px;
+  }
+
+  .collections-header{
+    margin-bottom:22px;
+  }
+
+  .collections-header h2{
+    font-size:34px;
+  }
+
+  .collections-header p{
+    margin-top:6px;
+    font-size:9px;
   }
 
   .collection-grid{
@@ -767,19 +868,49 @@ footer{
     min-height:520px;
   }
 
-  .collections{
-    padding:45px 3% 65px;
+
+  /* BRAND STRIP */
+
+  .brand-strip{
+    padding:55px 6%;
   }
 
-  .footer-content{
-    display:block;
+
+  /* FOOTER */
+
+  footer{
+    padding:55px 6% 25px;
   }
 
-  .footer-links{
-    margin-top:30px;
+  .footer-top{
+    grid-template-columns:repeat(2,1fr);
+    gap:38px 25px;
+  }
+
+  .footer-brand{
+    grid-column:1 / -1;
+  }
+
+  .footer-column h4{
+    margin-bottom:17px;
+  }
+
+  .footer-column a,
+  .footer-column .footer-disabled{
+    margin-bottom:12px;
+    font-size:9px;
+  }
+
+  .copyright{
+    margin-top:40px;
   }
 
 }
+
+
+/* =========================
+   SMALL PHONE
+========================= */
 
 @media(max-width:450px){
 
@@ -795,8 +926,31 @@ footer{
     display:none;
   }
 
+  .brand-intro{
+    min-height:225px;
+    padding:30px 5% 32px;
+  }
+
+  .brand-intro h1{
+    font-size:36px;
+  }
+
+  .brand-intro h2{
+    font-size:12px;
+    letter-spacing:2px;
+  }
+
+  .brand-intro p{
+    font-size:9px;
+  }
+
   .collection-card{
     min-height:470px;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:35px 18px;
   }
 
 }
@@ -819,6 +973,7 @@ footer{
     DEV
   </a>
 
+
   <div class="main-nav">
 
     <a
@@ -832,6 +987,7 @@ footer{
     </a>
 
   </div>
+
 
   <div class="nav-actions">
 
@@ -849,6 +1005,7 @@ footer{
 
     </div>
 
+
     <button
       class="mobile-search-button"
       id="mobileSearchButton"
@@ -856,6 +1013,7 @@ footer{
       aria-label="Search">
       ⌕
     </button>
+
 
     <button
       class="cart-button"
@@ -891,6 +1049,10 @@ footer{
 </div>
 
 
+<!-- =========================
+     HERO
+========================= -->
+
 <header class="brand-intro">
 
   <div class="brand-content">
@@ -916,6 +1078,10 @@ footer{
 
 </header>
 
+
+<!-- =========================
+     COLLECTIONS
+========================= -->
 
 <main
   class="collections"
@@ -1066,6 +1232,10 @@ footer{
 </main>
 
 
+<!-- =========================
+     BRAND
+========================= -->
+
 <section class="brand-strip">
 
   <h2>
@@ -1081,11 +1251,16 @@ footer{
 </section>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-  <div class="footer-content">
+  <div class="footer-top">
 
-    <div>
+
+    <div class="footer-brand">
 
       <div class="footer-logo">
         DEV
@@ -1094,12 +1269,20 @@ footer{
       <div class="footer-text">
         Performance streetwear.
         Designed in the UAE.
-        Built different.
+        Built for training,
+        lifestyle and everything after.
       </div>
 
     </div>
 
-    <div class="footer-links">
+
+    <!-- SHOP -->
+
+    <div class="footer-column">
+
+      <h4>
+        SHOP
+      </h4>
 
       <a href="#collections">
         MEN
@@ -1121,9 +1304,103 @@ footer{
         SHORTS
       </a>
 
+      <a href="baggy-pants/">
+        BAGGY PANTS
+      </a>
+
+    </div>
+
+
+    <!-- HELP -->
+
+    <div class="footer-column">
+
+      <h4>
+        HELP
+      </h4>
+
+      <a
+        href="https://wa.me/971541420200"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        WHATSAPP
+
+        <span class="footer-contact-value">
+          +971 54 142 0200
+        </span>
+
+      </a>
+
+
+      <a
+        href="mailto:Deavwear9@gmail.com">
+
+        EMAIL
+
+        <span class="footer-contact-value">
+          Deavwear9@gmail.com
+        </span>
+
+      </a>
+
+    </div>
+
+
+    <!-- ABOUT -->
+
+    <div class="footer-column">
+
+      <h4>
+        ABOUT DEV
+      </h4>
+
+      <a
+        href="mailto:Deavwear9@gmail.com">
+        CONTACT
+      </a>
+
+      <a
+        href="https://wa.me/971541420200"
+        target="_blank"
+        rel="noopener noreferrer">
+        CUSTOMER CARE
+      </a>
+
+    </div>
+
+
+    <!-- FOLLOW -->
+
+    <div class="footer-column">
+
+      <h4>
+        FOLLOW DEV
+      </h4>
+
+      <a
+        class="footer-social-link"
+        href="https://www.tiktok.com/@dev.aj7?_r=1&_t=ZS-99ZXh3XItms"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <span class="social-mark">
+          ♪
+        </span>
+
+        <span>
+          TIKTOK
+          <span class="footer-contact-value">
+            @dev.aj7
+          </span>
+        </span>
+
+      </a>
+
     </div>
 
   </div>
+
 
   <div class="copyright">
     © 2026 DEV. ALL RIGHTS RESERVED.
@@ -1162,10 +1439,12 @@ footer{
 
   </div>
 
+
   <div
     class="cart-items"
     id="cartItems">
   </div>
+
 
   <div class="cart-footer">
 
@@ -1181,6 +1460,7 @@ footer{
 
     </div>
 
+
     <button
       class="checkout-button"
       id="checkoutButton"
@@ -1188,6 +1468,7 @@ footer{
       disabled>
       CHECKOUT
     </button>
+
 
     <div class="cart-note">
       MEN + WOMEN ITEMS STAY TOGETHER IN ONE DEV BAG.
@@ -1205,43 +1486,69 @@ footer{
 ========================= */
 
 const collectionCards =
-  document.querySelectorAll(".collection-card");
+  document.querySelectorAll(
+    ".collection-card"
+  );
 
 const desktopSearch =
-  document.getElementById("desktopSearch");
+  document.getElementById(
+    "desktopSearch"
+  );
 
 const mobileSearch =
-  document.getElementById("mobileSearch");
+  document.getElementById(
+    "mobileSearch"
+  );
 
 const noResults =
-  document.getElementById("noResults");
+  document.getElementById(
+    "noResults"
+  );
 
 
 function searchCollections(value){
 
   const searchValue =
-    value.toLowerCase().trim();
+    value
+    .toLowerCase()
+    .trim();
 
   let visible = 0;
 
-  collectionCards.forEach(function(card){
 
-    const terms =
-      (card.dataset.search || "")
-      .toLowerCase();
+  collectionCards.forEach(
+    function(card){
 
-    const match =
-      searchValue === "" ||
-      terms.includes(searchValue);
+      const terms =
+        (
+          card.dataset.search ||
+          ""
+        )
+        .toLowerCase();
 
-    card.style.display =
-      match ? "" : "none";
 
-    if(match){
-      visible++;
+      const match =
+        searchValue === "" ||
+        terms.includes(
+          searchValue
+        );
+
+
+      card.style.display =
+        match
+        ?
+        ""
+        :
+        "none";
+
+
+      if(match){
+        visible++;
+      }
+
     }
+  );
 
-  });
 
   noResults.classList.toggle(
     "active",
@@ -1295,15 +1602,22 @@ mobileSearchButton.addEventListener(
   function(){
 
     mobileSearchPanel
-      .classList
-      .toggle("active");
+    .classList
+    .toggle(
+      "active"
+    );
+
 
     if(
       mobileSearchPanel
       .classList
-      .contains("active")
+      .contains(
+        "active"
+      )
     ){
+
       mobileSearch.focus();
+
     }
 
   }
@@ -1313,17 +1627,6 @@ mobileSearchButton.addEventListener(
 /* =========================
    SHARED DEV CART
 ========================= */
-
-/*
-  IMPORTANT:
-
-  MEN and WOMEN use the SAME key.
-
-  dev_cart_v1
-
-  So every product added from either
-  section stays in one shopping bag.
-*/
 
 const DEV_CART_KEY =
   "dev_cart_v1";
@@ -1340,9 +1643,13 @@ function getDevCart(){
         )
       );
 
+
     return Array.isArray(data)
-      ? data
-      : [];
+      ?
+      data
+      :
+      [];
+
 
   }catch(error){
 
@@ -1370,10 +1677,29 @@ function formatPrice(price){
   const value =
     Number(price) || 0;
 
+
   return "AED " +
     value.toFixed(
-      value % 1 === 0 ? 0 : 2
+      value % 1 === 0
+      ?
+      0
+      :
+      2
     );
+
+}
+
+
+function getItemQuantity(item){
+
+  return Math.max(
+    1,
+    Number(
+      item.quantity ??
+      item.qty ??
+      1
+    ) || 1
+  );
 
 }
 
@@ -1423,22 +1749,32 @@ function openCart(){
 
   renderDevCart();
 
+
   cartDrawer
-    .classList
-    .add("active");
+  .classList
+  .add(
+    "active"
+  );
+
 
   cartOverlay
-    .classList
-    .add("active");
+  .classList
+  .add(
+    "active"
+  );
+
 
   cartDrawer.setAttribute(
     "aria-hidden",
     "false"
   );
 
+
   document.body
-    .classList
-    .add("cart-open");
+  .classList
+  .add(
+    "cart-open"
+  );
 
 }
 
@@ -1446,21 +1782,30 @@ function openCart(){
 function closeCart(){
 
   cartDrawer
-    .classList
-    .remove("active");
+  .classList
+  .remove(
+    "active"
+  );
+
 
   cartOverlay
-    .classList
-    .remove("active");
+  .classList
+  .remove(
+    "active"
+  );
+
 
   cartDrawer.setAttribute(
     "aria-hidden",
     "true"
   );
 
+
   document.body
-    .classList
-    .remove("cart-open");
+  .classList
+  .remove(
+    "cart-open"
+  );
 
 }
 
@@ -1473,20 +1818,22 @@ function changeQuantity(
   const cart =
     getDevCart();
 
+
   if(!cart[index]){
     return;
   }
 
+
   const current =
-    Math.max(
-      1,
-      Number(
-        cart[index].quantity
-      ) || 1
+    getItemQuantity(
+      cart[index]
     );
 
+
   const newQuantity =
-    current + amount;
+    current +
+    amount;
+
 
   if(newQuantity <= 0){
 
@@ -1500,9 +1847,14 @@ function changeQuantity(
     cart[index].quantity =
       newQuantity;
 
+    delete cart[index].qty;
+
   }
 
-  saveDevCart(cart);
+
+  saveDevCart(
+    cart
+  );
 
 }
 
@@ -1512,12 +1864,16 @@ function removeItem(index){
   const cart =
     getDevCart();
 
+
   cart.splice(
     index,
     1
   );
 
-  saveDevCart(cart);
+
+  saveDevCart(
+    cart
+  );
 
 }
 
@@ -1527,16 +1883,17 @@ function renderDevCart(){
   const cart =
     getDevCart();
 
+
   const totalQuantity =
     cart.reduce(
-      function(total,item){
+      function(
+        total,
+        item
+      ){
 
         return total +
-          Math.max(
-            1,
-            Number(
-              item.quantity
-            ) || 1
+          getItemQuantity(
+            item
           );
 
       },
@@ -1546,23 +1903,27 @@ function renderDevCart(){
 
   const subtotal =
     cart.reduce(
-      function(total,item){
+      function(
+        total,
+        item
+      ){
 
         const price =
           Number(
             item.price
-          ) || 0;
+          ) ||
+          0;
+
 
         const quantity =
-          Math.max(
-            1,
-            Number(
-              item.quantity
-            ) || 1
+          getItemQuantity(
+            item
           );
 
+
         return total +
-          price * quantity;
+          price *
+          quantity;
 
       },
       0
@@ -1572,21 +1933,29 @@ function renderDevCart(){
   cartCount.textContent =
     totalQuantity;
 
+
   cartCount.classList.toggle(
     "active",
     totalQuantity > 0
   );
 
+
   cartSubtotal.textContent =
-    formatPrice(subtotal);
+    formatPrice(
+      subtotal
+    );
+
 
   checkoutButton.disabled =
     cart.length === 0;
 
 
-  if(cart.length === 0){
+  if(
+    cart.length === 0
+  ){
 
     cartItems.innerHTML = `
+
       <div class="cart-empty">
 
         <strong>
@@ -1601,6 +1970,7 @@ function renderDevCart(){
         </span>
 
       </div>
+
     `;
 
     return;
@@ -1610,57 +1980,72 @@ function renderDevCart(){
 
   cartItems.innerHTML =
     cart.map(
-      function(item,index){
+      function(
+        item,
+        index
+      ){
 
         const name =
           item.name ||
           "DEV PRODUCT";
 
+
         const section =
           item.section ||
           "DEV";
+
 
         const color =
           item.color ||
           "—";
 
+
         const size =
           item.size ||
           "—";
 
+
         const quantity =
-          Math.max(
-            1,
-            Number(
-              item.quantity
-            ) || 1
+          getItemQuantity(
+            item
           );
+
 
         const price =
           Number(
             item.price
-          ) || 0;
+          ) ||
+          0;
+
 
         const image =
-          item.image || "";
+          item.image ||
+          "";
 
 
         const imageHTML =
           image
-          ? `
+          ?
+          `
+
             <img
               class="cart-item-image"
               src="${image}"
               alt="${name}">
+
           `
-          : `
+          :
+          `
+
             <div
               class="cart-item-image">
             </div>
+
           `;
 
 
         return `
+
           <div class="cart-item">
 
             ${imageHTML}
@@ -1702,9 +2087,14 @@ function renderDevCart(){
                 </div>
 
                 <div class="cart-item-price">
-                  ${formatPrice(
-                    price * quantity
-                  )}
+
+                  ${
+                    formatPrice(
+                      price *
+                      quantity
+                    )
+                  }
+
                 </div>
 
               </div>
@@ -1720,6 +2110,7 @@ function renderDevCart(){
             </div>
 
           </div>
+
         `;
 
       }
@@ -1738,20 +2129,26 @@ cartItems.addEventListener(
         "[data-action]"
       );
 
+
     if(!button){
       return;
     }
+
 
     const index =
       Number(
         button.dataset.index
       );
 
+
     const action =
       button.dataset.action;
 
 
-    if(action === "plus"){
+    if(
+      action ===
+      "plus"
+    ){
 
       changeQuantity(
         index,
@@ -1761,7 +2158,10 @@ cartItems.addEventListener(
     }
 
 
-    if(action === "minus"){
+    if(
+      action ===
+      "minus"
+    ){
 
       changeQuantity(
         index,
@@ -1771,7 +2171,10 @@ cartItems.addEventListener(
     }
 
 
-    if(action === "remove"){
+    if(
+      action ===
+      "remove"
+    ){
 
       removeItem(
         index
@@ -1788,10 +2191,12 @@ cartButton.addEventListener(
   openCart
 );
 
+
 cartClose.addEventListener(
   "click",
   closeCart
 );
+
 
 cartOverlay.addEventListener(
   "click",
@@ -1803,25 +2208,48 @@ document.addEventListener(
   "keydown",
   function(event){
 
-    if(event.key === "Escape"){
+    if(
+      event.key ===
+      "Escape"
+    ){
+
       closeCart();
+
     }
 
   }
 );
 
 
+/* =========================
+   CHECKOUT
+========================= */
+
 checkoutButton.addEventListener(
   "click",
   function(){
 
-    alert(
-      "DEV Checkout will be connected later."
-    );
+    const cart =
+      getDevCart();
+
+
+    if(
+      cart.length === 0
+    ){
+      return;
+    }
+
+
+    window.location.href =
+      "/DEV-Website/checkout/";
 
   }
 );
 
+
+/* =========================
+   CART SYNC
+========================= */
 
 window.addEventListener(
   "storage",
@@ -1831,12 +2259,18 @@ window.addEventListener(
       event.key ===
       DEV_CART_KEY
     ){
+
       renderDevCart();
+
     }
 
   }
 );
 
+
+/* =========================
+   START
+========================= */
 
 renderDevCart();
 
