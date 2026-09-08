@@ -224,6 +224,16 @@ nav{
 
 
 /* ================================
+   YEAH BUDDY SIZE FIX
+   CARD ONLY
+================================ */
+
+.product-card-image[data-card="yeahBuddy"] .card-slide img{
+  transform:scale(.88);
+}
+
+
+/* ================================
    BADGE
 ================================ */
 
@@ -873,10 +883,6 @@ footer{
 </nav>
 
 
-<!-- ================================
-     HEADER
-================================ -->
-
 <section class="page-header">
 
   <div class="page-header-top">
@@ -899,10 +905,6 @@ footer{
 </section>
 
 
-<!-- ================================
-     COLLECTION BAR
-================================ -->
-
 <section
   class="collection-bar"
   id="products">
@@ -918,16 +920,8 @@ footer{
 </section>
 
 
-<!-- ================================
-     PRODUCT GRID
-================================ -->
-
 <section class="product-grid">
 
-
-  <!-- ============================
-       CLOSE YOUR EYES
-  ============================= -->
 
   <article class="product-card">
 
@@ -1022,10 +1016,6 @@ footer{
   </article>
 
 
-  <!-- ============================
-       YUJIRO JACK
-  ============================= -->
-
   <article class="product-card">
 
     <div
@@ -1118,10 +1108,6 @@ footer{
 
   </article>
 
-
-  <!-- ============================
-       YEAH BUDDY
-  ============================= -->
 
   <article class="product-card">
 
@@ -1216,11 +1202,6 @@ footer{
   </article>
 
 
-  <!-- ============================
-       ORIGINAL GRAPHIC
-       KEEP AS ONE PRODUCT
-  ============================= -->
-
   <article class="product-card">
 
     <div
@@ -1312,10 +1293,6 @@ footer{
 
 </section>
 
-
-<!-- ================================
-     PRODUCT DETAILS
-================================ -->
 
 <section
   class="product-detail"
@@ -1496,10 +1473,6 @@ footer{
 </section>
 
 
-<!-- ================================
-     FOOTER
-================================ -->
-
 <footer>
 
   <a
@@ -1539,18 +1512,13 @@ footer{
 
 
   <div class="footer-bottom">
-    © 2026 DEV. BUILT DIFFERENT.
+    ©️ 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
 
 
 <script>
-
-
-/* ================================
-   PRODUCTS
-================================ */
 
 const products = {
 
@@ -1803,10 +1771,6 @@ const products = {
 };
 
 
-/* ================================
-   CURRENT STATE
-================================ */
-
 let currentProduct =
   "closeEyes";
 
@@ -1821,10 +1785,6 @@ let selectedSize =
   null;
 
 
-/* ================================
-   CARD STATE
-================================ */
-
 const cardState = {
 
   closeEyes:0,
@@ -1837,10 +1797,6 @@ const cardState = {
 
 };
 
-
-/* ================================
-   UPDATE CARD
-================================ */
 
 function updateCard(productKey){
 
@@ -1885,10 +1841,6 @@ function updateCard(productKey){
 }
 
 
-/* ================================
-   CARD NEXT
-================================ */
-
 function cardNext(event,productKey){
 
   event.stopPropagation();
@@ -1901,10 +1853,6 @@ function cardNext(event,productKey){
 }
 
 
-/* ================================
-   CARD PREVIOUS
-================================ */
-
 function cardPrev(event,productKey){
 
   event.stopPropagation();
@@ -1916,10 +1864,6 @@ function cardPrev(event,productKey){
 
 }
 
-
-/* ================================
-   CARD DOT
-================================ */
 
 function cardGoTo(
   event,
@@ -1936,10 +1880,6 @@ function cardGoTo(
 
 }
 
-
-/* ================================
-   TOUCH SWIPE
-================================ */
 
 document
 .querySelectorAll(
@@ -2077,10 +2017,6 @@ document
 );
 
 
-/* ================================
-   DESKTOP IMAGE CLICK
-================================ */
-
 document
 .querySelectorAll(
   ".product-card-image"
@@ -2127,10 +2063,6 @@ document
   }
 );
 
-
-/* ================================
-   OPEN PRODUCT
-================================ */
 
 function openProduct(productKey){
 
@@ -2189,10 +2121,6 @@ function openProduct(productKey){
 }
 
 
-/* ================================
-   RENDER PRODUCT
-================================ */
-
 function renderProduct(){
 
   const product =
@@ -2243,10 +2171,6 @@ function renderProduct(){
 
 }
 
-
-/* ================================
-   COLORS
-================================ */
 
 function renderColors(){
 
@@ -2343,10 +2267,6 @@ function renderColors(){
 }
 
 
-/* ================================
-   CHANGE COLOR
-================================ */
-
 function changeColor(color){
 
   currentColor =
@@ -2377,10 +2297,6 @@ function changeColor(color){
 
 }
 
-
-/* ================================
-   SIZES
-================================ */
 
 function renderSizes(){
 
@@ -2462,10 +2378,6 @@ function renderSizes(){
 }
 
 
-/* ================================
-   SELECT SIZE
-================================ */
-
 function selectSize(
   button,
   size
@@ -2511,10 +2423,6 @@ function selectSize(
 
 }
 
-
-/* ================================
-   CHANGE VIEW
-================================ */
 
 function changeView(view){
 
@@ -2580,10 +2488,6 @@ function changeView(view){
 
 }
 
-
-/* ================================
-   UPDATE IMAGES
-================================ */
 
 function updateImages(){
 
@@ -2684,10 +2588,6 @@ function updateImages(){
 }
 
 
-/* ================================
-   MAIN IMAGE
-================================ */
-
 function updateMainImage(){
 
   const image =
@@ -2725,10 +2625,6 @@ function updateMainImage(){
 }
 
 
-/* ================================
-   ACTION BUTTON
-================================ */
-
 function updateActionButton(){
 
   const button =
@@ -2754,10 +2650,6 @@ function updateActionButton(){
 
 }
 
-
-/* ================================
-   ACTION
-================================ */
 
 function handleAction(){
 
@@ -2787,10 +2679,6 @@ function handleAction(){
 }
 
 
-/* ================================
-   BACK TO PRODUCTS
-================================ */
-
 function backToProducts(){
 
   document
@@ -2803,10 +2691,6 @@ function backToProducts(){
 
 }
 
-
-/* ================================
-   MOBILE MENU
-================================ */
 
 function toggleMenu(){
 
