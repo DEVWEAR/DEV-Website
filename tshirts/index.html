@@ -25,6 +25,10 @@ body{
   color:#111;
 }
 
+body.cart-open{
+  overflow:hidden;
+}
+
 a{
   text-decoration:none;
   color:inherit;
@@ -88,7 +92,7 @@ nav{
 .nav-right{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:12px;
 }
 
 .nav-icon{
@@ -100,6 +104,48 @@ nav{
   display:none;
   font-size:22px;
   cursor:pointer;
+}
+
+
+/* ================================
+   CART BUTTON
+================================ */
+
+.cart-button{
+  position:relative;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#171717;
+  color:#fff;
+  cursor:pointer;
+  font-size:17px;
+}
+
+.cart-count{
+  display:none;
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  background:#fff;
+  color:#000;
+  border:1px solid #000;
+  font-size:9px;
+  font-weight:900;
+}
+
+.cart-count.active{
+  display:flex;
 }
 
 
@@ -225,7 +271,6 @@ nav{
 
 /* ================================
    YEAH BUDDY SIZE FIX
-   CARD ONLY
 ================================ */
 
 .product-card-image[data-card="yeahBuddy"] .card-slide img{
@@ -292,7 +337,6 @@ nav{
   z-index:8;
   opacity:0;
   transition:opacity .25s ease;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 .product-card-image:hover .card-arrow{
@@ -624,10 +668,15 @@ nav{
   font-weight:900;
   letter-spacing:3px;
   cursor:pointer;
+  transition:.2s;
 }
 
 .action-button:hover{
   background:#292929;
+}
+
+.action-button.added{
+  background:#1d6d3c;
 }
 
 
@@ -677,6 +726,10 @@ footer{
   font-size:11px;
 }
 
+.footer-links a:hover{
+  color:#fff;
+}
+
 .footer-bottom{
   border-top:1px solid #292929;
   margin-top:30px;
@@ -684,6 +737,207 @@ footer{
   color:#666;
   font-size:9px;
   letter-spacing:1px;
+}
+
+
+/* ================================
+   CART
+================================ */
+
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1998;
+  background:rgba(0,0,0,.7);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+}
+
+.cart-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  z-index:1999;
+  width:min(430px,100%);
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#090909;
+  color:#fff;
+  border-left:1px solid #242424;
+  transform:translateX(100%);
+  transition:.3s;
+}
+
+.cart-drawer.active{
+  transform:translateX(0);
+}
+
+.cart-header{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid #222;
+}
+
+.cart-title{
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.cart-close{
+  width:42px;
+  height:42px;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:21px;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:20px 24px;
+}
+
+.cart-empty{
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:center;
+}
+
+.cart-empty strong{
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.cart-empty span{
+  max-width:270px;
+  color:#777;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:14px;
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:1px solid #222;
+}
+
+.cart-item-image{
+  width:80px;
+  height:100px;
+  object-fit:contain;
+  background:#f5f5f3;
+}
+
+.cart-item-name{
+  font-size:12px;
+  font-weight:900;
+}
+
+.cart-item-meta{
+  margin-top:7px;
+  color:#888;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.cart-item-row{
+  margin-top:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  border:1px solid #333;
+}
+
+.quantity button{
+  width:30px;
+  height:30px;
+  border:0;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+}
+
+.quantity span{
+  width:30px;
+  text-align:center;
+  font-size:11px;
+}
+
+.cart-item-price{
+  font-size:11px;
+  font-weight:900;
+}
+
+.remove-item{
+  margin-top:10px;
+  border:0;
+  background:none;
+  color:#777;
+  cursor:pointer;
+  font-size:9px;
+  text-decoration:underline;
+}
+
+.cart-footer{
+  padding:20px 24px 24px;
+  border-top:1px solid #222;
+}
+
+.cart-subtotal{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:16px;
+  font-size:12px;
+  font-weight:900;
+}
+
+.checkout-button{
+  width:100%;
+  height:52px;
+  border:0;
+  background:#fff;
+  color:#000;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.checkout-button:disabled{
+  opacity:.35;
+}
+
+.cart-note{
+  margin-top:12px;
+  color:#555;
+  text-align:center;
+  font-size:9px;
+  line-height:1.6;
 }
 
 
@@ -829,25 +1083,25 @@ footer{
 
 <nav>
 
-  <a href="../index.html" class="logo">
+  <a href="/DEV-Website/" class="logo">
     DEV
   </a>
 
   <div class="nav-links" id="navLinks">
 
-    <a href="#products">
+    <a href="/DEV-Website/tshirts/">
       T-SHIRTS
     </a>
 
-    <a href="../polo/">
+    <a href="/DEV-Website/polo/">
       POLO
     </a>
 
-    <a href="../shorts/">
+    <a href="/DEV-Website/shorts/">
       SHORTS
     </a>
 
-    <a href="../baggy-pants/">
+    <a href="/DEV-Website/baggy-pants/">
       BAGGY PANTS
     </a>
 
@@ -871,6 +1125,22 @@ footer{
     <span class="nav-icon">
       ♡
     </span>
+
+
+    <button
+      class="cart-button"
+      id="cartButton"
+      type="button">
+      🛒
+
+      <span
+        class="cart-count"
+        id="cartCount">
+        0
+      </span>
+
+    </button>
+
 
     <span
       class="menu-btn"
@@ -922,6 +1192,8 @@ footer{
 
 <section class="product-grid">
 
+
+  <!-- CLOSE YOUR EYES -->
 
   <article class="product-card">
 
@@ -1016,6 +1288,8 @@ footer{
   </article>
 
 
+  <!-- YUJIRO JACK -->
+
   <article class="product-card">
 
     <div
@@ -1108,6 +1382,8 @@ footer{
 
   </article>
 
+
+  <!-- YEAH BUDDY -->
 
   <article class="product-card">
 
@@ -1202,6 +1478,8 @@ footer{
   </article>
 
 
+  <!-- ORIGINAL GRAPHIC -->
+
   <article class="product-card">
 
     <div
@@ -1293,6 +1571,8 @@ footer{
 
 </section>
 
+
+<!-- PRODUCT DETAIL -->
 
 <section
   class="product-detail"
@@ -1391,9 +1671,11 @@ footer{
         DEV // T-SHIRT COLLECTION
       </div>
 
+
       <h2 id="productName">
         CLOSE YOUR EYES TEE
       </h2>
+
 
       <div
         class="price"
@@ -1455,6 +1737,7 @@ footer{
       <button
         class="action-button"
         id="actionButton"
+        type="button"
         onclick="handleAction()">
         SELECT SIZE
       </button>
@@ -1473,10 +1756,12 @@ footer{
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
   <a
-    href="../index.html"
+    href="/DEV-Website/"
     class="footer-logo">
     DEV
   </a>
@@ -1484,50 +1769,128 @@ footer{
 
   <div class="footer-links">
 
-    <a href="#products">
+    <a href="/DEV-Website/">
+      MEN
+    </a>
+
+    <a href="/DEV-Website/women/">
+      WOMEN
+    </a>
+
+    <a href="/DEV-Website/tshirts/">
       T-Shirts
     </a>
 
-    <a href="../polo/">
+    <a href="/DEV-Website/polo/">
       Polo
     </a>
 
-    <a href="../shorts/">
+    <a href="/DEV-Website/shorts/">
       Shorts
     </a>
 
-    <a href="../baggy-pants/">
+    <a href="/DEV-Website/baggy-pants/">
       Baggy Pants
-    </a>
-
-    <a href="#">
-      Hoodies
-    </a>
-
-    <a href="#">
-      Sweaters
     </a>
 
   </div>
 
 
   <div class="footer-bottom">
-    ©️ 2026 DEV. BUILT DIFFERENT.
+    © 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
 
 
+<!-- SHARED CART -->
+
+<div
+  class="cart-overlay"
+  id="cartOverlay">
+</div>
+
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer">
+
+
+  <div class="cart-header">
+
+    <div class="cart-title">
+      YOUR BAG
+    </div>
+
+    <button
+      class="cart-close"
+      id="cartClose"
+      type="button">
+      ×
+    </button>
+
+  </div>
+
+
+  <div
+    class="cart-items"
+    id="cartItems">
+  </div>
+
+
+  <div class="cart-footer">
+
+    <div class="cart-subtotal">
+
+      <span>
+        SUBTOTAL
+      </span>
+
+      <span id="cartSubtotal">
+        AED 0
+      </span>
+
+    </div>
+
+
+    <button
+      class="checkout-button"
+      id="checkoutButton"
+      type="button"
+      disabled>
+      CHECKOUT
+    </button>
+
+
+    <div class="cart-note">
+      MEN + WOMEN ITEMS STAY TOGETHER
+      IN ONE DEV BAG.
+    </div>
+
+  </div>
+
+</aside>
+
+
 <script>
+
+
+/* ================================
+   PRODUCTS
+================================ */
 
 const products = {
 
 
   closeEyes:{
 
+    id:"close-your-eyes-tee",
+
     name:"CLOSE YOUR EYES TEE",
 
     price:"AED 75",
+
+    priceNumber:75,
 
     defaultColor:"white",
 
@@ -1545,7 +1908,10 @@ const products = {
 
           model:"../close-eyes-model.jpeg"
 
-        }
+        },
+
+        cartImage:
+          "/DEV-Website/close-eyes-front.jfif"
 
       }
 
@@ -1581,9 +1947,13 @@ const products = {
 
   yujiroJack:{
 
+    id:"yujiro-jack-hanma-tee",
+
     name:"YUJIRO × JACK HANMA TEE",
 
     price:"AED 75",
+
+    priceNumber:75,
 
     defaultColor:"black",
 
@@ -1601,7 +1971,10 @@ const products = {
 
           model:"../yujiro-jack-model.jpeg"
 
-        }
+        },
+
+        cartImage:
+          "/DEV-Website/yujiro-jack-front.jfif"
 
       }
 
@@ -1637,9 +2010,13 @@ const products = {
 
   yeahBuddy:{
 
+    id:"yeah-buddy-tee",
+
     name:"YEAH BUDDY TEE",
 
     price:"AED 75",
+
+    priceNumber:75,
 
     defaultColor:"black",
 
@@ -1657,7 +2034,10 @@ const products = {
 
           model:"../yeah-buddy-model.jpeg"
 
-        }
+        },
+
+        cartImage:
+          "/DEV-Website/yeah-buddy-front.jfif"
 
       }
 
@@ -1698,9 +2078,13 @@ const products = {
 
   originalGraphic:{
 
+    id:"dev-oversized-graphic-tee",
+
     name:"DEV OVERSIZED GRAPHIC TEE",
 
     price:"AED 85",
+
+    priceNumber:85,
 
     defaultColor:"black",
 
@@ -1718,7 +2102,10 @@ const products = {
 
           model:"../graphic-tee-black-model.jpg.jpeg"
 
-        }
+        },
+
+        cartImage:
+          "/DEV-Website/graphic-tee-black-front.jpg.jpeg"
 
       },
 
@@ -1735,7 +2122,10 @@ const products = {
 
           model:"../graphic-tee-navy-model.jpg.jpeg"
 
-        }
+        },
+
+        cartImage:
+          "/DEV-Website/graphic-tee-navy-front.jpg.jpeg"
 
       }
 
@@ -1771,6 +2161,10 @@ const products = {
 };
 
 
+/* ================================
+   CURRENT PRODUCT
+================================ */
+
 let currentProduct =
   "closeEyes";
 
@@ -1785,6 +2179,10 @@ let selectedSize =
   null;
 
 
+/* ================================
+   CARD STATE
+================================ */
+
 const cardState = {
 
   closeEyes:0,
@@ -1797,6 +2195,10 @@ const cardState = {
 
 };
 
+
+/* ================================
+   CARD SLIDER
+================================ */
 
 function updateCard(productKey){
 
@@ -1880,6 +2282,10 @@ function cardGoTo(
 
 }
 
+
+/* ================================
+   TOUCH SWIPE
+================================ */
 
 document
 .querySelectorAll(
@@ -2017,6 +2423,10 @@ document
 );
 
 
+/* ================================
+   DESKTOP CLICK
+================================ */
+
 document
 .querySelectorAll(
   ".product-card-image"
@@ -2063,6 +2473,10 @@ document
   }
 );
 
+
+/* ================================
+   OPEN PRODUCT
+================================ */
 
 function openProduct(productKey){
 
@@ -2121,6 +2535,10 @@ function openProduct(productKey){
 }
 
 
+/* ================================
+   RENDER PRODUCT
+================================ */
+
 function renderProduct(){
 
   const product =
@@ -2171,6 +2589,10 @@ function renderProduct(){
 
 }
 
+
+/* ================================
+   COLORS
+================================ */
 
 function renderColors(){
 
@@ -2298,6 +2720,10 @@ function changeColor(color){
 }
 
 
+/* ================================
+   SIZES
+================================ */
+
 function renderSizes(){
 
   const product =
@@ -2424,6 +2850,10 @@ function selectSize(
 }
 
 
+/* ================================
+   VIEW
+================================ */
+
 function changeView(view){
 
   currentView =
@@ -2439,8 +2869,9 @@ function changeView(view){
 
       btn
       .classList
-      .remove(
-        "active"
+      .toggle(
+        "active",
+        btn.dataset.view === view
       );
 
     }
@@ -2456,31 +2887,12 @@ function changeView(view){
 
       thumb
       .classList
-      .remove(
-        "active"
+      .toggle(
+        "active",
+        thumb.dataset.view === view
       );
 
     }
-  );
-
-
-  document
-  .querySelector(
-    `.view-btn[data-view="${view}"]`
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document
-  .querySelector(
-    `.thumb[data-view="${view}"]`
-  )
-  .classList
-  .add(
-    "active"
   );
 
 
@@ -2525,65 +2937,9 @@ function updateImages(){
     images.model;
 
 
-  currentView =
-    "front";
-
-
-  document
-  .querySelectorAll(
-    ".view-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn
-      .classList
-      .remove(
-        "active"
-      );
-
-    }
+  changeView(
+    "front"
   );
-
-
-  document
-  .querySelectorAll(
-    ".thumb"
-  )
-  .forEach(
-    function(thumb){
-
-      thumb
-      .classList
-      .remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  document
-  .querySelector(
-    '.view-btn[data-view="front"]'
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document
-  .querySelector(
-    '.thumb[data-view="front"]'
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  updateMainImage();
 
 }
 
@@ -2625,6 +2981,10 @@ function updateMainImage(){
 }
 
 
+/* ================================
+   ACTION BUTTON
+================================ */
+
 function updateActionButton(){
 
   const button =
@@ -2632,6 +2992,11 @@ function updateActionButton(){
     .getElementById(
       "actionButton"
     );
+
+
+  button.classList.remove(
+    "added"
+  );
 
 
   if(
@@ -2651,6 +3016,77 @@ function updateActionButton(){
 }
 
 
+/* ================================
+   SHARED CART
+================================ */
+
+const DEV_CART_KEY =
+  "dev_cart_v1";
+
+
+function getCart(){
+
+  try{
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          DEV_CART_KEY
+        )
+      );
+
+
+    return Array.isArray(data)
+      ?
+      data
+      :
+      [];
+
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function saveCart(cart){
+
+  localStorage.setItem(
+    DEV_CART_KEY,
+    JSON.stringify(cart)
+  );
+
+
+  renderCart();
+
+}
+
+
+function formatPrice(price){
+
+  const value =
+    Number(price) || 0;
+
+
+  return "AED " +
+    value.toFixed(
+      value % 1 === 0
+      ?
+      0
+      :
+      2
+    );
+
+}
+
+
+/* ================================
+   ADD PRODUCT
+================================ */
+
 function handleAction(){
 
   if(
@@ -2666,18 +3102,699 @@ function handleAction(){
   }
 
 
-  alert(
+  const product =
     products[
       currentProduct
-    ]
-    .name +
-    " — Size " +
-    selectedSize +
-    "\n\nDEV checkout will be connected soon."
+    ];
+
+
+  const color =
+    product
+    .colors[
+      currentColor
+    ];
+
+
+  const cart =
+    getCart();
+
+
+  const id =
+    product.id +
+    "-" +
+    currentColor +
+    "-" +
+    selectedSize;
+
+
+  const existingIndex =
+    cart.findIndex(
+      function(item){
+
+        return item.id === id;
+
+      }
+    );
+
+
+  if(
+    existingIndex !== -1
+  ){
+
+    cart[
+      existingIndex
+    ].quantity =
+      Number(
+        cart[
+          existingIndex
+        ].quantity || 1
+      ) + 1;
+
+  }else{
+
+    cart.push({
+
+      id:id,
+
+      productId:
+        product.id,
+
+      name:
+        product.name,
+
+      section:
+        "MEN",
+
+      category:
+        "T-SHIRTS",
+
+      color:
+        color.label,
+
+      size:
+        selectedSize,
+
+      price:
+        product.priceNumber,
+
+      quantity:
+        1,
+
+      image:
+        color.cartImage
+
+    });
+
+  }
+
+
+  saveCart(
+    cart
+  );
+
+
+  const button =
+    document
+    .getElementById(
+      "actionButton"
+    );
+
+
+  button.textContent =
+    "ADDED TO BAG ✓";
+
+
+  button.classList.add(
+    "added"
+  );
+
+
+  setTimeout(
+    function(){
+
+      button.textContent =
+        "ADD TO BAG";
+
+
+      button.classList.remove(
+        "added"
+      );
+
+
+      openCart();
+
+    },
+    500
   );
 
 }
 
+
+/* ================================
+   CART ELEMENTS
+================================ */
+
+const cartButton =
+  document.getElementById(
+    "cartButton"
+  );
+
+const cartCount =
+  document.getElementById(
+    "cartCount"
+  );
+
+const cartDrawer =
+  document.getElementById(
+    "cartDrawer"
+  );
+
+const cartOverlay =
+  document.getElementById(
+    "cartOverlay"
+  );
+
+const cartClose =
+  document.getElementById(
+    "cartClose"
+  );
+
+const cartItems =
+  document.getElementById(
+    "cartItems"
+  );
+
+const cartSubtotal =
+  document.getElementById(
+    "cartSubtotal"
+  );
+
+const checkoutButton =
+  document.getElementById(
+    "checkoutButton"
+  );
+
+
+/* ================================
+   OPEN / CLOSE CART
+================================ */
+
+function openCart(){
+
+  renderCart();
+
+
+  cartDrawer
+  .classList
+  .add(
+    "active"
+  );
+
+
+  cartOverlay
+  .classList
+  .add(
+    "active"
+  );
+
+
+  document.body
+  .classList
+  .add(
+    "cart-open"
+  );
+
+}
+
+
+function closeCart(){
+
+  cartDrawer
+  .classList
+  .remove(
+    "active"
+  );
+
+
+  cartOverlay
+  .classList
+  .remove(
+    "active"
+  );
+
+
+  document.body
+  .classList
+  .remove(
+    "cart-open"
+  );
+
+}
+
+
+/* ================================
+   QUANTITY
+================================ */
+
+function changeQuantity(
+  index,
+  amount
+){
+
+  const cart =
+    getCart();
+
+
+  if(
+    !cart[index]
+  ){
+    return;
+  }
+
+
+  const current =
+    Number(
+      cart[index]
+      .quantity || 1
+    );
+
+
+  const next =
+    current +
+    amount;
+
+
+  if(
+    next <= 0
+  ){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }else{
+
+    cart[
+      index
+    ].quantity =
+      next;
+
+  }
+
+
+  saveCart(
+    cart
+  );
+
+}
+
+
+/* ================================
+   REMOVE
+================================ */
+
+function removeItem(index){
+
+  const cart =
+    getCart();
+
+
+  cart.splice(
+    index,
+    1
+  );
+
+
+  saveCart(
+    cart
+  );
+
+}
+
+
+/* ================================
+   RENDER CART
+================================ */
+
+function renderCart(){
+
+  const cart =
+    getCart();
+
+
+  const totalQuantity =
+    cart.reduce(
+      function(total,item){
+
+        return total +
+          Number(
+            item.quantity || 1
+          );
+
+      },
+      0
+    );
+
+
+  const subtotal =
+    cart.reduce(
+      function(total,item){
+
+        return total +
+          (
+            Number(
+              item.price || 0
+            )
+            *
+            Number(
+              item.quantity || 1
+            )
+          );
+
+      },
+      0
+    );
+
+
+  cartCount.textContent =
+    totalQuantity;
+
+
+  cartCount
+  .classList
+  .toggle(
+    "active",
+    totalQuantity > 0
+  );
+
+
+  cartSubtotal.textContent =
+    formatPrice(
+      subtotal
+    );
+
+
+  checkoutButton.disabled =
+    cart.length === 0;
+
+
+  if(
+    cart.length === 0
+  ){
+
+    cartItems.innerHTML = `
+
+      <div class="cart-empty">
+
+        <strong>
+          YOUR BAG IS EMPTY
+        </strong>
+
+        <span>
+          Shop MEN or WOMEN.
+          Everything you add stays
+          together in the same
+          DEV bag.
+        </span>
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  cartItems.innerHTML =
+    cart.map(
+      function(item,index){
+
+        const name =
+          item.name ||
+          "DEV PRODUCT";
+
+
+        const section =
+          item.section ||
+          "DEV";
+
+
+        const color =
+          item.color ||
+          "—";
+
+
+        const size =
+          item.size ||
+          "—";
+
+
+        const quantity =
+          Number(
+            item.quantity || 1
+          );
+
+
+        const price =
+          Number(
+            item.price || 0
+          );
+
+
+        const image =
+          item.image ||
+          "";
+
+
+        return `
+
+          <div class="cart-item">
+
+            ${
+              image
+              ?
+              `
+              <img
+                class="cart-item-image"
+                src="${image}"
+                alt="${name}">
+              `
+              :
+              `
+              <div
+                class="cart-item-image">
+              </div>
+              `
+            }
+
+            <div>
+
+              <div class="cart-item-name">
+                ${name}
+              </div>
+
+              <div class="cart-item-meta">
+
+                ${section}
+                ·
+                ${color}
+                ·
+                SIZE ${size}
+
+              </div>
+
+              <div class="cart-item-row">
+
+                <div class="quantity">
+
+                  <button
+                    type="button"
+                    data-action="minus"
+                    data-index="${index}">
+                    −
+                  </button>
+
+                  <span>
+                    ${quantity}
+                  </span>
+
+                  <button
+                    type="button"
+                    data-action="plus"
+                    data-index="${index}">
+                    +
+                  </button>
+
+                </div>
+
+                <div class="cart-item-price">
+
+                  ${
+                    formatPrice(
+                      price *
+                      quantity
+                    )
+                  }
+
+                </div>
+
+              </div>
+
+              <button
+                class="remove-item"
+                type="button"
+                data-action="remove"
+                data-index="${index}">
+                REMOVE
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+/* ================================
+   CART ACTIONS
+================================ */
+
+cartItems
+.addEventListener(
+  "click",
+  function(event){
+
+    const button =
+      event.target.closest(
+        "[data-action]"
+      );
+
+
+    if(
+      !button
+    ){
+      return;
+    }
+
+
+    const index =
+      Number(
+        button.dataset.index
+      );
+
+
+    const action =
+      button.dataset.action;
+
+
+    if(
+      action === "plus"
+    ){
+
+      changeQuantity(
+        index,
+        1
+      );
+
+    }
+
+
+    if(
+      action === "minus"
+    ){
+
+      changeQuantity(
+        index,
+        -1
+      );
+
+    }
+
+
+    if(
+      action === "remove"
+    ){
+
+      removeItem(
+        index
+      );
+
+    }
+
+  }
+);
+
+
+cartButton
+.addEventListener(
+  "click",
+  openCart
+);
+
+
+cartClose
+.addEventListener(
+  "click",
+  closeCart
+);
+
+
+cartOverlay
+.addEventListener(
+  "click",
+  closeCart
+);
+
+
+document
+.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closeCart();
+
+    }
+
+  }
+);
+
+
+/* ================================
+   CHECKOUT
+================================ */
+
+checkoutButton
+.addEventListener(
+  "click",
+  function(){
+
+    alert(
+      "DEV Checkout will be connected later."
+    );
+
+  }
+);
+
+
+/* ================================
+   SYNC CART
+================================ */
+
+window
+.addEventListener(
+  "storage",
+  function(event){
+
+    if(
+      event.key ===
+      DEV_CART_KEY
+    ){
+
+      renderCart();
+
+    }
+
+  }
+);
+
+
+/* ================================
+   BACK
+================================ */
 
 function backToProducts(){
 
@@ -2692,6 +3809,10 @@ function backToProducts(){
 }
 
 
+/* ================================
+   MOBILE MENU
+================================ */
+
 function toggleMenu(){
 
   document
@@ -2704,6 +3825,13 @@ function toggleMenu(){
   );
 
 }
+
+
+/* ================================
+   START
+================================ */
+
+renderCart();
 
 </script>
 
