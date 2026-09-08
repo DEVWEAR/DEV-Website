@@ -38,11 +38,6 @@ button{
   font-family:inherit;
 }
 
-
-/* ================================
-   TOP BAR
-================================ */
-
 .top-bar{
   background:#fff;
   text-align:center;
@@ -51,11 +46,6 @@ button{
   letter-spacing:3px;
   font-weight:800;
 }
-
-
-/* ================================
-   NAV
-================================ */
 
 nav{
   background:#0c0c0c;
@@ -106,11 +96,6 @@ nav{
   cursor:pointer;
 }
 
-
-/* ================================
-   CART BUTTON
-================================ */
-
 .cart-button{
   position:relative;
   width:40px;
@@ -148,11 +133,6 @@ nav{
   display:flex;
 }
 
-
-/* ================================
-   PAGE HEADER
-================================ */
-
 .page-header{
   background:#111;
   color:#fff;
@@ -185,11 +165,6 @@ nav{
   line-height:1.7;
 }
 
-
-/* ================================
-   COLLECTION BAR
-================================ */
-
 .collection-bar{
   max-width:1400px;
   margin:auto;
@@ -213,11 +188,6 @@ nav{
   color:#777;
 }
 
-
-/* ================================
-   PRODUCT GRID
-================================ */
-
 .product-grid{
   max-width:1400px;
   margin:auto;
@@ -226,11 +196,6 @@ nav{
   grid-template-columns:repeat(3,1fr);
   gap:34px 12px;
 }
-
-
-/* ================================
-   PRODUCT CARD
-================================ */
 
 .product-card{
   cursor:pointer;
@@ -268,11 +233,6 @@ nav{
   object-position:center;
 }
 
-
-/* ================================
-   CARD ARROWS
-================================ */
-
 .card-arrow{
   position:absolute;
   top:50%;
@@ -306,11 +266,6 @@ nav{
   right:10px;
 }
 
-
-/* ================================
-   CARD DOTS
-================================ */
-
 .card-dots{
   position:absolute;
   left:50%;
@@ -335,11 +290,6 @@ nav{
   background:#111;
 }
 
-
-/* ================================
-   SWIPE LABEL
-================================ */
-
 .swipe-label{
   position:absolute;
   right:12px;
@@ -352,11 +302,6 @@ nav{
   font-weight:900;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   CARD INFO
-================================ */
 
 .product-card-info{
   padding:14px 3px 0;
@@ -382,11 +327,6 @@ nav{
   letter-spacing:1px;
 }
 
-
-/* ================================
-   PRODUCT DETAIL
-================================ */
-
 .product-detail{
   display:none;
   background:#fff;
@@ -407,11 +347,6 @@ nav{
   align-items:start;
 }
 
-
-/* ================================
-   PRODUCT MEDIA
-================================ */
-
 .main-image-wrap{
   background:#f5f5f3;
   overflow:hidden;
@@ -424,11 +359,6 @@ nav{
   object-fit:contain;
   background:#f5f5f3;
 }
-
-
-/* ================================
-   FRONT / BACK / MODEL
-================================ */
 
 .view-selector{
   display:grid;
@@ -458,11 +388,6 @@ nav{
   color:#fff;
 }
 
-
-/* ================================
-   THUMBNAILS
-================================ */
-
 .thumbnails{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -487,11 +412,6 @@ nav{
   object-fit:contain;
   display:block;
 }
-
-
-/* ================================
-   PRODUCT INFO
-================================ */
 
 .product-info{
   padding-top:5px;
@@ -528,11 +448,6 @@ nav{
   letter-spacing:1.5px;
 }
 
-
-/* ================================
-   COLOR
-================================ */
-
 .color-options{
   display:flex;
   gap:8px;
@@ -549,11 +464,6 @@ nav{
   font-weight:800;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   SIZE
-================================ */
 
 .size-options{
   display:grid;
@@ -577,11 +487,6 @@ nav{
   border-color:#111;
 }
 
-
-/* ================================
-   SIZE ERROR
-================================ */
-
 .size-error{
   display:none;
   margin-top:-15px;
@@ -599,11 +504,6 @@ nav{
   display:block;
 }
 
-
-/* ================================
-   DESCRIPTION
-================================ */
-
 .description{
   border-top:1px solid #ddd;
   margin-top:8px;
@@ -612,11 +512,6 @@ nav{
   font-size:13px;
   line-height:1.8;
 }
-
-
-/* ================================
-   ADD TO BAG
-================================ */
 
 .add-to-bag{
   width:100%;
@@ -640,11 +535,6 @@ nav{
   background:#1d6d3c;
 }
 
-
-/* ================================
-   BACK BUTTON
-================================ */
-
 .back-products{
   width:100%;
   margin-top:10px;
@@ -656,11 +546,6 @@ nav{
   letter-spacing:2px;
   cursor:pointer;
 }
-
-
-/* ================================
-   FOOTER
-================================ */
 
 footer{
   background:#0c0c0c;
@@ -699,11 +584,6 @@ footer{
   font-size:9px;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   CART
-================================ */
 
 .cart-overlay{
   position:fixed;
@@ -887,10 +767,12 @@ footer{
   color:#000;
   font-weight:900;
   letter-spacing:2px;
+  cursor:pointer;
 }
 
 .checkout-button:disabled{
   opacity:.35;
+  cursor:not-allowed;
 }
 
 .cart-note{
@@ -901,11 +783,6 @@ footer{
   line-height:1.6;
 }
 
-
-/* ================================
-   TABLET
-================================ */
-
 @media(max-width:1000px){
 
   .product-grid{
@@ -913,11 +790,6 @@ footer{
   }
 
 }
-
-
-/* ================================
-   MOBILE
-================================ */
 
 @media(max-width:850px){
 
@@ -971,11 +843,6 @@ footer{
 
 }
 
-
-/* ================================
-   PHONE
-================================ */
-
 @media(max-width:600px){
 
   .collection-bar{
@@ -1025,18 +892,15 @@ footer{
 
 <body>
 
-
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
-
 
 <nav>
 
   <a href="/DEV-Website/" class="logo">
     DEV
   </a>
-
 
   <div class="nav-links" id="navLinks">
 
@@ -1065,7 +929,6 @@ footer{
     </a>
 
   </div>
-
 
   <div class="nav-right">
 
@@ -1101,8 +964,6 @@ footer{
 </nav>
 
 
-<!-- HEADER -->
-
 <section class="page-header">
 
   <div class="page-header-top">
@@ -1125,8 +986,6 @@ footer{
 </section>
 
 
-<!-- COLLECTION BAR -->
-
 <section
   class="collection-bar"
   id="products">
@@ -1141,8 +1000,6 @@ footer{
 
 </section>
 
-
-<!-- PRODUCT GRID -->
 
 <section class="product-grid">
 
@@ -1186,7 +1043,6 @@ footer{
 
       </div>
 
-
       <button
         class="card-arrow left"
         onclick="cardPrev(event,'black')">
@@ -1198,7 +1054,6 @@ footer{
         onclick="cardNext(event,'black')">
         ›
       </button>
-
 
       <div class="card-dots">
 
@@ -1220,7 +1075,6 @@ footer{
       </div>
 
     </div>
-
 
     <div
       class="product-card-info"
@@ -1245,14 +1099,11 @@ footer{
 </section>
 
 
-<!-- PRODUCT DETAILS -->
-
 <section
   class="product-detail"
   id="productDetail">
 
   <div class="product-detail-inner">
-
 
     <section>
 
@@ -1265,7 +1116,6 @@ footer{
           alt="DEV Training Shorts">
 
       </div>
-
 
       <div class="view-selector">
 
@@ -1291,7 +1141,6 @@ footer{
         </button>
 
       </div>
-
 
       <div class="thumbnails">
 
@@ -1335,7 +1184,6 @@ footer{
 
     </section>
 
-
     <section class="product-info">
 
       <div class="collection-name">
@@ -1350,7 +1198,6 @@ footer{
         AED 80
       </div>
 
-
       <div class="option-title">
 
         <span>
@@ -1363,7 +1210,6 @@ footer{
 
       </div>
 
-
       <div class="color-options">
 
         <button
@@ -1373,7 +1219,6 @@ footer{
         </button>
 
       </div>
-
 
       <div class="option-title">
 
@@ -1386,7 +1231,6 @@ footer{
         </span>
 
       </div>
-
 
       <div class="size-options">
 
@@ -1404,19 +1248,16 @@ footer{
 
       </div>
 
-
       <div
         class="size-error"
         id="sizeError">
         PLEASE SELECT A SIZE FIRST.
       </div>
 
-
       <div class="description">
         Training shorts designed for unrestricted movement and comfort.
         Built for the gym, lifestyle and everyday wear.
       </div>
-
 
       <button
         class="add-to-bag"
@@ -1425,7 +1266,6 @@ footer{
         onclick="addToBag()">
         ADD TO BAG
       </button>
-
 
       <button
         class="back-products"
@@ -1440,8 +1280,6 @@ footer{
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
   <a
@@ -1449,7 +1287,6 @@ footer{
     class="footer-logo">
     DEV
   </a>
-
 
   <div class="footer-links">
 
@@ -1479,26 +1316,21 @@ footer{
 
   </div>
 
-
   <div class="footer-bottom">
-    © 2026 DEV. BUILT DIFFERENT.
+    ©️ 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
 
-
-<!-- SHARED CART -->
 
 <div
   class="cart-overlay"
   id="cartOverlay">
 </div>
 
-
 <aside
   class="cart-drawer"
   id="cartDrawer">
-
 
   <div class="cart-header">
 
@@ -1515,12 +1347,10 @@ footer{
 
   </div>
 
-
   <div
     class="cart-items"
     id="cartItems">
   </div>
-
 
   <div class="cart-footer">
 
@@ -1536,7 +1366,6 @@ footer{
 
     </div>
 
-
     <button
       class="checkout-button"
       id="checkoutButton"
@@ -1544,7 +1373,6 @@ footer{
       disabled>
       CHECKOUT
     </button>
-
 
     <div class="cart-note">
       MEN + WOMEN ITEMS STAY TOGETHER
@@ -1557,11 +1385,6 @@ footer{
 
 
 <script>
-
-
-/* ================================
-   PRODUCT IMAGES
-================================ */
 
 const productImages = {
 
@@ -1577,9 +1400,7 @@ const productImages = {
 
 
 let currentColor = "black";
-
 let currentView = "front";
-
 let selectedSize = null;
 
 
@@ -1587,10 +1408,6 @@ const cardState = {
   black:0
 };
 
-
-/* ================================
-   CARD SLIDER
-================================ */
 
 function updateCard(color){
 
@@ -1603,7 +1420,6 @@ function updateCard(color){
     return;
   }
 
-
   const track =
     card.querySelector(
       ".card-track"
@@ -1614,10 +1430,8 @@ function updateCard(color){
       ".card-dot"
     );
 
-
   track.style.transform =
     `translateX(-${cardState[color] * 100}%)`;
-
 
   dots.forEach(function(dot,index){
 
@@ -1667,10 +1481,6 @@ function cardGoTo(event,color,index){
 }
 
 
-/* ================================
-   TOUCH
-================================ */
-
 document
 .querySelectorAll(
   ".product-card-image"
@@ -1678,9 +1488,7 @@ document
 .forEach(function(card){
 
   let startX = 0;
-
   let startY = 0;
-
 
   card.addEventListener(
     "touchstart",
@@ -1699,7 +1507,6 @@ document
     {passive:true}
   );
 
-
   card.addEventListener(
     "touchend",
     function(event){
@@ -1708,22 +1515,17 @@ document
         return;
       }
 
-
       const touch =
         event.changedTouches[0];
-
 
       const diffX =
         touch.clientX - startX;
 
-
       const diffY =
         touch.clientY - startY;
 
-
       const color =
         card.dataset.card;
-
 
       if(
         Math.abs(diffX) > 45 &&
@@ -1742,7 +1544,6 @@ document
 
         }
 
-
         updateCard(color);
 
       }else{
@@ -1755,7 +1556,6 @@ document
     {passive:true}
   );
 
-
   card.addEventListener(
     "click",
     function(event){
@@ -1767,11 +1567,9 @@ document
         return;
       }
 
-
       if("ontouchstart" in window){
         return;
       }
-
 
       openProduct(
         card.dataset.card
@@ -1782,10 +1580,6 @@ document
 
 });
 
-
-/* ================================
-   OPEN PRODUCT
-================================ */
 
 function openProduct(color){
 
@@ -1798,14 +1592,12 @@ function openProduct(color){
   selectedSize =
     null;
 
-
   document
   .getElementById(
     "selectedSize"
   )
   .textContent =
     "SELECT SIZE";
-
 
   document
   .querySelectorAll(
@@ -1819,7 +1611,6 @@ function openProduct(color){
 
   });
 
-
   document
   .getElementById(
     "sizeError"
@@ -1829,22 +1620,18 @@ function openProduct(color){
     "active"
   );
 
-
   renderColor();
 
   updateImages();
-
 
   const detail =
     document.getElementById(
       "productDetail"
     );
 
-
   detail.classList.add(
     "active"
   );
-
 
   setTimeout(function(){
 
@@ -1857,10 +1644,6 @@ function openProduct(color){
 
 }
 
-
-/* ================================
-   COLOR
-================================ */
 
 function renderColor(){
 
@@ -1876,15 +1659,10 @@ function renderColor(){
 }
 
 
-/* ================================
-   VIEW
-================================ */
-
 function changeView(view){
 
   currentView =
     view;
-
 
   document
   .querySelectorAll(
@@ -1899,7 +1677,6 @@ function changeView(view){
 
   });
 
-
   document
   .querySelectorAll(
     ".thumb"
@@ -1913,7 +1690,6 @@ function changeView(view){
 
   });
 
-
   updateMainImage();
 
 }
@@ -1926,14 +1702,12 @@ function updateImages(){
       currentColor
     ];
 
-
   document
   .getElementById(
     "thumbFront"
   )
   .src =
     images.front;
-
 
   document
   .getElementById(
@@ -1942,14 +1716,12 @@ function updateImages(){
   .src =
     images.back;
 
-
   document
   .getElementById(
     "thumbModel"
   )
   .src =
     images.model;
-
 
   changeView(
     "front"
@@ -1974,15 +1746,10 @@ function updateMainImage(){
 }
 
 
-/* ================================
-   SIZE
-================================ */
-
 function selectSize(button,size){
 
   selectedSize =
     size;
-
 
   document
   .querySelectorAll(
@@ -1996,13 +1763,11 @@ function selectSize(button,size){
 
   });
 
-
   button
   .classList
   .add(
     "active"
   );
-
 
   document
   .getElementById(
@@ -2010,7 +1775,6 @@ function selectSize(button,size){
   )
   .textContent =
     size;
-
 
   document
   .getElementById(
@@ -2024,10 +1788,6 @@ function selectSize(button,size){
 }
 
 
-/* ================================
-   BACK
-================================ */
-
 function backToProducts(){
 
   document
@@ -2040,10 +1800,6 @@ function backToProducts(){
 
 }
 
-
-/* ================================
-   MOBILE MENU
-================================ */
 
 function toggleMenu(){
 
@@ -2078,13 +1834,11 @@ function getCart(){
         )
       );
 
-
     return Array.isArray(data)
       ?
       data
       :
       [];
-
 
   }catch(error){
 
@@ -2102,7 +1856,6 @@ function saveCart(cart){
     JSON.stringify(cart)
   );
 
-
   renderCart();
 
 }
@@ -2112,7 +1865,6 @@ function formatPrice(price){
 
   const value =
     Number(price) || 0;
-
 
   return "AED " +
     value.toFixed(
@@ -2125,10 +1877,6 @@ function formatPrice(price){
 
 }
 
-
-/* ================================
-   ADD TO BAG
-================================ */
 
 function addToBag(){
 
@@ -2147,23 +1895,19 @@ function addToBag(){
 
   }
 
-
   const cart =
     getCart();
-
 
   const product =
     productImages[
       currentColor
     ];
 
-
   const id =
     "dev-training-shorts-" +
     currentColor +
     "-" +
     selectedSize;
-
 
   const existing =
     cart.findIndex(
@@ -2174,7 +1918,6 @@ function addToBag(){
       }
     );
 
-
   if(existing !== -1){
 
     cart[
@@ -2183,8 +1926,14 @@ function addToBag(){
       Number(
         cart[
           existing
-        ].quantity || 1
+        ].quantity ||
+        cart[
+          existing
+        ].qty ||
+        1
       ) + 1;
+
+    delete cart[existing].qty;
 
   }else{
 
@@ -2223,24 +1972,19 @@ function addToBag(){
 
   }
 
-
   saveCart(cart);
-
 
   const button =
     document.getElementById(
       "addToBagButton"
     );
 
-
   button.textContent =
     "ADDED TO BAG ✓";
-
 
   button.classList.add(
     "added"
   );
-
 
   setTimeout(function(){
 
@@ -2257,10 +2001,6 @@ function addToBag(){
 
 }
 
-
-/* ================================
-   CART ELEMENTS
-================================ */
 
 const cartButton =
   document.getElementById(
@@ -2303,14 +2043,20 @@ const checkoutButton =
   );
 
 
-/* ================================
-   OPEN / CLOSE CART
-================================ */
+function getItemQuantity(item){
+
+  return Number(
+    item.quantity ??
+    item.qty ??
+    1
+  );
+
+}
+
 
 function openCart(){
 
   renderCart();
-
 
   cartDrawer.classList.add(
     "active"
@@ -2344,30 +2090,22 @@ function closeCart(){
 }
 
 
-/* ================================
-   QUANTITY
-================================ */
-
 function changeQuantity(index,amount){
 
   const cart =
     getCart();
 
-
   if(!cart[index]){
     return;
   }
 
-
   const current =
-    Number(
-      cart[index].quantity || 1
+    getItemQuantity(
+      cart[index]
     );
-
 
   const next =
     current + amount;
-
 
   if(next <= 0){
 
@@ -2378,63 +2116,48 @@ function changeQuantity(index,amount){
 
   }else{
 
-    cart[
-      index
-    ].quantity =
+    cart[index].quantity =
       next;
 
-  }
+    delete cart[index].qty;
 
+  }
 
   saveCart(cart);
 
 }
 
-
-/* ================================
-   REMOVE
-================================ */
 
 function removeItem(index){
 
   const cart =
     getCart();
 
-
   cart.splice(
     index,
     1
   );
-
 
   saveCart(cart);
 
 }
 
 
-/* ================================
-   RENDER CART
-================================ */
-
 function renderCart(){
 
   const cart =
     getCart();
-
 
   const totalQuantity =
     cart.reduce(
       function(total,item){
 
         return total +
-          Number(
-            item.quantity || 1
-          );
+          getItemQuantity(item);
 
       },
       0
     );
-
 
   const subtotal =
     cart.reduce(
@@ -2446,19 +2169,15 @@ function renderCart(){
               item.price || 0
             )
             *
-            Number(
-              item.quantity || 1
-            )
+            getItemQuantity(item)
           );
 
       },
       0
     );
 
-
   cartCount.textContent =
     totalQuantity;
-
 
   cartCount
   .classList
@@ -2467,16 +2186,13 @@ function renderCart(){
     totalQuantity > 0
   );
 
-
   cartSubtotal.textContent =
     formatPrice(
       subtotal
     );
 
-
   checkoutButton.disabled =
     cart.length === 0;
-
 
   if(cart.length === 0){
 
@@ -2489,12 +2205,10 @@ function renderCart(){
         </strong>
 
         <span>
-
           Shop MEN or WOMEN.
           Everything you add stays
           together in the same
           DEV bag.
-
         </span>
 
       </div>
@@ -2505,7 +2219,6 @@ function renderCart(){
 
   }
 
-
   cartItems.innerHTML =
     cart.map(
       function(item,index){
@@ -2514,38 +2227,29 @@ function renderCart(){
           item.name ||
           "DEV PRODUCT";
 
-
         const section =
           item.section ||
           "DEV";
-
 
         const color =
           item.color ||
           "—";
 
-
         const size =
           item.size ||
           "—";
 
-
         const quantity =
-          Number(
-            item.quantity || 1
-          );
-
+          getItemQuantity(item);
 
         const price =
           Number(
             item.price || 0
           );
 
-
         const image =
           item.image ||
           "";
-
 
         return `
 
@@ -2642,10 +2346,6 @@ function renderCart(){
 }
 
 
-/* ================================
-   CART ACTIONS
-================================ */
-
 cartItems.addEventListener(
   "click",
   function(event){
@@ -2655,21 +2355,17 @@ cartItems.addEventListener(
         "[data-action]"
       );
 
-
     if(!button){
       return;
     }
-
 
     const index =
       Number(
         button.dataset.index
       );
 
-
     const action =
       button.dataset.action;
-
 
     if(action === "plus"){
 
@@ -2680,7 +2376,6 @@ cartItems.addEventListener(
 
     }
 
-
     if(action === "minus"){
 
       changeQuantity(
@@ -2689,7 +2384,6 @@ cartItems.addEventListener(
       );
 
     }
-
 
     if(action === "remove"){
 
@@ -2743,9 +2437,15 @@ checkoutButton.addEventListener(
   "click",
   function(){
 
-    alert(
-      "DEV Checkout will be connected later."
-    );
+    const cart =
+      getCart();
+
+    if(cart.length === 0){
+      return;
+    }
+
+    window.location.href =
+      "/DEV-Website/checkout/";
 
   }
 );
@@ -2771,10 +2471,6 @@ window.addEventListener(
   }
 );
 
-
-/* ================================
-   START
-================================ */
 
 renderCart();
 
