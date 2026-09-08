@@ -79,10 +79,35 @@ nav{
   letter-spacing:5px;
 }
 
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  color:#888;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.nav-divider{
+  width:1px;
+  height:28px;
+  background:#333;
+  flex-shrink:0;
+}
+
 .gender-nav{
   display:flex;
   align-items:center;
-  gap:26px;
+  gap:24px;
 }
 
 .gender-nav a{
@@ -128,7 +153,7 @@ nav{
 
 .search-box{
   position:relative;
-  width:250px;
+  width:210px;
 }
 
 .search-box input{
@@ -749,6 +774,14 @@ footer{
 
 @media(max-width:1150px){
 
+  .nav-links{
+    gap:14px;
+  }
+
+  .nav-links a{
+    font-size:8px;
+  }
+
   .footer-top{
     grid-template-columns:repeat(4,1fr);
   }
@@ -777,7 +810,7 @@ footer{
    MOBILE
 ========================= */
 
-@media(max-width:700px){
+@media(max-width:850px){
 
   nav{
     min-height:68px;
@@ -788,6 +821,14 @@ footer{
   .logo{
     font-size:27px;
     letter-spacing:5px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-divider{
+    display:none;
   }
 
   .gender-nav{
@@ -811,8 +852,10 @@ footer{
     height:42px;
   }
 
+}
 
-  /* EXACT COMPACT WOMEN HERO STANDARD */
+
+@media(max-width:700px){
 
   .women-hero{
     min-height:210px;
@@ -842,7 +885,6 @@ footer{
     font-size:9px;
     line-height:1.55;
   }
-
 
   .collections{
     padding:45px 3% 65px;
@@ -926,9 +968,6 @@ footer{
     display:none;
   }
 
-
-  /* EXACT SMALL PHONE HERO STANDARD */
-
   .women-hero{
     min-height:195px;
     padding:24px 5% 25px;
@@ -956,18 +995,10 @@ footer{
 <body>
 
 
-<!-- =========================
-     TOP BAR
-========================= -->
-
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
-
-<!-- =========================
-     NAVIGATION
-========================= -->
 
 <nav>
 
@@ -976,6 +1007,38 @@ footer{
     class="logo">
     DEV
   </a>
+
+
+  <div class="nav-links">
+
+    <a href="/DEV-Website/tshirts/">
+      T-SHIRTS
+    </a>
+
+    <a href="/DEV-Website/polo/">
+      POLO
+    </a>
+
+    <a href="/DEV-Website/shorts/">
+      SHORTS
+    </a>
+
+    <a href="/DEV-Website/baggy-pants/">
+      BAGGY PANTS
+    </a>
+
+    <a href="#">
+      HOODIES
+    </a>
+
+    <a href="#">
+      SWEATERS
+    </a>
+
+  </div>
+
+
+  <div class="nav-divider"></div>
 
 
   <div class="gender-nav">
@@ -1006,6 +1069,7 @@ footer{
 
       <span class="search-icon">
         ⌕
+
       </span>
 
     </div>
@@ -1043,10 +1107,6 @@ footer{
 </nav>
 
 
-<!-- =========================
-     MOBILE SEARCH
-========================= -->
-
 <div
   class="mobile-search-panel"
   id="mobileSearchPanel">
@@ -1059,10 +1119,6 @@ footer{
 
 </div>
 
-
-<!-- =========================
-     WOMEN HERO
-========================= -->
 
 <header class="women-hero">
 
@@ -1091,10 +1147,6 @@ footer{
 </header>
 
 
-<!-- =========================
-     COLLECTIONS
-========================= -->
-
 <main
   class="collections"
   id="collections">
@@ -1118,8 +1170,6 @@ footer{
     id="collectionGrid">
 
 
-    <!-- TOPS -->
-
     <div
       class="collection-card"
       data-search="tops t shirts tshirts gym tops women dev women">
@@ -1135,8 +1185,6 @@ footer{
 
     </div>
 
-
-    <!-- LEGGINGS -->
 
     <div
       class="collection-card"
@@ -1154,8 +1202,6 @@ footer{
     </div>
 
 
-    <!-- SHORTS -->
-
     <div
       class="collection-card"
       data-search="shorts women gym training dev women">
@@ -1171,8 +1217,6 @@ footer{
 
     </div>
 
-
-    <!-- SETS -->
 
     <div
       class="collection-card"
@@ -1203,10 +1247,6 @@ footer{
 </main>
 
 
-<!-- =========================
-     BRAND STRIP
-========================= -->
-
 <section class="brand-strip">
 
   <h2>
@@ -1221,10 +1261,6 @@ footer{
 
 </section>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -1367,10 +1403,6 @@ footer{
 </footer>
 
 
-<!-- =========================
-     SHARED DEV CART
-========================= -->
-
 <div
   class="cart-overlay"
   id="cartOverlay">
@@ -1435,10 +1467,8 @@ footer{
 
 
     <div class="cart-note">
-
       MEN + WOMEN ITEMS STAY TOGETHER
       IN ONE DEV BAG.
-
     </div>
 
   </div>
@@ -1447,6 +1477,7 @@ footer{
 
 
 <script>
+
 
 /* =========================
    SEARCH
@@ -1457,18 +1488,15 @@ const cards=
     ".collection-card"
   );
 
-
 const desktopSearch=
   document.getElementById(
     "desktopSearch"
   );
 
-
 const mobileSearch=
   document.getElementById(
     "mobileSearch"
   );
-
 
 const noResults=
   document.getElementById(
@@ -1483,9 +1511,7 @@ function searchCollections(value){
     .toLowerCase()
     .trim();
 
-
   let visible=0;
-
 
   cards.forEach(
     function(card){
@@ -1498,12 +1524,10 @@ function searchCollections(value){
         )
         .toLowerCase();
 
-
       const match=
         query===""
         ||
         terms.includes(query);
-
 
       card.style.display=
         match
@@ -1512,14 +1536,12 @@ function searchCollections(value){
         :
         "none";
 
-
       if(match){
         visible++;
       }
 
     }
   );
-
 
   noResults
   .classList
@@ -1564,7 +1586,6 @@ const mobileSearchButton=
     "mobileSearchButton"
   );
 
-
 const mobileSearchPanel=
   document.getElementById(
     "mobileSearchPanel"
@@ -1580,7 +1601,6 @@ mobileSearchButton.addEventListener(
     .toggle(
       "active"
     );
-
 
     if(
       mobileSearchPanel
@@ -1617,7 +1637,6 @@ function getDevCart(){
         )
       );
 
-
     return Array.isArray(data)
       ?
       data
@@ -1639,7 +1658,6 @@ function saveDevCart(cart){
     DEV_CART_KEY,
     JSON.stringify(cart)
   );
-
 
   renderDevCart();
 
@@ -1667,7 +1685,6 @@ function formatPrice(price){
     ||
     0;
 
-
   return "AED "+
     value.toFixed(
       value%1===0
@@ -1689,42 +1706,35 @@ const cartButton=
     "cartButton"
   );
 
-
 const cartCount=
   document.getElementById(
     "cartCount"
   );
-
 
 const cartDrawer=
   document.getElementById(
     "cartDrawer"
   );
 
-
 const cartOverlay=
   document.getElementById(
     "cartOverlay"
   );
-
 
 const cartClose=
   document.getElementById(
     "cartClose"
   );
 
-
 const cartItems=
   document.getElementById(
     "cartItems"
   );
 
-
 const cartSubtotal=
   document.getElementById(
     "cartSubtotal"
   );
-
 
 const checkoutButton=
   document.getElementById(
@@ -1740,13 +1750,11 @@ function openCart(){
 
   renderDevCart();
 
-
   cartDrawer
   .classList
   .add(
     "active"
   );
-
 
   cartOverlay
   .classList
@@ -1754,13 +1762,11 @@ function openCart(){
     "active"
   );
 
-
   cartDrawer
   .setAttribute(
     "aria-hidden",
     "false"
   );
-
 
   document.body
   .classList
@@ -1783,20 +1789,17 @@ function closeCart(){
     "active"
   );
 
-
   cartOverlay
   .classList
   .remove(
     "active"
   );
 
-
   cartDrawer
   .setAttribute(
     "aria-hidden",
     "true"
   );
-
 
   document.body
   .classList
@@ -1811,33 +1814,28 @@ function closeCart(){
    CHANGE QUANTITY
 ========================= */
 
-function changeQuantity(index,amount){
+function changeQuantity(
+  index,
+  amount
+){
 
   const cart=
     getDevCart();
 
-
-  if(
-    !cart[index]
-  ){
+  if(!cart[index]){
     return;
   }
-
 
   const current=
     getItemQuantity(
       cart[index]
     );
 
-
   const newQuantity=
     current+
     amount;
 
-
-  if(
-    newQuantity<=0
-  ){
+  if(newQuantity<=0){
 
     cart.splice(
       index,
@@ -1846,18 +1844,12 @@ function changeQuantity(index,amount){
 
   }else{
 
-    cart[
-      index
-    ].quantity=
+    cart[index].quantity=
       newQuantity;
 
-
-    delete cart[
-      index
-    ].qty;
+    delete cart[index].qty;
 
   }
-
 
   saveDevCart(
     cart
@@ -1875,19 +1867,14 @@ function removeItem(index){
   const cart=
     getDevCart();
 
-
-  if(
-    !cart[index]
-  ){
+  if(!cart[index]){
     return;
   }
-
 
   cart.splice(
     index,
     1
   );
-
 
   saveDevCart(
     cart
@@ -1905,7 +1892,6 @@ function renderDevCart(){
   const cart=
     getDevCart();
 
-
   const totalQuantity=
     cart.reduce(
       function(total,item){
@@ -1919,7 +1905,6 @@ function renderDevCart(){
       0
     );
 
-
   const subtotal=
     cart.reduce(
       function(total,item){
@@ -1931,12 +1916,10 @@ function renderDevCart(){
           ||
           0;
 
-
         const quantity=
           getItemQuantity(
             item
           );
-
 
         return total+
           price*
@@ -1946,10 +1929,8 @@ function renderDevCart(){
       0
     );
 
-
   cartCount.textContent=
     totalQuantity;
-
 
   cartCount
   .classList
@@ -1958,20 +1939,15 @@ function renderDevCart(){
     totalQuantity>0
   );
 
-
   cartSubtotal.textContent=
     formatPrice(
       subtotal
     );
 
-
   checkoutButton.disabled=
     cart.length===0;
 
-
-  if(
-    cart.length===0
-  ){
+  if(cart.length===0){
 
     cartItems.innerHTML=`
 
@@ -1996,41 +1972,34 @@ function renderDevCart(){
 
   }
 
-
   cartItems.innerHTML=
     cart.map(
       function(item,index){
-
 
         const name=
           item.name
           ||
           "DEV PRODUCT";
 
-
         const section=
           item.section
           ||
           "DEV";
-
 
         const color=
           item.color
           ||
           "—";
 
-
         const size=
           item.size
           ||
           "—";
 
-
         const quantity=
           getItemQuantity(
             item
           );
-
 
         const price=
           Number(
@@ -2039,12 +2008,10 @@ function renderDevCart(){
           ||
           0;
 
-
         const image=
           item.image
           ||
           "";
-
 
         const imageHTML=
           image
@@ -2062,7 +2029,6 @@ function renderDevCart(){
             </div>
           `;
 
-
         return `
 
           <div class="cart-item">
@@ -2075,7 +2041,6 @@ function renderDevCart(){
                 ${escapeHtml(name)}
               </div>
 
-
               <div class="cart-item-meta">
 
                 ${escapeHtml(section)}
@@ -2086,9 +2051,7 @@ function renderDevCart(){
 
               </div>
 
-
               <div class="cart-item-row">
-
 
                 <div class="quantity">
 
@@ -2096,28 +2059,21 @@ function renderDevCart(){
                     type="button"
                     data-action="minus"
                     data-index="${index}">
-
                     −
-
                   </button>
-
 
                   <span>
                     ${quantity}
                   </span>
 
-
                   <button
                     type="button"
                     data-action="plus"
                     data-index="${index}">
-
                     +
-
                   </button>
 
                 </div>
-
 
                 <div class="cart-item-price">
 
@@ -2131,7 +2087,6 @@ function renderDevCart(){
                 </div>
 
               </div>
-
 
               <button
                 class="remove-item"
@@ -2157,7 +2112,7 @@ function renderDevCart(){
 
 
 /* =========================
-   CART BUTTON ACTIONS
+   CART ACTIONS
 ========================= */
 
 cartItems.addEventListener(
@@ -2169,27 +2124,19 @@ cartItems.addEventListener(
         "[data-action]"
       );
 
-
-    if(
-      !button
-    ){
+    if(!button){
       return;
     }
-
 
     const index=
       Number(
         button.dataset.index
       );
 
-
     const action=
       button.dataset.action;
 
-
-    if(
-      action==="plus"
-    ){
+    if(action==="plus"){
 
       changeQuantity(
         index,
@@ -2198,10 +2145,7 @@ cartItems.addEventListener(
 
     }
 
-
-    if(
-      action==="minus"
-    ){
+    if(action==="minus"){
 
       changeQuantity(
         index,
@@ -2210,10 +2154,7 @@ cartItems.addEventListener(
 
     }
 
-
-    if(
-      action==="remove"
-    ){
+    if(action==="remove"){
 
       removeItem(
         index
@@ -2224,10 +2165,6 @@ cartItems.addEventListener(
   }
 );
 
-
-/* =========================
-   CART OPEN / CLOSE
-========================= */
 
 cartButton.addEventListener(
   "click",
@@ -2255,9 +2192,7 @@ document.addEventListener(
   "keydown",
   function(event){
 
-    if(
-      event.key==="Escape"
-    ){
+    if(event.key==="Escape"){
 
       closeCart();
 
@@ -2284,13 +2219,9 @@ checkoutButton.addEventListener(
     const cart=
       getDevCart();
 
-
-    if(
-      cart.length===0
-    ){
+    if(cart.length===0){
       return;
     }
-
 
     window.location.href=
       "/DEV-Website/checkout/";
@@ -2345,5 +2276,4 @@ renderDevCart();
 </script>
 
 </body>
-
 </html>
