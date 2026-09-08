@@ -240,11 +240,11 @@ nav{
 ========================= */
 
 .brand-intro{
-  min-height:430px;
+  min-height:380px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:80px 6%;
+  padding:60px 6%;
   text-align:center;
   background:
     radial-gradient(
@@ -260,7 +260,7 @@ nav{
 }
 
 .brand-label{
-  margin-bottom:20px;
+  margin-bottom:18px;
   color:#777;
   font-size:10px;
   font-weight:bold;
@@ -283,7 +283,7 @@ nav{
 
 .brand-intro p{
   max-width:620px;
-  margin:25px auto 0;
+  margin:22px auto 0;
   color:#999;
   font-size:13px;
   line-height:1.8;
@@ -444,12 +444,12 @@ footer{
 
 .footer-top{
   display:grid;
-  grid-template-columns:1.3fr repeat(4,1fr);
-  gap:55px;
+  grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;
+  gap:50px;
 }
 
 .footer-brand{
-  max-width:300px;
+  max-width:320px;
 }
 
 .footer-logo{
@@ -459,7 +459,7 @@ footer{
 }
 
 .footer-text{
-  max-width:300px;
+  max-width:310px;
   margin-top:16px;
   color:#666;
   font-size:12px;
@@ -468,6 +468,8 @@ footer{
 
 .footer-column h4{
   margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid #1c1c1c;
   color:#fff;
   font-size:10px;
   font-weight:900;
@@ -479,7 +481,7 @@ footer{
   display:block;
   width:max-content;
   max-width:100%;
-  margin-bottom:13px;
+  margin-bottom:14px;
   color:#777;
   font-size:10px;
   letter-spacing:1.3px;
@@ -491,18 +493,9 @@ footer{
   color:#fff;
 }
 
-.footer-column .footer-disabled{
-  color:#444;
+.footer-disabled{
+  color:#444 !important;
   cursor:default;
-}
-
-.footer-contact-value{
-  display:block;
-  margin-top:4px;
-  color:#555;
-  font-size:9px;
-  letter-spacing:.6px;
-  text-transform:none;
 }
 
 .footer-social-link{
@@ -517,11 +510,21 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
+  flex-shrink:0;
   border:1px solid #272727;
   border-radius:50%;
   color:#fff;
   font-size:11px;
   font-weight:900;
+}
+
+.social-handle{
+  display:block;
+  margin-top:4px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:.6px;
+  text-transform:none;
 }
 
 .copyright{
@@ -745,7 +748,7 @@ footer{
 @media(max-width:1100px){
 
   .footer-top{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
   }
 
   .footer-brand{
@@ -806,44 +809,44 @@ footer{
   }
 
 
-  /* SMALLER MOBILE INTRO */
+  /* FINAL COMPACT HERO SIZE */
 
   .brand-intro{
-    min-height:245px;
-    padding:36px 6% 38px;
+    min-height:210px;
+    padding:27px 6% 29px;
   }
 
   .brand-label{
-    margin-bottom:13px;
+    margin-bottom:10px;
     font-size:7px;
     letter-spacing:3px;
   }
 
   .brand-intro h1{
-    font-size:40px;
+    font-size:36px;
     line-height:.98;
     letter-spacing:1px;
   }
 
   .brand-intro h2{
-    margin-top:10px;
-    font-size:13px;
+    margin-top:8px;
+    font-size:12px;
     line-height:1.4;
-    letter-spacing:2.5px;
+    letter-spacing:2.2px;
   }
 
   .brand-intro p{
-    max-width:320px;
-    margin-top:14px;
-    font-size:10px;
-    line-height:1.6;
+    max-width:315px;
+    margin-top:11px;
+    font-size:9px;
+    line-height:1.55;
   }
 
 
   /* COLLECTIONS */
 
   .collections{
-    padding:32px 3% 65px;
+    padding:30px 3% 65px;
   }
 
   .collections-header{
@@ -869,22 +872,22 @@ footer{
   }
 
 
-  /* BRAND STRIP */
+  /* BRAND */
 
   .brand-strip{
-    padding:55px 6%;
+    padding:50px 6%;
   }
 
 
   /* FOOTER */
 
   footer{
-    padding:55px 6% 25px;
+    padding:50px 6% 25px;
   }
 
   .footer-top{
-    grid-template-columns:repeat(2,1fr);
-    gap:38px 25px;
+    grid-template-columns:1fr 1fr;
+    gap:42px 24px;
   }
 
   .footer-brand{
@@ -892,12 +895,12 @@ footer{
   }
 
   .footer-column h4{
-    margin-bottom:17px;
+    margin-bottom:16px;
   }
 
   .footer-column a,
   .footer-column .footer-disabled{
-    margin-bottom:12px;
+    margin-bottom:13px;
     font-size:9px;
   }
 
@@ -926,31 +929,42 @@ footer{
     display:none;
   }
 
+
+  /* FINAL SMALL PHONE HERO */
+
   .brand-intro{
-    min-height:225px;
-    padding:30px 5% 32px;
+    min-height:195px;
+    padding:24px 5% 25px;
+  }
+
+  .brand-label{
+    margin-bottom:9px;
   }
 
   .brand-intro h1{
-    font-size:36px;
+    font-size:34px;
   }
 
   .brand-intro h2{
-    font-size:12px;
-    letter-spacing:2px;
+    margin-top:7px;
+    font-size:11px;
+    letter-spacing:1.8px;
   }
 
   .brand-intro p{
+    margin-top:10px;
     font-size:9px;
   }
+
 
   .collection-card{
     min-height:470px;
   }
 
+
   .footer-top{
     grid-template-columns:1fr 1fr;
-    gap:35px 18px;
+    gap:38px 20px;
   }
 
 }
@@ -1260,6 +1274,8 @@ footer{
   <div class="footer-top">
 
 
+    <!-- DEV BRAND -->
+
     <div class="footer-brand">
 
       <div class="footer-logo">
@@ -1276,21 +1292,13 @@ footer{
     </div>
 
 
-    <!-- SHOP -->
+    <!-- MEN -->
 
     <div class="footer-column">
 
       <h4>
-        SHOP
-      </h4>
-
-      <a href="#collections">
         MEN
-      </a>
-
-      <a href="women/">
-        WOMEN
-      </a>
+      </h4>
 
       <a href="tshirts/">
         T-SHIRTS
@@ -1308,6 +1316,41 @@ footer{
         BAGGY PANTS
       </a>
 
+      <span class="footer-disabled">
+        HOODIES
+      </span>
+
+      <span class="footer-disabled">
+        SWEATERS
+      </span>
+
+    </div>
+
+
+    <!-- WOMEN -->
+
+    <div class="footer-column">
+
+      <h4>
+        WOMEN
+      </h4>
+
+      <a href="women/">
+        TOPS
+      </a>
+
+      <a href="women/">
+        LEGGINGS
+      </a>
+
+      <a href="women/">
+        SHORTS
+      </a>
+
+      <a href="women/">
+        SETS
+      </a>
+
     </div>
 
 
@@ -1323,54 +1366,18 @@ footer{
         href="https://wa.me/971541420200"
         target="_blank"
         rel="noopener noreferrer">
-
         WHATSAPP
-
-        <span class="footer-contact-value">
-          +971 54 142 0200
-        </span>
-
       </a>
-
 
       <a
         href="mailto:Deavwear9@gmail.com">
-
         EMAIL
-
-        <span class="footer-contact-value">
-          Deavwear9@gmail.com
-        </span>
-
       </a>
 
     </div>
 
 
-    <!-- ABOUT -->
-
-    <div class="footer-column">
-
-      <h4>
-        ABOUT DEV
-      </h4>
-
-      <a
-        href="mailto:Deavwear9@gmail.com">
-        CONTACT
-      </a>
-
-      <a
-        href="https://wa.me/971541420200"
-        target="_blank"
-        rel="noopener noreferrer">
-        CUSTOMER CARE
-      </a>
-
-    </div>
-
-
-    <!-- FOLLOW -->
+    <!-- FOLLOW DEV -->
 
     <div class="footer-column">
 
@@ -1390,7 +1397,8 @@ footer{
 
         <span>
           TIKTOK
-          <span class="footer-contact-value">
+
+          <span class="social-handle">
             @dev.aj7
           </span>
         </span>
