@@ -188,6 +188,7 @@ nav{
 
 .product-card{
   cursor:pointer;
+  min-width:0;
 }
 
 .product-card-image{
@@ -196,45 +197,41 @@ nav{
   aspect-ratio:4 / 5;
   overflow:hidden;
   background:#f1f1ef;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  user-select:none;
+  touch-action:pan-y;
 }
 
-.product-card-image img{
+.card-track{
+  display:flex;
   width:100%;
   height:100%;
-  position:absolute;
-  inset:0;
+  transition:transform .35s ease;
+}
+
+.card-slide{
+  flex:0 0 100%;
+  width:100%;
+  height:100%;
+}
+
+.card-slide img{
+  width:100%;
+  height:100%;
+  display:block;
   object-fit:contain;
-  object-position:center center;
-  padding:20px;
-  transition:
-    opacity .35s ease,
-    transform .5s ease;
+  object-position:center;
 }
 
-.product-card-image .back-image{
-  opacity:0;
-}
 
-.product-card:hover .front-image{
-  opacity:0;
-}
-
-.product-card:hover .back-image{
-  opacity:1;
-}
-
-.product-card:hover img{
-  transform:scale(1.015);
-}
+/* ================================
+   BADGE
+================================ */
 
 .product-badge{
   position:absolute;
   left:12px;
   top:12px;
-  z-index:3;
+  z-index:7;
   background:#111;
   color:#fff;
   padding:8px 10px;
@@ -242,6 +239,97 @@ nav{
   font-weight:900;
   letter-spacing:1.5px;
 }
+
+
+/* ================================
+   SWIPE LABEL
+================================ */
+
+.swipe-label{
+  position:absolute;
+  right:12px;
+  top:12px;
+  z-index:7;
+  background:rgba(255,255,255,.92);
+  color:#111;
+  padding:7px 9px;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+
+/* ================================
+   CARD ARROWS
+================================ */
+
+.card-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  color:#111;
+  font-size:19px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:8;
+  opacity:0;
+  transition:opacity .25s ease;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.product-card-image:hover .card-arrow{
+  opacity:1;
+}
+
+.card-arrow.left{
+  left:10px;
+}
+
+.card-arrow.right{
+  right:10px;
+}
+
+
+/* ================================
+   DOTS
+================================ */
+
+.card-dots{
+  position:absolute;
+  left:50%;
+  bottom:13px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:7px;
+  z-index:8;
+}
+
+.card-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  border:none;
+  background:rgba(17,17,17,.25);
+  padding:0;
+  cursor:pointer;
+}
+
+.card-dot.active{
+  background:#111;
+}
+
+
+/* ================================
+   PRODUCT CARD INFO
+================================ */
 
 .product-card-info{
   padding:14px 3px 0;
@@ -269,7 +357,7 @@ nav{
 
 
 /* ================================
-   PRODUCT DETAIL SECTION
+   PRODUCT DETAIL
 ================================ */
 
 .product-detail{
@@ -316,7 +404,7 @@ nav{
 
 
 /* ================================
-   FRONT BACK MODEL
+   FRONT / BACK / MODEL
 ================================ */
 
 .view-selector{
@@ -418,7 +506,7 @@ nav{
 
 
 /* ================================
-   COLOR
+   COLORS
 ================================ */
 
 .color-options{
@@ -512,7 +600,7 @@ nav{
 
 
 /* ================================
-   ADD TO BAG
+   ACTION
 ================================ */
 
 .action-button{
@@ -534,7 +622,7 @@ nav{
 
 
 /* ================================
-   BACK TO PRODUCTS
+   BACK
 ================================ */
 
 .back-products{
@@ -652,6 +740,10 @@ footer{
     height:100px;
   }
 
+  .card-arrow{
+    display:none;
+  }
+
 }
 
 
@@ -690,6 +782,23 @@ footer{
     font-size:6px;
   }
 
+  .swipe-label{
+    right:7px;
+    top:7px;
+    font-size:6px;
+    padding:6px 7px;
+  }
+
+  .card-dots{
+    bottom:8px;
+    gap:5px;
+  }
+
+  .card-dot{
+    width:6px;
+    height:6px;
+  }
+
   .size-options{
     grid-template-columns:repeat(2,1fr);
   }
@@ -716,7 +825,9 @@ footer{
 
   <div class="nav-links" id="navLinks">
 
-    <a href="#products">T-SHIRTS</a>
+    <a href="#products">
+      T-SHIRTS
+    </a>
 
     <a href="../polo/">
       POLO
@@ -762,6 +873,10 @@ footer{
 </nav>
 
 
+<!-- ================================
+     HEADER
+================================ -->
+
 <section class="page-header">
 
   <div class="page-header-top">
@@ -784,7 +899,13 @@ footer{
 </section>
 
 
-<section class="collection-bar" id="products">
+<!-- ================================
+     COLLECTION BAR
+================================ -->
+
+<section
+  class="collection-bar"
+  id="products">
 
   <div class="collection-title">
     DEV T-SHIRTS
@@ -797,32 +918,92 @@ footer{
 </section>
 
 
+<!-- ================================
+     PRODUCT GRID
+================================ -->
+
 <section class="product-grid">
 
 
-  <article
-    class="product-card"
-    onclick="openProduct('closeEyes')">
+  <!-- ============================
+       CLOSE YOUR EYES
+  ============================= -->
 
-    <div class="product-card-image">
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="closeEyes">
 
       <div class="product-badge">
         NEW
       </div>
 
-      <img
-        class="front-image"
-        src="../close-eyes-front.jpeg"
-        alt="Close Your Eyes Tee">
+      <div class="swipe-label">
+        SWIPE
+      </div>
 
-      <img
-        class="back-image"
-        src="../close-eyes-back.jpeg"
-        alt="Close Your Eyes Tee Back">
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../close-eyes-front.jfif"
+            alt="Close Your Eyes Tee Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../close-eyes-back.jfif"
+            alt="Close Your Eyes Tee Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../close-eyes-model.jpeg"
+            alt="Close Your Eyes Tee Model">
+        </div>
+
+      </div>
+
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'closeEyes')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'closeEyes')">
+        ›
+      </button>
+
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'closeEyes',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'closeEyes',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'closeEyes',2)">
+        </button>
+
+      </div>
 
     </div>
 
-    <div class="product-card-info">
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('closeEyes')">
 
       <div class="product-card-name">
         CLOSE YOUR EYES TEE
@@ -841,29 +1022,85 @@ footer{
   </article>
 
 
-  <article
-    class="product-card"
-    onclick="openProduct('yujiroJack')">
+  <!-- ============================
+       YUJIRO JACK
+  ============================= -->
 
-    <div class="product-card-image">
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="yujiroJack">
 
       <div class="product-badge">
         NEW
       </div>
 
-      <img
-        class="front-image"
-        src="../yujiro-jack-front.jpeg"
-        alt="Yujiro Jack Hanma Tee">
+      <div class="swipe-label">
+        SWIPE
+      </div>
 
-      <img
-        class="back-image"
-        src="../yujiro-jack-back.jpeg"
-        alt="Yujiro Jack Hanma Tee Back">
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../yujiro-jack-front.jfif"
+            alt="Yujiro Jack Hanma Tee Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../yujiro-jack-back.jfif"
+            alt="Yujiro Jack Hanma Tee Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../yujiro-jack-model.jpeg"
+            alt="Yujiro Jack Hanma Tee Model">
+        </div>
+
+      </div>
+
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'yujiroJack')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'yujiroJack')">
+        ›
+      </button>
+
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'yujiroJack',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'yujiroJack',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'yujiroJack',2)">
+        </button>
+
+      </div>
 
     </div>
 
-    <div class="product-card-info">
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('yujiroJack')">
 
       <div class="product-card-name">
         YUJIRO × JACK HANMA TEE
@@ -882,29 +1119,85 @@ footer{
   </article>
 
 
-  <article
-    class="product-card"
-    onclick="openProduct('yeahBuddy')">
+  <!-- ============================
+       YEAH BUDDY
+  ============================= -->
 
-    <div class="product-card-image">
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="yeahBuddy">
 
       <div class="product-badge">
         XXL ONLY
       </div>
 
-      <img
-        class="front-image"
-        src="../yeah-buddy-front.jpeg"
-        alt="Yeah Buddy Tee">
+      <div class="swipe-label">
+        SWIPE
+      </div>
 
-      <img
-        class="back-image"
-        src="../yeah-buddy-back.jpeg"
-        alt="Yeah Buddy Tee Back">
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../yeah-buddy-front.jfif"
+            alt="Yeah Buddy Tee Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../yeah-buddy-back.jpeg"
+            alt="Yeah Buddy Tee Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../yeah-buddy-model.jpeg"
+            alt="Yeah Buddy Tee Model">
+        </div>
+
+      </div>
+
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'yeahBuddy')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'yeahBuddy')">
+        ›
+      </button>
+
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'yeahBuddy',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'yeahBuddy',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'yeahBuddy',2)">
+        </button>
+
+      </div>
 
     </div>
 
-    <div class="product-card-info">
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('yeahBuddy')">
 
       <div class="product-card-name">
         YEAH BUDDY TEE
@@ -923,25 +1216,82 @@ footer{
   </article>
 
 
-  <article
-    class="product-card"
-    onclick="openProduct('originalGraphic')">
+  <!-- ============================
+       ORIGINAL GRAPHIC
+       KEEP AS ONE PRODUCT
+  ============================= -->
 
-    <div class="product-card-image">
+  <article class="product-card">
 
-      <img
-        class="front-image"
-        src="../graphic-tee-black-front.jpg.jpeg"
-        alt="DEV Oversized Graphic Tee">
+    <div
+      class="product-card-image"
+      data-card="originalGraphic">
 
-      <img
-        class="back-image"
-        src="../graphic-tee-black-back.jpg.jpeg"
-        alt="DEV Oversized Graphic Tee Back">
+      <div class="swipe-label">
+        SWIPE
+      </div>
+
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../graphic-tee-black-front.jpg.jpeg"
+            alt="DEV Oversized Graphic Tee Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../graphic-tee-black-back.jpg.jpeg"
+            alt="DEV Oversized Graphic Tee Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../graphic-tee-black-model.jpg.jpeg"
+            alt="DEV Oversized Graphic Tee Model">
+        </div>
+
+      </div>
+
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'originalGraphic')">
+        ‹
+      </button>
+
+      <button
+        class="card-arrow right"
+        onclick="cardNext(event,'originalGraphic')">
+        ›
+      </button>
+
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'originalGraphic',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'originalGraphic',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'originalGraphic',2)">
+        </button>
+
+      </div>
 
     </div>
 
-    <div class="product-card-info">
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('originalGraphic')">
 
       <div class="product-card-name">
         DEV OVERSIZED GRAPHIC TEE
@@ -963,6 +1313,10 @@ footer{
 </section>
 
 
+<!-- ================================
+     PRODUCT DETAILS
+================================ -->
+
 <section
   class="product-detail"
   id="productDetail">
@@ -977,7 +1331,7 @@ footer{
         <img
           id="mainImage"
           class="main-image"
-          src="../close-eyes-front.jpeg"
+          src="../close-eyes-front.jfif"
           alt="DEV Product">
 
       </div>
@@ -1018,7 +1372,7 @@ footer{
 
           <img
             id="thumbFront"
-            src="../close-eyes-front.jpeg"
+            src="../close-eyes-front.jfif"
             alt="Front">
 
         </div>
@@ -1031,7 +1385,7 @@ footer{
 
           <img
             id="thumbBack"
-            src="../close-eyes-back.jpeg"
+            src="../close-eyes-back.jfif"
             alt="Back">
 
         </div>
@@ -1142,6 +1496,10 @@ footer{
 </section>
 
 
+<!-- ================================
+     FOOTER
+================================ -->
+
 <footer>
 
   <a
@@ -1149,6 +1507,7 @@ footer{
     class="footer-logo">
     DEV
   </a>
+
 
   <div class="footer-links">
 
@@ -1178,6 +1537,7 @@ footer{
 
   </div>
 
+
   <div class="footer-bottom">
     © 2026 DEV. BUILT DIFFERENT.
   </div>
@@ -1187,7 +1547,13 @@ footer{
 
 <script>
 
+
+/* ================================
+   PRODUCTS
+================================ */
+
 const products = {
+
 
   closeEyes:{
 
@@ -1205,9 +1571,9 @@ const products = {
 
         images:{
 
-          front:"../close-eyes-front.jpeg",
+          front:"../close-eyes-front.jfif",
 
-          back:"../close-eyes-back.jpeg",
+          back:"../close-eyes-back.jfif",
 
           model:"../close-eyes-model.jpeg"
 
@@ -1261,9 +1627,9 @@ const products = {
 
         images:{
 
-          front:"../yujiro-jack-front.jpeg",
+          front:"../yujiro-jack-front.jfif",
 
-          back:"../yujiro-jack-back.jpeg",
+          back:"../yujiro-jack-back.jfif",
 
           model:"../yujiro-jack-model.jpeg"
 
@@ -1317,7 +1683,7 @@ const products = {
 
         images:{
 
-          front:"../yeah-buddy-front.jpeg",
+          front:"../yeah-buddy-front.jfif",
 
           back:"../yeah-buddy-back.jpeg",
 
@@ -1437,15 +1803,334 @@ const products = {
 };
 
 
-let currentProduct = "closeEyes";
+/* ================================
+   CURRENT STATE
+================================ */
+
+let currentProduct =
+  "closeEyes";
 
 let currentColor =
-  products[currentProduct].defaultColor;
+  products[currentProduct]
+  .defaultColor;
 
-let currentView = "front";
+let currentView =
+  "front";
 
-let selectedSize = null;
+let selectedSize =
+  null;
 
+
+/* ================================
+   CARD STATE
+================================ */
+
+const cardState = {
+
+  closeEyes:0,
+
+  yujiroJack:0,
+
+  yeahBuddy:0,
+
+  originalGraphic:0
+
+};
+
+
+/* ================================
+   UPDATE CARD
+================================ */
+
+function updateCard(productKey){
+
+  const card =
+    document.querySelector(
+      `[data-card="${productKey}"]`
+    );
+
+
+  if(!card){
+    return;
+  }
+
+
+  const track =
+    card.querySelector(
+      ".card-track"
+    );
+
+
+  const dots =
+    card.querySelectorAll(
+      ".card-dot"
+    );
+
+
+  track.style.transform =
+    `translateX(-${cardState[productKey] * 100}%)`;
+
+
+  dots.forEach(
+    function(dot,index){
+
+      dot.classList.toggle(
+        "active",
+        index === cardState[productKey]
+      );
+
+    }
+  );
+
+}
+
+
+/* ================================
+   CARD NEXT
+================================ */
+
+function cardNext(event,productKey){
+
+  event.stopPropagation();
+
+  cardState[productKey] =
+    (cardState[productKey] + 1) % 3;
+
+  updateCard(productKey);
+
+}
+
+
+/* ================================
+   CARD PREVIOUS
+================================ */
+
+function cardPrev(event,productKey){
+
+  event.stopPropagation();
+
+  cardState[productKey] =
+    (cardState[productKey] + 2) % 3;
+
+  updateCard(productKey);
+
+}
+
+
+/* ================================
+   CARD DOT
+================================ */
+
+function cardGoTo(
+  event,
+  productKey,
+  index
+){
+
+  event.stopPropagation();
+
+  cardState[productKey] =
+    index;
+
+  updateCard(productKey);
+
+}
+
+
+/* ================================
+   TOUCH SWIPE
+================================ */
+
+document
+.querySelectorAll(
+  ".product-card-image"
+)
+.forEach(
+  function(card){
+
+    const productKey =
+      card.dataset.card;
+
+
+    let startX = 0;
+
+    let startY = 0;
+
+    let moved = false;
+
+
+    card.addEventListener(
+      "touchstart",
+      function(event){
+
+        const touch =
+          event.touches[0];
+
+        startX =
+          touch.clientX;
+
+        startY =
+          touch.clientY;
+
+        moved =
+          false;
+
+      },
+      {
+        passive:true
+      }
+    );
+
+
+    card.addEventListener(
+      "touchmove",
+      function(event){
+
+        const touch =
+          event.touches[0];
+
+        const diffX =
+          touch.clientX -
+          startX;
+
+        const diffY =
+          touch.clientY -
+          startY;
+
+
+        if(
+          Math.abs(diffX) >
+          Math.abs(diffY)
+        ){
+
+          moved =
+            true;
+
+        }
+
+      },
+      {
+        passive:true
+      }
+    );
+
+
+    card.addEventListener(
+      "touchend",
+      function(event){
+
+        if(
+          !event.changedTouches.length
+        ){
+          return;
+        }
+
+
+        const endX =
+          event.changedTouches[0]
+          .clientX;
+
+
+        const diffX =
+          endX -
+          startX;
+
+
+        if(
+          Math.abs(diffX) > 45
+        ){
+
+          if(
+            diffX < 0
+          ){
+
+            cardState[productKey] =
+              (cardState[productKey] + 1) % 3;
+
+          }else{
+
+            cardState[productKey] =
+              (cardState[productKey] + 2) % 3;
+
+          }
+
+
+          updateCard(
+            productKey
+          );
+
+        }else if(!moved){
+
+          openProduct(
+            productKey
+          );
+
+        }
+
+      },
+      {
+        passive:true
+      }
+    );
+
+  }
+);
+
+
+/* ================================
+   DESKTOP IMAGE CLICK
+================================ */
+
+document
+.querySelectorAll(
+  ".product-card-image"
+)
+.forEach(
+  function(card){
+
+    card.addEventListener(
+      "click",
+      function(event){
+
+        if(
+          event.target.closest(
+            ".card-arrow"
+          )
+        ){
+          return;
+        }
+
+
+        if(
+          event.target.closest(
+            ".card-dot"
+          )
+        ){
+          return;
+        }
+
+
+        if(
+          "ontouchstart" in window
+        ){
+          return;
+        }
+
+
+        openProduct(
+          card.dataset.card
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* ================================
+   OPEN PRODUCT
+================================ */
 
 function openProduct(productKey){
 
@@ -1504,6 +2189,10 @@ function openProduct(productKey){
 }
 
 
+/* ================================
+   RENDER PRODUCT
+================================ */
+
 function renderProduct(){
 
   const product =
@@ -1555,12 +2244,17 @@ function renderProduct(){
 }
 
 
+/* ================================
+   COLORS
+================================ */
+
 function renderColors(){
 
   const product =
     products[
       currentProduct
     ];
+
 
   const container =
     document
@@ -1594,8 +2288,7 @@ function renderColors(){
         );
 
 
-      button
-      .className =
+      button.className =
         "color-btn";
 
 
@@ -1613,13 +2306,11 @@ function renderColors(){
       }
 
 
-      button
-      .textContent =
+      button.textContent =
         color.label;
 
 
-      button
-      .onclick =
+      button.onclick =
         function(){
 
           changeColor(
@@ -1652,6 +2343,10 @@ function renderColors(){
 }
 
 
+/* ================================
+   CHANGE COLOR
+================================ */
+
 function changeColor(color){
 
   currentColor =
@@ -1660,13 +2355,32 @@ function changeColor(color){
   currentView =
     "front";
 
+  selectedSize =
+    null;
+
+
+  document
+  .getElementById(
+    "selectedSize"
+  )
+  .textContent =
+    "SELECT SIZE";
+
 
   renderColors();
 
+  renderSizes();
+
   updateImages();
+
+  updateActionButton();
 
 }
 
+
+/* ================================
+   SIZES
+================================ */
 
 function renderSizes(){
 
@@ -1674,6 +2388,7 @@ function renderSizes(){
     products[
       currentProduct
     ];
+
 
   const container =
     document
@@ -1698,8 +2413,7 @@ function renderSizes(){
         );
 
 
-      button
-      .className =
+      button.className =
         "size-btn";
 
 
@@ -1714,20 +2428,17 @@ function renderSizes(){
         );
 
 
-        button
-        .innerHTML =
+        button.innerHTML =
           size.name +
           "<small>SOLD OUT</small>";
 
       }else{
 
-        button
-        .textContent =
+        button.textContent =
           size.name;
 
 
-        button
-        .onclick =
+        button.onclick =
           function(){
 
             selectSize(
@@ -1750,6 +2461,10 @@ function renderSizes(){
 
 }
 
+
+/* ================================
+   SELECT SIZE
+================================ */
 
 function selectSize(
   button,
@@ -1797,6 +2512,10 @@ function selectSize(
 }
 
 
+/* ================================
+   CHANGE VIEW
+================================ */
+
 function changeView(view){
 
   currentView =
@@ -1839,9 +2558,7 @@ function changeView(view){
 
   document
   .querySelector(
-    '.view-btn[data-view="' +
-    view +
-    '"]'
+    `.view-btn[data-view="${view}"]`
   )
   .classList
   .add(
@@ -1851,9 +2568,7 @@ function changeView(view){
 
   document
   .querySelector(
-    '.thumb[data-view="' +
-    view +
-    '"]'
+    `.thumb[data-view="${view}"]`
   )
   .classList
   .add(
@@ -1865,6 +2580,10 @@ function changeView(view){
 
 }
 
+
+/* ================================
+   UPDATE IMAGES
+================================ */
 
 function updateImages(){
 
@@ -1965,6 +2684,10 @@ function updateImages(){
 }
 
 
+/* ================================
+   MAIN IMAGE
+================================ */
+
 function updateMainImage(){
 
   const image =
@@ -2002,6 +2725,10 @@ function updateMainImage(){
 }
 
 
+/* ================================
+   ACTION BUTTON
+================================ */
+
 function updateActionButton(){
 
   const button =
@@ -2015,20 +2742,22 @@ function updateActionButton(){
     selectedSize
   ){
 
-    button
-    .textContent =
+    button.textContent =
       "ADD TO BAG";
 
   }else{
 
-    button
-    .textContent =
+    button.textContent =
       "SELECT SIZE";
 
   }
 
 }
 
+
+/* ================================
+   ACTION
+================================ */
 
 function handleAction(){
 
@@ -2058,6 +2787,10 @@ function handleAction(){
 }
 
 
+/* ================================
+   BACK TO PRODUCTS
+================================ */
+
 function backToProducts(){
 
   document
@@ -2070,6 +2803,10 @@ function backToProducts(){
 
 }
 
+
+/* ================================
+   MOBILE MENU
+================================ */
 
 function toggleMenu(){
 
