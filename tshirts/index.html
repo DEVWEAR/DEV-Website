@@ -25,10 +25,6 @@ body{
   color:#111;
 }
 
-body.cart-open{
-  overflow:hidden;
-}
-
 a{
   text-decoration:none;
   color:inherit;
@@ -92,7 +88,7 @@ nav{
 .nav-right{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:18px;
 }
 
 .nav-icon{
@@ -104,48 +100,6 @@ nav{
   display:none;
   font-size:22px;
   cursor:pointer;
-}
-
-
-/* ================================
-   CART BUTTON
-================================ */
-
-.cart-button{
-  position:relative;
-  width:40px;
-  height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #333;
-  border-radius:50%;
-  background:#171717;
-  color:#fff;
-  cursor:pointer;
-  font-size:17px;
-}
-
-.cart-count{
-  display:none;
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  min-width:18px;
-  height:18px;
-  padding:0 5px;
-  align-items:center;
-  justify-content:center;
-  border-radius:20px;
-  background:#fff;
-  color:#000;
-  border:1px solid #000;
-  font-size:9px;
-  font-weight:900;
-}
-
-.cart-count.active{
-  display:flex;
 }
 
 
@@ -271,6 +225,7 @@ nav{
 
 /* ================================
    YEAH BUDDY SIZE FIX
+   CARD ONLY
 ================================ */
 
 .product-card-image[data-card="yeahBuddy"] .card-slide img{
@@ -337,6 +292,7 @@ nav{
   z-index:8;
   opacity:0;
   transition:opacity .25s ease;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 .product-card-image:hover .card-arrow{
@@ -668,15 +624,10 @@ nav{
   font-weight:900;
   letter-spacing:3px;
   cursor:pointer;
-  transition:.2s;
 }
 
 .action-button:hover{
   background:#292929;
-}
-
-.action-button.added{
-  background:#1d6d3c;
 }
 
 
@@ -726,10 +677,6 @@ footer{
   font-size:11px;
 }
 
-.footer-links a:hover{
-  color:#fff;
-}
-
 .footer-bottom{
   border-top:1px solid #292929;
   margin-top:30px;
@@ -741,216 +688,13 @@ footer{
 
 
 /* ================================
-   CART
-================================ */
-
-.cart-overlay{
-  position:fixed;
-  inset:0;
-  z-index:1998;
-  background:rgba(0,0,0,.7);
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-}
-
-.cart-overlay.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.cart-drawer{
-  position:fixed;
-  top:0;
-  right:0;
-  z-index:1999;
-  width:min(430px,100%);
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  background:#090909;
-  color:#fff;
-  border-left:1px solid #242424;
-  transform:translateX(100%);
-  transition:.3s;
-}
-
-.cart-drawer.active{
-  transform:translateX(0);
-}
-
-.cart-header{
-  min-height:82px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 24px;
-  border-bottom:1px solid #222;
-}
-
-.cart-title{
-  font-size:18px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.cart-close{
-  width:42px;
-  height:42px;
-  border:1px solid #333;
-  border-radius:50%;
-  background:#111;
-  color:#fff;
-  cursor:pointer;
-  font-size:21px;
-}
-
-.cart-items{
-  flex:1;
-  overflow:auto;
-  padding:20px 24px;
-}
-
-.cart-empty{
-  min-height:280px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  text-align:center;
-}
-
-.cart-empty strong{
-  font-size:14px;
-  letter-spacing:2px;
-}
-
-.cart-empty span{
-  max-width:270px;
-  color:#777;
-  font-size:11px;
-  line-height:1.7;
-}
-
-.cart-item{
-  display:grid;
-  grid-template-columns:80px 1fr;
-  gap:14px;
-  padding-bottom:20px;
-  margin-bottom:20px;
-  border-bottom:1px solid #222;
-}
-
-.cart-item-image{
-  width:80px;
-  height:100px;
-  object-fit:contain;
-  background:#f5f5f3;
-}
-
-.cart-item-name{
-  font-size:12px;
-  font-weight:900;
-}
-
-.cart-item-meta{
-  margin-top:7px;
-  color:#888;
-  font-size:10px;
-  line-height:1.6;
-}
-
-.cart-item-row{
-  margin-top:13px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.quantity{
-  display:flex;
-  align-items:center;
-  border:1px solid #333;
-}
-
-.quantity button{
-  width:30px;
-  height:30px;
-  border:0;
-  background:#111;
-  color:#fff;
-  cursor:pointer;
-}
-
-.quantity span{
-  width:30px;
-  text-align:center;
-  font-size:11px;
-}
-
-.cart-item-price{
-  font-size:11px;
-  font-weight:900;
-}
-
-.remove-item{
-  margin-top:10px;
-  border:0;
-  background:none;
-  color:#777;
-  cursor:pointer;
-  font-size:9px;
-  text-decoration:underline;
-}
-
-.cart-footer{
-  padding:20px 24px 24px;
-  border-top:1px solid #222;
-}
-
-.cart-subtotal{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:16px;
-  font-size:12px;
-  font-weight:900;
-}
-
-.checkout-button{
-  width:100%;
-  height:52px;
-  border:0;
-  background:#fff;
-  color:#000;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.checkout-button:disabled{
-  opacity:.35;
-}
-
-.cart-note{
-  margin-top:12px;
-  color:#555;
-  text-align:center;
-  font-size:9px;
-  line-height:1.6;
-}
-
-
-/* ================================
    TABLET
 ================================ */
 
 @media(max-width:1000px){
-
   .product-grid{
     grid-template-columns:repeat(2,1fr);
   }
-
 }
 
 
@@ -1007,7 +751,6 @@ footer{
   .card-arrow{
     display:none;
   }
-
 }
 
 
@@ -1066,87 +809,38 @@ footer{
   .size-options{
     grid-template-columns:repeat(2,1fr);
   }
-
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
-
 <nav>
 
-  <a href="/DEV-Website/" class="logo">
-    DEV
-  </a>
+  <a href="../index.html" class="logo">DEV</a>
 
   <div class="nav-links" id="navLinks">
 
-    <a href="/DEV-Website/tshirts/">
-      T-SHIRTS
-    </a>
-
-    <a href="/DEV-Website/polo/">
-      POLO
-    </a>
-
-    <a href="/DEV-Website/shorts/">
-      SHORTS
-    </a>
-
-    <a href="/DEV-Website/baggy-pants/">
-      BAGGY PANTS
-    </a>
-
-    <a href="#">
-      HOODIES
-    </a>
-
-    <a href="#">
-      SWEATERS
-    </a>
+    <a href="#products">T-SHIRTS</a>
+    <a href="../polo/">POLO</a>
+    <a href="../shorts/">SHORTS</a>
+    <a href="../baggy-pants/">BAGGY PANTS</a>
+    <a href="#">HOODIES</a>
+    <a href="#">SWEATERS</a>
 
   </div>
 
-
   <div class="nav-right">
 
-    <span class="nav-icon">
-      ⌕
-    </span>
+    <span class="nav-icon">⌕</span>
+    <span class="nav-icon">♡</span>
 
-    <span class="nav-icon">
-      ♡
-    </span>
-
-
-    <button
-      class="cart-button"
-      id="cartButton"
-      type="button">
-      🛒
-
-      <span
-        class="cart-count"
-        id="cartCount">
-        0
-      </span>
-
-    </button>
-
-
-    <span
-      class="menu-btn"
-      onclick="toggleMenu()">
-      ☰
-    </span>
+    <span class="menu-btn" onclick="toggleMenu()">☰</span>
 
   </div>
 
@@ -1161,9 +855,7 @@ footer{
       DEV / SHOP
     </div>
 
-    <h1>
-      T-SHIRTS
-    </h1>
+    <h1>T-SHIRTS</h1>
 
     <p>
       Built for training. Designed for the street.
@@ -1175,9 +867,7 @@ footer{
 </section>
 
 
-<section
-  class="collection-bar"
-  id="products">
+<section class="collection-bar" id="products">
 
   <div class="collection-title">
     DEV T-SHIRTS
@@ -1193,1052 +883,533 @@ footer{
 <section class="product-grid">
 
 
-  <!-- CLOSE YOUR EYES -->
+<!-- CLOSE YOUR EYES -->
 
-  <article class="product-card">
+<article class="product-card">
 
-    <div
-      class="product-card-image"
-      data-card="closeEyes">
+  <div class="product-card-image" data-card="closeEyes">
 
-      <div class="product-badge">
-        NEW
+    <div class="product-badge">NEW</div>
+    <div class="swipe-label">SWIPE</div>
+
+    <div class="card-track">
+
+      <div class="card-slide">
+        <img src="../close-eyes-front.jfif" alt="Close Your Eyes Tee Front">
       </div>
 
-      <div class="swipe-label">
-        SWIPE
+      <div class="card-slide">
+        <img src="../close-eyes-back.jfif" alt="Close Your Eyes Tee Back">
       </div>
 
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../close-eyes-front.jfif"
-            alt="Close Your Eyes Tee Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../close-eyes-back.jfif"
-            alt="Close Your Eyes Tee Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../close-eyes-model.jpeg"
-            alt="Close Your Eyes Tee Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'closeEyes')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'closeEyes')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'closeEyes',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'closeEyes',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'closeEyes',2)">
-        </button>
-
+      <div class="card-slide">
+        <img src="../close-eyes-model.jpeg" alt="Close Your Eyes Tee Model">
       </div>
 
     </div>
 
+    <button class="card-arrow left" onclick="cardPrev(event,'closeEyes')">‹</button>
+    <button class="card-arrow right" onclick="cardNext(event,'closeEyes')">›</button>
 
-    <div
-      class="product-card-info"
-      onclick="openProduct('closeEyes')">
+    <div class="card-dots">
+      <button class="card-dot active" onclick="cardGoTo(event,'closeEyes',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'closeEyes',2)"></button>
+    </div>
 
-      <div class="product-card-name">
-        CLOSE YOUR EYES TEE
+  </div>
+
+  <div class="product-card-info" onclick="openProduct('closeEyes')">
+
+    <div class="product-card-name">
+      CLOSE YOUR EYES TEE
+    </div>
+
+    <div class="product-card-price">
+      AED 75
+    </div>
+
+    <div class="product-card-color">
+      WHITE
+    </div>
+
+  </div>
+
+</article>
+
+
+<!-- YUJIRO JACK -->
+
+<article class="product-card">
+
+  <div class="product-card-image" data-card="yujiroJack">
+
+    <div class="product-badge">NEW</div>
+    <div class="swipe-label">SWIPE</div>
+
+    <div class="card-track">
+
+      <div class="card-slide">
+        <img src="../yujiro-jack-front.jfif" alt="Yujiro Jack Hanma Tee Front">
       </div>
 
-      <div class="product-card-price">
-        AED 75
+      <div class="card-slide">
+        <img src="../yujiro-jack-back.jpeg" alt="Yujiro Jack Hanma Tee Back">
       </div>
 
-      <div class="product-card-color">
-        WHITE
+      <div class="card-slide">
+        <img src="../yujiro-jack-model.jpeg" alt="Yujiro Jack Hanma Tee Model">
       </div>
 
     </div>
 
-  </article>
+    <button class="card-arrow left" onclick="cardPrev(event,'yujiroJack')">‹</button>
+    <button class="card-arrow right" onclick="cardNext(event,'yujiroJack')">›</button>
+
+    <div class="card-dots">
+      <button class="card-dot active" onclick="cardGoTo(event,'yujiroJack',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yujiroJack',2)"></button>
+    </div>
+
+  </div>
+
+  <div class="product-card-info" onclick="openProduct('yujiroJack')">
+
+    <div class="product-card-name">
+      YUJIRO × JACK HANMA TEE
+    </div>
+
+    <div class="product-card-price">
+      AED 85
+    </div>
+
+    <div class="product-card-color">
+      BLACK
+    </div>
+
+  </div>
+
+</article>
 
 
-  <!-- YUJIRO JACK -->
+<!-- YEAH BUDDY -->
 
-  <article class="product-card">
+<article class="product-card">
 
-    <div
-      class="product-card-image"
-      data-card="yujiroJack">
+  <div class="product-card-image" data-card="yeahBuddy">
 
-      <div class="product-badge">
-        NEW
+    <div class="product-badge">XXL ONLY</div>
+    <div class="swipe-label">SWIPE</div>
+
+    <div class="card-track">
+
+      <div class="card-slide">
+        <img src="../yeah-buddy-front.jfif" alt="Yeah Buddy Tee Front">
       </div>
 
-      <div class="swipe-label">
-        SWIPE
+      <div class="card-slide">
+        <img src="../yeah-buddy-back.jpeg" alt="Yeah Buddy Tee Back">
       </div>
 
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../yujiro-jack-front.jfif"
-            alt="Yujiro Jack Hanma Tee Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../yujiro-jack-back.jfif"
-            alt="Yujiro Jack Hanma Tee Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../yujiro-jack-model.jpeg"
-            alt="Yujiro Jack Hanma Tee Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'yujiroJack')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'yujiroJack')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'yujiroJack',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'yujiroJack',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'yujiroJack',2)">
-        </button>
-
+      <div class="card-slide">
+        <img src="../yeah-buddy-model.jpeg" alt="Yeah Buddy Tee Model">
       </div>
 
     </div>
 
+    <button class="card-arrow left" onclick="cardPrev(event,'yeahBuddy')">‹</button>
+    <button class="card-arrow right" onclick="cardNext(event,'yeahBuddy')">›</button>
 
-    <div
-      class="product-card-info"
-      onclick="openProduct('yujiroJack')">
+    <div class="card-dots">
+      <button class="card-dot active" onclick="cardGoTo(event,'yeahBuddy',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'yeahBuddy',2)"></button>
+    </div>
 
-      <div class="product-card-name">
-        YUJIRO × JACK HANMA TEE
+  </div>
+
+  <div class="product-card-info" onclick="openProduct('yeahBuddy')">
+
+    <div class="product-card-name">
+      YEAH BUDDY TEE
+    </div>
+
+    <div class="product-card-price">
+      AED 75
+    </div>
+
+    <div class="product-card-color">
+      BLACK
+    </div>
+
+  </div>
+
+</article>
+
+
+<!-- ORIGINAL GRAPHIC -->
+
+<article class="product-card">
+
+  <div class="product-card-image" data-card="originalGraphic">
+
+    <div class="swipe-label">SWIPE</div>
+
+    <div class="card-track">
+
+      <div class="card-slide">
+        <img src="../graphic-tee-black-front.jpg.jpeg" alt="DEV Oversized Graphic Tee Front">
       </div>
 
-      <div class="product-card-price">
-        AED 75
+      <div class="card-slide">
+        <img src="../graphic-tee-black-back.jpg.jpeg" alt="DEV Oversized Graphic Tee Back">
       </div>
 
-      <div class="product-card-color">
-        BLACK
+      <div class="card-slide">
+        <img src="../graphic-tee-black-model.jpg.jpeg" alt="DEV Oversized Graphic Tee Model">
       </div>
 
     </div>
 
-  </article>
+    <button class="card-arrow left" onclick="cardPrev(event,'originalGraphic')">‹</button>
+    <button class="card-arrow right" onclick="cardNext(event,'originalGraphic')">›</button>
 
-
-  <!-- YEAH BUDDY -->
-
-  <article class="product-card">
-
-    <div
-      class="product-card-image"
-      data-card="yeahBuddy">
-
-      <div class="product-badge">
-        XXL ONLY
-      </div>
-
-      <div class="swipe-label">
-        SWIPE
-      </div>
-
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../yeah-buddy-front.jfif"
-            alt="Yeah Buddy Tee Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../yeah-buddy-back.jpeg"
-            alt="Yeah Buddy Tee Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../yeah-buddy-model.jpeg"
-            alt="Yeah Buddy Tee Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'yeahBuddy')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'yeahBuddy')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'yeahBuddy',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'yeahBuddy',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'yeahBuddy',2)">
-        </button>
-
-      </div>
-
+    <div class="card-dots">
+      <button class="card-dot active" onclick="cardGoTo(event,'originalGraphic',0)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',1)"></button>
+      <button class="card-dot" onclick="cardGoTo(event,'originalGraphic',2)"></button>
     </div>
 
+  </div>
 
-    <div
-      class="product-card-info"
-      onclick="openProduct('yeahBuddy')">
+  <div class="product-card-info" onclick="openProduct('originalGraphic')">
 
-      <div class="product-card-name">
-        YEAH BUDDY TEE
-      </div>
-
-      <div class="product-card-price">
-        AED 75
-      </div>
-
-      <div class="product-card-color">
-        BLACK
-      </div>
-
+    <div class="product-card-name">
+      DEV OVERSIZED GRAPHIC TEE
     </div>
 
-  </article>
-
-
-  <!-- ORIGINAL GRAPHIC -->
-
-  <article class="product-card">
-
-    <div
-      class="product-card-image"
-      data-card="originalGraphic">
-
-      <div class="swipe-label">
-        SWIPE
-      </div>
-
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../graphic-tee-black-front.jpg.jpeg"
-            alt="DEV Oversized Graphic Tee Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../graphic-tee-black-back.jpg.jpeg"
-            alt="DEV Oversized Graphic Tee Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../graphic-tee-black-model.jpg.jpeg"
-            alt="DEV Oversized Graphic Tee Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'originalGraphic')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'originalGraphic')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'originalGraphic',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'originalGraphic',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'originalGraphic',2)">
-        </button>
-
-      </div>
-
+    <div class="product-card-price">
+      AED 85
     </div>
 
-
-    <div
-      class="product-card-info"
-      onclick="openProduct('originalGraphic')">
-
-      <div class="product-card-name">
-        DEV OVERSIZED GRAPHIC TEE
-      </div>
-
-      <div class="product-card-price">
-        AED 85
-      </div>
-
-      <div class="product-card-color">
-        BLACK / NAVY BLUE
-      </div>
-
+    <div class="product-card-color">
+      BLACK / NAVY BLUE
     </div>
 
-  </article>
+  </div>
 
+</article>
 
 </section>
 
 
-<!-- PRODUCT DETAIL -->
+<!-- PRODUCT DETAILS -->
 
-<section
-  class="product-detail"
-  id="productDetail">
+<section class="product-detail" id="productDetail">
 
-  <div class="product-detail-inner">
+<div class="product-detail-inner">
 
+<section class="product-media">
 
-    <section class="product-media">
+  <div class="main-image-wrap">
+    <img
+      id="mainImage"
+      class="main-image"
+      src="../close-eyes-front.jfif"
+      alt="DEV Product">
+  </div>
 
-      <div class="main-image-wrap">
+  <div class="view-selector">
 
-        <img
-          id="mainImage"
-          class="main-image"
-          src="../close-eyes-front.jfif"
-          alt="DEV Product">
+    <button class="view-btn active" data-view="front" onclick="changeView('front')">
+      FRONT
+    </button>
 
-      </div>
+    <button class="view-btn" data-view="back" onclick="changeView('back')">
+      BACK
+    </button>
 
+    <button class="view-btn" data-view="model" onclick="changeView('model')">
+      MODEL
+    </button>
 
-      <div class="view-selector">
+  </div>
 
-        <button
-          class="view-btn active"
-          data-view="front"
-          onclick="changeView('front')">
-          FRONT
-        </button>
+  <div class="thumbnails">
 
-        <button
-          class="view-btn"
-          data-view="back"
-          onclick="changeView('back')">
-          BACK
-        </button>
+    <div class="thumb active" data-view="front" onclick="changeView('front')">
+      <img id="thumbFront" src="../close-eyes-front.jfif" alt="Front">
+    </div>
 
-        <button
-          class="view-btn"
-          data-view="model"
-          onclick="changeView('model')">
-          MODEL
-        </button>
+    <div class="thumb" data-view="back" onclick="changeView('back')">
+      <img id="thumbBack" src="../close-eyes-back.jfif" alt="Back">
+    </div>
 
-      </div>
-
-
-      <div class="thumbnails">
-
-        <div
-          class="thumb active"
-          data-view="front"
-          onclick="changeView('front')">
-
-          <img
-            id="thumbFront"
-            src="../close-eyes-front.jfif"
-            alt="Front">
-
-        </div>
-
-
-        <div
-          class="thumb"
-          data-view="back"
-          onclick="changeView('back')">
-
-          <img
-            id="thumbBack"
-            src="../close-eyes-back.jfif"
-            alt="Back">
-
-        </div>
-
-
-        <div
-          class="thumb"
-          data-view="model"
-          onclick="changeView('model')">
-
-          <img
-            id="thumbModel"
-            src="../close-eyes-model.jpeg"
-            alt="Model">
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="product-info">
-
-      <div class="collection-name">
-        DEV // T-SHIRT COLLECTION
-      </div>
-
-
-      <h2 id="productName">
-        CLOSE YOUR EYES TEE
-      </h2>
-
-
-      <div
-        class="price"
-        id="productPrice">
-        AED 75
-      </div>
-
-
-      <div class="option-title">
-
-        <span>
-          COLOR
-        </span>
-
-        <span id="selectedColor">
-          WHITE
-        </span>
-
-      </div>
-
-
-      <div
-        class="color-options"
-        id="colorOptions">
-      </div>
-
-
-      <div class="option-title">
-
-        <span>
-          SIZE
-        </span>
-
-        <span id="selectedSize">
-          SELECT SIZE
-        </span>
-
-      </div>
-
-
-      <div
-        class="size-options"
-        id="sizeOptions">
-      </div>
-
-
-      <div
-        class="description"
-        id="productDescription">
-      </div>
-
-
-      <div
-        class="stock-note"
-        id="stockNote">
-      </div>
-
-
-      <button
-        class="action-button"
-        id="actionButton"
-        type="button"
-        onclick="handleAction()">
-        SELECT SIZE
-      </button>
-
-
-      <button
-        class="back-products"
-        onclick="backToProducts()">
-        ← BACK TO T-SHIRTS
-      </button>
-
-    </section>
+    <div class="thumb" data-view="model" onclick="changeView('model')">
+      <img id="thumbModel" src="../close-eyes-model.jpeg" alt="Model">
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<section class="product-info">
+
+  <div class="collection-name">
+    DEV // T-SHIRT COLLECTION
+  </div>
+
+  <h2 id="productName">
+    CLOSE YOUR EYES TEE
+  </h2>
+
+  <div class="price" id="productPrice">
+    AED 75
+  </div>
+
+  <div class="option-title">
+    <span>COLOR</span>
+    <span id="selectedColor">WHITE</span>
+  </div>
+
+  <div class="color-options" id="colorOptions"></div>
+
+  <div class="option-title">
+    <span>SIZE</span>
+    <span id="selectedSize">SELECT SIZE</span>
+  </div>
+
+  <div class="size-options" id="sizeOptions"></div>
+
+  <div class="description" id="productDescription"></div>
+
+  <div class="stock-note" id="stockNote"></div>
+
+  <button
+    class="action-button"
+    id="actionButton"
+    onclick="handleAction()">
+    SELECT SIZE
+  </button>
+
+  <button class="back-products" onclick="backToProducts()">
+    ← BACK TO T-SHIRTS
+  </button>
+
+</section>
+
+</div>
+</section>
+
 
 <footer>
 
-  <a
-    href="/DEV-Website/"
-    class="footer-logo">
-    DEV
-  </a>
+<a href="../index.html" class="footer-logo">
+  DEV
+</a>
 
+<div class="footer-links">
 
-  <div class="footer-links">
+  <a href="#products">T-Shirts</a>
+  <a href="../polo/">Polo</a>
+  <a href="../shorts/">Shorts</a>
+  <a href="../baggy-pants/">Baggy Pants</a>
+  <a href="#">Hoodies</a>
+  <a href="#">Sweaters</a>
 
-    <a href="/DEV-Website/">
-      MEN
-    </a>
+</div>
 
-    <a href="/DEV-Website/women/">
-      WOMEN
-    </a>
-
-    <a href="/DEV-Website/tshirts/">
-      T-Shirts
-    </a>
-
-    <a href="/DEV-Website/polo/">
-      Polo
-    </a>
-
-    <a href="/DEV-Website/shorts/">
-      Shorts
-    </a>
-
-    <a href="/DEV-Website/baggy-pants/">
-      Baggy Pants
-    </a>
-
-  </div>
-
-
-  <div class="footer-bottom">
-    © 2026 DEV. BUILT DIFFERENT.
-  </div>
+<div class="footer-bottom">
+  ©️ 2026 DEV. BUILT DIFFERENT.
+</div>
 
 </footer>
 
 
-<!-- SHARED CART -->
-
-<div
-  class="cart-overlay"
-  id="cartOverlay">
-</div>
-
-
-<aside
-  class="cart-drawer"
-  id="cartDrawer">
-
-
-  <div class="cart-header">
-
-    <div class="cart-title">
-      YOUR BAG
-    </div>
-
-    <button
-      class="cart-close"
-      id="cartClose"
-      type="button">
-      ×
-    </button>
-
-  </div>
-
-
-  <div
-    class="cart-items"
-    id="cartItems">
-  </div>
-
-
-  <div class="cart-footer">
-
-    <div class="cart-subtotal">
-
-      <span>
-        SUBTOTAL
-      </span>
-
-      <span id="cartSubtotal">
-        AED 0
-      </span>
-
-    </div>
-
-
-    <button
-      class="checkout-button"
-      id="checkoutButton"
-      type="button"
-      disabled>
-      CHECKOUT
-    </button>
-
-
-    <div class="cart-note">
-      MEN + WOMEN ITEMS STAY TOGETHER
-      IN ONE DEV BAG.
-    </div>
-
-  </div>
-
-</aside>
-
-
 <script>
-
-
-/* ================================
-   PRODUCTS
-================================ */
 
 const products = {
 
+closeEyes:{
 
-  closeEyes:{
+  name:"CLOSE YOUR EYES TEE",
 
-    id:"close-your-eyes-tee",
+  price:"AED 75",
 
-    name:"CLOSE YOUR EYES TEE",
+  defaultColor:"white",
 
-    price:"AED 75",
-
-    priceNumber:75,
-
-    defaultColor:"white",
-
-    colors:{
-
-      white:{
-
-        label:"WHITE",
-
-        images:{
-
-          front:"../close-eyes-front.jfif",
-
-          back:"../close-eyes-back.jfif",
-
-          model:"../close-eyes-model.jpeg"
-
-        },
-
-        cartImage:
-          "/DEV-Website/close-eyes-front.jfif"
-
+  colors:{
+    white:{
+      label:"WHITE",
+      images:{
+        front:"../close-eyes-front.jfif",
+        back:"../close-eyes-back.jfif",
+        model:"../close-eyes-model.jpeg"
       }
+    }
+  },
 
+  sizes:[
+    {name:"M",available:true},
+    {name:"L",available:true},
+    {name:"XL",available:true}
+  ],
+
+  description:
+    "Oversized statement tee made for those who keep winning whether they are watched or not. Built for training, lifestyle and everyday wear.",
+
+  stock:"M / L / XL AVAILABLE"
+},
+
+
+yujiroJack:{
+
+  name:"YUJIRO × JACK HANMA TEE",
+
+  price:"AED 85",
+
+  defaultColor:"black",
+
+  colors:{
+    black:{
+      label:"BLACK",
+      images:{
+        front:"../yujiro-jack-front.jfif",
+        back:"../yujiro-jack-back.jpeg",
+        model:"../yujiro-jack-model.jpeg"
+      }
+    }
+  },
+
+  sizes:[
+    {name:"M",available:true},
+    {name:"L",available:true},
+    {name:"XL",available:true}
+  ],
+
+  description:
+    "An oversized graphic tee built around raw strength, intensity and the relentless DEV mindset. Designed for training and lifestyle wear.",
+
+  stock:"M / L / XL AVAILABLE"
+},
+
+
+yeahBuddy:{
+
+  name:"YEAH BUDDY TEE",
+
+  price:"AED 75",
+
+  defaultColor:"black",
+
+  colors:{
+    black:{
+      label:"BLACK",
+      images:{
+        front:"../yeah-buddy-front.jfif",
+        back:"../yeah-buddy-back.jpeg",
+        model:"../yeah-buddy-model.jpeg"
+      }
+    }
+  },
+
+  sizes:[
+    {name:"M",available:false},
+    {name:"L",available:false},
+    {name:"XL",available:false},
+    {name:"XXL",available:true}
+  ],
+
+  description:
+    "YEAH BUDDY. Made for the ones who came to lift heavy, push harder and leave excuses behind. Oversized DEV training and lifestyle tee.",
+
+  stock:"XXL AVAILABLE — M / L / XL SOLD OUT"
+},
+
+
+originalGraphic:{
+
+  name:"DEV OVERSIZED GRAPHIC TEE",
+
+  price:"AED 85",
+
+  defaultColor:"black",
+
+  colors:{
+
+    black:{
+      label:"BLACK",
+      images:{
+        front:"../graphic-tee-black-front.jpg.jpeg",
+        back:"../graphic-tee-black-back.jpg.jpeg",
+        model:"../graphic-tee-black-model.jpg.jpeg"
+      }
     },
 
-    sizes:[
-
-      {
-        name:"M",
-        available:true
-      },
-
-      {
-        name:"L",
-        available:true
-      },
-
-      {
-        name:"XL",
-        available:true
+    navy:{
+      label:"NAVY BLUE",
+      images:{
+        front:"../graphic-tee-navy-front.jpg.jpeg",
+        back:"../graphic-tee-navy-back.jpg.jpeg",
+        model:"../graphic-tee-navy-model.jpg.jpeg"
       }
-
-    ],
-
-    description:
-      "Oversized statement tee made for those who keep winning whether they are watched or not. Built for training, lifestyle and everyday wear.",
-
-    stock:
-      "M / L / XL AVAILABLE"
+    }
 
   },
 
-
-  yujiroJack:{
-
-    id:"yujiro-jack-hanma-tee",
-
-    name:"YUJIRO × JACK HANMA TEE",
-
-    price:"AED 75",
-
-    priceNumber:75,
-
-    defaultColor:"black",
-
-    colors:{
-
-      black:{
-
-        label:"BLACK",
-
-        images:{
-
-          front:"../yujiro-jack-front.jfif",
-
-          back:"../yujiro-jack-back.jfif",
-
-          model:"../yujiro-jack-model.jpeg"
-
-        },
-
-        cartImage:
-          "/DEV-Website/yujiro-jack-front.jfif"
-
-      }
-
-    },
-
-    sizes:[
-
-      {
-        name:"M",
-        available:true
-      },
-
-      {
-        name:"L",
-        available:true
-      },
-
-      {
-        name:"XL",
-        available:true
-      }
-
-    ],
-
-    description:
-      "An oversized graphic tee built around raw strength, intensity and the relentless DEV mindset. Designed for training and lifestyle wear.",
-
-    stock:
-      "M / L / XL AVAILABLE"
-
-  },
-
-
-  yeahBuddy:{
-
-    id:"yeah-buddy-tee",
-
-    name:"YEAH BUDDY TEE",
-
-    price:"AED 75",
-
-    priceNumber:75,
-
-    defaultColor:"black",
-
-    colors:{
-
-      black:{
-
-        label:"BLACK",
-
-        images:{
-
-          front:"../yeah-buddy-front.jfif",
-
-          back:"../yeah-buddy-back.jpeg",
-
-          model:"../yeah-buddy-model.jpeg"
-
-        },
-
-        cartImage:
-          "/DEV-Website/yeah-buddy-front.jfif"
-
-      }
-
-    },
-
-    sizes:[
-
-      {
-        name:"M",
-        available:false
-      },
-
-      {
-        name:"L",
-        available:false
-      },
-
-      {
-        name:"XL",
-        available:false
-      },
-
-      {
-        name:"XXL",
-        available:true
-      }
-
-    ],
-
-    description:
-      "YEAH BUDDY. Made for the ones who came to lift heavy, push harder and leave excuses behind. Oversized DEV training and lifestyle tee.",
-
-    stock:
-      "XXL AVAILABLE — M / L / XL SOLD OUT"
-
-  },
-
-
-  originalGraphic:{
-
-    id:"dev-oversized-graphic-tee",
-
-    name:"DEV OVERSIZED GRAPHIC TEE",
-
-    price:"AED 85",
-
-    priceNumber:85,
-
-    defaultColor:"black",
-
-    colors:{
-
-      black:{
-
-        label:"BLACK",
-
-        images:{
-
-          front:"../graphic-tee-black-front.jpg.jpeg",
-
-          back:"../graphic-tee-black-back.jpg.jpeg",
-
-          model:"../graphic-tee-black-model.jpg.jpeg"
-
-        },
-
-        cartImage:
-          "/DEV-Website/graphic-tee-black-front.jpg.jpeg"
-
-      },
-
-
-      navy:{
-
-        label:"NAVY BLUE",
-
-        images:{
-
-          front:"../graphic-tee-navy-front.jpg.jpeg",
-
-          back:"../graphic-tee-navy-back.jpg.jpeg",
-
-          model:"../graphic-tee-navy-model.jpg.jpeg"
-
-        },
-
-        cartImage:
-          "/DEV-Website/graphic-tee-navy-front.jpg.jpeg"
-
-      }
-
-    },
-
-    sizes:[
-
-      {
-        name:"M",
-        available:true
-      },
-
-      {
-        name:"L",
-        available:true
-      },
-
-      {
-        name:"XL",
-        available:true
-      }
-
-    ],
-
-    description:
-      "Oversized graphic tee designed for training, lifestyle and everyday wear. Available in Black and Navy Blue.",
-
-    stock:
-      "M / L / XL AVAILABLE"
-
-  }
+  sizes:[
+    {name:"M",available:true},
+    {name:"L",available:true},
+    {name:"XL",available:true}
+  ],
+
+  description:
+    "Oversized graphic tee designed for training, lifestyle and everyday wear. Available in Black and Navy Blue.",
+
+  stock:"M / L / XL AVAILABLE"
+}
 
 };
 
 
-/* ================================
-   CURRENT PRODUCT
-================================ */
-
-let currentProduct =
-  "closeEyes";
-
-let currentColor =
-  products[currentProduct]
-  .defaultColor;
-
-let currentView =
-  "front";
-
-let selectedSize =
-  null;
+let currentProduct="closeEyes";
+let currentColor=products[currentProduct].defaultColor;
+let currentView="front";
+let selectedSize=null;
 
 
-/* ================================
-   CARD STATE
-================================ */
-
-const cardState = {
-
+const cardState={
   closeEyes:0,
-
   yujiroJack:0,
-
   yeahBuddy:0,
-
   originalGraphic:0
-
 };
 
-
-/* ================================
-   CARD SLIDER
-================================ */
 
 function updateCard(productKey){
 
-  const card =
-    document.querySelector(
-      `[data-card="${productKey}"]`
-    );
-
+  const card=document.querySelector(
+    `[data-card="${productKey}"]`
+  );
 
   if(!card){
     return;
   }
 
+  const track=card.querySelector(".card-track");
+  const dots=card.querySelectorAll(".card-dot");
 
-  const track =
-    card.querySelector(
-      ".card-track"
+  track.style.transform=
+    `translateX(-${cardState[productKey]*100}%)`;
+
+  dots.forEach(function(dot,index){
+    dot.classList.toggle(
+      "active",
+      index===cardState[productKey]
     );
-
-
-  const dots =
-    card.querySelectorAll(
-      ".card-dot"
-    );
-
-
-  track.style.transform =
-    `translateX(-${cardState[productKey] * 100}%)`;
-
-
-  dots.forEach(
-    function(dot,index){
-
-      dot.classList.toggle(
-        "active",
-        index === cardState[productKey]
-      );
-
-    }
-  );
+  });
 
 }
 
@@ -2247,8 +1418,8 @@ function cardNext(event,productKey){
 
   event.stopPropagation();
 
-  cardState[productKey] =
-    (cardState[productKey] + 1) % 3;
+  cardState[productKey]=
+    (cardState[productKey]+1)%3;
 
   updateCard(productKey);
 
@@ -2259,642 +1430,306 @@ function cardPrev(event,productKey){
 
   event.stopPropagation();
 
-  cardState[productKey] =
-    (cardState[productKey] + 2) % 3;
+  cardState[productKey]=
+    (cardState[productKey]+2)%3;
 
   updateCard(productKey);
 
 }
 
 
-function cardGoTo(
-  event,
-  productKey,
-  index
-){
+function cardGoTo(event,productKey,index){
 
   event.stopPropagation();
 
-  cardState[productKey] =
-    index;
+  cardState[productKey]=index;
 
   updateCard(productKey);
 
 }
 
 
-/* ================================
-   TOUCH SWIPE
-================================ */
+document.querySelectorAll(".product-card-image").forEach(function(card){
 
-document
-.querySelectorAll(
-  ".product-card-image"
-)
-.forEach(
-  function(card){
+  const productKey=card.dataset.card;
 
-    const productKey =
-      card.dataset.card;
+  let startX=0;
+  let startY=0;
+  let moved=false;
 
+  card.addEventListener("touchstart",function(event){
 
-    let startX = 0;
+    const touch=event.touches[0];
 
-    let startY = 0;
+    startX=touch.clientX;
+    startY=touch.clientY;
+    moved=false;
 
-    let moved = false;
+  },{passive:true});
 
 
-    card.addEventListener(
-      "touchstart",
-      function(event){
+  card.addEventListener("touchmove",function(event){
 
-        const touch =
-          event.touches[0];
+    const touch=event.touches[0];
 
-        startX =
-          touch.clientX;
+    const diffX=touch.clientX-startX;
+    const diffY=touch.clientY-startY;
 
-        startY =
-          touch.clientY;
+    if(Math.abs(diffX)>Math.abs(diffY)){
+      moved=true;
+    }
 
-        moved =
-          false;
-
-      },
-      {
-        passive:true
-      }
-    );
+  },{passive:true});
 
 
-    card.addEventListener(
-      "touchmove",
-      function(event){
+  card.addEventListener("touchend",function(event){
 
-        const touch =
-          event.touches[0];
+    if(!event.changedTouches.length){
+      return;
+    }
 
-        const diffX =
-          touch.clientX -
-          startX;
+    const endX=event.changedTouches[0].clientX;
+    const diffX=endX-startX;
 
-        const diffY =
-          touch.clientY -
-          startY;
+    if(Math.abs(diffX)>45){
 
+      if(diffX<0){
 
-        if(
-          Math.abs(diffX) >
-          Math.abs(diffY)
-        ){
+        cardState[productKey]=
+          (cardState[productKey]+1)%3;
 
-          moved =
-            true;
+      }else{
 
-        }
-
-      },
-      {
-        passive:true
-      }
-    );
-
-
-    card.addEventListener(
-      "touchend",
-      function(event){
-
-        if(
-          !event.changedTouches.length
-        ){
-          return;
-        }
-
-
-        const endX =
-          event.changedTouches[0]
-          .clientX;
-
-
-        const diffX =
-          endX -
-          startX;
-
-
-        if(
-          Math.abs(diffX) > 45
-        ){
-
-          if(
-            diffX < 0
-          ){
-
-            cardState[productKey] =
-              (cardState[productKey] + 1) % 3;
-
-          }else{
-
-            cardState[productKey] =
-              (cardState[productKey] + 2) % 3;
-
-          }
-
-
-          updateCard(
-            productKey
-          );
-
-        }else if(!moved){
-
-          openProduct(
-            productKey
-          );
-
-        }
-
-      },
-      {
-        passive:true
-      }
-    );
-
-  }
-);
-
-
-/* ================================
-   DESKTOP CLICK
-================================ */
-
-document
-.querySelectorAll(
-  ".product-card-image"
-)
-.forEach(
-  function(card){
-
-    card.addEventListener(
-      "click",
-      function(event){
-
-        if(
-          event.target.closest(
-            ".card-arrow"
-          )
-        ){
-          return;
-        }
-
-
-        if(
-          event.target.closest(
-            ".card-dot"
-          )
-        ){
-          return;
-        }
-
-
-        if(
-          "ontouchstart" in window
-        ){
-          return;
-        }
-
-
-        openProduct(
-          card.dataset.card
-        );
+        cardState[productKey]=
+          (cardState[productKey]+2)%3;
 
       }
-    );
 
-  }
-);
+      updateCard(productKey);
+
+    }else if(!moved){
+
+      openProduct(productKey);
+
+    }
+
+  },{passive:true});
+
+});
 
 
-/* ================================
-   OPEN PRODUCT
-================================ */
+document.querySelectorAll(".product-card-image").forEach(function(card){
+
+  card.addEventListener("click",function(event){
+
+    if(event.target.closest(".card-arrow")){
+      return;
+    }
+
+    if(event.target.closest(".card-dot")){
+      return;
+    }
+
+    if("ontouchstart" in window){
+      return;
+    }
+
+    openProduct(card.dataset.card);
+
+  });
+
+});
+
 
 function openProduct(productKey){
 
-  currentProduct =
-    productKey;
+  currentProduct=productKey;
 
-  currentColor =
-    products[productKey]
-    .defaultColor;
+  currentColor=
+    products[productKey].defaultColor;
 
-  currentView =
-    "front";
+  currentView="front";
+  selectedSize=null;
 
-  selectedSize =
-    null;
-
-
-  document
-  .getElementById(
-    "selectedSize"
-  )
-  .textContent =
+  document.getElementById("selectedSize").textContent=
     "SELECT SIZE";
-
 
   renderProduct();
 
+  const detail=
+    document.getElementById("productDetail");
 
-  const detail =
-    document
-    .getElementById(
-      "productDetail"
-    );
+  detail.classList.add("active");
 
+  setTimeout(function(){
 
-  detail
-  .classList
-  .add(
-    "active"
-  );
+    detail.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
 
-
-  setTimeout(
-    function(){
-
-      detail
-      .scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-
-    },
-    50
-  );
+  },50);
 
 }
 
 
-/* ================================
-   RENDER PRODUCT
-================================ */
-
 function renderProduct(){
 
-  const product =
-    products[
-      currentProduct
-    ];
+  const product=products[currentProduct];
 
-
-  document
-  .getElementById(
-    "productName"
-  )
-  .textContent =
+  document.getElementById("productName").textContent=
     product.name;
 
-
-  document
-  .getElementById(
-    "productPrice"
-  )
-  .textContent =
+  document.getElementById("productPrice").textContent=
     product.price;
 
-
-  document
-  .getElementById(
-    "productDescription"
-  )
-  .textContent =
+  document.getElementById("productDescription").textContent=
     product.description;
 
-
-  document
-  .getElementById(
-    "stockNote"
-  )
-  .textContent =
+  document.getElementById("stockNote").textContent=
     product.stock;
 
-
   renderColors();
-
   renderSizes();
-
   updateImages();
-
   updateActionButton();
 
 }
 
 
-/* ================================
-   COLORS
-================================ */
-
 function renderColors(){
 
-  const product =
-    products[
-      currentProduct
-    ];
+  const product=products[currentProduct];
 
+  const container=
+    document.getElementById("colorOptions");
 
-  const container =
-    document
-    .getElementById(
-      "colorOptions"
-    );
+  container.innerHTML="";
 
+  Object.keys(product.colors).forEach(function(colorKey){
 
-  container.innerHTML =
-    "";
+    const color=product.colors[colorKey];
 
+    const button=
+      document.createElement("button");
 
-  Object
-  .keys(
-    product.colors
-  )
-  .forEach(
-    function(colorKey){
+    button.className="color-btn";
 
-      const color =
-        product
-        .colors[
-          colorKey
-        ];
-
-
-      const button =
-        document
-        .createElement(
-          "button"
-        );
-
-
-      button.className =
-        "color-btn";
-
-
-      if(
-        colorKey ===
-        currentColor
-      ){
-
-        button
-        .classList
-        .add(
-          "active"
-        );
-
-      }
-
-
-      button.textContent =
-        color.label;
-
-
-      button.onclick =
-        function(){
-
-          changeColor(
-            colorKey
-          );
-
-        };
-
-
-      container
-      .appendChild(
-        button
-      );
-
+    if(colorKey===currentColor){
+      button.classList.add("active");
     }
-  );
 
+    button.textContent=color.label;
 
-  document
-  .getElementById(
-    "selectedColor"
-  )
-  .textContent =
-    product
-    .colors[
-      currentColor
-    ]
-    .label;
+    button.onclick=function(){
+      changeColor(colorKey);
+    };
+
+    container.appendChild(button);
+
+  });
+
+  document.getElementById("selectedColor").textContent=
+    product.colors[currentColor].label;
 
 }
 
 
 function changeColor(color){
 
-  currentColor =
-    color;
+  currentColor=color;
+  currentView="front";
+  selectedSize=null;
 
-  currentView =
-    "front";
-
-  selectedSize =
-    null;
-
-
-  document
-  .getElementById(
-    "selectedSize"
-  )
-  .textContent =
+  document.getElementById("selectedSize").textContent=
     "SELECT SIZE";
 
-
   renderColors();
-
   renderSizes();
-
   updateImages();
-
   updateActionButton();
 
 }
 
-
-/* ================================
-   SIZES
-================================ */
 
 function renderSizes(){
 
-  const product =
-    products[
-      currentProduct
-    ];
+  const product=products[currentProduct];
 
+  const container=
+    document.getElementById("sizeOptions");
 
-  const container =
-    document
-    .getElementById(
-      "sizeOptions"
-    );
+  container.innerHTML="";
 
+  product.sizes.forEach(function(size){
 
-  container.innerHTML =
-    "";
+    const button=
+      document.createElement("button");
 
+    button.className="size-btn";
 
-  product
-  .sizes
-  .forEach(
-    function(size){
+    if(!size.available){
 
-      const button =
-        document
-        .createElement(
-          "button"
-        );
+      button.classList.add("sold-out");
 
+      button.innerHTML=
+        size.name+
+        "<small>SOLD OUT</small>";
 
-      button.className =
-        "size-btn";
+    }else{
 
+      button.textContent=size.name;
 
-      if(
-        !size.available
-      ){
-
-        button
-        .classList
-        .add(
-          "sold-out"
-        );
-
-
-        button.innerHTML =
-          size.name +
-          "<small>SOLD OUT</small>";
-
-      }else{
-
-        button.textContent =
-          size.name;
-
-
-        button.onclick =
-          function(){
-
-            selectSize(
-              button,
-              size.name
-            );
-
-          };
-
-      }
-
-
-      container
-      .appendChild(
-        button
-      );
+      button.onclick=function(){
+        selectSize(button,size.name);
+      };
 
     }
-  );
+
+    container.appendChild(button);
+
+  });
 
 }
 
 
-function selectSize(
-  button,
-  size
-){
+function selectSize(button,size){
 
-  selectedSize =
+  selectedSize=size;
+
+  document.querySelectorAll(".size-btn").forEach(function(btn){
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  document.getElementById("selectedSize").textContent=
     size;
-
-
-  document
-  .querySelectorAll(
-    ".size-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn
-      .classList
-      .remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  button
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document
-  .getElementById(
-    "selectedSize"
-  )
-  .textContent =
-    size;
-
 
   updateActionButton();
 
 }
 
 
-/* ================================
-   VIEW
-================================ */
-
 function changeView(view){
 
-  currentView =
-    view;
+  currentView=view;
 
+  document.querySelectorAll(".view-btn").forEach(function(btn){
+    btn.classList.remove("active");
+  });
 
-  document
-  .querySelectorAll(
-    ".view-btn"
-  )
-  .forEach(
-    function(btn){
+  document.querySelectorAll(".thumb").forEach(function(thumb){
+    thumb.classList.remove("active");
+  });
 
-      btn
-      .classList
-      .toggle(
-        "active",
-        btn.dataset.view === view
-      );
+  document.querySelector(
+    `.view-btn[data-view="${view}"]`
+  ).classList.add("active");
 
-    }
-  );
-
-
-  document
-  .querySelectorAll(
-    ".thumb"
-  )
-  .forEach(
-    function(thumb){
-
-      thumb
-      .classList
-      .toggle(
-        "active",
-        thumb.dataset.view === view
-      );
-
-    }
-  );
-
+  document.querySelector(
+    `.thumb[data-view="${view}"]`
+  ).classList.add("active");
 
   updateMainImage();
 
@@ -2903,938 +1738,115 @@ function changeView(view){
 
 function updateImages(){
 
-  const images =
-    products[
-      currentProduct
-    ]
-    .colors[
-      currentColor
-    ]
+  const images=
+    products[currentProduct]
+    .colors[currentColor]
     .images;
 
-
-  document
-  .getElementById(
-    "thumbFront"
-  )
-  .src =
+  document.getElementById("thumbFront").src=
     images.front;
 
-
-  document
-  .getElementById(
-    "thumbBack"
-  )
-  .src =
+  document.getElementById("thumbBack").src=
     images.back;
 
-
-  document
-  .getElementById(
-    "thumbModel"
-  )
-  .src =
+  document.getElementById("thumbModel").src=
     images.model;
 
+  currentView="front";
 
-  changeView(
-    "front"
-  );
+  document.querySelectorAll(".view-btn").forEach(function(btn){
+    btn.classList.remove("active");
+  });
+
+  document.querySelectorAll(".thumb").forEach(function(thumb){
+    thumb.classList.remove("active");
+  });
+
+  document.querySelector(
+    '.view-btn[data-view="front"]'
+  ).classList.add("active");
+
+  document.querySelector(
+    '.thumb[data-view="front"]'
+  ).classList.add("active");
+
+  updateMainImage();
 
 }
 
 
 function updateMainImage(){
 
-  const image =
-    products[
-      currentProduct
-    ]
-    .colors[
-      currentColor
-    ]
-    .images[
-      currentView
-    ];
+  const image=
+    products[currentProduct]
+    .colors[currentColor]
+    .images[currentView];
 
-
-  document
-  .getElementById(
-    "mainImage"
-  )
-  .src =
+  document.getElementById("mainImage").src=
     image;
 
-
-  document
-  .getElementById(
-    "mainImage"
-  )
-  .alt =
-    products[
-      currentProduct
-    ]
-    .name +
-    " " +
+  document.getElementById("mainImage").alt=
+    products[currentProduct].name+
+    " "+
     currentView;
 
 }
 
 
-/* ================================
-   ACTION BUTTON
-================================ */
-
 function updateActionButton(){
 
-  const button =
-    document
-    .getElementById(
-      "actionButton"
-    );
+  const button=
+    document.getElementById("actionButton");
 
+  if(selectedSize){
 
-  button.classList.remove(
-    "added"
-  );
-
-
-  if(
-    selectedSize
-  ){
-
-    button.textContent =
-      "ADD TO BAG";
+    button.textContent="ADD TO BAG";
 
   }else{
 
-    button.textContent =
-      "SELECT SIZE";
+    button.textContent="SELECT SIZE";
 
   }
 
 }
 
-
-/* ================================
-   SHARED CART
-================================ */
-
-const DEV_CART_KEY =
-  "dev_cart_v1";
-
-
-function getCart(){
-
-  try{
-
-    const data =
-      JSON.parse(
-        localStorage.getItem(
-          DEV_CART_KEY
-        )
-      );
-
-
-    return Array.isArray(data)
-      ?
-      data
-      :
-      [];
-
-
-  }catch(error){
-
-    return [];
-
-  }
-
-}
-
-
-function saveCart(cart){
-
-  localStorage.setItem(
-    DEV_CART_KEY,
-    JSON.stringify(cart)
-  );
-
-
-  renderCart();
-
-}
-
-
-function formatPrice(price){
-
-  const value =
-    Number(price) || 0;
-
-
-  return "AED " +
-    value.toFixed(
-      value % 1 === 0
-      ?
-      0
-      :
-      2
-    );
-
-}
-
-
-/* ================================
-   ADD PRODUCT
-================================ */
 
 function handleAction(){
 
-  if(
-    !selectedSize
-  ){
+  if(!selectedSize){
 
-    alert(
-      "Please select your size."
-    );
+    alert("Please select your size.");
 
     return;
 
   }
 
-
-  const product =
-    products[
-      currentProduct
-    ];
-
-
-  const color =
-    product
-    .colors[
-      currentColor
-    ];
-
-
-  const cart =
-    getCart();
-
-
-  const id =
-    product.id +
-    "-" +
-    currentColor +
-    "-" +
-    selectedSize;
-
-
-  const existingIndex =
-    cart.findIndex(
-      function(item){
-
-        return item.id === id;
-
-      }
-    );
-
-
-  if(
-    existingIndex !== -1
-  ){
-
-    cart[
-      existingIndex
-    ].quantity =
-      Number(
-        cart[
-          existingIndex
-        ].quantity || 1
-      ) + 1;
-
-  }else{
-
-    cart.push({
-
-      id:id,
-
-      productId:
-        product.id,
-
-      name:
-        product.name,
-
-      section:
-        "MEN",
-
-      category:
-        "T-SHIRTS",
-
-      color:
-        color.label,
-
-      size:
-        selectedSize,
-
-      price:
-        product.priceNumber,
-
-      quantity:
-        1,
-
-      image:
-        color.cartImage
-
-    });
-
-  }
-
-
-  saveCart(
-    cart
-  );
-
-
-  const button =
-    document
-    .getElementById(
-      "actionButton"
-    );
-
-
-  button.textContent =
-    "ADDED TO BAG ✓";
-
-
-  button.classList.add(
-    "added"
-  );
-
-
-  setTimeout(
-    function(){
-
-      button.textContent =
-        "ADD TO BAG";
-
-
-      button.classList.remove(
-        "added"
-      );
-
-
-      openCart();
-
-    },
-    500
+  alert(
+    products[currentProduct].name+
+    " — Size "+
+    selectedSize+
+    "\n\nDEV checkout will be connected soon."
   );
 
 }
 
-
-/* ================================
-   CART ELEMENTS
-================================ */
-
-const cartButton =
-  document.getElementById(
-    "cartButton"
-  );
-
-const cartCount =
-  document.getElementById(
-    "cartCount"
-  );
-
-const cartDrawer =
-  document.getElementById(
-    "cartDrawer"
-  );
-
-const cartOverlay =
-  document.getElementById(
-    "cartOverlay"
-  );
-
-const cartClose =
-  document.getElementById(
-    "cartClose"
-  );
-
-const cartItems =
-  document.getElementById(
-    "cartItems"
-  );
-
-const cartSubtotal =
-  document.getElementById(
-    "cartSubtotal"
-  );
-
-const checkoutButton =
-  document.getElementById(
-    "checkoutButton"
-  );
-
-
-/* ================================
-   OPEN / CLOSE CART
-================================ */
-
-function openCart(){
-
-  renderCart();
-
-
-  cartDrawer
-  .classList
-  .add(
-    "active"
-  );
-
-
-  cartOverlay
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document.body
-  .classList
-  .add(
-    "cart-open"
-  );
-
-}
-
-
-function closeCart(){
-
-  cartDrawer
-  .classList
-  .remove(
-    "active"
-  );
-
-
-  cartOverlay
-  .classList
-  .remove(
-    "active"
-  );
-
-
-  document.body
-  .classList
-  .remove(
-    "cart-open"
-  );
-
-}
-
-
-/* ================================
-   QUANTITY
-================================ */
-
-function changeQuantity(
-  index,
-  amount
-){
-
-  const cart =
-    getCart();
-
-
-  if(
-    !cart[index]
-  ){
-    return;
-  }
-
-
-  const current =
-    Number(
-      cart[index]
-      .quantity || 1
-    );
-
-
-  const next =
-    current +
-    amount;
-
-
-  if(
-    next <= 0
-  ){
-
-    cart.splice(
-      index,
-      1
-    );
-
-  }else{
-
-    cart[
-      index
-    ].quantity =
-      next;
-
-  }
-
-
-  saveCart(
-    cart
-  );
-
-}
-
-
-/* ================================
-   REMOVE
-================================ */
-
-function removeItem(index){
-
-  const cart =
-    getCart();
-
-
-  cart.splice(
-    index,
-    1
-  );
-
-
-  saveCart(
-    cart
-  );
-
-}
-
-
-/* ================================
-   RENDER CART
-================================ */
-
-function renderCart(){
-
-  const cart =
-    getCart();
-
-
-  const totalQuantity =
-    cart.reduce(
-      function(total,item){
-
-        return total +
-          Number(
-            item.quantity || 1
-          );
-
-      },
-      0
-    );
-
-
-  const subtotal =
-    cart.reduce(
-      function(total,item){
-
-        return total +
-          (
-            Number(
-              item.price || 0
-            )
-            *
-            Number(
-              item.quantity || 1
-            )
-          );
-
-      },
-      0
-    );
-
-
-  cartCount.textContent =
-    totalQuantity;
-
-
-  cartCount
-  .classList
-  .toggle(
-    "active",
-    totalQuantity > 0
-  );
-
-
-  cartSubtotal.textContent =
-    formatPrice(
-      subtotal
-    );
-
-
-  checkoutButton.disabled =
-    cart.length === 0;
-
-
-  if(
-    cart.length === 0
-  ){
-
-    cartItems.innerHTML = `
-
-      <div class="cart-empty">
-
-        <strong>
-          YOUR BAG IS EMPTY
-        </strong>
-
-        <span>
-          Shop MEN or WOMEN.
-          Everything you add stays
-          together in the same
-          DEV bag.
-        </span>
-
-      </div>
-
-    `;
-
-
-    return;
-
-  }
-
-
-  cartItems.innerHTML =
-    cart.map(
-      function(item,index){
-
-        const name =
-          item.name ||
-          "DEV PRODUCT";
-
-
-        const section =
-          item.section ||
-          "DEV";
-
-
-        const color =
-          item.color ||
-          "—";
-
-
-        const size =
-          item.size ||
-          "—";
-
-
-        const quantity =
-          Number(
-            item.quantity || 1
-          );
-
-
-        const price =
-          Number(
-            item.price || 0
-          );
-
-
-        const image =
-          item.image ||
-          "";
-
-
-        return `
-
-          <div class="cart-item">
-
-            ${
-              image
-              ?
-              `
-              <img
-                class="cart-item-image"
-                src="${image}"
-                alt="${name}">
-              `
-              :
-              `
-              <div
-                class="cart-item-image">
-              </div>
-              `
-            }
-
-            <div>
-
-              <div class="cart-item-name">
-                ${name}
-              </div>
-
-              <div class="cart-item-meta">
-
-                ${section}
-                ·
-                ${color}
-                ·
-                SIZE ${size}
-
-              </div>
-
-              <div class="cart-item-row">
-
-                <div class="quantity">
-
-                  <button
-                    type="button"
-                    data-action="minus"
-                    data-index="${index}">
-                    −
-                  </button>
-
-                  <span>
-                    ${quantity}
-                  </span>
-
-                  <button
-                    type="button"
-                    data-action="plus"
-                    data-index="${index}">
-                    +
-                  </button>
-
-                </div>
-
-                <div class="cart-item-price">
-
-                  ${
-                    formatPrice(
-                      price *
-                      quantity
-                    )
-                  }
-
-                </div>
-
-              </div>
-
-              <button
-                class="remove-item"
-                type="button"
-                data-action="remove"
-                data-index="${index}">
-                REMOVE
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    )
-    .join("");
-
-}
-
-
-/* ================================
-   CART ACTIONS
-================================ */
-
-cartItems
-.addEventListener(
-  "click",
-  function(event){
-
-    const button =
-      event.target.closest(
-        "[data-action]"
-      );
-
-
-    if(
-      !button
-    ){
-      return;
-    }
-
-
-    const index =
-      Number(
-        button.dataset.index
-      );
-
-
-    const action =
-      button.dataset.action;
-
-
-    if(
-      action === "plus"
-    ){
-
-      changeQuantity(
-        index,
-        1
-      );
-
-    }
-
-
-    if(
-      action === "minus"
-    ){
-
-      changeQuantity(
-        index,
-        -1
-      );
-
-    }
-
-
-    if(
-      action === "remove"
-    ){
-
-      removeItem(
-        index
-      );
-
-    }
-
-  }
-);
-
-
-cartButton
-.addEventListener(
-  "click",
-  openCart
-);
-
-
-cartClose
-.addEventListener(
-  "click",
-  closeCart
-);
-
-
-cartOverlay
-.addEventListener(
-  "click",
-  closeCart
-);
-
-
-document
-.addEventListener(
-  "keydown",
-  function(event){
-
-    if(
-      event.key ===
-      "Escape"
-    ){
-
-      closeCart();
-
-    }
-
-  }
-);
-
-
-/* ================================
-   CHECKOUT
-================================ */
-
-checkoutButton
-.addEventListener(
-  "click",
-  function(){
-
-    alert(
-      "DEV Checkout will be connected later."
-    );
-
-  }
-);
-
-
-/* ================================
-   SYNC CART
-================================ */
-
-window
-.addEventListener(
-  "storage",
-  function(event){
-
-    if(
-      event.key ===
-      DEV_CART_KEY
-    ){
-
-      renderCart();
-
-    }
-
-  }
-);
-
-
-/* ================================
-   BACK
-================================ */
 
 function backToProducts(){
 
-  document
-  .getElementById(
-    "products"
-  )
-  .scrollIntoView({
+  document.getElementById("products").scrollIntoView({
     behavior:"smooth"
   });
 
 }
 
 
-/* ================================
-   MOBILE MENU
-================================ */
-
 function toggleMenu(){
 
-  document
-  .getElementById(
-    "navLinks"
-  )
-  .classList
-  .toggle(
-    "open"
-  );
+  document.getElementById("navLinks").classList.toggle("open");
 
 }
 
-
-/* ================================
-   START
-================================ */
-
-renderCart();
-
 </script>
-
 
 </body>
 </html>
