@@ -2,17 +2,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>DEV | Built Different</title>
 
 <style>
-
-/* ================================
-   RESET
-================================ */
 
 *{
   margin:0;
@@ -30,6 +25,10 @@ body{
   font-family:Arial, Helvetica, sans-serif;
 }
 
+body.cart-open{
+  overflow:hidden;
+}
+
 a{
   color:inherit;
   text-decoration:none;
@@ -41,9 +40,9 @@ input{
 }
 
 
-/* ================================
+/* =========================
    TOP BAR
-================================ */
+========================= */
 
 .top-bar{
   background:#fff;
@@ -56,137 +55,118 @@ input{
 }
 
 
-/* ================================
+/* =========================
    NAVIGATION
-================================ */
+========================= */
 
 nav{
   position:sticky;
   top:0;
   z-index:1000;
-  height:82px;
+  min-height:82px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:25px;
   padding:0 5%;
   background:rgba(5,5,5,.97);
   border-bottom:1px solid #1b1b1b;
 }
 
 .logo{
+  flex-shrink:0;
   font-size:36px;
   font-weight:900;
   letter-spacing:7px;
 }
 
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-left:auto;
+}
 
-/* ================================
+.main-nav a{
+  position:relative;
+  padding:33px 0 29px;
+  color:#888;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2.5px;
+  transition:.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active{
+  color:#fff;
+}
+
+.main-nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:20px;
+  height:1px;
+  background:#fff;
+}
+
+
+/* =========================
    NAV ACTIONS
-================================ */
+========================= */
 
 .nav-actions{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:10px;
 }
-
-
-/* ================================
-   SEARCH
-================================ */
 
 .search-box{
   position:relative;
-  display:flex;
-  align-items:center;
-  width:280px;
+  width:250px;
 }
 
 .search-box input{
   width:100%;
   height:44px;
-  padding:0 45px 0 18px;
+  padding:0 42px 0 17px;
   border:1px solid #333;
   border-radius:30px;
+  outline:none;
   background:#111;
   color:#fff;
-  outline:none;
   font-size:12px;
-  letter-spacing:1px;
-  transition:.2s;
-}
-
-.search-box input:focus{
-  border-color:#777;
-  background:#161616;
 }
 
 .search-box input::placeholder{
-  color:#777;
+  color:#666;
 }
 
 .search-icon{
   position:absolute;
+  top:50%;
   right:16px;
-  font-size:17px;
+  transform:translateY(-50%);
   pointer-events:none;
 }
 
 
-/* ================================
-   CART
-================================ */
-
-.cart-button{
-  width:46px;
-  height:46px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border:1px solid #333;
-  border-radius:50%;
-  background:#111;
-  color:#fff;
-  cursor:pointer;
-  font-size:19px;
-  transition:.2s;
-}
-
-.cart-button:hover{
-  background:#fff;
-  color:#000;
-}
-
-
-/* ================================
-   MOBILE SEARCH BUTTON
-================================ */
+/* =========================
+   MOBILE SEARCH
+========================= */
 
 .mobile-search-button{
   display:none;
-  width:44px;
-  height:44px;
-  justify-content:center;
-  align-items:center;
-  border:1px solid #333;
-  border-radius:50%;
-  background:#111;
-  color:#fff;
-  cursor:pointer;
-  font-size:18px;
 }
-
-
-/* ================================
-   MOBILE SEARCH
-================================ */
 
 .mobile-search-panel{
   display:none;
   position:sticky;
   top:68px;
   z-index:999;
-  padding:12px 5%;
+  padding:12px 4%;
   background:#080808;
   border-bottom:1px solid #222;
 }
@@ -199,18 +179,65 @@ nav{
   width:100%;
   height:48px;
   padding:0 18px;
+  border:1px solid #333;
+  border-radius:30px;
+  outline:none;
   background:#111;
   color:#fff;
-  border:1px solid #444;
-  border-radius:25px;
-  outline:none;
   font-size:13px;
 }
 
 
-/* ================================
-   BRAND INTRO
-================================ */
+/* =========================
+   CART BUTTON
+========================= */
+
+.cart-button,
+.mobile-search-button{
+  position:relative;
+  width:46px;
+  height:46px;
+  flex-shrink:0;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.cart-button{
+  display:flex;
+}
+
+.cart-count{
+  display:none;
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  border:1px solid #000;
+  background:#fff;
+  color:#000;
+  font-size:9px;
+  font-weight:900;
+}
+
+.cart-count.active{
+  display:flex;
+}
+
+
+/* =========================
+   HERO
+========================= */
 
 .brand-intro{
   min-height:430px;
@@ -220,7 +247,12 @@ nav{
   padding:80px 6%;
   text-align:center;
   background:
-    radial-gradient(circle at center,#202020 0%,#0b0b0b 48%,#050505 80%);
+    radial-gradient(
+      circle at center,
+      #202020 0%,
+      #0b0b0b 48%,
+      #050505 80%
+    );
 }
 
 .brand-content{
@@ -255,13 +287,12 @@ nav{
   color:#999;
   font-size:13px;
   line-height:1.8;
-  letter-spacing:.5px;
 }
 
 
-/* ================================
+/* =========================
    COLLECTIONS
-================================ */
+========================= */
 
 .collections{
   max-width:1500px;
@@ -281,14 +312,9 @@ nav{
 .collections-header p{
   margin-top:10px;
   color:#777;
-  font-size:12px;
+  font-size:11px;
   letter-spacing:2px;
 }
-
-
-/* ================================
-   COLLECTION GRID
-================================ */
 
 .collection-grid{
   display:grid;
@@ -296,30 +322,25 @@ nav{
   gap:14px;
 }
 
-
-/* ================================
-   COLLECTION CARD
-================================ */
-
 .collection-card{
   position:relative;
   min-height:650px;
   overflow:hidden;
   background:#111;
-  cursor:pointer;
   border:1px solid #181818;
 }
 
 .collection-card img{
-  display:block;
-  width:100%;
-  height:100%;
   position:absolute;
   inset:0;
+  width:100%;
+  height:100%;
   object-fit:cover;
-  transition:
-    transform .6s ease,
-    filter .4s ease;
+  transition:transform .5s ease;
+}
+
+.collection-card:hover img{
+  transform:scale(1.035);
 }
 
 .collection-card::after{
@@ -329,38 +350,16 @@ nav{
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.55),
-      rgba(0,0,0,.02) 50%,
-      rgba(0,0,0,.08)
-    );
-  pointer-events:none;
-  transition:.3s;
-}
-
-.collection-card:hover img{
-  transform:scale(1.035);
-}
-
-.collection-card:hover::after{
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.68),
-      rgba(0,0,0,.03) 55%
+      rgba(0,0,0,.7),
+      rgba(0,0,0,.05) 55%
     );
 }
-
-
-/* ================================
-   CARD LABEL
-================================ */
 
 .card-label{
   position:absolute;
+  z-index:2;
   left:28px;
   bottom:25px;
-  z-index:2;
-  pointer-events:none;
 }
 
 .card-label span{
@@ -376,42 +375,30 @@ nav{
   letter-spacing:3px;
 }
 
-
-/* ================================
-   STATUS LABELS
-================================ */
-
-.coming-label,
-.new-label{
+.new-label,
+.coming-label{
   position:absolute;
   top:22px;
   right:22px;
   z-index:3;
   padding:9px 12px;
-  background:rgba(0,0,0,.75);
-  border:1px solid rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(0,0,0,.8);
   font-size:9px;
-  font-weight:bold;
+  font-weight:900;
   letter-spacing:2px;
 }
 
 .new-label{
   background:#fff;
   color:#000;
-  border-color:#fff;
 }
-
-
-/* ================================
-   SEARCH RESULTS MESSAGE
-================================ */
 
 .no-results{
   display:none;
-  padding:60px 20px;
+  padding:70px 20px;
   text-align:center;
   color:#777;
-  font-size:13px;
   letter-spacing:2px;
 }
 
@@ -420,9 +407,9 @@ nav{
 }
 
 
-/* ================================
+/* =========================
    BRAND STRIP
-================================ */
+========================= */
 
 .brand-strip{
   padding:80px 6%;
@@ -441,14 +428,14 @@ nav{
   max-width:580px;
   margin:20px auto 0;
   color:#777;
-  line-height:1.8;
   font-size:13px;
+  line-height:1.8;
 }
 
 
-/* ================================
+/* =========================
    FOOTER
-================================ */
+========================= */
 
 footer{
   padding:55px 6% 30px;
@@ -457,7 +444,6 @@ footer{
 .footer-content{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
   gap:40px;
 }
 
@@ -468,7 +454,7 @@ footer{
 }
 
 .footer-text{
-  max-width:380px;
+  max-width:350px;
   margin-top:14px;
   color:#666;
   font-size:12px;
@@ -477,14 +463,14 @@ footer{
 
 .footer-links{
   display:flex;
-  gap:25px;
+  flex-wrap:wrap;
+  gap:24px;
 }
 
 .footer-links a{
   color:#777;
   font-size:11px;
   letter-spacing:2px;
-  transition:.2s;
 }
 
 .footer-links a:hover{
@@ -502,57 +488,212 @@ footer{
 }
 
 
-/* ================================
-   TABLET
-================================ */
+/* =========================
+   CART
+========================= */
 
-@media(max-width:900px){
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1998;
+  background:rgba(0,0,0,.7);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+}
 
-  nav{
-    padding:0 4%;
-  }
+.cart-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
 
-  .search-box{
-    width:220px;
-  }
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  z-index:1999;
+  width:min(430px,100%);
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#090909;
+  border-left:1px solid #242424;
+  transform:translateX(100%);
+  transition:.3s;
+}
 
-  .brand-intro{
-    min-height:380px;
-    padding:65px 5%;
-  }
+.cart-drawer.active{
+  transform:translateX(0);
+}
 
-  .collections{
-    padding:55px 4% 80px;
-  }
+.cart-header{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid #222;
+}
 
-  .collection-card{
-    min-height:500px;
-  }
+.cart-title{
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:3px;
+}
 
+.cart-close{
+  width:42px;
+  height:42px;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:21px;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:20px 24px;
+}
+
+.cart-empty{
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:center;
+}
+
+.cart-empty strong{
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.cart-empty span{
+  max-width:270px;
+  color:#777;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:14px;
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:1px solid #222;
+}
+
+.cart-item-image{
+  width:80px;
+  height:100px;
+  object-fit:cover;
+  background:#151515;
+}
+
+.cart-item-name{
+  font-size:12px;
+  font-weight:900;
+}
+
+.cart-item-meta{
+  margin-top:7px;
+  color:#777;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.cart-item-row{
+  margin-top:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  border:1px solid #333;
+}
+
+.quantity button{
+  width:30px;
+  height:30px;
+  border:0;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+}
+
+.quantity span{
+  width:30px;
+  text-align:center;
+  font-size:11px;
+}
+
+.cart-item-price{
+  font-size:11px;
+  font-weight:900;
+}
+
+.remove-item{
+  margin-top:10px;
+  border:0;
+  background:none;
+  color:#777;
+  cursor:pointer;
+  font-size:9px;
+  text-decoration:underline;
+}
+
+.cart-footer{
+  padding:20px 24px 24px;
+  border-top:1px solid #222;
+}
+
+.cart-subtotal{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:16px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.checkout-button{
+  width:100%;
+  height:52px;
+  border:0;
+  background:#fff;
+  color:#000;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.checkout-button:disabled{
+  opacity:.35;
+}
+
+.cart-note{
+  margin-top:12px;
+  color:#555;
+  text-align:center;
+  font-size:9px;
+  line-height:1.6;
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:650px){
-
-  .top-bar{
-    padding:9px 10px;
-    font-size:8px;
-    letter-spacing:3px;
-  }
-
-  nav{
-    height:68px;
-    padding:0 4%;
-  }
-
-  .logo{
-    font-size:29px;
-    letter-spacing:5px;
-  }
+@media(max-width:1000px){
 
   .search-box{
     display:none;
@@ -562,13 +703,39 @@ footer{
     display:flex;
   }
 
-  .cart-button{
-    width:44px;
-    height:44px;
+}
+
+@media(max-width:700px){
+
+  nav{
+    min-height:68px;
+    padding:0 4%;
+    gap:12px;
   }
 
-  .nav-actions{
-    gap:8px;
+  .logo{
+    font-size:29px;
+    letter-spacing:5px;
+  }
+
+  .main-nav{
+    gap:17px;
+  }
+
+  .main-nav a{
+    padding:27px 0 24px;
+    font-size:9px;
+    letter-spacing:1.5px;
+  }
+
+  .main-nav a.active::after{
+    bottom:17px;
+  }
+
+  .mobile-search-button,
+  .cart-button{
+    width:42px;
+    height:42px;
   }
 
   .brand-intro{
@@ -582,39 +749,13 @@ footer{
   }
 
   .brand-intro h1{
-    font-size:47px;
-    line-height:1;
+    font-size:46px;
   }
 
   .brand-intro h2{
-    margin-top:13px;
-    font-size:17px;
+    font-size:16px;
     line-height:1.5;
     letter-spacing:3px;
-  }
-
-  .brand-intro p{
-    margin-top:18px;
-    font-size:12px;
-    line-height:1.7;
-  }
-
-  .collections{
-    padding:45px 3% 65px;
-  }
-
-  .collections-header{
-    padding:0 2%;
-    margin-bottom:25px;
-  }
-
-  .collections-header h2{
-    font-size:32px;
-  }
-
-  .collections-header p{
-    font-size:10px;
-    line-height:1.6;
   }
 
   .collection-grid{
@@ -626,13 +767,8 @@ footer{
     min-height:520px;
   }
 
-  .card-label{
-    left:20px;
-    bottom:20px;
-  }
-
-  .card-label h3{
-    font-size:24px;
+  .collections{
+    padding:45px 3% 65px;
   }
 
   .footer-content{
@@ -641,54 +777,61 @@ footer{
 
   .footer-links{
     margin-top:30px;
-    flex-wrap:wrap;
-    gap:18px;
   }
 
 }
 
+@media(max-width:450px){
 
-/* ================================
-   SMALL PHONE
-================================ */
+  .main-nav{
+    gap:12px;
+  }
 
-@media(max-width:400px){
+  .main-nav a{
+    font-size:8px;
+  }
+
+  .mobile-search-button{
+    display:none;
+  }
 
   .collection-card{
     min-height:470px;
   }
 
-  .brand-intro h1{
-    font-size:42px;
-  }
-
 }
 
 </style>
-
 </head>
+
 
 <body>
 
-
-<!-- ================================
-     TOP BAR
-================================ -->
 
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
 
-<!-- ================================
-     NAVIGATION
-================================ -->
-
 <nav>
 
   <a href="index.html" class="logo">
     DEV
   </a>
+
+  <div class="main-nav">
+
+    <a
+      href="#collections"
+      class="active">
+      MEN
+    </a>
+
+    <a href="women/">
+      WOMEN
+    </a>
+
+  </div>
 
   <div class="nav-actions">
 
@@ -698,15 +841,13 @@ footer{
         id="desktopSearch"
         type="search"
         placeholder="Search collections..."
-        aria-label="Search collections"
-      >
+        aria-label="Search collections">
 
       <span class="search-icon">
         ⌕
       </span>
 
     </div>
-
 
     <button
       class="mobile-search-button"
@@ -716,23 +857,26 @@ footer{
       ⌕
     </button>
 
-
     <button
       class="cart-button"
       id="cartButton"
       type="button"
-      aria-label="Shopping cart">
-      ♡
+      aria-label="Shopping bag">
+
+      🛒
+
+      <span
+        class="cart-count"
+        id="cartCount">
+        0
+      </span>
+
     </button>
 
   </div>
 
 </nav>
 
-
-<!-- ================================
-     MOBILE SEARCH PANEL
-================================ -->
 
 <div
   class="mobile-search-panel"
@@ -741,16 +885,11 @@ footer{
   <input
     id="mobileSearch"
     type="search"
-    placeholder="Search T-Shirts, Polo, Shorts..."
-    aria-label="Search collections"
-  >
+    placeholder="Search DEV..."
+    aria-label="Search DEV">
 
 </div>
 
-
-<!-- ================================
-     BRAND INTRO
-================================ -->
 
 <header class="brand-intro">
 
@@ -778,10 +917,6 @@ footer{
 </header>
 
 
-<!-- ================================
-     COLLECTIONS
-================================ -->
-
 <main
   class="collections"
   id="collections">
@@ -789,7 +924,7 @@ footer{
   <div class="collections-header">
 
     <h2>
-      SHOP DEV
+      MEN
     </h2>
 
     <p>
@@ -804,181 +939,120 @@ footer{
     id="collectionGrid">
 
 
-    <!-- T-SHIRTS -->
-
     <a
       href="tshirts/"
       class="collection-card"
-      data-search="t-shirts tshirts t shirts tee tees close your eyes yujiro jack hanma yeah buddy ronnie coleman">
+      data-search="t shirts tshirts tee tees men gym">
 
       <img
         src="t-shirts.jpeg"
-        alt="DEV T-Shirts"
-      >
+        alt="DEV T-Shirts">
 
       <div class="new-label">
         NEW DROP
       </div>
 
       <div class="card-label">
-
-        <span>
-          DEV COLLECTION
-        </span>
-
-        <h3>
-          T-SHIRTS
-        </h3>
-
+        <span>DEV MEN</span>
+        <h3>T-SHIRTS</h3>
       </div>
 
     </a>
 
-
-    <!-- POLO -->
 
     <a
       href="polo/"
       class="collection-card"
-      data-search="polo polos oversized polo">
+      data-search="polo polos oversized polo men">
 
       <img
         src="polo.jpeg"
-        alt="DEV Polo"
-      >
+        alt="DEV Polo">
 
       <div class="card-label">
-
-        <span>
-          DEV COLLECTION
-        </span>
-
-        <h3>
-          POLO
-        </h3>
-
+        <span>DEV MEN</span>
+        <h3>POLO</h3>
       </div>
 
     </a>
 
 
-    <!-- SHORTS -->
-
     <a
       href="shorts/"
       class="collection-card"
-      data-search="shorts gym shorts training shorts dev training shorts">
+      data-search="shorts gym shorts training shorts men">
 
       <img
         src="shorts.jpeg"
-        alt="DEV Shorts"
-      >
+        alt="DEV Shorts">
 
       <div class="new-label">
         NEW
       </div>
 
       <div class="card-label">
-
-        <span>
-          DEV COLLECTION
-        </span>
-
-        <h3>
-          SHORTS
-        </h3>
-
+        <span>DEV MEN</span>
+        <h3>SHORTS</h3>
       </div>
 
     </a>
 
-
-    <!-- BAGGY PANTS -->
 
     <a
       href="baggy-pants/"
       class="collection-card"
-      data-search="pants baggy pants trousers">
+      data-search="baggy pants trousers pants men">
 
       <img
         src="baggy pants.jpeg"
-        alt="DEV Baggy Pants"
-      >
+        alt="DEV Baggy Pants">
 
       <div class="card-label">
-
-        <span>
-          DEV COLLECTION
-        </span>
-
-        <h3>
-          BAGGY PANTS
-        </h3>
-
+        <span>DEV MEN</span>
+        <h3>BAGGY PANTS</h3>
       </div>
 
     </a>
 
 
-    <!-- HOODIES -->
-
     <div
       class="collection-card"
-      data-search="hoodie hoodies oversized hoodie">
+      data-search="hoodie hoodies men">
 
       <img
         src="hoodies.jpeg"
-        alt="DEV Hoodies"
-      >
+        alt="DEV Hoodies">
 
       <div class="coming-label">
         COMING SOON
       </div>
 
       <div class="card-label">
-
-        <span>
-          DEV COLLECTION
-        </span>
-
-        <h3>
-          HOODIES
-        </h3>
-
+        <span>DEV MEN</span>
+        <h3>HOODIES</h3>
       </div>
 
     </div>
 
-
-    <!-- SWEATERS -->
 
     <div
       class="collection-card"
-      data-search="sweater sweaters sweatshirt sweatshirts">
+      data-search="sweater sweaters sweatshirts men">
 
       <img
         src="sweaters.jpeg"
-        alt="DEV Sweaters"
-      >
+        alt="DEV Sweaters">
 
       <div class="coming-label">
         COMING SOON
       </div>
 
       <div class="card-label">
-
-        <span>
-          DEV COLLECTION
-        </span>
-
-        <h3>
-          SWEATERS
-        </h3>
-
+        <span>DEV MEN</span>
+        <h3>SWEATERS</h3>
       </div>
 
     </div>
-
 
   </div>
 
@@ -991,10 +1065,6 @@ footer{
 
 </main>
 
-
-<!-- ================================
-     BRAND STRIP
-================================ -->
 
 <section class="brand-strip">
 
@@ -1010,10 +1080,6 @@ footer{
 
 </section>
 
-
-<!-- ================================
-     FOOTER
-================================ -->
 
 <footer>
 
@@ -1033,8 +1099,15 @@ footer{
 
     </div>
 
-
     <div class="footer-links">
+
+      <a href="#collections">
+        MEN
+      </a>
+
+      <a href="women/">
+        WOMEN
+      </a>
 
       <a href="tshirts/">
         T-SHIRTS
@@ -1048,14 +1121,9 @@ footer{
         SHORTS
       </a>
 
-      <a href="#collections">
-        SHOP
-      </a>
-
     </div>
 
   </div>
-
 
   <div class="copyright">
     © 2026 DEV. ALL RIGHTS RESERVED.
@@ -1064,90 +1132,124 @@ footer{
 </footer>
 
 
+<!-- =========================
+     SHARED CART
+========================= -->
+
+<div
+  class="cart-overlay"
+  id="cartOverlay">
+</div>
+
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer"
+  aria-hidden="true">
+
+  <div class="cart-header">
+
+    <div class="cart-title">
+      YOUR BAG
+    </div>
+
+    <button
+      class="cart-close"
+      id="cartClose"
+      type="button">
+      ×
+    </button>
+
+  </div>
+
+  <div
+    class="cart-items"
+    id="cartItems">
+  </div>
+
+  <div class="cart-footer">
+
+    <div class="cart-subtotal">
+
+      <span>
+        SUBTOTAL
+      </span>
+
+      <span id="cartSubtotal">
+        AED 0
+      </span>
+
+    </div>
+
+    <button
+      class="checkout-button"
+      id="checkoutButton"
+      type="button"
+      disabled>
+      CHECKOUT
+    </button>
+
+    <div class="cart-note">
+      MEN + WOMEN ITEMS STAY TOGETHER IN ONE DEV BAG.
+    </div>
+
+  </div>
+
+</aside>
+
+
 <script>
 
-/* ================================
+/* =========================
    SEARCH
-================================ */
+========================= */
 
 const collectionCards =
-  document.querySelectorAll(
-    ".collection-card"
-  );
+  document.querySelectorAll(".collection-card");
 
 const desktopSearch =
-  document.getElementById(
-    "desktopSearch"
-  );
+  document.getElementById("desktopSearch");
 
 const mobileSearch =
-  document.getElementById(
-    "mobileSearch"
-  );
+  document.getElementById("mobileSearch");
 
 const noResults =
-  document.getElementById(
-    "noResults"
-  );
+  document.getElementById("noResults");
 
 
 function searchCollections(value){
 
   const searchValue =
-    value
-    .toLowerCase()
-    .trim();
+    value.toLowerCase().trim();
 
-  let visibleCards = 0;
+  let visible = 0;
 
-  collectionCards.forEach(
-    function(card){
+  collectionCards.forEach(function(card){
 
-      const searchTerms =
-        card
-        .dataset
-        .search
-        .toLowerCase();
+    const terms =
+      (card.dataset.search || "")
+      .toLowerCase();
 
-      const matches =
-        searchValue === "" ||
-        searchTerms.includes(
-          searchValue
-        );
+    const match =
+      searchValue === "" ||
+      terms.includes(searchValue);
 
-      if(matches){
+    card.style.display =
+      match ? "" : "none";
 
-        card.style.display = "";
-        visibleCards++;
-
-      }else{
-
-        card.style.display = "none";
-
-      }
-
+    if(match){
+      visible++;
     }
+
+  });
+
+  noResults.classList.toggle(
+    "active",
+    visible === 0
   );
-
-
-  if(visibleCards === 0){
-
-    noResults.classList.add(
-      "active"
-    );
-
-  }else{
-
-    noResults.classList.remove(
-      "active"
-    );
-
-  }
 
 }
 
-
-/* DESKTOP SEARCH */
 
 desktopSearch.addEventListener(
   "input",
@@ -1161,8 +1263,6 @@ desktopSearch.addEventListener(
 );
 
 
-/* MOBILE SEARCH */
-
 mobileSearch.addEventListener(
   "input",
   function(){
@@ -1175,9 +1275,9 @@ mobileSearch.addEventListener(
 );
 
 
-/* ================================
-   MOBILE SEARCH OPEN / CLOSE
-================================ */
+/* =========================
+   MOBILE SEARCH
+========================= */
 
 const mobileSearchButton =
   document.getElementById(
@@ -1195,16 +1295,487 @@ mobileSearchButton.addEventListener(
   function(){
 
     mobileSearchPanel
-    .classList
-    .toggle("active");
+      .classList
+      .toggle("active");
 
     if(
       mobileSearchPanel
       .classList
       .contains("active")
     ){
-
       mobileSearch.focus();
+    }
+
+  }
+);
+
+
+/* =========================
+   SHARED DEV CART
+========================= */
+
+/*
+  IMPORTANT:
+
+  MEN and WOMEN use the SAME key.
+
+  dev_cart_v1
+
+  So every product added from either
+  section stays in one shopping bag.
+*/
+
+const DEV_CART_KEY =
+  "dev_cart_v1";
+
+
+function getDevCart(){
+
+  try{
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          DEV_CART_KEY
+        )
+      );
+
+    return Array.isArray(data)
+      ? data
+      : [];
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function saveDevCart(cart){
+
+  localStorage.setItem(
+    DEV_CART_KEY,
+    JSON.stringify(cart)
+  );
+
+  renderDevCart();
+
+}
+
+
+function formatPrice(price){
+
+  const value =
+    Number(price) || 0;
+
+  return "AED " +
+    value.toFixed(
+      value % 1 === 0 ? 0 : 2
+    );
+
+}
+
+
+const cartButton =
+  document.getElementById(
+    "cartButton"
+  );
+
+const cartCount =
+  document.getElementById(
+    "cartCount"
+  );
+
+const cartDrawer =
+  document.getElementById(
+    "cartDrawer"
+  );
+
+const cartOverlay =
+  document.getElementById(
+    "cartOverlay"
+  );
+
+const cartClose =
+  document.getElementById(
+    "cartClose"
+  );
+
+const cartItems =
+  document.getElementById(
+    "cartItems"
+  );
+
+const cartSubtotal =
+  document.getElementById(
+    "cartSubtotal"
+  );
+
+const checkoutButton =
+  document.getElementById(
+    "checkoutButton"
+  );
+
+
+function openCart(){
+
+  renderDevCart();
+
+  cartDrawer
+    .classList
+    .add("active");
+
+  cartOverlay
+    .classList
+    .add("active");
+
+  cartDrawer.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body
+    .classList
+    .add("cart-open");
+
+}
+
+
+function closeCart(){
+
+  cartDrawer
+    .classList
+    .remove("active");
+
+  cartOverlay
+    .classList
+    .remove("active");
+
+  cartDrawer.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body
+    .classList
+    .remove("cart-open");
+
+}
+
+
+function changeQuantity(
+  index,
+  amount
+){
+
+  const cart =
+    getDevCart();
+
+  if(!cart[index]){
+    return;
+  }
+
+  const current =
+    Math.max(
+      1,
+      Number(
+        cart[index].quantity
+      ) || 1
+    );
+
+  const newQuantity =
+    current + amount;
+
+  if(newQuantity <= 0){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }else{
+
+    cart[index].quantity =
+      newQuantity;
+
+  }
+
+  saveDevCart(cart);
+
+}
+
+
+function removeItem(index){
+
+  const cart =
+    getDevCart();
+
+  cart.splice(
+    index,
+    1
+  );
+
+  saveDevCart(cart);
+
+}
+
+
+function renderDevCart(){
+
+  const cart =
+    getDevCart();
+
+  const totalQuantity =
+    cart.reduce(
+      function(total,item){
+
+        return total +
+          Math.max(
+            1,
+            Number(
+              item.quantity
+            ) || 1
+          );
+
+      },
+      0
+    );
+
+
+  const subtotal =
+    cart.reduce(
+      function(total,item){
+
+        const price =
+          Number(
+            item.price
+          ) || 0;
+
+        const quantity =
+          Math.max(
+            1,
+            Number(
+              item.quantity
+            ) || 1
+          );
+
+        return total +
+          price * quantity;
+
+      },
+      0
+    );
+
+
+  cartCount.textContent =
+    totalQuantity;
+
+  cartCount.classList.toggle(
+    "active",
+    totalQuantity > 0
+  );
+
+  cartSubtotal.textContent =
+    formatPrice(subtotal);
+
+  checkoutButton.disabled =
+    cart.length === 0;
+
+
+  if(cart.length === 0){
+
+    cartItems.innerHTML = `
+      <div class="cart-empty">
+
+        <strong>
+          YOUR BAG IS EMPTY
+        </strong>
+
+        <span>
+          Shop MEN or WOMEN.
+          Everything you add will
+          stay together in the
+          same DEV bag.
+        </span>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  cartItems.innerHTML =
+    cart.map(
+      function(item,index){
+
+        const name =
+          item.name ||
+          "DEV PRODUCT";
+
+        const section =
+          item.section ||
+          "DEV";
+
+        const color =
+          item.color ||
+          "—";
+
+        const size =
+          item.size ||
+          "—";
+
+        const quantity =
+          Math.max(
+            1,
+            Number(
+              item.quantity
+            ) || 1
+          );
+
+        const price =
+          Number(
+            item.price
+          ) || 0;
+
+        const image =
+          item.image || "";
+
+
+        const imageHTML =
+          image
+          ? `
+            <img
+              class="cart-item-image"
+              src="${image}"
+              alt="${name}">
+          `
+          : `
+            <div
+              class="cart-item-image">
+            </div>
+          `;
+
+
+        return `
+          <div class="cart-item">
+
+            ${imageHTML}
+
+            <div>
+
+              <div class="cart-item-name">
+                ${name}
+              </div>
+
+              <div class="cart-item-meta">
+                ${section}
+                · ${color}
+                · SIZE ${size}
+              </div>
+
+              <div class="cart-item-row">
+
+                <div class="quantity">
+
+                  <button
+                    type="button"
+                    data-action="minus"
+                    data-index="${index}">
+                    −
+                  </button>
+
+                  <span>
+                    ${quantity}
+                  </span>
+
+                  <button
+                    type="button"
+                    data-action="plus"
+                    data-index="${index}">
+                    +
+                  </button>
+
+                </div>
+
+                <div class="cart-item-price">
+                  ${formatPrice(
+                    price * quantity
+                  )}
+                </div>
+
+              </div>
+
+              <button
+                class="remove-item"
+                type="button"
+                data-action="remove"
+                data-index="${index}">
+                REMOVE
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+cartItems.addEventListener(
+  "click",
+  function(event){
+
+    const button =
+      event.target.closest(
+        "[data-action]"
+      );
+
+    if(!button){
+      return;
+    }
+
+    const index =
+      Number(
+        button.dataset.index
+      );
+
+    const action =
+      button.dataset.action;
+
+
+    if(action === "plus"){
+
+      changeQuantity(
+        index,
+        1
+      );
+
+    }
+
+
+    if(action === "minus"){
+
+      changeQuantity(
+        index,
+        -1
+      );
+
+    }
+
+
+    if(action === "remove"){
+
+      removeItem(
+        index
+      );
 
     }
 
@@ -1212,26 +1783,64 @@ mobileSearchButton.addEventListener(
 );
 
 
-/* ================================
-   CART
-================================ */
+cartButton.addEventListener(
+  "click",
+  openCart
+);
 
-document
-.getElementById("cartButton")
-.addEventListener(
+cartClose.addEventListener(
+  "click",
+  closeCart
+);
+
+cartOverlay.addEventListener(
+  "click",
+  closeCart
+);
+
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+      closeCart();
+    }
+
+  }
+);
+
+
+checkoutButton.addEventListener(
   "click",
   function(){
 
     alert(
-      "DEV Cart is coming soon."
+      "DEV Checkout will be connected later."
     );
 
   }
 );
 
+
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(
+      event.key ===
+      DEV_CART_KEY
+    ){
+      renderDevCart();
+    }
+
+  }
+);
+
+
+renderDevCart();
+
 </script>
 
-
 </body>
-
 </html>
