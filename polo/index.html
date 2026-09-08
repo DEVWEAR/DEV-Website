@@ -25,6 +25,10 @@ body{
   color:#111;
 }
 
+body.cart-open{
+  overflow:hidden;
+}
+
 a{
   text-decoration:none;
   color:inherit;
@@ -88,7 +92,7 @@ nav{
 .nav-right{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:13px;
 }
 
 .nav-icon{
@@ -100,6 +104,48 @@ nav{
   display:none;
   font-size:22px;
   cursor:pointer;
+}
+
+
+/* ================================
+   CART BUTTON
+================================ */
+
+.cart-nav-button{
+  position:relative;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#171717;
+  color:#fff;
+  cursor:pointer;
+  font-size:17px;
+}
+
+.cart-count{
+  display:none;
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  background:#fff;
+  color:#000;
+  border:1px solid #000;
+  font-size:9px;
+  font-weight:900;
+}
+
+.cart-count.active{
+  display:flex;
 }
 
 
@@ -558,10 +604,10 @@ nav{
 
 
 /* ================================
-   COMING SOON
+   ADD TO BAG
 ================================ */
 
-.coming-soon{
+.add-to-bag{
   width:100%;
   border:none;
   background:#111;
@@ -571,7 +617,38 @@ nav{
   font-size:11px;
   font-weight:900;
   letter-spacing:3px;
-  cursor:default;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.add-to-bag:hover{
+  background:#292929;
+}
+
+.add-to-bag.added{
+  background:#1d6d3c;
+}
+
+
+/* ================================
+   SIZE ERROR
+================================ */
+
+.size-error{
+  display:none;
+  margin-top:-15px;
+  margin-bottom:18px;
+  padding:12px 14px;
+  border:1px solid #d6baba;
+  background:#fff6f6;
+  color:#8d2727;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.size-error.active{
+  display:block;
 }
 
 
@@ -636,6 +713,211 @@ footer{
 
 
 /* ================================
+   SHARED CART
+================================ */
+
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1998;
+  background:rgba(0,0,0,.7);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+}
+
+.cart-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  z-index:1999;
+  width:min(430px,100%);
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#090909;
+  color:#fff;
+  border-left:1px solid #242424;
+  transform:translateX(100%);
+  transition:.3s;
+}
+
+.cart-drawer.active{
+  transform:translateX(0);
+}
+
+.cart-header{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid #222;
+}
+
+.cart-title{
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.cart-close{
+  width:42px;
+  height:42px;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:21px;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:20px 24px;
+}
+
+.cart-empty{
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:center;
+}
+
+.cart-empty strong{
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.cart-empty span{
+  max-width:270px;
+  color:#777;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:14px;
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:1px solid #222;
+}
+
+.cart-item-image{
+  width:80px;
+  height:100px;
+  object-fit:contain;
+  background:#f5f5f3;
+}
+
+.cart-item-name{
+  font-size:12px;
+  font-weight:900;
+}
+
+.cart-item-meta{
+  margin-top:7px;
+  color:#888;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.cart-item-row{
+  margin-top:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  border:1px solid #333;
+}
+
+.quantity button{
+  width:30px;
+  height:30px;
+  border:0;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+}
+
+.quantity span{
+  width:30px;
+  text-align:center;
+  font-size:11px;
+}
+
+.cart-item-price{
+  font-size:11px;
+  font-weight:900;
+}
+
+.remove-item{
+  margin-top:10px;
+  padding:0;
+  border:0;
+  background:none;
+  color:#777;
+  cursor:pointer;
+  font-size:9px;
+  text-decoration:underline;
+}
+
+.cart-footer{
+  padding:20px 24px 24px;
+  border-top:1px solid #222;
+}
+
+.cart-subtotal{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:16px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.checkout-button{
+  width:100%;
+  height:52px;
+  border:0;
+  background:#fff;
+  color:#000;
+  font-weight:900;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+.checkout-button:disabled{
+  opacity:.35;
+  cursor:default;
+}
+
+.cart-note{
+  margin-top:12px;
+  color:#555;
+  text-align:center;
+  font-size:9px;
+  line-height:1.6;
+}
+
+
+/* ================================
    TABLET
 ================================ */
 
@@ -689,1503 +971,3 @@ footer{
     padding:30px 4% 55px;
     gap:35px;
   }
-
-  .product-info h2{
-    font-size:30px;
-  }
-
-  .thumb img{
-    height:100px;
-  }
-
-  .card-arrow{
-    display:none;
-  }
-
-}
-
-
-/* ================================
-   PHONE
-================================ */
-
-@media(max-width:600px){
-
-  .collection-bar{
-    padding:20px 3% 12px;
-  }
-
-  .product-grid{
-    padding:5px 3% 60px;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px 7px;
-  }
-
-  .product-card-name{
-    font-size:10px;
-  }
-
-  .product-card-price{
-    font-size:10px;
-  }
-
-  .product-card-color{
-    font-size:8px;
-  }
-
-  .swipe-label{
-    font-size:6px;
-    padding:6px 7px;
-    top:7px;
-    right:7px;
-  }
-
-  .card-dots{
-    bottom:8px;
-    gap:5px;
-  }
-
-  .card-dot{
-    width:6px;
-    height:6px;
-  }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<div class="top-bar">
-  DEV — BUILT DIFFERENT
-</div>
-
-
-<nav>
-
-  <a href="/DEV-Website/" class="logo">
-    DEV
-  </a>
-
-
-  <div class="nav-links" id="navLinks">
-
-    <a href="/DEV-Website/tshirts/">
-      T-SHIRTS
-    </a>
-
-    <a href="/DEV-Website/polo/">
-      POLO
-    </a>
-
-    <a href="/DEV-Website/shorts/">
-      SHORTS
-    </a>
-
-    <a href="/DEV-Website/baggy-pants/">
-      BAGGY PANTS
-    </a>
-
-    <a href="#">
-      HOODIES
-    </a>
-
-    <a href="#">
-      SWEATERS
-    </a>
-
-  </div>
-
-
-  <div class="nav-right">
-
-    <span class="nav-icon">
-      ⌕
-    </span>
-
-    <span class="nav-icon">
-      ♡
-    </span>
-
-    <span
-      class="menu-btn"
-      onclick="toggleMenu()">
-      ☰
-    </span>
-
-  </div>
-
-</nav>
-
-
-<!-- ================================
-     HEADER
-================================ -->
-
-<section class="page-header">
-
-  <div class="page-header-top">
-
-    <div class="eyebrow">
-      DEV / SHOP
-    </div>
-
-    <h1>
-      POLO
-    </h1>
-
-    <p>
-      Built for training. Designed for lifestyle.
-      Made for everything after.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ================================
-     COLLECTION BAR
-================================ -->
-
-<section class="collection-bar" id="products">
-
-  <div class="collection-title">
-    DEV POLO
-  </div>
-
-  <div class="collection-count">
-    3 COLORS
-  </div>
-
-</section>
-
-
-<!-- ================================
-     PRODUCT GRID
-================================ -->
-
-<section class="product-grid">
-
-
-  <!-- BLACK -->
-
-  <article
-    class="product-card"
-    data-product="black">
-
-    <div
-      class="product-card-image"
-      data-card="black">
-
-      <div class="swipe-label">
-        SWIPE
-      </div>
-
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../polo-black-front.jfif"
-            alt="DEV Polo Black Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../polo-black-back.jfif"
-            alt="DEV Polo Black Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../polo-black-model.jpg.jpeg"
-            alt="DEV Polo Black Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'black')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'black')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'black',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'black',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'black',2)">
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="product-card-info"
-      onclick="openProduct('black')">
-
-      <div class="product-card-name">
-        DEV OVERSIZED POLO
-      </div>
-
-      <div class="product-card-price">
-        AED 85
-      </div>
-
-      <div class="product-card-color">
-        BLACK
-      </div>
-
-    </div>
-
-  </article>
-
-
-  <!-- DARK OLIVE GREEN -->
-
-  <article
-    class="product-card"
-    data-product="dark-olive-green">
-
-    <div
-      class="product-card-image"
-      data-card="dark-olive-green">
-
-      <div class="swipe-label">
-        SWIPE
-      </div>
-
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../polo-olive-front.jfif"
-            alt="DEV Polo Dark Olive Green Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../polo-olive-back.jfif"
-            alt="DEV Polo Dark Olive Green Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../polo-dark-olive-green-model.jpg.jpeg"
-            alt="DEV Polo Dark Olive Green Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'dark-olive-green')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'dark-olive-green')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'dark-olive-green',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'dark-olive-green',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'dark-olive-green',2)">
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="product-card-info"
-      onclick="openProduct('dark-olive-green')">
-
-      <div class="product-card-name">
-        DEV OVERSIZED POLO
-      </div>
-
-      <div class="product-card-price">
-        AED 85
-      </div>
-
-      <div class="product-card-color">
-        DARK OLIVE GREEN
-      </div>
-
-    </div>
-
-  </article>
-
-
-  <!-- BEIGE -->
-
-  <article
-    class="product-card"
-    data-product="beige">
-
-    <div
-      class="product-card-image"
-      data-card="beige">
-
-      <div class="swipe-label">
-        SWIPE
-      </div>
-
-      <div class="card-track">
-
-        <div class="card-slide">
-          <img
-            src="../polo-beige-front.jfif"
-            alt="DEV Polo Beige Front">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../polo-beige-back.jfif"
-            alt="DEV Polo Beige Back">
-        </div>
-
-        <div class="card-slide">
-          <img
-            src="../polo-beige-model.jpeg"
-            alt="DEV Polo Beige Model">
-        </div>
-
-      </div>
-
-
-      <button
-        class="card-arrow left"
-        onclick="cardPrev(event,'beige')">
-        ‹
-      </button>
-
-      <button
-        class="card-arrow right"
-        onclick="cardNext(event,'beige')">
-        ›
-      </button>
-
-
-      <div class="card-dots">
-
-        <button
-          class="card-dot active"
-          onclick="cardGoTo(event,'beige',0)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'beige',1)">
-        </button>
-
-        <button
-          class="card-dot"
-          onclick="cardGoTo(event,'beige',2)">
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="product-card-info"
-      onclick="openProduct('beige')">
-
-      <div class="product-card-name">
-        DEV OVERSIZED POLO
-      </div>
-
-      <div class="product-card-price">
-        AED 85
-      </div>
-
-      <div class="product-card-color">
-        BEIGE
-      </div>
-
-    </div>
-
-  </article>
-
-
-</section>
-
-
-<!-- ================================
-     PRODUCT DETAILS
-================================ -->
-
-<section
-  class="product-detail"
-  id="productDetail">
-
-  <div class="product-detail-inner">
-
-
-    <!-- MEDIA -->
-
-    <section class="product-media">
-
-      <div class="main-image-wrap">
-
-        <img
-          id="mainImage"
-          class="main-image"
-          src="../polo-black-front.jfif"
-          alt="DEV Polo">
-
-      </div>
-
-
-      <div class="view-selector">
-
-        <button
-          class="view-btn active"
-          data-view="front"
-          onclick="changeView('front')">
-          FRONT
-        </button>
-
-        <button
-          class="view-btn"
-          data-view="back"
-          onclick="changeView('back')">
-          BACK
-        </button>
-
-        <button
-          class="view-btn"
-          data-view="model"
-          onclick="changeView('model')">
-          MODEL
-        </button>
-
-      </div>
-
-
-      <div class="thumbnails">
-
-        <div
-          class="thumb active"
-          data-view="front"
-          onclick="changeView('front')">
-
-          <img
-            id="thumbFront"
-            src="../polo-black-front.jfif"
-            alt="Front">
-
-        </div>
-
-
-        <div
-          class="thumb"
-          data-view="back"
-          onclick="changeView('back')">
-
-          <img
-            id="thumbBack"
-            src="../polo-black-back.jfif"
-            alt="Back">
-
-        </div>
-
-
-        <div
-          class="thumb"
-          data-view="model"
-          onclick="changeView('model')">
-
-          <img
-            id="thumbModel"
-            src="../polo-black-model.jpg.jpeg"
-            alt="Model">
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PRODUCT INFO -->
-
-    <section class="product-info">
-
-      <div class="collection-name">
-        DEV // POLO COLLECTION
-      </div>
-
-      <h2>
-        DEV OVERSIZED POLO
-      </h2>
-
-      <div class="price">
-        AED 85
-      </div>
-
-
-      <!-- COLOR -->
-
-      <div class="option-title">
-
-        <span>
-          COLOR
-        </span>
-
-        <span id="selectedColor">
-          BLACK
-        </span>
-
-      </div>
-
-
-      <div class="color-options">
-
-        <button
-          class="color-btn active"
-          data-color="black"
-          onclick="changeColor('black')">
-          BLACK
-        </button>
-
-        <button
-          class="color-btn"
-          data-color="dark-olive-green"
-          onclick="changeColor('dark-olive-green')">
-          DARK OLIVE GREEN
-        </button>
-
-        <button
-          class="color-btn"
-          data-color="beige"
-          onclick="changeColor('beige')">
-          BEIGE
-        </button>
-
-      </div>
-
-
-      <!-- SIZE -->
-
-      <div class="option-title">
-
-        <span>
-          SIZE
-        </span>
-
-        <span id="selectedSize">
-          SELECT SIZE
-        </span>
-
-      </div>
-
-
-      <div class="size-options">
-
-        <button
-          class="size-btn"
-          onclick="selectSize(this,'M')">
-          M
-        </button>
-
-        <button
-          class="size-btn"
-          onclick="selectSize(this,'L')">
-          L
-        </button>
-
-        <button
-          class="size-btn"
-          onclick="selectSize(this,'XL')">
-          XL
-        </button>
-
-      </div>
-
-
-      <div class="description">
-        Oversized polo designed for training, lifestyle and everyday wear.
-        Available in Black, Dark Olive Green and Beige.
-      </div>
-
-
-      <button class="coming-soon">
-        COMING SOON
-      </button>
-
-
-      <button
-        class="back-products"
-        onclick="backToProducts()">
-        ← BACK TO POLO
-      </button>
-
-    </section>
-
-  </div>
-
-</section>
-
-
-<!-- ================================
-     FOOTER
-================================ -->
-
-<footer>
-
-  <a
-    href="/DEV-Website/"
-    class="footer-logo">
-    DEV
-  </a>
-
-
-  <div class="footer-links">
-
-    <a href="/DEV-Website/tshirts/">
-      T-Shirts
-    </a>
-
-    <a href="/DEV-Website/polo/">
-      Polo
-    </a>
-
-    <a href="/DEV-Website/shorts/">
-      Shorts
-    </a>
-
-    <a href="/DEV-Website/baggy-pants/">
-      Baggy Pants
-    </a>
-
-    <a href="#">
-      Hoodies
-    </a>
-
-    <a href="#">
-      Sweaters
-    </a>
-
-  </div>
-
-
-  <div class="footer-bottom">
-    © 2026 DEV. BUILT DIFFERENT.
-  </div>
-
-</footer>
-
-
-<script>
-
-
-/* ================================
-   PRODUCT IMAGES
-================================ */
-
-const productImages = {
-
-  "black":{
-    label:"BLACK",
-    front:"../polo-black-front.jfif",
-    back:"../polo-black-back.jfif",
-    model:"../polo-black-model.jpg.jpeg"
-  },
-
-  "dark-olive-green":{
-    label:"DARK OLIVE GREEN",
-    front:"../polo-olive-front.jfif",
-    back:"../polo-olive-back.jfif",
-    model:"../polo-dark-olive-green-model.jpg.jpeg"
-  },
-
-  "beige":{
-    label:"BEIGE",
-    front:"../polo-beige-front.jfif",
-    back:"../polo-beige-back.jfif",
-    model:"../polo-beige-model.jpeg"
-  }
-
-};
-
-
-/* ================================
-   CURRENT PRODUCT
-================================ */
-
-let currentColor = "black";
-
-let currentView = "front";
-
-let selectedSize = null;
-
-
-/* ================================
-   CARD SLIDE STATE
-================================ */
-
-const cardState = {
-
-  black:0,
-
-  "dark-olive-green":0,
-
-  beige:0
-
-};
-
-
-/* ================================
-   UPDATE CARD
-================================ */
-
-function updateCard(color){
-
-  const card =
-    document.querySelector(
-      `[data-card="${color}"]`
-    );
-
-
-  if(!card){
-    return;
-  }
-
-
-  const track =
-    card.querySelector(
-      ".card-track"
-    );
-
-
-  const dots =
-    card.querySelectorAll(
-      ".card-dot"
-    );
-
-
-  track.style.transform =
-    `translateX(-${cardState[color] * 100}%)`;
-
-
-  dots.forEach(
-    function(dot,index){
-
-      dot.classList.toggle(
-        "active",
-        index === cardState[color]
-      );
-
-    }
-  );
-
-}
-
-
-/* ================================
-   NEXT
-================================ */
-
-function cardNext(event,color){
-
-  event.stopPropagation();
-
-  cardState[color] =
-    (cardState[color] + 1) % 3;
-
-  updateCard(color);
-
-}
-
-
-/* ================================
-   PREVIOUS
-================================ */
-
-function cardPrev(event,color){
-
-  event.stopPropagation();
-
-  cardState[color] =
-    (cardState[color] + 2) % 3;
-
-  updateCard(color);
-
-}
-
-
-/* ================================
-   DOT
-================================ */
-
-function cardGoTo(event,color,index){
-
-  event.stopPropagation();
-
-  cardState[color] =
-    index;
-
-  updateCard(color);
-
-}
-
-
-/* ================================
-   TOUCH SWIPE
-================================ */
-
-document
-.querySelectorAll(
-  ".product-card-image"
-)
-.forEach(
-  function(card){
-
-    const color =
-      card.dataset.card;
-
-
-    let startX = 0;
-
-    let startY = 0;
-
-    let moved = false;
-
-
-    card.addEventListener(
-      "touchstart",
-      function(event){
-
-        const touch =
-          event.touches[0];
-
-        startX =
-          touch.clientX;
-
-        startY =
-          touch.clientY;
-
-        moved =
-          false;
-
-      },
-      {
-        passive:true
-      }
-    );
-
-
-    card.addEventListener(
-      "touchmove",
-      function(event){
-
-        const touch =
-          event.touches[0];
-
-
-        const diffX =
-          touch.clientX - startX;
-
-
-        const diffY =
-          touch.clientY - startY;
-
-
-        if(
-          Math.abs(diffX) >
-          Math.abs(diffY)
-        ){
-
-          moved =
-            true;
-
-        }
-
-      },
-      {
-        passive:true
-      }
-    );
-
-
-    card.addEventListener(
-      "touchend",
-      function(event){
-
-        if(
-          !event.changedTouches.length
-        ){
-          return;
-        }
-
-
-        const endX =
-          event.changedTouches[0]
-          .clientX;
-
-
-        const diffX =
-          endX - startX;
-
-
-        if(
-          Math.abs(diffX) > 45
-        ){
-
-          if(
-            diffX < 0
-          ){
-
-            cardState[color] =
-              (cardState[color] + 1) % 3;
-
-          }else{
-
-            cardState[color] =
-              (cardState[color] + 2) % 3;
-
-          }
-
-
-          updateCard(color);
-
-        }else if(!moved){
-
-          openProduct(color);
-
-        }
-
-      },
-      {
-        passive:true
-      }
-    );
-
-  }
-);
-
-
-/* ================================
-   DESKTOP IMAGE CLICK
-================================ */
-
-document
-.querySelectorAll(
-  ".product-card-image"
-)
-.forEach(
-  function(card){
-
-    card.addEventListener(
-      "click",
-      function(event){
-
-        if(
-          event.target.closest(
-            ".card-arrow"
-          )
-        ){
-          return;
-        }
-
-
-        if(
-          event.target.closest(
-            ".card-dot"
-          )
-        ){
-          return;
-        }
-
-
-        if(
-          "ontouchstart" in window
-        ){
-          return;
-        }
-
-
-        openProduct(
-          card.dataset.card
-        );
-
-      }
-    );
-
-  }
-);
-
-
-/* ================================
-   OPEN PRODUCT
-================================ */
-
-function openProduct(color){
-
-  currentColor =
-    color;
-
-  currentView =
-    "front";
-
-  selectedSize =
-    null;
-
-
-  document
-  .getElementById(
-    "selectedSize"
-  )
-  .textContent =
-    "SELECT SIZE";
-
-
-  document
-  .querySelectorAll(
-    ".size-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  renderColor();
-
-  updateImages();
-
-
-  const detail =
-    document
-    .getElementById(
-      "productDetail"
-    );
-
-
-  detail
-  .classList
-  .add(
-    "active"
-  );
-
-
-  setTimeout(
-    function(){
-
-      detail
-      .scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-
-    },
-    50
-  );
-
-}
-
-
-/* ================================
-   CHANGE COLOR
-================================ */
-
-function changeColor(color){
-
-  currentColor =
-    color;
-
-  currentView =
-    "front";
-
-  selectedSize =
-    null;
-
-
-  document
-  .getElementById(
-    "selectedSize"
-  )
-  .textContent =
-    "SELECT SIZE";
-
-
-  document
-  .querySelectorAll(
-    ".size-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  renderColor();
-
-  updateImages();
-
-}
-
-
-/* ================================
-   RENDER COLOR
-================================ */
-
-function renderColor(){
-
-  document
-  .querySelectorAll(
-    ".color-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  const active =
-    document.querySelector(
-      `.color-btn[data-color="${currentColor}"]`
-    );
-
-
-  if(active){
-
-    active.classList.add(
-      "active"
-    );
-
-  }
-
-
-  document
-  .getElementById(
-    "selectedColor"
-  )
-  .textContent =
-    productImages[
-      currentColor
-    ]
-    .label;
-
-}
-
-
-/* ================================
-   CHANGE VIEW
-================================ */
-
-function changeView(view){
-
-  currentView =
-    view;
-
-
-  document
-  .querySelectorAll(
-    ".view-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  document
-  .querySelectorAll(
-    ".thumb"
-  )
-  .forEach(
-    function(thumb){
-
-      thumb.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  document
-  .querySelector(
-    `.view-btn[data-view="${view}"]`
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document
-  .querySelector(
-    `.thumb[data-view="${view}"]`
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  updateMainImage();
-
-}
-
-
-/* ================================
-   UPDATE IMAGES
-================================ */
-
-function updateImages(){
-
-  const images =
-    productImages[
-      currentColor
-    ];
-
-
-  document
-  .getElementById(
-    "thumbFront"
-  )
-  .src =
-    images.front;
-
-
-  document
-  .getElementById(
-    "thumbBack"
-  )
-  .src =
-    images.back;
-
-
-  document
-  .getElementById(
-    "thumbModel"
-  )
-  .src =
-    images.model;
-
-
-  currentView =
-    "front";
-
-
-  document
-  .querySelectorAll(
-    ".view-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  document
-  .querySelectorAll(
-    ".thumb"
-  )
-  .forEach(
-    function(thumb){
-
-      thumb.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  document
-  .querySelector(
-    '.view-btn[data-view="front"]'
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document
-  .querySelector(
-    '.thumb[data-view="front"]'
-  )
-  .classList
-  .add(
-    "active"
-  );
-
-
-  updateMainImage();
-
-}
-
-
-/* ================================
-   MAIN IMAGE
-================================ */
-
-function updateMainImage(){
-
-  document
-  .getElementById(
-    "mainImage"
-  )
-  .src =
-    productImages[
-      currentColor
-    ][
-      currentView
-    ];
-
-}
-
-
-/* ================================
-   SIZE
-================================ */
-
-function selectSize(button,size){
-
-  selectedSize =
-    size;
-
-
-  document
-  .querySelectorAll(
-    ".size-btn"
-  )
-  .forEach(
-    function(btn){
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  button
-  .classList
-  .add(
-    "active"
-  );
-
-
-  document
-  .getElementById(
-    "selectedSize"
-  )
-  .textContent =
-    size;
-
-}
-
-
-/* ================================
-   BACK
-================================ */
-
-function backToProducts(){
-
-  document
-  .getElementById(
-    "products"
-  )
-  .scrollIntoView({
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ================================
-   MOBILE MENU
-================================ */
-
-function toggleMenu(){
-
-  document
-  .getElementById(
-    "navLinks"
-  )
-  .classList
-  .toggle(
-    "open"
-  );
-
-}
-
-</script>
-
-
-</body>
-</html>
