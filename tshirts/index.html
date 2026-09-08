@@ -9,10 +9,6 @@
 
 <style>
 
-/* ================================
-   RESET
-================================ */
-
 *{
   margin:0;
   padding:0;
@@ -25,7 +21,7 @@ html{
 
 body{
   font-family:Arial, Helvetica, sans-serif;
-  background:#f5f5f3;
+  background:#f7f7f5;
   color:#111;
 }
 
@@ -47,9 +43,9 @@ button{
   background:#fff;
   text-align:center;
   padding:9px 15px;
-  font-size:11px;
+  font-size:10px;
   letter-spacing:3px;
-  font-weight:700;
+  font-weight:800;
 }
 
 
@@ -68,15 +64,15 @@ nav{
 }
 
 .logo{
-  font-size:25px;
+  font-size:26px;
   font-weight:900;
-  letter-spacing:4px;
+  letter-spacing:5px;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:25px;
+  gap:26px;
 }
 
 .nav-links a{
@@ -114,100 +110,177 @@ nav{
 .page-header{
   background:#111;
   color:#fff;
-  padding:38px 5% 34px;
-  border-top:1px solid #292929;
+  padding:48px 5% 42px;
+  border-top:1px solid #262626;
+}
+
+.page-header-top{
+  max-width:1400px;
+  margin:auto;
 }
 
 .eyebrow{
-  font-size:10px;
+  font-size:9px;
   letter-spacing:3px;
-  font-weight:700;
-  color:#a8a8a8;
-  margin-bottom:9px;
+  color:#999;
+  font-weight:800;
+  margin-bottom:10px;
 }
 
 .page-header h1{
-  font-size:38px;
+  font-size:clamp(34px,5vw,58px);
   letter-spacing:2px;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .page-header p{
-  font-size:13px;
   color:#aaa;
-  line-height:1.6;
+  font-size:13px;
+  line-height:1.7;
 }
 
 
 /* ================================
-   PRODUCT SELECTOR
+   COLLECTION BAR
 ================================ */
 
-.product-selector-section{
-  max-width:1250px;
+.collection-bar{
+  max-width:1400px;
   margin:auto;
-  padding:35px 5% 0;
+  padding:25px 4% 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.product-selector-title{
+.collection-count{
   font-size:10px;
   font-weight:800;
-  letter-spacing:3px;
+  letter-spacing:2px;
   color:#777;
-  margin-bottom:15px;
 }
 
-.product-selector{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-
-.product-tab{
-  min-height:85px;
-  border:1px solid #ccc;
-  background:#fff;
-  padding:14px;
-  text-align:left;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.product-tab:hover{
-  border-color:#555;
-}
-
-.product-tab.active{
-  background:#111;
-  color:#fff;
-  border-color:#111;
-}
-
-.product-tab-name{
-  display:block;
-  font-size:11px;
-  line-height:1.35;
+.collection-title{
+  font-size:12px;
   font-weight:900;
-  letter-spacing:1px;
-}
-
-.product-tab-price{
-  display:block;
-  margin-top:9px;
-  font-size:10px;
-  letter-spacing:1px;
-  opacity:.65;
+  letter-spacing:2px;
 }
 
 
 /* ================================
-   PRODUCT
+   PRODUCT GRID
 ================================ */
 
-.product{
+.product-grid{
+  max-width:1400px;
+  margin:auto;
+  padding:10px 4% 90px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:34px 12px;
+}
+
+
+/* ================================
+   PRODUCT CARD
+================================ */
+
+.product-card{
+  cursor:pointer;
+}
+
+.product-card-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:4 / 5;
+  overflow:hidden;
+  background:#efefed;
+}
+
+.product-card-image img{
+  width:100%;
+  height:100%;
+  position:absolute;
+  inset:0;
+  object-fit:contain;
+  transition:
+    opacity .35s ease,
+    transform .5s ease;
+}
+
+.product-card-image .back-image{
+  opacity:0;
+}
+
+.product-card:hover .front-image{
+  opacity:0;
+}
+
+.product-card:hover .back-image{
+  opacity:1;
+}
+
+.product-card:hover img{
+  transform:scale(1.015);
+}
+
+.product-badge{
+  position:absolute;
+  left:12px;
+  top:12px;
+  z-index:3;
+  background:#111;
+  color:#fff;
+  padding:8px 10px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.product-card-info{
+  padding:14px 3px 0;
+}
+
+.product-card-name{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.4px;
+  line-height:1.4;
+}
+
+.product-card-price{
+  margin-top:7px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.product-card-color{
+  margin-top:6px;
+  color:#777;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+
+/* ================================
+   PRODUCT DETAIL SECTION
+================================ */
+
+.product-detail{
+  display:none;
+  background:#fff;
+  border-top:1px solid #ddd;
+}
+
+.product-detail.active{
+  display:block;
+}
+
+.product-detail-inner{
   max-width:1250px;
   margin:auto;
-  padding:40px 5% 60px;
+  padding:65px 5% 80px;
   display:grid;
   grid-template-columns:1.1fr .9fr;
   gap:65px;
@@ -216,7 +289,7 @@ nav{
 
 
 /* ================================
-   IMAGE
+   PRODUCT MEDIA
 ================================ */
 
 .product-media{
@@ -229,8 +302,8 @@ nav{
 }
 
 .main-image{
-  width:100%;
   display:block;
+  width:100%;
   aspect-ratio:4 / 5;
   object-fit:contain;
   background:#f5f5f3;
@@ -238,25 +311,25 @@ nav{
 
 
 /* ================================
-   VIEW SELECTOR
+   FRONT BACK MODEL
 ================================ */
 
 .view-selector{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  border:1px solid #d2d2cf;
+  border:1px solid #d0d0cd;
   border-top:none;
   background:#fff;
 }
 
 .view-btn{
   border:none;
-  border-right:1px solid #d2d2cf;
+  border-right:1px solid #d0d0cd;
   background:#fff;
   padding:15px 5px;
   font-size:10px;
   letter-spacing:2px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 
@@ -278,14 +351,13 @@ nav{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
-  margin-top:10px;
+  margin-top:9px;
 }
 
 .thumb{
   border:1px solid transparent;
   background:#f5f5f3;
   cursor:pointer;
-  overflow:hidden;
 }
 
 .thumb.active{
@@ -297,7 +369,6 @@ nav{
   height:125px;
   object-fit:contain;
   display:block;
-  background:#f5f5f3;
 }
 
 
@@ -306,65 +377,59 @@ nav{
 ================================ */
 
 .product-info{
-  padding-top:8px;
+  padding-top:5px;
 }
 
 .collection-name{
-  font-size:10px;
-  letter-spacing:3px;
   color:#777;
-  font-weight:700;
-  margin-bottom:13px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
+  margin-bottom:14px;
 }
 
 .product-info h2{
-  font-size:34px;
+  font-size:clamp(30px,4vw,44px);
   line-height:1.05;
-  letter-spacing:1px;
-  margin-bottom:15px;
-  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin-bottom:16px;
 }
 
 .price{
   font-size:20px;
-  font-weight:800;
-  margin-bottom:32px;
+  font-weight:900;
+  margin-bottom:34px;
 }
-
-
-/* ================================
-   OPTION TITLE
-================================ */
 
 .option-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  font-size:11px;
-  letter-spacing:1.5px;
-  font-weight:800;
   margin-bottom:12px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
 }
 
 
 /* ================================
-   COLORS
+   COLOR
 ================================ */
 
 .color-options{
   display:flex;
-  gap:10px;
-  margin-bottom:30px;
+  gap:8px;
   flex-wrap:wrap;
+  margin-bottom:30px;
 }
 
 .color-btn{
-  border:1px solid #bbb;
   background:#fff;
+  border:1px solid #aaa;
   padding:12px 18px;
   font-size:10px;
+  font-weight:800;
   letter-spacing:1px;
-  font-weight:700;
   cursor:pointer;
 }
 
@@ -383,18 +448,15 @@ nav{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:8px;
-  margin-bottom:32px;
+  margin-bottom:28px;
 }
 
 .size-btn{
-  position:relative;
-  min-height:52px;
-  border:1px solid #bbb;
+  min-height:53px;
+  border:1px solid #aaa;
   background:#fff;
-  padding:11px 5px;
   font-size:11px;
-  letter-spacing:1px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 
@@ -405,18 +467,18 @@ nav{
 }
 
 .size-btn.sold-out{
-  background:#e9e9e7;
-  color:#999;
+  background:#eee;
+  color:#aaa;
+  border-color:#ddd;
   cursor:not-allowed;
   text-decoration:line-through;
 }
 
 .size-btn small{
   display:block;
-  margin-top:4px;
   font-size:7px;
-  letter-spacing:.7px;
-  text-decoration:none;
+  margin-top:3px;
+  letter-spacing:.5px;
 }
 
 
@@ -425,50 +487,61 @@ nav{
 ================================ */
 
 .description{
-  border-top:1px solid #d0d0cd;
-  padding-top:23px;
-  margin-top:5px;
+  border-top:1px solid #ddd;
+  margin-top:8px;
+  padding-top:22px;
+  color:#555;
   font-size:13px;
   line-height:1.8;
-  color:#555;
 }
-
-
-/* ================================
-   STOCK NOTE
-================================ */
 
 .stock-note{
   margin-top:18px;
   padding:13px 15px;
-  background:#fff;
-  border:1px solid #d0d0cd;
-  font-size:10px;
-  letter-spacing:1.2px;
-  font-weight:800;
+  background:#f6f6f4;
+  border:1px solid #ddd;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.3px;
 }
 
 
 /* ================================
-   ACTION BUTTON
+   ADD TO BAG
 ================================ */
 
 .action-button{
   width:100%;
-  margin-top:18px;
+  border:none;
   background:#111;
   color:#fff;
-  border:none;
+  margin-top:18px;
   padding:18px;
   font-size:11px;
+  font-weight:900;
   letter-spacing:3px;
-  font-weight:800;
   cursor:pointer;
-  transition:.2s;
 }
 
 .action-button:hover{
   background:#292929;
+}
+
+
+/* ================================
+   BACK TO PRODUCTS
+================================ */
+
+.back-products{
+  width:100%;
+  margin-top:10px;
+  border:1px solid #bbb;
+  background:#fff;
+  padding:15px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
+  cursor:pointer;
 }
 
 
@@ -479,15 +552,14 @@ nav{
 footer{
   background:#0c0c0c;
   color:#fff;
-  padding:45px 5%;
-  margin-top:30px;
+  padding:50px 5%;
 }
 
 .footer-logo{
   display:block;
-  font-size:25px;
+  font-size:26px;
   font-weight:900;
-  letter-spacing:4px;
+  letter-spacing:5px;
   margin-bottom:20px;
 }
 
@@ -500,15 +572,14 @@ footer{
 .footer-links a{
   color:#aaa;
   font-size:11px;
-  letter-spacing:1px;
 }
 
 .footer-bottom{
+  border-top:1px solid #292929;
   margin-top:30px;
   padding-top:20px;
-  border-top:1px solid #292929;
-  font-size:10px;
   color:#666;
+  font-size:9px;
   letter-spacing:1px;
 }
 
@@ -517,9 +588,9 @@ footer{
    TABLET
 ================================ */
 
-@media(max-width:1050px){
+@media(max-width:1000px){
 
-  .product-selector{
+  .product-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -559,25 +630,17 @@ footer{
   }
 
   .page-header{
-    padding:30px 5%;
+    padding:35px 5%;
   }
 
-  .page-header h1{
-    font-size:29px;
-  }
-
-  .product-selector-section{
-    padding:25px 4% 0;
-  }
-
-  .product{
+  .product-detail-inner{
     grid-template-columns:1fr;
-    padding:28px 4% 45px;
+    padding:30px 4% 55px;
     gap:35px;
   }
 
   .product-info h2{
-    font-size:28px;
+    font-size:30px;
   }
 
   .thumb img{
@@ -588,26 +651,38 @@ footer{
 
 
 /* ================================
-   SMALL MOBILE
+   PHONE
 ================================ */
 
-@media(max-width:560px){
+@media(max-width:600px){
 
-  .product-selector{
-    grid-template-columns:1fr 1fr;
+  .collection-bar{
+    padding:20px 3% 12px;
   }
 
-  .product-tab{
-    min-height:90px;
-    padding:12px;
+  .product-grid{
+    padding:5px 3% 60px;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px 7px;
   }
 
-  .product-tab-name{
-    font-size:9px;
+  .product-card-name{
+    font-size:10px;
   }
 
-  .product-tab-price{
-    font-size:9px;
+  .product-card-price{
+    font-size:10px;
+  }
+
+  .product-card-color{
+    font-size:8px;
+  }
+
+  .product-badge{
+    left:7px;
+    top:7px;
+    padding:6px 7px;
+    font-size:6px;
   }
 
   .size-options{
@@ -623,18 +698,10 @@ footer{
 <body>
 
 
-<!-- ================================
-     TOP BAR
-================================ -->
-
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
-
-<!-- ================================
-     NAVIGATION
-================================ -->
 
 <nav>
 
@@ -644,9 +711,7 @@ footer{
 
   <div class="nav-links" id="navLinks">
 
-    <a href="#shop">
-      T-SHIRTS
-    </a>
+    <a href="#products">T-SHIRTS</a>
 
     <a href="../polo/">
       POLO
@@ -670,6 +735,7 @@ footer{
 
   </div>
 
+
   <div class="nav-right">
 
     <span class="nav-icon">
@@ -692,316 +758,420 @@ footer{
 
 
 <!-- ================================
-     PAGE HEADER
+     HEADER
 ================================ -->
 
 <section class="page-header">
 
-  <div class="eyebrow">
-    DEV / T-SHIRTS
+  <div class="page-header-top">
+
+    <div class="eyebrow">
+      DEV / SHOP
+    </div>
+
+    <h1>
+      T-SHIRTS
+    </h1>
+
+    <p>
+      Built for training. Designed for the street.
+      Made for everything after.
+    </p>
+
   </div>
-
-  <h1>
-    T-SHIRTS
-  </h1>
-
-  <p>
-    Built for training. Designed for the street.
-    Made for everything after.
-  </p>
 
 </section>
 
 
 <!-- ================================
-     PRODUCT SELECTOR
+     COLLECTION BAR
+================================ -->
+
+<section class="collection-bar" id="products">
+
+  <div class="collection-title">
+    DEV T-SHIRTS
+  </div>
+
+  <div class="collection-count">
+    4 PRODUCTS
+  </div>
+
+</section>
+
+
+<!-- ================================
+     PRODUCT GRID
+================================ -->
+
+<section class="product-grid">
+
+
+  <!-- CLOSE YOUR EYES -->
+
+  <article
+    class="product-card"
+    onclick="openProduct('closeEyes')">
+
+    <div class="product-card-image">
+
+      <div class="product-badge">
+        NEW
+      </div>
+
+      <img
+        class="front-image"
+        src="../close-eyes-front.jpeg"
+        alt="Close Your Eyes Tee">
+
+      <img
+        class="back-image"
+        src="../close-eyes-back.jpeg"
+        alt="Close Your Eyes Tee Back">
+
+    </div>
+
+    <div class="product-card-info">
+
+      <div class="product-card-name">
+        CLOSE YOUR EYES TEE
+      </div>
+
+      <div class="product-card-price">
+        AED 75
+      </div>
+
+      <div class="product-card-color">
+        WHITE
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- YUJIRO JACK -->
+
+  <article
+    class="product-card"
+    onclick="openProduct('yujiroJack')">
+
+    <div class="product-card-image">
+
+      <div class="product-badge">
+        NEW
+      </div>
+
+      <img
+        class="front-image"
+        src="../yujiro-jack-front.jpeg"
+        alt="Yujiro Jack Hanma Tee">
+
+      <img
+        class="back-image"
+        src="../yujiro-jack-back.jpeg"
+        alt="Yujiro Jack Hanma Tee Back">
+
+    </div>
+
+    <div class="product-card-info">
+
+      <div class="product-card-name">
+        YUJIRO × JACK HANMA TEE
+      </div>
+
+      <div class="product-card-price">
+        AED 75
+      </div>
+
+      <div class="product-card-color">
+        BLACK
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- YEAH BUDDY -->
+
+  <article
+    class="product-card"
+    onclick="openProduct('yeahBuddy')">
+
+    <div class="product-card-image">
+
+      <div class="product-badge">
+        XXL ONLY
+      </div>
+
+      <img
+        class="front-image"
+        src="../yeah-buddy-front.jpeg"
+        alt="Yeah Buddy Tee">
+
+      <img
+        class="back-image"
+        src="../yeah-buddy-back.jpeg"
+        alt="Yeah Buddy Tee Back">
+
+    </div>
+
+    <div class="product-card-info">
+
+      <div class="product-card-name">
+        YEAH BUDDY TEE
+      </div>
+
+      <div class="product-card-price">
+        AED 75
+      </div>
+
+      <div class="product-card-color">
+        BLACK
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- ORIGINAL GRAPHIC -->
+
+  <article
+    class="product-card"
+    onclick="openProduct('originalGraphic')">
+
+    <div class="product-card-image">
+
+      <img
+        class="front-image"
+        src="../graphic-tee-black-front.jpg.jpeg"
+        alt="DEV Oversized Graphic Tee">
+
+      <img
+        class="back-image"
+        src="../graphic-tee-black-back.jpg.jpeg"
+        alt="DEV Oversized Graphic Tee Back">
+
+    </div>
+
+    <div class="product-card-info">
+
+      <div class="product-card-name">
+        DEV OVERSIZED GRAPHIC TEE
+      </div>
+
+      <div class="product-card-price">
+        AED 85
+      </div>
+
+      <div class="product-card-color">
+        BLACK / NAVY BLUE
+      </div>
+
+    </div>
+
+  </article>
+
+
+</section>
+
+
+<!-- ================================
+     PRODUCT DETAILS
 ================================ -->
 
 <section
-  class="product-selector-section"
-  id="shop">
+  class="product-detail"
+  id="productDetail">
 
-  <div class="product-selector-title">
-    SELECT YOUR TEE
-  </div>
-
-  <div class="product-selector">
+  <div class="product-detail-inner">
 
 
-    <button
-      class="product-tab active"
-      data-product="closeEyes"
-      onclick="changeProduct('closeEyes')">
+    <!-- PRODUCT MEDIA -->
 
-      <span class="product-tab-name">
+    <section class="product-media">
+
+      <div class="main-image-wrap">
+
+        <img
+          id="mainImage"
+          class="main-image"
+          src="../close-eyes-front.jpeg"
+          alt="DEV Product">
+
+      </div>
+
+
+      <!-- IMPORTANT:
+           FRONT / BACK / MODEL
+           DIRECTLY UNDER IMAGE
+      -->
+
+      <div class="view-selector">
+
+        <button
+          class="view-btn active"
+          data-view="front"
+          onclick="changeView('front')">
+          FRONT
+        </button>
+
+        <button
+          class="view-btn"
+          data-view="back"
+          onclick="changeView('back')">
+          BACK
+        </button>
+
+        <button
+          class="view-btn"
+          data-view="model"
+          onclick="changeView('model')">
+          MODEL
+        </button>
+
+      </div>
+
+
+      <div class="thumbnails">
+
+        <div
+          class="thumb active"
+          data-view="front"
+          onclick="changeView('front')">
+
+          <img
+            id="thumbFront"
+            src="../close-eyes-front.jpeg"
+            alt="Front">
+
+        </div>
+
+
+        <div
+          class="thumb"
+          data-view="back"
+          onclick="changeView('back')">
+
+          <img
+            id="thumbBack"
+            src="../close-eyes-back.jpeg"
+            alt="Back">
+
+        </div>
+
+
+        <div
+          class="thumb"
+          data-view="model"
+          onclick="changeView('model')">
+
+          <img
+            id="thumbModel"
+            src="../close-eyes-model.jpeg"
+            alt="Model">
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRODUCT INFO -->
+
+    <section class="product-info">
+
+      <div class="collection-name">
+        DEV // T-SHIRT COLLECTION
+      </div>
+
+      <h2 id="productName">
         CLOSE YOUR EYES TEE
-      </span>
+      </h2>
 
-      <span class="product-tab-price">
+      <div
+        class="price"
+        id="productPrice">
         AED 75
-      </span>
-
-    </button>
+      </div>
 
 
-    <button
-      class="product-tab"
-      data-product="yujiroJack"
-      onclick="changeProduct('yujiroJack')">
+      <!-- COLOR -->
 
-      <span class="product-tab-name">
-        YUJIRO × JACK HANMA TEE
-      </span>
+      <div class="option-title">
 
-      <span class="product-tab-price">
-        AED 75
-      </span>
+        <span>
+          COLOR
+        </span>
 
-    </button>
+        <span id="selectedColor">
+          WHITE
+        </span>
 
-
-    <button
-      class="product-tab"
-      data-product="yeahBuddy"
-      onclick="changeProduct('yeahBuddy')">
-
-      <span class="product-tab-name">
-        YEAH BUDDY TEE
-      </span>
-
-      <span class="product-tab-price">
-        AED 75
-      </span>
-
-    </button>
+      </div>
 
 
-    <button
-      class="product-tab"
-      data-product="originalGraphic"
-      onclick="changeProduct('originalGraphic')">
+      <div
+        class="color-options"
+        id="colorOptions">
+      </div>
 
-      <span class="product-tab-name">
-        DEV OVERSIZED GRAPHIC TEE
-      </span>
 
-      <span class="product-tab-price">
-        AED 85
-      </span>
+      <!-- SIZE -->
 
-    </button>
+      <div class="option-title">
 
+        <span>
+          SIZE
+        </span>
+
+        <span id="selectedSize">
+          SELECT SIZE
+        </span>
+
+      </div>
+
+
+      <div
+        class="size-options"
+        id="sizeOptions">
+      </div>
+
+
+      <div
+        class="description"
+        id="productDescription">
+      </div>
+
+
+      <div
+        class="stock-note"
+        id="stockNote">
+      </div>
+
+
+      <button
+        class="action-button"
+        id="actionButton"
+        onclick="handleAction()">
+        SELECT SIZE
+      </button>
+
+
+      <button
+        class="back-products"
+        onclick="backToProducts()">
+        ← BACK TO T-SHIRTS
+      </button>
+
+    </section>
 
   </div>
 
 </section>
-
-
-<!-- ================================
-     PRODUCT
-================================ -->
-
-<main class="product">
-
-
-  <!-- ================================
-       PRODUCT MEDIA
-  ================================ -->
-
-  <section class="product-media">
-
-
-    <div class="main-image-wrap">
-
-      <img
-        id="mainImage"
-        class="main-image"
-        src="../close-eyes-front.jpeg"
-        alt="DEV Close Your Eyes Tee Front"
-      >
-
-    </div>
-
-
-    <!-- FRONT / BACK / MODEL -->
-
-    <div class="view-selector">
-
-      <button
-        class="view-btn active"
-        data-view="front"
-        onclick="changeView('front')">
-        FRONT
-      </button>
-
-      <button
-        class="view-btn"
-        data-view="back"
-        onclick="changeView('back')">
-        BACK
-      </button>
-
-      <button
-        class="view-btn"
-        data-view="model"
-        onclick="changeView('model')">
-        MODEL
-      </button>
-
-    </div>
-
-
-    <!-- THUMBNAILS -->
-
-    <div class="thumbnails">
-
-
-      <div
-        class="thumb active"
-        data-view="front"
-        onclick="changeView('front')">
-
-        <img
-          id="thumbFront"
-          src="../close-eyes-front.jpeg"
-          alt="Front">
-
-      </div>
-
-
-      <div
-        class="thumb"
-        data-view="back"
-        onclick="changeView('back')">
-
-        <img
-          id="thumbBack"
-          src="../close-eyes-back.jpeg"
-          alt="Back">
-
-      </div>
-
-
-      <div
-        class="thumb"
-        data-view="model"
-        onclick="changeView('model')">
-
-        <img
-          id="thumbModel"
-          src="../close-eyes-model.jpeg"
-          alt="Model">
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- ================================
-       PRODUCT INFORMATION
-  ================================ -->
-
-  <section class="product-info">
-
-
-    <div class="collection-name">
-      DEV // T-SHIRT COLLECTION
-    </div>
-
-
-    <h2 id="productName">
-      CLOSE YOUR EYES TEE
-    </h2>
-
-
-    <div
-      class="price"
-      id="productPrice">
-      AED 75
-    </div>
-
-
-    <!-- COLOR -->
-
-    <div class="option-title">
-
-      <span>
-        COLOR
-      </span>
-
-      <span id="selectedColor">
-        WHITE
-      </span>
-
-    </div>
-
-
-    <div
-      class="color-options"
-      id="colorOptions">
-    </div>
-
-
-    <!-- SIZE -->
-
-    <div class="option-title">
-
-      <span>
-        SIZE
-      </span>
-
-      <span id="selectedSize">
-        SELECT SIZE
-      </span>
-
-    </div>
-
-
-    <div
-      class="size-options"
-      id="sizeOptions">
-    </div>
-
-
-    <!-- DESCRIPTION -->
-
-    <div
-      class="description"
-      id="productDescription">
-
-      Oversized statement tee built for those
-      who keep winning whether they are watched
-      or not. Made for training, lifestyle
-      and everyday wear.
-
-    </div>
-
-
-    <div
-      class="stock-note"
-      id="stockNote">
-
-      M / L / XL AVAILABLE
-
-    </div>
-
-
-    <button
-      class="action-button"
-      id="actionButton"
-      onclick="handleAction()">
-
-      SELECT SIZE
-
-    </button>
-
-
-  </section>
-
-</main>
 
 
 <!-- ================================
@@ -1016,10 +1186,9 @@ footer{
     DEV
   </a>
 
-
   <div class="footer-links">
 
-    <a href="#shop">
+    <a href="#products">
       T-Shirts
     </a>
 
@@ -1045,7 +1214,6 @@ footer{
 
   </div>
 
-
   <div class="footer-bottom">
     © 2026 DEV. BUILT DIFFERENT.
   </div>
@@ -1063,8 +1231,6 @@ footer{
 const products = {
 
 
-  /* CLOSE YOUR EYES */
-
   closeEyes:{
 
     name:"CLOSE YOUR EYES TEE",
@@ -1080,9 +1246,13 @@ const products = {
         label:"WHITE",
 
         images:{
+
           front:"../close-eyes-front.jpeg",
+
           back:"../close-eyes-back.jpeg",
+
           model:"../close-eyes-model.jpeg"
+
         }
 
       }
@@ -1090,21 +1260,32 @@ const products = {
     },
 
     sizes:[
-      {name:"M",available:true},
-      {name:"L",available:true},
-      {name:"XL",available:true}
+
+      {
+        name:"M",
+        available:true
+      },
+
+      {
+        name:"L",
+        available:true
+      },
+
+      {
+        name:"XL",
+        available:true
+      }
+
     ],
 
     description:
-      "Oversized statement tee built for those who keep winning whether they are watched or not. Made for training, lifestyle and everyday wear.",
+      "Oversized statement tee made for those who keep winning whether they are watched or not. Built for training, lifestyle and everyday wear.",
 
     stock:
       "M / L / XL AVAILABLE"
 
   },
 
-
-  /* YUJIRO × JACK HANMA */
 
   yujiroJack:{
 
@@ -1121,9 +1302,13 @@ const products = {
         label:"BLACK",
 
         images:{
+
           front:"../yujiro-jack-front.jpeg",
+
           back:"../yujiro-jack-back.jpeg",
+
           model:"../yujiro-jack-model.jpeg"
+
         }
 
       }
@@ -1131,21 +1316,32 @@ const products = {
     },
 
     sizes:[
-      {name:"M",available:true},
-      {name:"L",available:true},
-      {name:"XL",available:true}
+
+      {
+        name:"M",
+        available:true
+      },
+
+      {
+        name:"L",
+        available:true
+      },
+
+      {
+        name:"XL",
+        available:true
+      }
+
     ],
 
     description:
-      "A heavyweight visual built around raw strength, intensity and the relentless DEV mindset. Oversized for training, lifestyle and everyday wear.",
+      "An oversized graphic tee built around raw strength, intensity and the relentless DEV mindset. Designed for training and lifestyle wear.",
 
     stock:
       "M / L / XL AVAILABLE"
 
   },
 
-
-  /* YEAH BUDDY */
 
   yeahBuddy:{
 
@@ -1162,9 +1358,13 @@ const products = {
         label:"BLACK",
 
         images:{
+
           front:"../yeah-buddy-front.jpeg",
+
           back:"../yeah-buddy-back.jpeg",
+
           model:"../yeah-buddy-model.jpeg"
+
         }
 
       }
@@ -1172,22 +1372,37 @@ const products = {
     },
 
     sizes:[
-      {name:"M",available:false},
-      {name:"L",available:false},
-      {name:"XL",available:false},
-      {name:"XXL",available:true}
+
+      {
+        name:"M",
+        available:false
+      },
+
+      {
+        name:"L",
+        available:false
+      },
+
+      {
+        name:"XL",
+        available:false
+      },
+
+      {
+        name:"XXL",
+        available:true
+      }
+
     ],
 
     description:
-      "YEAH BUDDY. Built for the ones who came to lift heavy, push harder and leave excuses behind. Oversized DEV training and lifestyle tee.",
+      "YEAH BUDDY. Made for the ones who came to lift heavy, push harder and leave excuses behind. Oversized DEV training and lifestyle tee.",
 
     stock:
       "XXL AVAILABLE — M / L / XL SOLD OUT"
 
   },
 
-
-  /* ORIGINAL GRAPHIC TEE */
 
   originalGraphic:{
 
@@ -1204,21 +1419,30 @@ const products = {
         label:"BLACK",
 
         images:{
+
           front:"../graphic-tee-black-front.jpg.jpeg",
+
           back:"../graphic-tee-black-back.jpg.jpeg",
+
           model:"../graphic-tee-black-model.jpg.jpeg"
+
         }
 
       },
+
 
       navy:{
 
         label:"NAVY BLUE",
 
         images:{
+
           front:"../graphic-tee-navy-front.jpg.jpeg",
+
           back:"../graphic-tee-navy-back.jpg.jpeg",
+
           model:"../graphic-tee-navy-model.jpg.jpeg"
+
         }
 
       }
@@ -1226,9 +1450,22 @@ const products = {
     },
 
     sizes:[
-      {name:"M",available:true},
-      {name:"L",available:true},
-      {name:"XL",available:true}
+
+      {
+        name:"M",
+        available:true
+      },
+
+      {
+        name:"L",
+        available:true
+      },
+
+      {
+        name:"XL",
+        available:true
+      }
+
     ],
 
     description:
@@ -1243,7 +1480,7 @@ const products = {
 
 
 /* ================================
-   CURRENT STATE
+   CURRENT PRODUCT
 ================================ */
 
 let currentProduct = "closeEyes";
@@ -1257,40 +1494,29 @@ let selectedSize = null;
 
 
 /* ================================
-   CHANGE PRODUCT
+   OPEN PRODUCT
 ================================ */
 
-function changeProduct(productKey){
+function openProduct(productKey){
 
-  currentProduct = productKey;
+  currentProduct =
+    productKey;
 
   currentColor =
-    products[productKey].defaultColor;
+    products[productKey]
+    .defaultColor;
 
-  currentView = "front";
+  currentView =
+    "front";
 
-  selectedSize = null;
-
-
-  document
-  .querySelectorAll(".product-tab")
-  .forEach(tab=>{
-
-    tab.classList.remove("active");
-
-  });
+  selectedSize =
+    null;
 
 
   document
-  .querySelector(
-    `.product-tab[data-product="${productKey}"]`
+  .getElementById(
+    "selectedSize"
   )
-  .classList
-  .add("active");
-
-
-  document
-  .getElementById("selectedSize")
   .textContent =
     "SELECT SIZE";
 
@@ -1298,13 +1524,32 @@ function changeProduct(productKey){
   renderProduct();
 
 
-  window.scrollTo({
-    top:
-      document
-      .querySelector(".product")
-      .offsetTop - 20,
-    behavior:"smooth"
-  });
+  const detail =
+    document
+    .getElementById(
+      "productDetail"
+    );
+
+
+  detail
+  .classList
+  .add(
+    "active"
+  );
+
+
+  setTimeout(
+    function(){
+
+      detail
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },
+    50
+  );
 
 }
 
@@ -1316,29 +1561,39 @@ function changeProduct(productKey){
 function renderProduct(){
 
   const product =
-    products[currentProduct];
+    products[
+      currentProduct
+    ];
 
 
   document
-  .getElementById("productName")
+  .getElementById(
+    "productName"
+  )
   .textContent =
     product.name;
 
 
   document
-  .getElementById("productPrice")
+  .getElementById(
+    "productPrice"
+  )
   .textContent =
     product.price;
 
 
   document
-  .getElementById("productDescription")
+  .getElementById(
+    "productDescription"
+  )
   .textContent =
     product.description;
 
 
   document
-  .getElementById("stockNote")
+  .getElementById(
+    "stockNote"
+  )
   .textContent =
     product.stock;
 
@@ -1355,77 +1610,101 @@ function renderProduct(){
 
 
 /* ================================
-   RENDER COLORS
+   COLORS
 ================================ */
 
 function renderColors(){
 
   const product =
-    products[currentProduct];
+    products[
+      currentProduct
+    ];
 
-  const colorContainer =
-    document.getElementById(
+  const container =
+    document
+    .getElementById(
       "colorOptions"
     );
 
 
-  colorContainer.innerHTML = "";
+  container.innerHTML =
+    "";
 
 
   Object
-  .keys(product.colors)
-  .forEach(colorKey=>{
+  .keys(
+    product.colors
+  )
+  .forEach(
+    function(colorKey){
+
+      const color =
+        product
+        .colors[
+          colorKey
+        ];
 
 
-    const color =
-      product.colors[colorKey];
+      const button =
+        document
+        .createElement(
+          "button"
+        );
 
 
-    const button =
-      document.createElement(
-        "button"
-      );
+      button
+      .className =
+        "color-btn";
 
 
-    button.className =
-      "color-btn";
+      if(
+        colorKey ===
+        currentColor
+      ){
+
+        button
+        .classList
+        .add(
+          "active"
+        );
+
+      }
 
 
-    if(
-      colorKey === currentColor
-    ){
+      button
+      .textContent =
+        color.label;
 
-      button.classList.add(
-        "active"
+
+      button
+      .onclick =
+        function(){
+
+          changeColor(
+            colorKey
+          );
+
+        };
+
+
+      container
+      .appendChild(
+        button
       );
 
     }
-
-
-    button.textContent =
-      color.label;
-
-
-    button.onclick =
-      function(){
-
-        changeColor(colorKey);
-
-      };
-
-
-    colorContainer.appendChild(
-      button
-    );
-
-  });
+  );
 
 
   document
-  .getElementById("selectedColor")
+  .getElementById(
+    "selectedColor"
+  )
   .textContent =
     product
-    .colors[currentColor]
+    .colors[
+      currentColor
+    ]
     .label;
 
 }
@@ -1437,20 +1716,11 @@ function renderColors(){
 
 function changeColor(color){
 
-  currentColor = color;
+  currentColor =
+    color;
 
-  currentView = "front";
-
-
-  document
-  .querySelectorAll(".color-btn")
-  .forEach(btn=>{
-
-    btn.classList.remove(
-      "active"
-    );
-
-  });
+  currentView =
+    "front";
 
 
   renderColors();
@@ -1461,70 +1731,88 @@ function changeColor(color){
 
 
 /* ================================
-   RENDER SIZES
+   SIZES
 ================================ */
 
 function renderSizes(){
 
   const product =
-    products[currentProduct];
+    products[
+      currentProduct
+    ];
 
-  const sizeContainer =
-    document.getElementById(
+  const container =
+    document
+    .getElementById(
       "sizeOptions"
     );
 
 
-  sizeContainer.innerHTML = "";
+  container.innerHTML =
+    "";
 
 
-  product.sizes.forEach(size=>{
+  product
+  .sizes
+  .forEach(
+    function(size){
+
+      const button =
+        document
+        .createElement(
+          "button"
+        );
 
 
-    const button =
-      document.createElement(
-        "button"
+      button
+      .className =
+        "size-btn";
+
+
+      if(
+        !size.available
+      ){
+
+        button
+        .classList
+        .add(
+          "sold-out"
+        );
+
+
+        button
+        .innerHTML =
+          size.name +
+          "<small>SOLD OUT</small>";
+
+      }else{
+
+        button
+        .textContent =
+          size.name;
+
+
+        button
+        .onclick =
+          function(){
+
+            selectSize(
+              button,
+              size.name
+            );
+
+          };
+
+      }
+
+
+      container
+      .appendChild(
+        button
       );
-
-
-    button.className =
-      "size-btn";
-
-
-    if(!size.available){
-
-      button.classList.add(
-        "sold-out"
-      );
-
-
-      button.innerHTML =
-        `${size.name}<small>SOLD OUT</small>`;
-
-    }else{
-
-      button.textContent =
-        size.name;
-
-
-      button.onclick =
-        function(){
-
-          selectSize(
-            button,
-            size.name
-          );
-
-        };
 
     }
-
-
-    sizeContainer.appendChild(
-      button
-    );
-
-  });
+  );
 
 }
 
@@ -1533,29 +1821,43 @@ function renderSizes(){
    SELECT SIZE
 ================================ */
 
-function selectSize(button,size){
+function selectSize(
+  button,
+  size
+){
 
-  selectedSize = size;
+  selectedSize =
+    size;
 
 
   document
-  .querySelectorAll(".size-btn")
-  .forEach(btn=>{
+  .querySelectorAll(
+    ".size-btn"
+  )
+  .forEach(
+    function(btn){
 
-    btn.classList.remove(
-      "active"
-    );
+      btn
+      .classList
+      .remove(
+        "active"
+      );
 
-  });
+    }
+  );
 
 
-  button.classList.add(
+  button
+  .classList
+  .add(
     "active"
   );
 
 
   document
-  .getElementById("selectedSize")
+  .getElementById(
+    "selectedSize"
+  )
   .textContent =
     size;
 
@@ -1566,50 +1868,71 @@ function selectSize(button,size){
 
 
 /* ================================
-   CHANGE VIEW
+   VIEW
 ================================ */
 
 function changeView(view){
 
-  currentView = view;
+  currentView =
+    view;
 
 
   document
-  .querySelectorAll(".view-btn")
-  .forEach(btn=>{
+  .querySelectorAll(
+    ".view-btn"
+  )
+  .forEach(
+    function(btn){
 
-    btn.classList.remove(
-      "active"
-    );
+      btn
+      .classList
+      .remove(
+        "active"
+      );
 
-  });
+    }
+  );
 
 
   document
-  .querySelectorAll(".thumb")
-  .forEach(thumb=>{
+  .querySelectorAll(
+    ".thumb"
+  )
+  .forEach(
+    function(thumb){
 
-    thumb.classList.remove(
-      "active"
-    );
+      thumb
+      .classList
+      .remove(
+        "active"
+      );
 
-  });
+    }
+  );
 
 
   document
   .querySelector(
-    `.view-btn[data-view="${view}"]`
+    '.view-btn[data-view="' +
+    view +
+    '"]'
   )
   .classList
-  .add("active");
+  .add(
+    "active"
+  );
 
 
   document
   .querySelector(
-    `.thumb[data-view="${view}"]`
+    '.thumb[data-view="' +
+    view +
+    '"]'
   )
   .classList
-  .add("active");
+  .add(
+    "active"
+  );
 
 
   updateMainImage();
@@ -1624,25 +1947,35 @@ function changeView(view){
 function updateImages(){
 
   const images =
-    products[currentProduct]
-    .colors[currentColor]
+    products[
+      currentProduct
+    ]
+    .colors[
+      currentColor
+    ]
     .images;
 
 
   document
-  .getElementById("thumbFront")
+  .getElementById(
+    "thumbFront"
+  )
   .src =
     images.front;
 
 
   document
-  .getElementById("thumbBack")
+  .getElementById(
+    "thumbBack"
+  )
   .src =
     images.back;
 
 
   document
-  .getElementById("thumbModel")
+  .getElementById(
+    "thumbModel"
+  )
   .src =
     images.model;
 
@@ -1652,25 +1985,37 @@ function updateImages(){
 
 
   document
-  .querySelectorAll(".view-btn")
-  .forEach(btn=>{
+  .querySelectorAll(
+    ".view-btn"
+  )
+  .forEach(
+    function(btn){
 
-    btn.classList.remove(
-      "active"
-    );
+      btn
+      .classList
+      .remove(
+        "active"
+      );
 
-  });
+    }
+  );
 
 
   document
-  .querySelectorAll(".thumb")
-  .forEach(thumb=>{
+  .querySelectorAll(
+    ".thumb"
+  )
+  .forEach(
+    function(thumb){
 
-    thumb.classList.remove(
-      "active"
-    );
+      thumb
+      .classList
+      .remove(
+        "active"
+      );
 
-  });
+    }
+  );
 
 
   document
@@ -1678,7 +2023,9 @@ function updateImages(){
     '.view-btn[data-view="front"]'
   )
   .classList
-  .add("active");
+  .add(
+    "active"
+  );
 
 
   document
@@ -1686,7 +2033,9 @@ function updateImages(){
     '.thumb[data-view="front"]'
   )
   .classList
-  .add("active");
+  .add(
+    "active"
+  );
 
 
   updateMainImage();
@@ -1695,27 +2044,40 @@ function updateImages(){
 
 
 /* ================================
-   UPDATE MAIN IMAGE
+   MAIN IMAGE
 ================================ */
 
 function updateMainImage(){
 
   const image =
-    products[currentProduct]
-    .colors[currentColor]
-    .images[currentView];
+    products[
+      currentProduct
+    ]
+    .colors[
+      currentColor
+    ]
+    .images[
+      currentView
+    ];
 
 
   document
-  .getElementById("mainImage")
+  .getElementById(
+    "mainImage"
+  )
   .src =
     image;
 
 
   document
-  .getElementById("mainImage")
+  .getElementById(
+    "mainImage"
+  )
   .alt =
-    products[currentProduct].name +
+    products[
+      currentProduct
+    ]
+    .name +
     " " +
     currentView;
 
@@ -1729,20 +2091,25 @@ function updateMainImage(){
 function updateActionButton(){
 
   const button =
-    document.getElementById(
+    document
+    .getElementById(
       "actionButton"
     );
 
 
-  if(!selectedSize){
+  if(
+    selectedSize
+  ){
 
-    button.textContent =
-      "SELECT SIZE";
+    button
+    .textContent =
+      "ADD TO BAG";
 
   }else{
 
-    button.textContent =
-      "ADD TO BAG";
+    button
+    .textContent =
+      "SELECT SIZE";
 
   }
 
@@ -1750,12 +2117,14 @@ function updateActionButton(){
 
 
 /* ================================
-   ADD TO BAG PLACEHOLDER
+   ACTION
 ================================ */
 
 function handleAction(){
 
-  if(!selectedSize){
+  if(
+    !selectedSize
+  ){
 
     alert(
       "Please select your size."
@@ -1767,11 +2136,31 @@ function handleAction(){
 
 
   alert(
-    products[currentProduct].name +
+    products[
+      currentProduct
+    ]
+    .name +
     " — Size " +
     selectedSize +
     "\n\nDEV checkout will be connected soon."
   );
+
+}
+
+
+/* ================================
+   BACK TO PRODUCTS
+================================ */
+
+function backToProducts(){
+
+  document
+  .getElementById(
+    "products"
+  )
+  .scrollIntoView({
+    behavior:"smooth"
+  });
 
 }
 
@@ -1783,20 +2172,18 @@ function handleAction(){
 function toggleMenu(){
 
   document
-  .getElementById("navLinks")
+  .getElementById(
+    "navLinks"
+  )
   .classList
-  .toggle("open");
+  .toggle(
+    "open"
+  );
 
 }
 
-
-/* ================================
-   INITIAL LOAD
-================================ */
-
-renderProduct();
-
 </script>
+
 
 </body>
 </html>
