@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DEV Women | Built Different</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#050505;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body.cart-open{
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input{
+  font-family:inherit;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.top-bar{
+  background:#fff;
+  color:#000;
+  text-align:center;
+  padding:10px 15px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  padding:0 5%;
+  background:rgba(5,5,5,.97);
+  border-bottom:1px solid #1b1b1b;
+}
+
+.logo{
+  flex-shrink:0;
+  font-size:36px;
+  font-weight:900;
+  letter-spacing:7px;
+}
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-left:auto;
+}
+
+.main-nav a{
+  position:relative;
+  padding:33px 0 29px;
+  color:#888;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2.5px;
+  transition:.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active{
+  color:#fff;
+}
+
+.main-nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:20px;
+  height:1px;
+  background:#fff;
+}
+
+
+/* =========================
+   NAV ACTIONS
+========================= */
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+  position:relative;
+  width:250px;
+}
+
+.search-box input{
+  width:100%;
+  height:44px;
+  padding:0 42px 0 17px;
+  border:1px solid #333;
+  border-radius:30px;
+  outline:none;
+  background:#111;
+  color:#fff;
+  font-size:12px;
+}
+
+.search-box input::placeholder{
+  color:#666;
+}
+
+.search-icon{
+  position:absolute;
+  top:50%;
+  right:16px;
+  transform:translateY(-50%);
+  pointer-events:none;
+}
+
+
+/* =========================
+   MOBILE SEARCH
+========================= */
+
+.mobile-search-button{
+  display:none;
+}
+
+.mobile-search-panel{
+  display:none;
+  position:sticky;
+  top:68px;
+  z-index:999;
+  padding:12px 4%;
+  background:#080808;
+  border-bottom:1px solid #222;
+}
+
+.mobile-search-panel.active{
+  display:block;
+}
+
+.mobile-search-panel input{
+  width:100%;
+  height:48px;
+  padding:0 18px;
+  border:1px solid #333;
+  border-radius:30px;
+  outline:none;
+  background:#111;
+  color:#fff;
+  font-size:13px;
+}
+
+
+/* =========================
+   CART BUTTON
+========================= */
+
+.cart-button,
+.mobile-search-button{
+  position:relative;
+  width:46px;
+  height:46px;
+  flex-shrink:0;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #333;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.cart-button{
+  display:flex;
+}
+
+.cart-count{
+  display:none;
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  border:1px solid #000;
+  background:#fff;
+  color:#000;
+  font-size:9px;
+  font-weight:900;
+}
+
+.cart-count.active{
+  display:flex;
+}
+
+
+/* =========================
+   WOMEN HERO
+========================= */
+
+.women-hero{
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:80px 6%;
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #242424 0%,
+      #0c0c0c 48%,
+      #050505 80%
+    );
+}
+
+.hero-content{
+  max-width:850px;
+}
+
+.hero-label{
+  margin-bottom:20px;
+  color:#777;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:6px;
+}
+
+.women-hero h1{
+  font-size:clamp(55px,9vw,105px);
+  line-height:.95;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.women-hero h2{
+  margin-top:18px;
+  font-size:clamp(17px,3vw,30px);
+  font-weight:500;
+  letter-spacing:5px;
+}
+
+.women-hero p{
+  max-width:600px;
+  margin:25px auto 0;
+  color:#888;
+  font-size:13px;
+  line-height:1.8;
+}
+
+
+/* =========================
+   COLLECTIONS
+========================= */
+
+.collections{
+  max-width:1500px;
+  margin:auto;
+  padding:70px 4% 100px;
+}
+
+.collections-header{
+  margin-bottom:35px;
+}
+
+.collections-header h2{
+  font-size:clamp(32px,5vw,58px);
+  letter-spacing:3px;
+}
+
+.collections-header p{
+  margin-top:10px;
+  color:#777;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+
+/* =========================
+   COMING SOON CARDS
+========================= */
+
+.collection-card{
+  position:relative;
+  min-height:560px;
+  overflow:hidden;
+  border:1px solid #1c1c1c;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #1b1b1b,
+      #0c0c0c 65%
+    );
+}
+
+.collection-card::before{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  top:50%;
+  left:50%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(45deg);
+
+  border:1px solid #242424;
+}
+
+.collection-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.7),
+      transparent 60%
+    );
+}
+
+.placeholder-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  color:#191919;
+
+  font-size:
+    clamp(75px,12vw,170px);
+
+  font-weight:900;
+  letter-spacing:12px;
+}
+
+.card-label{
+  position:absolute;
+  z-index:3;
+  left:28px;
+  bottom:25px;
+}
+
+.card-label span{
+  display:block;
+  margin-bottom:7px;
+  color:#888;
+  font-size:9px;
+  letter-spacing:4px;
+}
+
+.card-label h3{
+  font-size:28px;
+  letter-spacing:3px;
+}
+
+.coming-label{
+  position:absolute;
+  z-index:3;
+  top:22px;
+  right:22px;
+
+  padding:9px 12px;
+
+  border:1px solid #333;
+
+  background:
+    rgba(0,0,0,.75);
+
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-results{
+  display:none;
+  padding:70px 20px;
+  text-align:center;
+  color:#777;
+  letter-spacing:2px;
+}
+
+.no-results.active{
+  display:block;
+}
+
+
+/* =========================
+   BRAND STRIP
+========================= */
+
+.brand-strip{
+  padding:80px 6%;
+  text-align:center;
+
+  border-top:
+    1px solid #171717;
+
+  border-bottom:
+    1px solid #171717;
+
+  background:#080808;
+}
+
+.brand-strip h2{
+  font-size:
+    clamp(34px,6vw,70px);
+
+  letter-spacing:5px;
+}
+
+.brand-strip p{
+  max-width:580px;
+  margin:20px auto 0;
+
+  color:#777;
+
+  font-size:13px;
+  line-height:1.8;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:55px 6% 30px;
+}
+
+.footer-content{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+}
+
+.footer-logo{
+  font-size:36px;
+  font-weight:900;
+  letter-spacing:7px;
+}
+
+.footer-text{
+  max-width:350px;
+  margin-top:14px;
+  color:#666;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+}
+
+.footer-links a{
+  color:#777;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+.copyright{
+  margin-top:45px;
+  padding-top:25px;
+
+  border-top:
+    1px solid #171717;
+
+  text-align:center;
+  color:#444;
+
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1998;
+
+  background:
+    rgba(0,0,0,.7);
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:.25s;
+}
+
+.cart-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  z-index:1999;
+
+  width:min(430px,100%);
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+
+  background:#090909;
+
+  border-left:
+    1px solid #242424;
+
+  transform:
+    translateX(100%);
+
+  transition:.3s;
+}
+
+.cart-drawer.active{
+  transform:
+    translateX(0);
+}
+
+
+.cart-header{
+  min-height:82px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 24px;
+
+  border-bottom:
+    1px solid #222;
+}
+
+.cart-title{
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.cart-close{
+  width:42px;
+  height:42px;
+
+  border:
+    1px solid #333;
+
+  border-radius:50%;
+
+  background:#111;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:21px;
+}
+
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+
+  padding:20px 24px;
+}
+
+
+.cart-empty{
+  min-height:280px;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:12px;
+
+  text-align:center;
+}
+
+.cart-empty strong{
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.cart-empty span{
+  max-width:270px;
+
+  color:#777;
+
+  font-size:11px;
+  line-height:1.7;
+}
+
+
+.cart-item{
+  display:grid;
+
+  grid-template-columns:
+    80px 1fr;
+
+  gap:14px;
+
+  padding-bottom:20px;
+  margin-bottom:20px;
+
+  border-bottom:
+    1px solid #222;
+}
+
+
+.cart-item-image{
+  width:80px;
+  height:100px;
+
+  object-fit:cover;
+
+  background:#151515;
+}
+
+
+.cart-item-name{
+  font-size:12px;
+  font-weight:900;
+}
+
+
+.cart-item-meta{
+  margin-top:7px;
+
+  color:#777;
+
+  font-size:10px;
+  line-height:1.6;
+}
+
+
+.cart-item-row{
+  margin-top:13px;
+
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+
+.quantity{
+  display:flex;
+  align-items:center;
+
+  border:
+    1px solid #333;
+}
+
+
+.quantity button{
+  width:30px;
+  height:30px;
+
+  border:0;
+
+  background:#111;
+  color:#fff;
+
+  cursor:pointer;
+}
+
+
+.quantity span{
+  width:30px;
+
+  text-align:center;
+
+  font-size:11px;
+}
+
+
+.cart-item-price{
+  font-size:11px;
+  font-weight:900;
+}
+
+
+.remove-item{
+  margin-top:10px;
+
+  border:0;
+
+  background:none;
+  color:#777;
+
+  cursor:pointer;
+
+  font-size:9px;
+
+  text-decoration:
+    underline;
+}
+
+
+.cart-footer{
+  padding:20px 24px 24px;
+
+  border-top:
+    1px solid #222;
+}
+
+
+.cart-subtotal{
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  margin-bottom:16px;
+
+  font-size:12px;
+  font-weight:900;
+}
+
+
+.checkout-button{
+  width:100%;
+  height:52px;
+
+  border:0;
+
+  background:#fff;
+  color:#000;
+
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+
+.checkout-button:disabled{
+  opacity:.35;
+}
+
+
+.cart-note{
+  margin-top:12px;
+
+  color:#555;
+
+  text-align:center;
+
+  font-size:9px;
+  line-height:1.6;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1000px){
+
+  .search-box{
+    display:none;
+  }
+
+  .mobile-search-button{
+    display:flex;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  nav{
+    min-height:68px;
+    padding:0 4%;
+    gap:12px;
+  }
+
+  .logo{
+    font-size:29px;
+    letter-spacing:5px;
+  }
+
+  .main-nav{
+    gap:17px;
+  }
+
+  .main-nav a{
+    padding:27px 0 24px;
+
+    font-size:9px;
+
+    letter-spacing:
+      1.5px;
+  }
+
+  .main-nav a.active::after{
+    bottom:17px;
+  }
+
+  .mobile-search-button,
+  .cart-button{
+    width:42px;
+    height:42px;
+  }
+
+  .women-hero{
+    min-height:350px;
+    padding:55px 6%;
+  }
+
+  .hero-label{
+    font-size:8px;
+    letter-spacing:4px;
+  }
+
+  .women-hero h1{
+    font-size:52px;
+  }
+
+  .women-hero h2{
+    font-size:16px;
+    line-height:1.5;
+    letter-spacing:3px;
+  }
+
+  .women-hero p{
+    font-size:12px;
+  }
+
+  .collections{
+    padding:
+      45px 3% 65px;
+  }
+
+  .collection-grid{
+    grid-template-columns:
+      1fr;
+
+    gap:9px;
+  }
+
+  .collection-card{
+    min-height:500px;
+  }
+
+  .footer-content{
+    display:block;
+  }
+
+  .footer-links{
+    margin-top:30px;
+  }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:450px){
+
+  .main-nav{
+    gap:12px;
+  }
+
+  .main-nav a{
+    font-size:8px;
+  }
+
+  .mobile-search-button{
+    display:none;
+  }
+
+  .collection-card{
+    min-height:470px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+  DEV — BUILT DIFFERENT
+</div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+  <a
+    href="../index.html"
+    class="logo">
+    DEV
+  </a>
+
+
+  <div class="main-nav">
+
+    <a
+      href="../index.html#collections">
+      MEN
+    </a>
+
+    <a
+      href="./"
+      class="active">
+      WOMEN
+    </a>
+
+  </div>
+
+
+  <div class="nav-actions">
+
+
+    <div class="search-box">
+
+      <input
+        id="desktopSearch"
+        type="search"
+        placeholder="Search women..."
+        aria-label="Search women">
+
+      <span class="search-icon">
+        ⌕
+      </span>
+
+    </div>
+
+
+    <button
+      class="mobile-search-button"
+      id="mobileSearchButton"
+      type="button"
+      aria-label="Search">
+
+      ⌕
+
+    </button>
+
+
+    <button
+      class="cart-button"
+      id="cartButton"
+      type="button"
+      aria-label="Shopping bag">
+
+      🛒
+
+      <span
+        class="cart-count"
+        id="cartCount">
+        0
+      </span>
+
+    </button>
+
+  </div>
+
+</nav>
+
+
+<!-- MOBILE SEARCH -->
+
+<div
+  class="mobile-search-panel"
+  id="mobileSearchPanel">
+
+  <input
+    id="mobileSearch"
+    type="search"
+    placeholder="Search women..."
+    aria-label="Search women">
+
+</div>
+
+
+<!-- WOMEN HERO -->
+
+<header class="women-hero">
+
+  <div class="hero-content">
+
+    <div class="hero-label">
+      DEV / WOMEN
+    </div>
+
+    <h1>
+      DEV WOMEN
+    </h1>
+
+    <h2>
+      BUILT TO MOVE.
+    </h2>
+
+    <p>
+      Performance meets everyday style.
+      The first DEV Women's collection
+      is coming soon.
+    </p>
+
+  </div>
+
+</header>
+
+
+<!-- COLLECTIONS -->
+
+<main
+  class="collections"
+  id="collections">
+
+
+  <div class="collections-header">
+
+    <h2>
+      WOMEN
+    </h2>
+
+    <p>
+      FIRST DROP COMING SOON
+    </p>
+
+  </div>
+
+
+  <div
+    class="collection-grid"
+    id="collectionGrid">
+
+
+    <!-- TOPS -->
+
+    <div
+      class="collection-card"
+      data-search="tops t shirts tshirts gym tops women">
+
+      <div class="placeholder-logo">
+        DEV
+      </div>
+
+      <div class="coming-label">
+        COMING SOON
+      </div>
+
+      <div class="card-label">
+
+        <span>
+          DEV WOMEN
+        </span>
+
+        <h3>
+          TOPS
+        </h3>
+
+      </div>
+
+    </div>
+
+
+    <!-- LEGGINGS -->
+
+    <div
+      class="collection-card"
+      data-search="leggings tights women training">
+
+      <div class="placeholder-logo">
+        DEV
+      </div>
+
+      <div class="coming-label">
+        COMING SOON
+      </div>
+
+      <div class="card-label">
+
+        <span>
+          DEV WOMEN
+        </span>
+
+        <h3>
+          LEGGINGS
+        </h3>
+
+      </div>
+
+    </div>
+
+
+    <!-- SHORTS -->
+
+    <div
+      class="collection-card"
+      data-search="shorts women gym training">
+
+      <div class="placeholder-logo">
+        DEV
+      </div>
+
+      <div class="coming-label">
+        COMING SOON
+      </div>
+
+      <div class="card-label">
+
+        <span>
+          DEV WOMEN
+        </span>
+
+        <h3>
+          SHORTS
+        </h3>
+
+      </div>
+
+    </div>
+
+
+    <!-- SETS -->
+
+    <div
+      class="collection-card"
+      data-search="sets matching sets women gym">
+
+      <div class="placeholder-logo">
+        DEV
+      </div>
+
+      <div class="coming-label">
+        COMING SOON
+      </div>
+
+      <div class="card-label">
+
+        <span>
+          DEV WOMEN
+        </span>
+
+        <h3>
+          SETS
+        </h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="no-results"
+    id="noResults">
+
+    NO COLLECTIONS FOUND.
+
+  </div>
+
+</main>
+
+
+<!-- BRAND STRIP -->
+
+<section class="brand-strip">
+
+  <h2>
+    DEV
+  </h2>
+
+  <p>
+    Built for movement.
+    Designed for confidence.
+    Made for everything after.
+  </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="footer-content">
+
+    <div>
+
+      <div class="footer-logo">
+        DEV
+      </div>
+
+      <div class="footer-text">
+
+        Performance streetwear.
+        Designed in the UAE.
+        Built different.
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="../index.html#collections">
+        MEN
+      </a>
+
+      <a href="#collections">
+        WOMEN
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="copyright">
+
+    © 2026 DEV.
+    ALL RIGHTS RESERVED.
+
+  </div>
+
+</footer>
+
+
+<!-- =========================
+     SHARED DEV CART
+========================= -->
+
+<div
+  class="cart-overlay"
+  id="cartOverlay">
+</div>
+
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer"
+  aria-hidden="true">
+
+
+  <div class="cart-header">
+
+    <div class="cart-title">
+      YOUR BAG
+    </div>
+
+    <button
+      class="cart-close"
+      id="cartClose"
+      type="button">
+
+      ×
+
+    </button>
+
+  </div>
+
+
+  <div
+    class="cart-items"
+    id="cartItems">
+  </div>
+
+
+  <div class="cart-footer">
+
+    <div class="cart-subtotal">
+
+      <span>
+        SUBTOTAL
+      </span>
+
+      <span id="cartSubtotal">
+        AED 0
+      </span>
+
+    </div>
+
+
+    <button
+      class="checkout-button"
+      id="checkoutButton"
+      type="button"
+      disabled>
+
+      CHECKOUT
+
+    </button>
+
+
+    <div class="cart-note">
+
+      MEN + WOMEN ITEMS STAY TOGETHER
+      IN ONE DEV BAG.
+
+    </div>
+
+  </div>
+
+</aside>
+
+
+<script>
+
+/* =========================
+   SEARCH
+========================= */
+
+const cards =
+  document.querySelectorAll(
+    ".collection-card"
+  );
+
+const desktopSearch =
+  document.getElementById(
+    "desktopSearch"
+  );
+
+const mobileSearch =
+  document.getElementById(
+    "mobileSearch"
+  );
+
+const noResults =
+  document.getElementById(
+    "noResults"
+  );
+
+
+function searchCollections(value){
+
+  const query =
+    value
+    .toLowerCase()
+    .trim();
+
+  let visible = 0;
+
+
+  cards.forEach(
+    function(card){
+
+      const terms =
+        (
+          card.dataset.search
+          ||
+          ""
+        )
+        .toLowerCase();
+
+
+      const match =
+        query === ""
+        ||
+        terms.includes(query);
+
+
+      card.style.display =
+        match
+        ?
+        ""
+        :
+        "none";
+
+
+      if(match){
+        visible++;
+      }
+
+    }
+  );
+
+
+  noResults
+    .classList
+    .toggle(
+      "active",
+      visible === 0
+    );
+
+}
+
+
+desktopSearch.addEventListener(
+  "input",
+  function(){
+
+    searchCollections(
+      desktopSearch.value
+    );
+
+  }
+);
+
+
+mobileSearch.addEventListener(
+  "input",
+  function(){
+
+    searchCollections(
+      mobileSearch.value
+    );
+
+  }
+);
+
+
+/* =========================
+   MOBILE SEARCH
+========================= */
+
+const mobileSearchButton =
+  document.getElementById(
+    "mobileSearchButton"
+  );
+
+const mobileSearchPanel =
+  document.getElementById(
+    "mobileSearchPanel"
+  );
+
+
+mobileSearchButton.addEventListener(
+  "click",
+  function(){
+
+    mobileSearchPanel
+      .classList
+      .toggle("active");
+
+
+    if(
+      mobileSearchPanel
+      .classList
+      .contains("active")
+    ){
+
+      mobileSearch.focus();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   SHARED CART
+========================= */
+
+/*
+  SAME CART FOR:
+
+  MEN
+  WOMEN
+
+  DO NOT CHANGE THIS KEY.
+*/
+
+const DEV_CART_KEY =
+  "dev_cart_v1";
+
+
+function getDevCart(){
+
+  try{
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          DEV_CART_KEY
+        )
+      );
+
+
+    return Array.isArray(data)
+      ?
+      data
+      :
+      [];
+
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function saveDevCart(cart){
+
+  localStorage.setItem(
+    DEV_CART_KEY,
+    JSON.stringify(cart)
+  );
+
+  renderDevCart();
+
+}
+
+
+function formatPrice(price){
+
+  const value =
+    Number(price)
+    ||
+    0;
+
+
+  return "AED " +
+    value.toFixed(
+      value % 1 === 0
+      ?
+      0
+      :
+      2
+    );
+
+}
+
+
+/* CART ELEMENTS */
+
+const cartButton =
+  document.getElementById(
+    "cartButton"
+  );
+
+const cartCount =
+  document.getElementById(
+    "cartCount"
+  );
+
+const cartDrawer =
+  document.getElementById(
+    "cartDrawer"
+  );
+
+const cartOverlay =
+  document.getElementById(
+    "cartOverlay"
+  );
+
+const cartClose =
+  document.getElementById(
+    "cartClose"
+  );
+
+const cartItems =
+  document.getElementById(
+    "cartItems"
+  );
+
+const cartSubtotal =
+  document.getElementById(
+    "cartSubtotal"
+  );
+
+const checkoutButton =
+  document.getElementById(
+    "checkoutButton"
+  );
+
+
+/* OPEN CART */
+
+function openCart(){
+
+  renderDevCart();
+
+  cartDrawer
+    .classList
+    .add("active");
+
+  cartOverlay
+    .classList
+    .add("active");
+
+  cartDrawer
+    .setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  document.body
+    .classList
+    .add("cart-open");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+  cartDrawer
+    .classList
+    .remove("active");
+
+  cartOverlay
+    .classList
+    .remove("active");
+
+  cartDrawer
+    .setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  document.body
+    .classList
+    .remove("cart-open");
+
+}
+
+
+/* CHANGE QUANTITY */
+
+function changeQuantity(
+  index,
+  amount
+){
+
+  const cart =
+    getDevCart();
+
+
+  if(!cart[index]){
+    return;
+  }
+
+
+  const current =
+    Math.max(
+      1,
+      Number(
+        cart[index].quantity
+      )
+      ||
+      1
+    );
+
+
+  const newQuantity =
+    current + amount;
+
+
+  if(newQuantity <= 0){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }else{
+
+    cart[index].quantity =
+      newQuantity;
+
+  }
+
+
+  saveDevCart(cart);
+
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index){
+
+  const cart =
+    getDevCart();
+
+
+  cart.splice(
+    index,
+    1
+  );
+
+
+  saveDevCart(cart);
+
+}
+
+
+/* RENDER CART */
+
+function renderDevCart(){
+
+  const cart =
+    getDevCart();
+
+
+  const totalQuantity =
+    cart.reduce(
+      function(total,item){
+
+        return total +
+          Math.max(
+            1,
+            Number(
+              item.quantity
+            )
+            ||
+            1
+          );
+
+      },
+      0
+    );
+
+
+  const subtotal =
+    cart.reduce(
+      function(total,item){
+
+        const price =
+          Number(
+            item.price
+          )
+          ||
+          0;
+
+
+        const quantity =
+          Math.max(
+            1,
+            Number(
+              item.quantity
+            )
+            ||
+            1
+          );
+
+
+        return total +
+          price * quantity;
+
+      },
+      0
+    );
+
+
+  cartCount.textContent =
+    totalQuantity;
+
+
+  cartCount
+    .classList
+    .toggle(
+      "active",
+      totalQuantity > 0
+    );
+
+
+  cartSubtotal.textContent =
+    formatPrice(
+      subtotal
+    );
+
+
+  checkoutButton.disabled =
+    cart.length === 0;
+
+
+  /* EMPTY CART */
+
+  if(cart.length === 0){
+
+    cartItems.innerHTML = `
+
+      <div class="cart-empty">
+
+        <strong>
+          YOUR BAG IS EMPTY
+        </strong>
+
+        <span>
+
+          Shop MEN or WOMEN.
+          Everything you add stays
+          together in the same
+          DEV bag.
+
+        </span>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* CART PRODUCTS */
+
+  cartItems.innerHTML =
+    cart.map(
+      function(item,index){
+
+
+        const name =
+          item.name
+          ||
+          "DEV PRODUCT";
+
+
+        const section =
+          item.section
+          ||
+          "DEV";
+
+
+        const color =
+          item.color
+          ||
+          "—";
+
+
+        const size =
+          item.size
+          ||
+          "—";
+
+
+        const quantity =
+          Math.max(
+            1,
+            Number(
+              item.quantity
+            )
+            ||
+            1
+          );
+
+
+        const price =
+          Number(
+            item.price
+          )
+          ||
+          0;
+
+
+        const image =
+          item.image
+          ||
+          "";
+
+
+        const imageHTML =
+          image
+
+          ?
+
+          `
+          <img
+            class="cart-item-image"
+            src="${image}"
+            alt="${name}">
+          `
+
+          :
+
+          `
+          <div
+            class="cart-item-image">
+          </div>
+          `;
+
+
+        return `
+
+          <div class="cart-item">
+
+            ${imageHTML}
+
+            <div>
+
+              <div class="cart-item-name">
+
+                ${name}
+
+              </div>
+
+
+              <div class="cart-item-meta">
+
+                ${section}
+                ·
+                ${color}
+                ·
+                SIZE ${size}
+
+              </div>
+
+
+              <div class="cart-item-row">
+
+
+                <div class="quantity">
+
+                  <button
+                    type="button"
+                    data-action="minus"
+                    data-index="${index}">
+
+                    −
+
+                  </button>
+
+
+                  <span>
+
+                    ${quantity}
+
+                  </span>
+
+
+                  <button
+                    type="button"
+                    data-action="plus"
+                    data-index="${index}">
+
+                    +
+
+                  </button>
+
+                </div>
+
+
+                <div class="cart-item-price">
+
+                  ${formatPrice(
+                    price * quantity
+                  )}
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="remove-item"
+                type="button"
+                data-action="remove"
+                data-index="${index}">
+
+                REMOVE
+
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+/* CART BUTTON ACTIONS */
+
+cartItems.addEventListener(
+  "click",
+  function(event){
+
+    const button =
+      event.target.closest(
+        "[data-action]"
+      );
+
+
+    if(!button){
+      return;
+    }
+
+
+    const index =
+      Number(
+        button.dataset.index
+      );
+
+
+    const action =
+      button.dataset.action;
+
+
+    if(action === "plus"){
+
+      changeQuantity(
+        index,
+        1
+      );
+
+    }
+
+
+    if(action === "minus"){
+
+      changeQuantity(
+        index,
+        -1
+      );
+
+    }
+
+
+    if(action === "remove"){
+
+      removeItem(
+        index
+      );
+
+    }
+
+  }
+);
+
+
+/* OPEN / CLOSE */
+
+cartButton.addEventListener(
+  "click",
+  openCart
+);
+
+
+cartClose.addEventListener(
+  "click",
+  closeCart
+);
+
+
+cartOverlay.addEventListener(
+  "click",
+  closeCart
+);
+
+
+/* ESCAPE */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeCart();
+
+    }
+
+  }
+);
+
+
+/* CHECKOUT */
+
+checkoutButton.addEventListener(
+  "click",
+  function(){
+
+    alert(
+      "DEV Checkout will be connected later."
+    );
+
+  }
+);
+
+
+/* SYNC CART */
+
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(
+      event.key ===
+      DEV_CART_KEY
+    ){
+
+      renderDevCart();
+
+    }
+
+  }
+);
+
+
+/* START */
+
+renderDevCart();
+
+</script>
+
+</body>
+
+</html>
