@@ -195,7 +195,10 @@ nav{
   width:100%;
   aspect-ratio:4 / 5;
   overflow:hidden;
-  background:#efefed;
+  background:#f1f1ef;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .product-card-image img{
@@ -204,6 +207,8 @@ nav{
   position:absolute;
   inset:0;
   object-fit:contain;
+  object-position:center center;
+  padding:20px;
   transition:
     opacity .35s ease,
     transform .5s ease;
@@ -757,10 +762,6 @@ footer{
 </nav>
 
 
-<!-- ================================
-     HEADER
-================================ -->
-
 <section class="page-header">
 
   <div class="page-header-top">
@@ -783,10 +784,6 @@ footer{
 </section>
 
 
-<!-- ================================
-     COLLECTION BAR
-================================ -->
-
 <section class="collection-bar" id="products">
 
   <div class="collection-title">
@@ -800,14 +797,8 @@ footer{
 </section>
 
 
-<!-- ================================
-     PRODUCT GRID
-================================ -->
-
 <section class="product-grid">
 
-
-  <!-- CLOSE YOUR EYES -->
 
   <article
     class="product-card"
@@ -850,8 +841,6 @@ footer{
   </article>
 
 
-  <!-- YUJIRO JACK -->
-
   <article
     class="product-card"
     onclick="openProduct('yujiroJack')">
@@ -892,8 +881,6 @@ footer{
 
   </article>
 
-
-  <!-- YEAH BUDDY -->
 
   <article
     class="product-card"
@@ -936,8 +923,6 @@ footer{
   </article>
 
 
-  <!-- ORIGINAL GRAPHIC -->
-
   <article
     class="product-card"
     onclick="openProduct('originalGraphic')">
@@ -978,18 +963,12 @@ footer{
 </section>
 
 
-<!-- ================================
-     PRODUCT DETAILS
-================================ -->
-
 <section
   class="product-detail"
   id="productDetail">
 
   <div class="product-detail-inner">
 
-
-    <!-- PRODUCT MEDIA -->
 
     <section class="product-media">
 
@@ -1003,11 +982,6 @@ footer{
 
       </div>
 
-
-      <!-- IMPORTANT:
-           FRONT / BACK / MODEL
-           DIRECTLY UNDER IMAGE
-      -->
 
       <div class="view-selector">
 
@@ -1080,8 +1054,6 @@ footer{
     </section>
 
 
-    <!-- PRODUCT INFO -->
-
     <section class="product-info">
 
       <div class="collection-name">
@@ -1098,8 +1070,6 @@ footer{
         AED 75
       </div>
 
-
-      <!-- COLOR -->
 
       <div class="option-title">
 
@@ -1119,8 +1089,6 @@ footer{
         id="colorOptions">
       </div>
 
-
-      <!-- SIZE -->
 
       <div class="option-title">
 
@@ -1174,10 +1142,6 @@ footer{
 </section>
 
 
-<!-- ================================
-     FOOTER
-================================ -->
-
 <footer>
 
   <a
@@ -1223,13 +1187,7 @@ footer{
 
 <script>
 
-
-/* ================================
-   PRODUCTS
-================================ */
-
 const products = {
-
 
   closeEyes:{
 
@@ -1479,10 +1437,6 @@ const products = {
 };
 
 
-/* ================================
-   CURRENT PRODUCT
-================================ */
-
 let currentProduct = "closeEyes";
 
 let currentColor =
@@ -1492,10 +1446,6 @@ let currentView = "front";
 
 let selectedSize = null;
 
-
-/* ================================
-   OPEN PRODUCT
-================================ */
 
 function openProduct(productKey){
 
@@ -1554,10 +1504,6 @@ function openProduct(productKey){
 }
 
 
-/* ================================
-   RENDER PRODUCT
-================================ */
-
 function renderProduct(){
 
   const product =
@@ -1608,10 +1554,6 @@ function renderProduct(){
 
 }
 
-
-/* ================================
-   COLORS
-================================ */
 
 function renderColors(){
 
@@ -1710,10 +1652,6 @@ function renderColors(){
 }
 
 
-/* ================================
-   CHANGE COLOR
-================================ */
-
 function changeColor(color){
 
   currentColor =
@@ -1729,10 +1667,6 @@ function changeColor(color){
 
 }
 
-
-/* ================================
-   SIZES
-================================ */
 
 function renderSizes(){
 
@@ -1817,10 +1751,6 @@ function renderSizes(){
 }
 
 
-/* ================================
-   SELECT SIZE
-================================ */
-
 function selectSize(
   button,
   size
@@ -1866,10 +1796,6 @@ function selectSize(
 
 }
 
-
-/* ================================
-   VIEW
-================================ */
 
 function changeView(view){
 
@@ -1939,10 +1865,6 @@ function changeView(view){
 
 }
 
-
-/* ================================
-   UPDATE IMAGES
-================================ */
 
 function updateImages(){
 
@@ -2043,10 +1965,6 @@ function updateImages(){
 }
 
 
-/* ================================
-   MAIN IMAGE
-================================ */
-
 function updateMainImage(){
 
   const image =
@@ -2084,10 +2002,6 @@ function updateMainImage(){
 }
 
 
-/* ================================
-   ACTION BUTTON
-================================ */
-
 function updateActionButton(){
 
   const button =
@@ -2115,10 +2029,6 @@ function updateActionButton(){
 
 }
 
-
-/* ================================
-   ACTION
-================================ */
 
 function handleAction(){
 
@@ -2148,10 +2058,6 @@ function handleAction(){
 }
 
 
-/* ================================
-   BACK TO PRODUCTS
-================================ */
-
 function backToProducts(){
 
   document
@@ -2164,10 +2070,6 @@ function backToProducts(){
 
 }
 
-
-/* ================================
-   MOBILE MENU
-================================ */
 
 function toggleMenu(){
 
