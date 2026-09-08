@@ -38,11 +38,6 @@ button{
   font-family:inherit;
 }
 
-
-/* ================================
-   TOP BAR
-================================ */
-
 .top-bar{
   background:#fff;
   text-align:center;
@@ -51,11 +46,6 @@ button{
   letter-spacing:3px;
   font-weight:800;
 }
-
-
-/* ================================
-   NAV
-================================ */
 
 nav{
   background:#0c0c0c;
@@ -106,11 +96,6 @@ nav{
   cursor:pointer;
 }
 
-
-/* ================================
-   CART BUTTON
-================================ */
-
 .cart-button{
   position:relative;
   width:40px;
@@ -148,11 +133,6 @@ nav{
   display:flex;
 }
 
-
-/* ================================
-   PAGE HEADER
-================================ */
-
 .page-header{
   background:#111;
   color:#fff;
@@ -185,11 +165,6 @@ nav{
   line-height:1.7;
 }
 
-
-/* ================================
-   COLLECTION BAR
-================================ */
-
 .collection-bar{
   max-width:1400px;
   margin:auto;
@@ -213,11 +188,6 @@ nav{
   color:#777;
 }
 
-
-/* ================================
-   PRODUCT GRID
-================================ */
-
 .product-grid{
   max-width:1400px;
   margin:auto;
@@ -226,11 +196,6 @@ nav{
   grid-template-columns:repeat(3,1fr);
   gap:34px 12px;
 }
-
-
-/* ================================
-   PRODUCT CARD
-================================ */
 
 .product-card{
   cursor:pointer;
@@ -268,11 +233,6 @@ nav{
   object-position:center;
 }
 
-
-/* ================================
-   SWIPE LABEL
-================================ */
-
 .swipe-label{
   position:absolute;
   right:12px;
@@ -285,11 +245,6 @@ nav{
   font-weight:900;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   CARD ARROWS
-================================ */
 
 .card-arrow{
   position:absolute;
@@ -324,11 +279,6 @@ nav{
   right:10px;
 }
 
-
-/* ================================
-   DOTS
-================================ */
-
 .card-dots{
   position:absolute;
   left:50%;
@@ -352,11 +302,6 @@ nav{
 .card-dot.active{
   background:#111;
 }
-
-
-/* ================================
-   CARD INFO
-================================ */
 
 .product-card-info{
   padding:14px 3px 0;
@@ -382,11 +327,6 @@ nav{
   letter-spacing:1px;
 }
 
-
-/* ================================
-   PRODUCT DETAIL
-================================ */
-
 .product-detail{
   display:none;
   background:#fff;
@@ -407,11 +347,6 @@ nav{
   align-items:start;
 }
 
-
-/* ================================
-   MEDIA
-================================ */
-
 .product-media{
   width:100%;
 }
@@ -428,11 +363,6 @@ nav{
   object-fit:contain;
   background:#f5f5f3;
 }
-
-
-/* ================================
-   FRONT BACK MODEL
-================================ */
 
 .view-selector{
   display:grid;
@@ -462,11 +392,6 @@ nav{
   color:#fff;
 }
 
-
-/* ================================
-   THUMBNAILS
-================================ */
-
 .thumbnails{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -490,11 +415,6 @@ nav{
   object-fit:contain;
   display:block;
 }
-
-
-/* ================================
-   PRODUCT INFO
-================================ */
 
 .product-info{
   padding-top:5px;
@@ -531,11 +451,6 @@ nav{
   letter-spacing:1.5px;
 }
 
-
-/* ================================
-   COLORS
-================================ */
-
 .color-options{
   display:flex;
   gap:8px;
@@ -559,11 +474,6 @@ nav{
   border-color:#111;
 }
 
-
-/* ================================
-   SIZE
-================================ */
-
 .size-options{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -586,11 +496,6 @@ nav{
   border-color:#111;
 }
 
-
-/* ================================
-   SIZE ERROR
-================================ */
-
 .size-error{
   display:none;
   margin-top:-15px;
@@ -608,11 +513,6 @@ nav{
   display:block;
 }
 
-
-/* ================================
-   DESCRIPTION
-================================ */
-
 .description{
   border-top:1px solid #ddd;
   margin-top:8px;
@@ -621,11 +521,6 @@ nav{
   font-size:13px;
   line-height:1.8;
 }
-
-
-/* ================================
-   ADD TO BAG
-================================ */
 
 .add-to-bag{
   width:100%;
@@ -649,11 +544,6 @@ nav{
   background:#1d6d3c;
 }
 
-
-/* ================================
-   BACK BUTTON
-================================ */
-
 .back-products{
   width:100%;
   margin-top:10px;
@@ -665,11 +555,6 @@ nav{
   letter-spacing:2px;
   cursor:pointer;
 }
-
-
-/* ================================
-   FOOTER
-================================ */
 
 footer{
   background:#0c0c0c;
@@ -708,11 +593,6 @@ footer{
   font-size:9px;
   letter-spacing:1px;
 }
-
-
-/* ================================
-   CART
-================================ */
 
 .cart-overlay{
   position:fixed;
@@ -896,10 +776,12 @@ footer{
   color:#000;
   font-weight:900;
   letter-spacing:2px;
+  cursor:pointer;
 }
 
 .checkout-button:disabled{
   opacity:.35;
+  cursor:not-allowed;
 }
 
 .cart-note{
@@ -910,11 +792,6 @@ footer{
   line-height:1.6;
 }
 
-
-/* ================================
-   TABLET
-================================ */
-
 @media(max-width:1000px){
 
   .product-grid{
@@ -922,11 +799,6 @@ footer{
   }
 
 }
-
-
-/* ================================
-   MOBILE
-================================ */
 
 @media(max-width:850px){
 
@@ -980,11 +852,6 @@ footer{
 
 }
 
-
-/* ================================
-   PHONE
-================================ */
-
 @media(max-width:600px){
 
   .collection-bar{
@@ -1031,14 +898,11 @@ footer{
 </style>
 </head>
 
-
 <body>
-
 
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
-
 
 <nav>
 
@@ -1074,7 +938,6 @@ footer{
 
   </div>
 
-
   <div class="nav-right">
 
     <span class="nav-icon">
@@ -1084,7 +947,6 @@ footer{
     <span class="nav-icon">
       ♡
     </span>
-
 
     <button
       class="cart-button"
@@ -1101,7 +963,6 @@ footer{
 
     </button>
 
-
     <span
       class="menu-btn"
       onclick="toggleMenu()">
@@ -1111,9 +972,6 @@ footer{
   </div>
 
 </nav>
-
-
-<!-- HEADER -->
 
 <section class="page-header">
 
@@ -1136,9 +994,6 @@ footer{
 
 </section>
 
-
-<!-- COLLECTION BAR -->
-
 <section
   class="collection-bar"
   id="products">
@@ -1153,13 +1008,7 @@ footer{
 
 </section>
 
-
-<!-- PRODUCT GRID -->
-
 <section class="product-grid">
-
-
-  <!-- LIGHT GREY -->
 
   <article class="product-card">
 
@@ -1181,7 +1030,6 @@ footer{
 
         </div>
 
-
         <div class="card-slide">
 
           <img
@@ -1189,7 +1037,6 @@ footer{
             alt="DEV Baggy Pants Light Grey Back">
 
         </div>
-
 
         <div class="card-slide">
 
@@ -1200,7 +1047,6 @@ footer{
         </div>
 
       </div>
-
 
       <button
         class="card-arrow left"
@@ -1213,7 +1059,6 @@ footer{
         onclick="cardNext(event,'light-grey')">
         ›
       </button>
-
 
       <div class="card-dots">
 
@@ -1236,7 +1081,6 @@ footer{
 
     </div>
 
-
     <div
       class="product-card-info"
       onclick="openProduct('light-grey')">
@@ -1256,9 +1100,6 @@ footer{
     </div>
 
   </article>
-
-
-  <!-- BLACK -->
 
   <article class="product-card">
 
@@ -1280,7 +1121,6 @@ footer{
 
         </div>
 
-
         <div class="card-slide">
 
           <img
@@ -1288,7 +1128,6 @@ footer{
             alt="DEV Baggy Pants Black Back">
 
         </div>
-
 
         <div class="card-slide">
 
@@ -1299,7 +1138,6 @@ footer{
         </div>
 
       </div>
-
 
       <button
         class="card-arrow left"
@@ -1312,7 +1150,6 @@ footer{
         onclick="cardNext(event,'black')">
         ›
       </button>
-
 
       <div class="card-dots">
 
@@ -1335,7 +1172,6 @@ footer{
 
     </div>
 
-
     <div
       class="product-card-info"
       onclick="openProduct('black')">
@@ -1356,18 +1192,13 @@ footer{
 
   </article>
 
-
 </section>
-
-
-<!-- PRODUCT DETAILS -->
 
 <section
   class="product-detail"
   id="productDetail">
 
   <div class="product-detail-inner">
-
 
     <section class="product-media">
 
@@ -1380,7 +1211,6 @@ footer{
           alt="DEV Baggy Pants">
 
       </div>
-
 
       <div class="view-selector">
 
@@ -1407,7 +1237,6 @@ footer{
 
       </div>
 
-
       <div class="thumbnails">
 
         <div
@@ -1422,7 +1251,6 @@ footer{
 
         </div>
 
-
         <div
           class="thumb"
           data-view="back"
@@ -1434,7 +1262,6 @@ footer{
             alt="Back">
 
         </div>
-
 
         <div
           class="thumb"
@@ -1452,7 +1279,6 @@ footer{
 
     </section>
 
-
     <section class="product-info">
 
       <div class="collection-name">
@@ -1467,7 +1293,6 @@ footer{
         AED 90
       </div>
 
-
       <div class="option-title">
 
         <span>
@@ -1479,7 +1304,6 @@ footer{
         </span>
 
       </div>
-
 
       <div class="color-options">
 
@@ -1499,7 +1323,6 @@ footer{
 
       </div>
 
-
       <div class="option-title">
 
         <span>
@@ -1511,7 +1334,6 @@ footer{
         </span>
 
       </div>
-
 
       <div class="size-options">
 
@@ -1529,19 +1351,16 @@ footer{
 
       </div>
 
-
       <div
         class="size-error"
         id="sizeError">
         PLEASE SELECT A SIZE FIRST.
       </div>
 
-
       <div class="description">
         Wide oversized fit designed for comfort and unrestricted movement.
         Built for the gym, lifestyle and everyday wear.
       </div>
-
 
       <button
         class="add-to-bag"
@@ -1550,7 +1369,6 @@ footer{
         onclick="addToBag()">
         ADD TO BAG
       </button>
-
 
       <button
         class="back-products"
@@ -1564,9 +1382,6 @@ footer{
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
 
   <a
@@ -1574,7 +1389,6 @@ footer{
     class="footer-logo">
     DEV
   </a>
-
 
   <div class="footer-links">
 
@@ -1604,26 +1418,20 @@ footer{
 
   </div>
 
-
   <div class="footer-bottom">
-    © 2026 DEV. BUILT DIFFERENT.
+    ©️ 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
-
-
-<!-- SHARED CART -->
 
 <div
   class="cart-overlay"
   id="cartOverlay">
 </div>
 
-
 <aside
   class="cart-drawer"
   id="cartDrawer">
-
 
   <div class="cart-header">
 
@@ -1640,12 +1448,10 @@ footer{
 
   </div>
 
-
   <div
     class="cart-items"
     id="cartItems">
   </div>
-
 
   <div class="cart-footer">
 
@@ -1661,7 +1467,6 @@ footer{
 
     </div>
 
-
     <button
       class="checkout-button"
       id="checkoutButton"
@@ -1669,7 +1474,6 @@ footer{
       disabled>
       CHECKOUT
     </button>
-
 
     <div class="cart-note">
       MEN + WOMEN ITEMS STAY TOGETHER
@@ -1680,13 +1484,7 @@ footer{
 
 </aside>
 
-
 <script>
-
-
-/* ================================
-   IMAGES
-================================ */
 
 const productImages = {
 
@@ -1708,7 +1506,6 @@ const productImages = {
 
   },
 
-
   black:{
 
     label:"BLACK",
@@ -1729,11 +1526,6 @@ const productImages = {
 
 };
 
-
-/* ================================
-   CURRENT STATE
-================================ */
-
 let currentColor =
   "light-grey";
 
@@ -1743,11 +1535,6 @@ let currentView =
 let selectedSize =
   null;
 
-
-/* ================================
-   CARD STATE
-================================ */
-
 const cardState = {
 
   "light-grey":0,
@@ -1756,11 +1543,6 @@ const cardState = {
 
 };
 
-
-/* ================================
-   UPDATE CARD
-================================ */
-
 function updateCard(color){
 
   const card =
@@ -1768,27 +1550,22 @@ function updateCard(color){
       `[data-card="${color}"]`
     );
 
-
   if(!card){
     return;
   }
-
 
   const track =
     card.querySelector(
       ".card-track"
     );
 
-
   const dots =
     card.querySelectorAll(
       ".card-dot"
     );
 
-
   track.style.transform =
     `translateX(-${cardState[color] * 100}%)`;
-
 
   dots.forEach(
     function(dot,index){
@@ -1803,11 +1580,6 @@ function updateCard(color){
 
 }
 
-
-/* ================================
-   NEXT
-================================ */
-
 function cardNext(event,color){
 
   event.stopPropagation();
@@ -1819,11 +1591,6 @@ function cardNext(event,color){
 
 }
 
-
-/* ================================
-   PREVIOUS
-================================ */
-
 function cardPrev(event,color){
 
   event.stopPropagation();
@@ -1834,11 +1601,6 @@ function cardPrev(event,color){
   updateCard(color);
 
 }
-
-
-/* ================================
-   DOT
-================================ */
 
 function cardGoTo(
   event,
@@ -1855,11 +1617,6 @@ function cardGoTo(
 
 }
 
-
-/* ================================
-   TOUCH SWIPE
-================================ */
-
 document
 .querySelectorAll(
   ".product-card-image"
@@ -1870,13 +1627,11 @@ document
     const color =
       card.dataset.card;
 
-
     let startX = 0;
 
     let startY = 0;
 
     let moved = false;
-
 
     card.addEventListener(
       "touchstart",
@@ -1900,7 +1655,6 @@ document
       }
     );
 
-
     card.addEventListener(
       "touchmove",
       function(event){
@@ -1908,16 +1662,13 @@ document
         const touch =
           event.touches[0];
 
-
         const diffX =
           touch.clientX -
           startX;
 
-
         const diffY =
           touch.clientY -
           startY;
-
 
         if(
           Math.abs(diffX) >
@@ -1935,7 +1686,6 @@ document
       }
     );
 
-
     card.addEventListener(
       "touchend",
       function(event){
@@ -1946,16 +1696,13 @@ document
           return;
         }
 
-
         const endX =
           event.changedTouches[0]
           .clientX;
 
-
         const diffX =
           endX -
           startX;
-
 
         if(
           Math.abs(diffX) > 45
@@ -1974,7 +1721,6 @@ document
               (cardState[color] + 2) % 3;
 
           }
-
 
           updateCard(
             color
@@ -1997,11 +1743,6 @@ document
   }
 );
 
-
-/* ================================
-   DESKTOP CLICK
-================================ */
-
 document
 .querySelectorAll(
   ".product-card-image"
@@ -2021,7 +1762,6 @@ document
           return;
         }
 
-
         if(
           event.target.closest(
             ".card-dot"
@@ -2030,13 +1770,11 @@ document
           return;
         }
 
-
         if(
           "ontouchstart" in window
         ){
           return;
         }
-
 
         openProduct(
           card.dataset.card
@@ -2047,11 +1785,6 @@ document
 
   }
 );
-
-
-/* ================================
-   OPEN PRODUCT
-================================ */
 
 function openProduct(color){
 
@@ -2064,14 +1797,12 @@ function openProduct(color){
   selectedSize =
     null;
 
-
   document
   .getElementById(
     "selectedSize"
   )
   .textContent =
     "SELECT SIZE";
-
 
   document
   .querySelectorAll(
@@ -2089,7 +1820,6 @@ function openProduct(color){
     }
   );
 
-
   document
   .getElementById(
     "sizeError"
@@ -2099,11 +1829,9 @@ function openProduct(color){
     "active"
   );
 
-
   renderColor();
 
   updateImages();
-
 
   const detail =
     document
@@ -2111,13 +1839,11 @@ function openProduct(color){
       "productDetail"
     );
 
-
   detail
   .classList
   .add(
     "active"
   );
-
 
   setTimeout(
     function(){
@@ -2134,11 +1860,6 @@ function openProduct(color){
 
 }
 
-
-/* ================================
-   CHANGE COLOR
-================================ */
-
 function changeColor(color){
 
   currentColor =
@@ -2150,14 +1871,12 @@ function changeColor(color){
   selectedSize =
     null;
 
-
   document
   .getElementById(
     "selectedSize"
   )
   .textContent =
     "SELECT SIZE";
-
 
   document
   .querySelectorAll(
@@ -2175,7 +1894,6 @@ function changeColor(color){
     }
   );
 
-
   document
   .getElementById(
     "sizeError"
@@ -2185,17 +1903,11 @@ function changeColor(color){
     "active"
   );
 
-
   renderColor();
 
   updateImages();
 
 }
-
-
-/* ================================
-   RENDER COLOR
-================================ */
 
 function renderColor(){
 
@@ -2217,7 +1929,6 @@ function renderColor(){
     }
   );
 
-
   document
   .getElementById(
     "selectedColor"
@@ -2230,16 +1941,10 @@ function renderColor(){
 
 }
 
-
-/* ================================
-   CHANGE VIEW
-================================ */
-
 function changeView(view){
 
   currentView =
     view;
-
 
   document
   .querySelectorAll(
@@ -2259,7 +1964,6 @@ function changeView(view){
     }
   );
 
-
   document
   .querySelectorAll(
     ".thumb"
@@ -2278,15 +1982,9 @@ function changeView(view){
     }
   );
 
-
   updateMainImage();
 
 }
-
-
-/* ================================
-   UPDATE IMAGES
-================================ */
 
 function updateImages(){
 
@@ -2295,14 +1993,12 @@ function updateImages(){
       currentColor
     ];
 
-
   document
   .getElementById(
     "thumbFront"
   )
   .src =
     images.front;
-
 
   document
   .getElementById(
@@ -2311,7 +2007,6 @@ function updateImages(){
   .src =
     images.back;
 
-
   document
   .getElementById(
     "thumbModel"
@@ -2319,17 +2014,11 @@ function updateImages(){
   .src =
     images.model;
 
-
   changeView(
     "front"
   );
 
 }
-
-
-/* ================================
-   MAIN IMAGE
-================================ */
 
 function updateMainImage(){
 
@@ -2346,11 +2035,6 @@ function updateMainImage(){
 
 }
 
-
-/* ================================
-   SIZE
-================================ */
-
 function selectSize(
   button,
   size
@@ -2358,7 +2042,6 @@ function selectSize(
 
   selectedSize =
     size;
-
 
   document
   .querySelectorAll(
@@ -2376,13 +2059,11 @@ function selectSize(
     }
   );
 
-
   button
   .classList
   .add(
     "active"
   );
-
 
   document
   .getElementById(
@@ -2390,7 +2071,6 @@ function selectSize(
   )
   .textContent =
     size;
-
 
   document
   .getElementById(
@@ -2403,14 +2083,8 @@ function selectSize(
 
 }
 
-
-/* ================================
-   SHARED CART
-================================ */
-
 const DEV_CART_KEY =
   "dev_cart_v1";
-
 
 function getCart(){
 
@@ -2423,13 +2097,11 @@ function getCart(){
         )
       );
 
-
     return Array.isArray(data)
       ?
       data
       :
       [];
-
 
   }catch(error){
 
@@ -2439,7 +2111,6 @@ function getCart(){
 
 }
 
-
 function saveCart(cart){
 
   localStorage.setItem(
@@ -2447,17 +2118,14 @@ function saveCart(cart){
     JSON.stringify(cart)
   );
 
-
   renderCart();
 
 }
-
 
 function formatPrice(price){
 
   const value =
     Number(price) || 0;
-
 
   return "AED " +
     value.toFixed(
@@ -2469,11 +2137,6 @@ function formatPrice(price){
     );
 
 }
-
-
-/* ================================
-   ADD TO BAG
-================================ */
 
 function addToBag(){
 
@@ -2494,23 +2157,19 @@ function addToBag(){
 
   }
 
-
   const product =
     productImages[
       currentColor
     ];
 
-
   const cart =
     getCart();
-
 
   const id =
     "dev-oversized-baggy-pants-" +
     currentColor +
     "-" +
     selectedSize;
-
 
   const existingIndex =
     cart.findIndex(
@@ -2520,7 +2179,6 @@ function addToBag(){
 
       }
     );
-
 
   if(
     existingIndex !== -1
@@ -2572,11 +2230,9 @@ function addToBag(){
 
   }
 
-
   saveCart(
     cart
   );
-
 
   const button =
     document
@@ -2584,10 +2240,8 @@ function addToBag(){
       "addToBagButton"
     );
 
-
   button.textContent =
     "ADDED TO BAG ✓";
-
 
   button
   .classList
@@ -2595,20 +2249,17 @@ function addToBag(){
     "added"
   );
 
-
   setTimeout(
     function(){
 
       button.textContent =
         "ADD TO BAG";
 
-
       button
       .classList
       .remove(
         "added"
       );
-
 
       openCart();
 
@@ -2617,11 +2268,6 @@ function addToBag(){
   );
 
 }
-
-
-/* ================================
-   CART ELEMENTS
-================================ */
 
 const cartButton =
   document.getElementById(
@@ -2663,15 +2309,9 @@ const checkoutButton =
     "checkoutButton"
   );
 
-
-/* ================================
-   OPEN CART
-================================ */
-
 function openCart(){
 
   renderCart();
-
 
   cartDrawer
   .classList
@@ -2679,13 +2319,11 @@ function openCart(){
     "active"
   );
 
-
   cartOverlay
   .classList
   .add(
     "active"
   );
-
 
   document.body
   .classList
@@ -2694,11 +2332,6 @@ function openCart(){
   );
 
 }
-
-
-/* ================================
-   CLOSE CART
-================================ */
 
 function closeCart(){
 
@@ -2708,13 +2341,11 @@ function closeCart(){
     "active"
   );
 
-
   cartOverlay
   .classList
   .remove(
     "active"
   );
-
 
   document.body
   .classList
@@ -2724,11 +2355,6 @@ function closeCart(){
 
 }
 
-
-/* ================================
-   QUANTITY
-================================ */
-
 function changeQuantity(
   index,
   amount
@@ -2737,13 +2363,11 @@ function changeQuantity(
   const cart =
     getCart();
 
-
   if(
     !cart[index]
   ){
     return;
   }
-
 
   const current =
     Number(
@@ -2751,11 +2375,9 @@ function changeQuantity(
       .quantity || 1
     );
 
-
   const next =
     current +
     amount;
-
 
   if(
     next <= 0
@@ -2775,29 +2397,21 @@ function changeQuantity(
 
   }
 
-
   saveCart(
     cart
   );
 
 }
-
-
-/* ================================
-   REMOVE
-================================ */
 
 function removeItem(index){
 
   const cart =
     getCart();
 
-
   cart.splice(
     index,
     1
   );
-
 
   saveCart(
     cart
@@ -2805,16 +2419,10 @@ function removeItem(index){
 
 }
 
-
-/* ================================
-   RENDER CART
-================================ */
-
 function renderCart(){
 
   const cart =
     getCart();
-
 
   const totalQuantity =
     cart.reduce(
@@ -2828,7 +2436,6 @@ function renderCart(){
       },
       0
     );
-
 
   const subtotal =
     cart.reduce(
@@ -2849,10 +2456,8 @@ function renderCart(){
       0
     );
 
-
   cartCount.textContent =
     totalQuantity;
-
 
   cartCount
   .classList
@@ -2861,16 +2466,13 @@ function renderCart(){
     totalQuantity > 0
   );
 
-
   cartSubtotal.textContent =
     formatPrice(
       subtotal
     );
 
-
   checkoutButton.disabled =
     cart.length === 0;
-
 
   if(
     cart.length === 0
@@ -2895,11 +2497,9 @@ function renderCart(){
 
     `;
 
-
     return;
 
   }
-
 
   cartItems.innerHTML =
     cart.map(
@@ -2909,38 +2509,31 @@ function renderCart(){
           item.name ||
           "DEV PRODUCT";
 
-
         const section =
           item.section ||
           "DEV";
-
 
         const color =
           item.color ||
           "—";
 
-
         const size =
           item.size ||
           "—";
-
 
         const quantity =
           Number(
             item.quantity || 1
           );
 
-
         const price =
           Number(
             item.price || 0
           );
 
-
         const image =
           item.image ||
           "";
-
 
         return `
 
@@ -3036,11 +2629,6 @@ function renderCart(){
 
 }
 
-
-/* ================================
-   CART ACTIONS
-================================ */
-
 cartItems
 .addEventListener(
   "click",
@@ -3051,23 +2639,19 @@ cartItems
         "[data-action]"
       );
 
-
     if(
       !button
     ){
       return;
     }
 
-
     const index =
       Number(
         button.dataset.index
       );
 
-
     const action =
       button.dataset.action;
-
 
     if(
       action === "plus"
@@ -3080,7 +2664,6 @@ cartItems
 
     }
 
-
     if(
       action === "minus"
     ){
@@ -3091,7 +2674,6 @@ cartItems
       );
 
     }
-
 
     if(
       action === "remove"
@@ -3106,13 +2688,11 @@ cartItems
   }
 );
 
-
 cartButton
 .addEventListener(
   "click",
   openCart
 );
-
 
 cartClose
 .addEventListener(
@@ -3120,13 +2700,11 @@ cartClose
   closeCart
 );
 
-
 cartOverlay
 .addEventListener(
   "click",
   closeCart
 );
-
 
 document
 .addEventListener(
@@ -3155,9 +2733,17 @@ checkoutButton
   "click",
   function(){
 
-    alert(
-      "DEV Checkout will be connected later."
-    );
+    const cart =
+      getCart();
+
+    if(
+      cart.length === 0
+    ){
+      return;
+    }
+
+    window.location.href =
+      "/DEV-Website/checkout/";
 
   }
 );
@@ -3184,11 +2770,6 @@ window
   }
 );
 
-
-/* ================================
-   BACK
-================================ */
-
 function backToProducts(){
 
   document
@@ -3200,11 +2781,6 @@ function backToProducts(){
   });
 
 }
-
-
-/* ================================
-   MENU
-================================ */
 
 function toggleMenu(){
 
@@ -3219,15 +2795,9 @@ function toggleMenu(){
 
 }
 
-
-/* ================================
-   START
-================================ */
-
 renderCart();
 
 </script>
-
 
 </body>
 </html>
