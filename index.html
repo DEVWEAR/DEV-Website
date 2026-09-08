@@ -378,10 +378,11 @@ nav{
 
 
 /* ================================
-   COMING SOON CARD
+   STATUS LABELS
 ================================ */
 
-.coming-label{
+.coming-label,
+.new-label{
   position:absolute;
   top:22px;
   right:22px;
@@ -392,6 +393,12 @@ nav{
   font-size:9px;
   font-weight:bold;
   letter-spacing:2px;
+}
+
+.new-label{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
 }
 
 
@@ -690,8 +697,8 @@ footer{
       <input
         id="desktopSearch"
         type="search"
-        placeholder="Search products..."
-        aria-label="Search products"
+        placeholder="Search collections..."
+        aria-label="Search collections"
       >
 
       <span class="search-icon">
@@ -735,7 +742,7 @@ footer{
     id="mobileSearch"
     type="search"
     placeholder="Search T-Shirts, Polo, Shorts..."
-    aria-label="Search products"
+    aria-label="Search collections"
   >
 
 </div>
@@ -802,12 +809,16 @@ footer{
     <a
       href="tshirts/"
       class="collection-card"
-      data-search="t-shirts tshirts t shirts tee tees">
+      data-search="t-shirts tshirts t shirts tee tees close your eyes yujiro jack hanma yeah buddy ronnie coleman">
 
       <img
         src="t-shirts.jpeg"
         alt="DEV T-Shirts"
       >
+
+      <div class="new-label">
+        NEW DROP
+      </div>
 
       <div class="card-label">
 
@@ -853,17 +864,18 @@ footer{
 
     <!-- SHORTS -->
 
-    <div
+    <a
+      href="shorts/"
       class="collection-card"
-      data-search="shorts gym shorts training shorts">
+      data-search="shorts gym shorts training shorts dev training shorts">
 
       <img
         src="shorts.jpeg"
         alt="DEV Shorts"
       >
 
-      <div class="coming-label">
-        COMING SOON
+      <div class="new-label">
+        NEW
       </div>
 
       <div class="card-label">
@@ -878,7 +890,7 @@ footer{
 
       </div>
 
-    </div>
+    </a>
 
 
     <!-- BAGGY PANTS -->
@@ -1032,6 +1044,10 @@ footer{
         POLO
       </a>
 
+      <a href="shorts/">
+        SHORTS
+      </a>
+
       <a href="#collections">
         SHOP
       </a>
@@ -1042,7 +1058,7 @@ footer{
 
 
   <div class="copyright">
-    ©️ 2026 DEV. ALL RIGHTS RESERVED.
+    © 2026 DEV. ALL RIGHTS RESERVED.
   </div>
 
 </footer>
