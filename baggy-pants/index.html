@@ -8,15 +8,20 @@
 <title>DEV Baggy Pants | Built Different</title>
 
 <style>
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Arial, Helvetica, sans-serif;
-  background:#f5f5f3;
+  background:#f7f7f5;
   color:#111;
 }
 
@@ -25,17 +30,29 @@ a{
   color:inherit;
 }
 
-/* TOP BAR */
+button{
+  font-family:inherit;
+}
+
+
+/* ================================
+   TOP BAR
+================================ */
+
 .top-bar{
   background:#fff;
   text-align:center;
   padding:9px 15px;
-  font-size:11px;
+  font-size:10px;
   letter-spacing:3px;
-  font-weight:700;
+  font-weight:800;
 }
 
-/* NAV */
+
+/* ================================
+   NAV
+================================ */
+
 nav{
   background:#0c0c0c;
   color:#fff;
@@ -47,15 +64,15 @@ nav{
 }
 
 .logo{
-  font-size:25px;
+  font-size:26px;
   font-weight:900;
-  letter-spacing:4px;
+  letter-spacing:5px;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:25px;
+  gap:26px;
 }
 
 .nav-links a{
@@ -85,46 +102,271 @@ nav{
   cursor:pointer;
 }
 
-/* PAGE HEADER */
+
+/* ================================
+   PAGE HEADER
+================================ */
+
 .page-header{
   background:#111;
   color:#fff;
-  padding:38px 5% 34px;
-  border-top:1px solid #292929;
+  padding:48px 5% 42px;
+  border-top:1px solid #262626;
+}
+
+.page-header-top{
+  max-width:1400px;
+  margin:auto;
 }
 
 .eyebrow{
-  font-size:10px;
+  font-size:9px;
   letter-spacing:3px;
-  font-weight:700;
-  color:#a8a8a8;
-  margin-bottom:9px;
+  color:#999;
+  font-weight:800;
+  margin-bottom:10px;
 }
 
 .page-header h1{
-  font-size:38px;
+  font-size:clamp(34px,5vw,58px);
   letter-spacing:2px;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .page-header p{
-  font-size:13px;
   color:#aaa;
-  line-height:1.6;
+  font-size:13px;
+  line-height:1.7;
 }
 
-/* PRODUCT */
-.product{
+
+/* ================================
+   COLLECTION BAR
+================================ */
+
+.collection-bar{
+  max-width:1400px;
+  margin:auto;
+  padding:25px 4% 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.collection-title{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.collection-count{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:#777;
+}
+
+
+/* ================================
+   PRODUCT GRID
+================================ */
+
+.product-grid{
+  max-width:1400px;
+  margin:auto;
+  padding:10px 4% 90px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:34px 12px;
+}
+
+
+/* ================================
+   PRODUCT CARD
+================================ */
+
+.product-card{
+  cursor:pointer;
+  min-width:0;
+}
+
+.product-card-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:4 / 5;
+  overflow:hidden;
+  background:#f1f1ef;
+  user-select:none;
+  touch-action:pan-y;
+}
+
+.card-track{
+  display:flex;
+  width:100%;
+  height:100%;
+  transition:transform .35s ease;
+}
+
+.card-slide{
+  flex:0 0 100%;
+  width:100%;
+  height:100%;
+}
+
+.card-slide img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+}
+
+
+/* ================================
+   SWIPE LABEL
+================================ */
+
+.swipe-label{
+  position:absolute;
+  right:12px;
+  top:12px;
+  z-index:7;
+  background:rgba(255,255,255,.92);
+  color:#111;
+  padding:7px 9px;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+
+/* ================================
+   CARD ARROWS
+================================ */
+
+.card-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  color:#111;
+  font-size:19px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:8;
+  opacity:0;
+  transition:opacity .25s ease;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.product-card-image:hover .card-arrow{
+  opacity:1;
+}
+
+.card-arrow.left{
+  left:10px;
+}
+
+.card-arrow.right{
+  right:10px;
+}
+
+
+/* ================================
+   DOTS
+================================ */
+
+.card-dots{
+  position:absolute;
+  left:50%;
+  bottom:13px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:7px;
+  z-index:8;
+}
+
+.card-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  border:none;
+  background:rgba(17,17,17,.25);
+  padding:0;
+  cursor:pointer;
+}
+
+.card-dot.active{
+  background:#111;
+}
+
+
+/* ================================
+   CARD INFO
+================================ */
+
+.product-card-info{
+  padding:14px 3px 0;
+}
+
+.product-card-name{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.4px;
+  line-height:1.4;
+}
+
+.product-card-price{
+  margin-top:7px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.product-card-color{
+  margin-top:6px;
+  color:#777;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+
+/* ================================
+   PRODUCT DETAIL
+================================ */
+
+.product-detail{
+  display:none;
+  background:#fff;
+  border-top:1px solid #ddd;
+}
+
+.product-detail.active{
+  display:block;
+}
+
+.product-detail-inner{
   max-width:1250px;
   margin:auto;
-  padding:55px 5%;
+  padding:65px 5% 80px;
   display:grid;
   grid-template-columns:1.1fr .9fr;
   gap:65px;
   align-items:start;
 }
 
-/* IMAGE */
+
+/* ================================
+   MEDIA
+================================ */
+
 .product-media{
   width:100%;
 }
@@ -135,30 +377,34 @@ nav{
 }
 
 .main-image{
-  width:100%;
   display:block;
+  width:100%;
   aspect-ratio:4 / 5;
   object-fit:contain;
   background:#f5f5f3;
 }
 
-/* VIEW SELECTOR */
+
+/* ================================
+   FRONT BACK MODEL
+================================ */
+
 .view-selector{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  border:1px solid #d2d2cf;
+  border:1px solid #d0d0cd;
   border-top:none;
   background:#fff;
 }
 
 .view-btn{
   border:none;
-  border-right:1px solid #d2d2cf;
+  border-right:1px solid #d0d0cd;
   background:#fff;
   padding:15px 5px;
   font-size:10px;
   letter-spacing:2px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 
@@ -171,19 +417,22 @@ nav{
   color:#fff;
 }
 
-/* THUMBNAILS */
+
+/* ================================
+   THUMBNAILS
+================================ */
+
 .thumbnails{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
-  margin-top:10px;
+  margin-top:9px;
 }
 
 .thumb{
   border:1px solid transparent;
   background:#f5f5f3;
   cursor:pointer;
-  overflow:hidden;
 }
 
 .thumb.active{
@@ -195,60 +444,67 @@ nav{
   height:125px;
   object-fit:contain;
   display:block;
-  background:#f5f5f3;
 }
 
-/* PRODUCT INFO */
+
+/* ================================
+   PRODUCT INFO
+================================ */
+
 .product-info{
-  padding-top:8px;
+  padding-top:5px;
 }
 
 .collection-name{
-  font-size:10px;
-  letter-spacing:3px;
   color:#777;
-  font-weight:700;
-  margin-bottom:13px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
+  margin-bottom:14px;
 }
 
 .product-info h2{
-  font-size:34px;
+  font-size:clamp(30px,4vw,44px);
   line-height:1.05;
-  letter-spacing:1px;
-  margin-bottom:15px;
+  letter-spacing:.5px;
+  margin-bottom:16px;
 }
 
 .price{
   font-size:20px;
-  font-weight:800;
-  margin-bottom:32px;
+  font-weight:900;
+  margin-bottom:34px;
 }
 
 .option-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  font-size:11px;
-  letter-spacing:1.5px;
-  font-weight:800;
   margin-bottom:12px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
 }
 
-/* COLORS */
+
+/* ================================
+   COLORS
+================================ */
+
 .color-options{
   display:flex;
-  gap:10px;
-  margin-bottom:30px;
+  gap:8px;
   flex-wrap:wrap;
+  margin-bottom:30px;
 }
 
 .color-btn{
-  border:1px solid #bbb;
   background:#fff;
+  border:1px solid #aaa;
   padding:12px 18px;
   font-size:10px;
+  font-weight:800;
   letter-spacing:1px;
-  font-weight:700;
   cursor:pointer;
 }
 
@@ -258,21 +514,24 @@ nav{
   border-color:#111;
 }
 
-/* SIZES */
+
+/* ================================
+   SIZE
+================================ */
+
 .size-options{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:8px;
-  margin-bottom:32px;
+  margin-bottom:28px;
 }
 
 .size-btn{
-  border:1px solid #bbb;
+  min-height:53px;
+  border:1px solid #aaa;
   background:#fff;
-  padding:14px;
   font-size:11px;
-  letter-spacing:1px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 
@@ -282,42 +541,71 @@ nav{
   border-color:#111;
 }
 
-/* DESCRIPTION */
+
+/* ================================
+   DESCRIPTION
+================================ */
+
 .description{
-  border-top:1px solid #d0d0cd;
-  padding-top:23px;
-  margin-top:5px;
+  border-top:1px solid #ddd;
+  margin-top:8px;
+  padding-top:22px;
+  color:#555;
   font-size:13px;
   line-height:1.8;
-  color:#555;
 }
 
-/* COMING SOON */
+
+/* ================================
+   COMING SOON
+================================ */
+
 .coming-soon{
   width:100%;
-  margin-top:28px;
+  border:none;
   background:#111;
   color:#fff;
-  border:none;
+  margin-top:22px;
   padding:18px;
   font-size:11px;
+  font-weight:900;
   letter-spacing:3px;
-  font-weight:800;
   cursor:default;
 }
 
-/* FOOTER */
+
+/* ================================
+   BACK BUTTON
+================================ */
+
+.back-products{
+  width:100%;
+  margin-top:10px;
+  border:1px solid #bbb;
+  background:#fff;
+  padding:15px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
 footer{
   background:#0c0c0c;
   color:#fff;
-  padding:45px 5%;
-  margin-top:30px;
+  padding:50px 5%;
 }
 
 .footer-logo{
-  font-size:25px;
+  display:block;
+  font-size:26px;
   font-weight:900;
-  letter-spacing:4px;
+  letter-spacing:5px;
   margin-bottom:20px;
 }
 
@@ -330,19 +618,35 @@ footer{
 .footer-links a{
   color:#aaa;
   font-size:11px;
-  letter-spacing:1px;
 }
 
 .footer-bottom{
+  border-top:1px solid #292929;
   margin-top:30px;
   padding-top:20px;
-  border-top:1px solid #292929;
-  font-size:10px;
   color:#666;
+  font-size:9px;
   letter-spacing:1px;
 }
 
-/* MOBILE */
+
+/* ================================
+   TABLET
+================================ */
+
+@media(max-width:1000px){
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
 @media(max-width:850px){
 
   nav{
@@ -372,38 +676,89 @@ footer{
   }
 
   .page-header{
-    padding:30px 5%;
+    padding:35px 5%;
   }
 
-  .page-header h1{
-    font-size:29px;
-  }
-
-  .product{
+  .product-detail-inner{
     grid-template-columns:1fr;
-    padding:28px 4% 45px;
+    padding:30px 4% 55px;
     gap:35px;
   }
 
   .product-info h2{
-    font-size:28px;
+    font-size:30px;
   }
 
   .thumb img{
     height:100px;
   }
+
+  .card-arrow{
+    display:none;
+  }
+
 }
+
+
+/* ================================
+   PHONE
+================================ */
+
+@media(max-width:600px){
+
+  .collection-bar{
+    padding:20px 3% 12px;
+  }
+
+  .product-grid{
+    padding:5px 3% 60px;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px 7px;
+  }
+
+  .product-card-name{
+    font-size:10px;
+  }
+
+  .product-card-price{
+    font-size:10px;
+  }
+
+  .product-card-color{
+    font-size:8px;
+  }
+
+  .swipe-label{
+    font-size:6px;
+    padding:6px 7px;
+    top:7px;
+    right:7px;
+  }
+
+  .card-dots{
+    bottom:8px;
+    gap:5px;
+  }
+
+  .card-dot{
+    width:6px;
+    height:6px;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- TOP BAR -->
+
 <div class="top-bar">
   DEV — BUILT DIFFERENT
 </div>
 
-<!-- NAVIGATION -->
+
 <nav>
 
   <a href="../index.html" class="logo">
@@ -411,224 +766,565 @@ footer{
   </a>
 
   <div class="nav-links" id="navLinks">
-    <a href="../tshirts/">T-SHIRTS</a>
-    <a href="../polo/">POLO</a>
-    <a href="#">SHORTS</a>
-    <a href="#shop">BAGGY PANTS</a>
-    <a href="#">HOODIES</a>
-    <a href="#">SWEATERS</a>
+
+    <a href="../tshirts/">
+      T-SHIRTS
+    </a>
+
+    <a href="../polo/">
+      POLO
+    </a>
+
+    <a href="../shorts/">
+      SHORTS
+    </a>
+
+    <a href="#products">
+      BAGGY PANTS
+    </a>
+
+    <a href="#">
+      HOODIES
+    </a>
+
+    <a href="#">
+      SWEATERS
+    </a>
+
   </div>
 
+
   <div class="nav-right">
-    <span class="nav-icon">⌕</span>
-    <span class="nav-icon">♡</span>
-    <span class="menu-btn" onclick="toggleMenu()">☰</span>
+
+    <span class="nav-icon">
+      ⌕
+    </span>
+
+    <span class="nav-icon">
+      ♡
+    </span>
+
+    <span
+      class="menu-btn"
+      onclick="toggleMenu()">
+      ☰
+    </span>
+
   </div>
 
 </nav>
 
-<!-- PAGE HEADER -->
+
+<!-- ================================
+     HEADER
+================================ -->
+
 <section class="page-header">
 
-  <div class="eyebrow">
-    DEV / BAGGY PANTS
+  <div class="page-header-top">
+
+    <div class="eyebrow">
+      DEV / SHOP
+    </div>
+
+    <h1>
+      BAGGY PANTS
+    </h1>
+
+    <p>
+      Oversized comfort built for training,
+      movement and everyday wear.
+    </p>
+
   </div>
-
-  <h1>BAGGY PANTS</h1>
-
-  <p>
-    Oversized comfort built for training, movement and everyday wear.
-  </p>
 
 </section>
 
-<!-- PRODUCT -->
-<main class="product" id="shop">
 
-  <!-- LEFT -->
-  <section class="product-media">
+<!-- ================================
+     COLLECTION BAR
+================================ -->
 
-    <div class="main-image-wrap">
-      <img
-        id="mainImage"
-        class="main-image"
-        src="../baggy-pants-light-grey-front.jpeg"
-        alt="DEV Baggy Pants Light Grey Front"
-      >
-    </div>
+<section
+  class="collection-bar"
+  id="products">
 
-    <!-- FRONT / BACK / MODEL -->
-    <div class="view-selector">
+  <div class="collection-title">
+    DEV BAGGY PANTS
+  </div>
+
+  <div class="collection-count">
+    2 COLORS
+  </div>
+
+</section>
+
+
+<!-- ================================
+     PRODUCT GRID
+================================ -->
+
+<section class="product-grid">
+
+
+  <!-- ============================
+       LIGHT GREY
+  ============================= -->
+
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="light-grey">
+
+      <div class="swipe-label">
+        SWIPE
+      </div>
+
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../baggy-pants-light-grey-front.jpeg"
+            alt="DEV Baggy Pants Light Grey Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../baggy-pants-light-grey-back.jfif"
+            alt="DEV Baggy Pants Light Grey Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../baggy-pants-light-grey-model.jfif"
+            alt="DEV Baggy Pants Light Grey Model">
+        </div>
+
+      </div>
+
 
       <button
-        class="view-btn active"
-        data-view="front"
-        onclick="changeView('front')">
-        FRONT
+        class="card-arrow left"
+        onclick="cardPrev(event,'light-grey')">
+        ‹
       </button>
 
       <button
-        class="view-btn"
-        data-view="back"
-        onclick="changeView('back')">
-        BACK
+        class="card-arrow right"
+        onclick="cardNext(event,'light-grey')">
+        ›
       </button>
 
-      <button
-        class="view-btn"
-        data-view="model"
-        onclick="changeView('model')">
-        MODEL
-      </button>
 
-    </div>
+      <div class="card-dots">
 
-    <!-- THUMBNAILS -->
-    <div class="thumbnails">
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'light-grey',0)">
+        </button>
 
-      <div
-        class="thumb active"
-        data-view="front"
-        onclick="changeView('front')">
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'light-grey',1)">
+        </button>
 
-        <img
-          id="thumbFront"
-          src="../baggy-pants-light-grey-front.jpeg"
-          alt="Front">
-      </div>
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'light-grey',2)">
+        </button>
 
-      <div
-        class="thumb"
-        data-view="back"
-        onclick="changeView('back')">
-
-        <img
-          id="thumbBack"
-          src="../baggy-pants-light-grey-back.jfif"
-          alt="Back">
-      </div>
-
-      <div
-        class="thumb"
-        data-view="model"
-        onclick="changeView('model')">
-
-        <img
-          id="thumbModel"
-          src="../baggy-pants-light-grey-model.jfif"
-          alt="Model">
       </div>
 
     </div>
 
-  </section>
 
-  <!-- RIGHT -->
-  <section class="product-info">
+    <div
+      class="product-card-info"
+      onclick="openProduct('light-grey')">
 
-    <div class="collection-name">
-      DEV // BAGGY PANTS COLLECTION
-    </div>
+      <div class="product-card-name">
+        DEV OVERSIZED BAGGY PANTS
+      </div>
 
-    <h2>DEV OVERSIZED BAGGY PANTS</h2>
+      <div class="product-card-price">
+        AED 90
+      </div>
 
-    <div class="price">
-      AED 90
-    </div>
-
-    <!-- COLOR -->
-    <div class="option-title">
-      <span>COLOR</span>
-      <span id="selectedColor">LIGHT GREY</span>
-    </div>
-
-    <div class="color-options">
-
-      <button
-        class="color-btn active"
-        data-color="light-grey"
-        onclick="changeColor('light-grey')">
+      <div class="product-card-color">
         LIGHT GREY
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- ============================
+       BLACK
+  ============================= -->
+
+  <article class="product-card">
+
+    <div
+      class="product-card-image"
+      data-card="black">
+
+      <div class="swipe-label">
+        SWIPE
+      </div>
+
+      <div class="card-track">
+
+        <div class="card-slide">
+          <img
+            src="../baggy-pants-black-front.jfif"
+            alt="DEV Baggy Pants Black Front">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../baggy-pants-black-back.jfif"
+            alt="DEV Baggy Pants Black Back">
+        </div>
+
+        <div class="card-slide">
+          <img
+            src="../baggy-pants-black-model.jpeg"
+            alt="DEV Baggy Pants Black Model">
+        </div>
+
+      </div>
+
+
+      <button
+        class="card-arrow left"
+        onclick="cardPrev(event,'black')">
+        ‹
       </button>
 
       <button
-        class="color-btn"
-        data-color="black"
-        onclick="changeColor('black')">
+        class="card-arrow right"
+        onclick="cardNext(event,'black')">
+        ›
+      </button>
+
+
+      <div class="card-dots">
+
+        <button
+          class="card-dot active"
+          onclick="cardGoTo(event,'black',0)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'black',1)">
+        </button>
+
+        <button
+          class="card-dot"
+          onclick="cardGoTo(event,'black',2)">
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="product-card-info"
+      onclick="openProduct('black')">
+
+      <div class="product-card-name">
+        DEV OVERSIZED BAGGY PANTS
+      </div>
+
+      <div class="product-card-price">
+        AED 90
+      </div>
+
+      <div class="product-card-color">
         BLACK
+      </div>
+
+    </div>
+
+  </article>
+
+
+</section>
+
+
+<!-- ================================
+     PRODUCT DETAILS
+================================ -->
+
+<section
+  class="product-detail"
+  id="productDetail">
+
+  <div class="product-detail-inner">
+
+
+    <section class="product-media">
+
+      <div class="main-image-wrap">
+
+        <img
+          id="mainImage"
+          class="main-image"
+          src="../baggy-pants-light-grey-front.jpeg"
+          alt="DEV Baggy Pants">
+
+      </div>
+
+
+      <!-- FRONT / BACK / MODEL -->
+
+      <div class="view-selector">
+
+        <button
+          class="view-btn active"
+          data-view="front"
+          onclick="changeView('front')">
+          FRONT
+        </button>
+
+        <button
+          class="view-btn"
+          data-view="back"
+          onclick="changeView('back')">
+          BACK
+        </button>
+
+        <button
+          class="view-btn"
+          data-view="model"
+          onclick="changeView('model')">
+          MODEL
+        </button>
+
+      </div>
+
+
+      <div class="thumbnails">
+
+        <div
+          class="thumb active"
+          data-view="front"
+          onclick="changeView('front')">
+
+          <img
+            id="thumbFront"
+            src="../baggy-pants-light-grey-front.jpeg"
+            alt="Front">
+
+        </div>
+
+
+        <div
+          class="thumb"
+          data-view="back"
+          onclick="changeView('back')">
+
+          <img
+            id="thumbBack"
+            src="../baggy-pants-light-grey-back.jfif"
+            alt="Back">
+
+        </div>
+
+
+        <div
+          class="thumb"
+          data-view="model"
+          onclick="changeView('model')">
+
+          <img
+            id="thumbModel"
+            src="../baggy-pants-light-grey-model.jfif"
+            alt="Model">
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="product-info">
+
+      <div class="collection-name">
+        DEV // BAGGY PANTS COLLECTION
+      </div>
+
+      <h2>
+        DEV OVERSIZED BAGGY PANTS
+      </h2>
+
+      <div class="price">
+        AED 90
+      </div>
+
+
+      <!-- COLOR -->
+
+      <div class="option-title">
+
+        <span>
+          COLOR
+        </span>
+
+        <span id="selectedColor">
+          LIGHT GREY
+        </span>
+
+      </div>
+
+
+      <div class="color-options">
+
+        <button
+          class="color-btn active"
+          data-color="light-grey"
+          onclick="changeColor('light-grey')">
+          LIGHT GREY
+        </button>
+
+        <button
+          class="color-btn"
+          data-color="black"
+          onclick="changeColor('black')">
+          BLACK
+        </button>
+
+      </div>
+
+
+      <!-- SIZE -->
+
+      <div class="option-title">
+
+        <span>
+          SIZE
+        </span>
+
+        <span id="selectedSize">
+          SELECT SIZE
+        </span>
+
+      </div>
+
+
+      <div class="size-options">
+
+        <button
+          class="size-btn"
+          onclick="selectSize(this,'M–L')">
+          M–L
+        </button>
+
+        <button
+          class="size-btn"
+          onclick="selectSize(this,'XL–XXL')">
+          XL–XXL
+        </button>
+
+      </div>
+
+
+      <div class="description">
+        Wide oversized fit designed for comfort and unrestricted movement.
+        Built for the gym, lifestyle and everyday wear.
+      </div>
+
+
+      <button class="coming-soon">
+        COMING SOON
       </button>
 
-    </div>
-
-    <!-- SIZE -->
-    <div class="option-title">
-      <span>SIZE</span>
-      <span id="selectedSize">SELECT SIZE</span>
-    </div>
-
-    <div class="size-options">
 
       <button
-        class="size-btn"
-        onclick="selectSize(this,'M–L')">
-        M–L
+        class="back-products"
+        onclick="backToProducts()">
+        ← BACK TO BAGGY PANTS
       </button>
 
-      <button
-        class="size-btn"
-        onclick="selectSize(this,'XL–XXL')">
-        XL–XXL
-      </button>
+    </section>
 
-    </div>
+  </div>
 
-    <div class="description">
-      Wide oversized fit designed for comfort and unrestricted movement.
-      Built for the gym, lifestyle and everyday wear.
-    </div>
+</section>
 
-    <button class="coming-soon">
-      COMING SOON
-    </button>
 
-  </section>
+<!-- ================================
+     FOOTER
+================================ -->
 
-</main>
-
-<!-- FOOTER -->
 <footer>
 
-  <a href="../index.html" class="footer-logo">
+  <a
+    href="../index.html"
+    class="footer-logo">
     DEV
   </a>
 
+
   <div class="footer-links">
-    <a href="../tshirts/">T-Shirts</a>
-    <a href="../polo/">Polo</a>
-    <a href="#">Shorts</a>
-    <a href="#shop">Baggy Pants</a>
-    <a href="#">Hoodies</a>
-    <a href="#">Sweaters</a>
+
+    <a href="../tshirts/">
+      T-Shirts
+    </a>
+
+    <a href="../polo/">
+      Polo
+    </a>
+
+    <a href="../shorts/">
+      Shorts
+    </a>
+
+    <a href="#products">
+      Baggy Pants
+    </a>
+
+    <a href="#">
+      Hoodies
+    </a>
+
+    <a href="#">
+      Sweaters
+    </a>
+
   </div>
 
+
   <div class="footer-bottom">
-    ©️ 2026 DEV. BUILT DIFFERENT.
+    © 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
 
+
 <script>
 
-/* PRODUCT IMAGES */
+
+/* ================================
+   IMAGES
+================================ */
+
 const productImages = {
 
   "light-grey":{
+    label:"LIGHT GREY",
     front:"../baggy-pants-light-grey-front.jpeg",
     back:"../baggy-pants-light-grey-back.jfif",
     model:"../baggy-pants-light-grey-model.jfif"
   },
 
   "black":{
+    label:"BLACK",
     front:"../baggy-pants-black-front.jfif",
     back:"../baggy-pants-black-back.jfif",
     model:"../baggy-pants-black-model.jpeg"
@@ -636,87 +1332,774 @@ const productImages = {
 
 };
 
-let currentColor = "light-grey";
-let currentView = "front";
 
-/* CHANGE COLOR */
-function changeColor(color){
+/* ================================
+   CURRENT STATE
+================================ */
 
-  currentColor = color;
+let currentColor =
+  "light-grey";
 
-  document.querySelectorAll(".color-btn").forEach(btn=>{
-    btn.classList.remove("active");
-  });
+let currentView =
+  "front";
+
+let selectedSize =
+  null;
+
+
+/* ================================
+   CARD STATE
+================================ */
+
+const cardState = {
+
+  "light-grey":0,
+
+  black:0
+
+};
+
+
+/* ================================
+   UPDATE CARD
+================================ */
+
+function updateCard(color){
+
+  const card =
+    document.querySelector(
+      `[data-card="${color}"]`
+    );
+
+
+  if(!card){
+    return;
+  }
+
+
+  const track =
+    card.querySelector(
+      ".card-track"
+    );
+
+
+  const dots =
+    card.querySelectorAll(
+      ".card-dot"
+    );
+
+
+  track.style.transform =
+    `translateX(-${cardState[color] * 100}%)`;
+
+
+  dots.forEach(
+    function(dot,index){
+
+      dot.classList.toggle(
+        "active",
+        index === cardState[color]
+      );
+
+    }
+  );
+
+}
+
+
+/* ================================
+   NEXT
+================================ */
+
+function cardNext(event,color){
+
+  event.stopPropagation();
+
+  cardState[color] =
+    (cardState[color] + 1) % 3;
+
+  updateCard(color);
+
+}
+
+
+/* ================================
+   PREVIOUS
+================================ */
+
+function cardPrev(event,color){
+
+  event.stopPropagation();
+
+  cardState[color] =
+    (cardState[color] + 2) % 3;
+
+  updateCard(color);
+
+}
+
+
+/* ================================
+   DOT
+================================ */
+
+function cardGoTo(
+  event,
+  color,
+  index
+){
+
+  event.stopPropagation();
+
+  cardState[color] =
+    index;
+
+  updateCard(color);
+
+}
+
+
+/* ================================
+   TOUCH SWIPE
+================================ */
+
+document
+.querySelectorAll(
+  ".product-card-image"
+)
+.forEach(
+  function(card){
+
+    const color =
+      card.dataset.card;
+
+
+    let startX = 0;
+
+    let startY = 0;
+
+    let moved = false;
+
+
+    card.addEventListener(
+      "touchstart",
+      function(event){
+
+        const touch =
+          event.touches[0];
+
+        startX =
+          touch.clientX;
+
+        startY =
+          touch.clientY;
+
+        moved =
+          false;
+
+      },
+      {
+        passive:true
+      }
+    );
+
+
+    card.addEventListener(
+      "touchmove",
+      function(event){
+
+        const touch =
+          event.touches[0];
+
+
+        const diffX =
+          touch.clientX -
+          startX;
+
+
+        const diffY =
+          touch.clientY -
+          startY;
+
+
+        if(
+          Math.abs(diffX) >
+          Math.abs(diffY)
+        ){
+
+          moved =
+            true;
+
+        }
+
+      },
+      {
+        passive:true
+      }
+    );
+
+
+    card.addEventListener(
+      "touchend",
+      function(event){
+
+        if(
+          !event.changedTouches.length
+        ){
+          return;
+        }
+
+
+        const endX =
+          event.changedTouches[0]
+          .clientX;
+
+
+        const diffX =
+          endX -
+          startX;
+
+
+        if(
+          Math.abs(diffX) > 45
+        ){
+
+          if(
+            diffX < 0
+          ){
+
+            cardState[color] =
+              (cardState[color] + 1) % 3;
+
+          }else{
+
+            cardState[color] =
+              (cardState[color] + 2) % 3;
+
+          }
+
+
+          updateCard(
+            color
+          );
+
+        }else if(!moved){
+
+          openProduct(
+            color
+          );
+
+        }
+
+      },
+      {
+        passive:true
+      }
+    );
+
+  }
+);
+
+
+/* ================================
+   DESKTOP IMAGE CLICK
+================================ */
+
+document
+.querySelectorAll(
+  ".product-card-image"
+)
+.forEach(
+  function(card){
+
+    card.addEventListener(
+      "click",
+      function(event){
+
+        if(
+          event.target.closest(
+            ".card-arrow"
+          )
+        ){
+          return;
+        }
+
+
+        if(
+          event.target.closest(
+            ".card-dot"
+          )
+        ){
+          return;
+        }
+
+
+        if(
+          "ontouchstart" in window
+        ){
+          return;
+        }
+
+
+        openProduct(
+          card.dataset.card
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* ================================
+   OPEN PRODUCT
+================================ */
+
+function openProduct(color){
+
+  currentColor =
+    color;
+
+  currentView =
+    "front";
+
+  selectedSize =
+    null;
+
 
   document
-    .querySelector(`[data-color="${color}"]`)
-    .classList.add("active");
+  .getElementById(
+    "selectedSize"
+  )
+  .textContent =
+    "SELECT SIZE";
 
-  document.getElementById("selectedColor").textContent =
-    color === "light-grey" ? "LIGHT GREY" : "BLACK";
+
+  document
+  .querySelectorAll(
+    ".size-btn"
+  )
+  .forEach(
+    function(btn){
+
+      btn
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  renderColor();
 
   updateImages();
+
+
+  const detail =
+    document
+    .getElementById(
+      "productDetail"
+    );
+
+
+  detail
+  .classList
+  .add(
+    "active"
+  );
+
+
+  setTimeout(
+    function(){
+
+      detail
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },
+    50
+  );
+
 }
 
-/* CHANGE VIEW */
+
+/* ================================
+   CHANGE COLOR
+================================ */
+
+function changeColor(color){
+
+  currentColor =
+    color;
+
+  currentView =
+    "front";
+
+  selectedSize =
+    null;
+
+
+  document
+  .getElementById(
+    "selectedSize"
+  )
+  .textContent =
+    "SELECT SIZE";
+
+
+  document
+  .querySelectorAll(
+    ".size-btn"
+  )
+  .forEach(
+    function(btn){
+
+      btn
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  renderColor();
+
+  updateImages();
+
+}
+
+
+/* ================================
+   RENDER COLOR
+================================ */
+
+function renderColor(){
+
+  document
+  .querySelectorAll(
+    ".color-btn"
+  )
+  .forEach(
+    function(btn){
+
+      btn
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  const active =
+    document.querySelector(
+      `.color-btn[data-color="${currentColor}"]`
+    );
+
+
+  if(active){
+
+    active
+    .classList
+    .add(
+      "active"
+    );
+
+  }
+
+
+  document
+  .getElementById(
+    "selectedColor"
+  )
+  .textContent =
+    productImages[
+      currentColor
+    ]
+    .label;
+
+}
+
+
+/* ================================
+   CHANGE VIEW
+================================ */
+
 function changeView(view){
 
-  currentView = view;
+  currentView =
+    view;
 
-  document.querySelectorAll(".view-btn").forEach(btn=>{
-    btn.classList.remove("active");
-  });
-
-  document.querySelectorAll(".thumb").forEach(thumb=>{
-    thumb.classList.remove("active");
-  });
 
   document
-    .querySelector(`.view-btn[data-view="${view}"]`)
-    .classList.add("active");
+  .querySelectorAll(
+    ".view-btn"
+  )
+  .forEach(
+    function(btn){
+
+      btn
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
 
   document
-    .querySelector(`.thumb[data-view="${view}"]`)
-    .classList.add("active");
+  .querySelectorAll(
+    ".thumb"
+  )
+  .forEach(
+    function(thumb){
 
-  document.getElementById("mainImage").src =
-    productImages[currentColor][view];
+      thumb
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  document
+  .querySelector(
+    `.view-btn[data-view="${view}"]`
+  )
+  .classList
+  .add(
+    "active"
+  );
+
+
+  document
+  .querySelector(
+    `.thumb[data-view="${view}"]`
+  )
+  .classList
+  .add(
+    "active"
+  );
+
+
+  updateMainImage();
+
 }
 
-/* UPDATE IMAGES */
+
+/* ================================
+   UPDATE IMAGES
+================================ */
+
 function updateImages(){
 
-  document.getElementById("thumbFront").src =
-    productImages[currentColor].front;
+  const images =
+    productImages[
+      currentColor
+    ];
 
-  document.getElementById("thumbBack").src =
-    productImages[currentColor].back;
 
-  document.getElementById("thumbModel").src =
-    productImages[currentColor].model;
+  document
+  .getElementById(
+    "thumbFront"
+  )
+  .src =
+    images.front;
 
-  document.getElementById("mainImage").src =
-    productImages[currentColor][currentView];
+
+  document
+  .getElementById(
+    "thumbBack"
+  )
+  .src =
+    images.back;
+
+
+  document
+  .getElementById(
+    "thumbModel"
+  )
+  .src =
+    images.model;
+
+
+  currentView =
+    "front";
+
+
+  document
+  .querySelectorAll(
+    ".view-btn"
+  )
+  .forEach(
+    function(btn){
+
+      btn
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  document
+  .querySelectorAll(
+    ".thumb"
+  )
+  .forEach(
+    function(thumb){
+
+      thumb
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  document
+  .querySelector(
+    '.view-btn[data-view="front"]'
+  )
+  .classList
+  .add(
+    "active"
+  );
+
+
+  document
+  .querySelector(
+    '.thumb[data-view="front"]'
+  )
+  .classList
+  .add(
+    "active"
+  );
+
+
+  updateMainImage();
+
 }
 
-/* SIZE */
-function selectSize(button,size){
 
-  document.querySelectorAll(".size-btn").forEach(btn=>{
-    btn.classList.remove("active");
+/* ================================
+   MAIN IMAGE
+================================ */
+
+function updateMainImage(){
+
+  document
+  .getElementById(
+    "mainImage"
+  )
+  .src =
+    productImages[
+      currentColor
+    ][
+      currentView
+    ];
+
+}
+
+
+/* ================================
+   SIZE
+================================ */
+
+function selectSize(
+  button,
+  size
+){
+
+  selectedSize =
+    size;
+
+
+  document
+  .querySelectorAll(
+    ".size-btn"
+  )
+  .forEach(
+    function(btn){
+
+      btn
+      .classList
+      .remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  button
+  .classList
+  .add(
+    "active"
+  );
+
+
+  document
+  .getElementById(
+    "selectedSize"
+  )
+  .textContent =
+    size;
+
+}
+
+
+/* ================================
+   BACK
+================================ */
+
+function backToProducts(){
+
+  document
+  .getElementById(
+    "products"
+  )
+  .scrollIntoView({
+    behavior:"smooth"
   });
 
-  button.classList.add("active");
-
-  document.getElementById("selectedSize").textContent = size;
 }
 
-/* MOBILE MENU */
+
+/* ================================
+   MENU
+================================ */
+
 function toggleMenu(){
-  document.getElementById("navLinks").classList.toggle("open");
+
+  document
+  .getElementById(
+    "navLinks"
+  )
+  .classList
+  .toggle(
+    "open"
+  );
+
 }
 
 </script>
+
 
 </body>
 </html>
