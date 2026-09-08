@@ -765,10 +765,12 @@ footer{
   color:#000;
   font-weight:900;
   letter-spacing:2px;
+  cursor:pointer;
 }
 
 .checkout-button:disabled{
   opacity:.35;
+  cursor:not-allowed;
 }
 
 .cart-note{
@@ -949,8 +951,6 @@ footer{
 
 <section class="product-grid">
 
-  <!-- BLACK -->
-
   <article class="product-card">
 
     <div class="product-card-image" data-card="black">
@@ -1033,8 +1033,6 @@ footer{
     </div>
 
   </article>
-
-  <!-- OLIVE -->
 
   <article class="product-card">
 
@@ -1120,8 +1118,6 @@ footer{
     </div>
 
   </article>
-
-  <!-- BEIGE -->
 
   <article class="product-card">
 
@@ -1448,7 +1444,7 @@ footer{
   </div>
 
   <div class="footer-bottom">
-    © 2026 DEV. BUILT DIFFERENT.
+    ©️ 2026 DEV. BUILT DIFFERENT.
   </div>
 
 </footer>
@@ -2393,13 +2389,21 @@ document.addEventListener(
   }
 );
 
+/* CHECKOUT */
+
 checkoutButton.addEventListener(
   "click",
   function(){
 
-    alert(
-      "DEV Checkout will be connected later."
-    );
+    const cart =
+      getCart();
+
+    if(cart.length === 0){
+      return;
+    }
+
+    window.location.href =
+      "/DEV-Website/checkout/";
 
   }
 );
