@@ -107,10 +107,11 @@ function targetPixel(r,g,b,target,baseLum){
  const shade=clamp(y/baseLum,.30,1.55);
 
  if(target.name==="BLACK"){
-  // Deep neutral black with preserved fabric folds/highlights.
-  // Keep RGB channels equal so no burgundy tint survives.
+  // True deep black: keep the garment visibly black while preserving only
+  // restrained tonal variation for folds and fabric texture.
+  // Equal RGB channels guarantee no burgundy/red cast survives.
   const detail=clamp((shade-.30)/1.25,0,1);
-  const v=Math.round(16 + detail*46);
+  const v=Math.round(5 + detail*24);
   return{r:v,g:v,b:v};
  }
  if(target.name==="WHITE"){
