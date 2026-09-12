@@ -194,6 +194,43 @@ function renderColors(){
 function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
 function luminance(r,g,b){return .2126*r+.7152*g+.0722*b}
 
+const BLACK_ZONES={
+  "tshirt":[
+    {x0:.07,y0:.10,x1:.59,y1:.88},
+    {x0:.52,y0:.12,x1:.96,y1:.86}
+  ],
+  "zip-polo":[
+    {x0:.05,y0:.08,x1:.59,y1:.89},
+    {x0:.51,y0:.10,x1:.96,y1:.86}
+  ],
+  "baggy-pants":[
+    {x0:.08,y0:.06,x1:.52,y1:.95},
+    {x0:.49,y0:.06,x1:.96,y1:.95}
+  ],
+  "hoodie":[
+    {x0:.04,y0:.04,x1:.59,y1:.91},
+    {x0:.49,y0:.04,x1:.97,y1:.90}
+  ],
+  "sweater":[
+    {x0:.04,y0:.08,x1:.59,y1:.91},
+    {x0:.49,y0:.08,x1:.97,y1:.90}
+  ],
+  "cut-off":[
+    {x0:.10,y0:.10,x1:.51,y1:.89},
+    {x0:.49,y0:.10,x1:.92,y1:.89}
+  ],
+  "shorts":[
+    {x0:.06,y0:.10,x1:.54,y1:.87},
+    {x0:.49,y0:.10,x1:.96,y1:.87}
+  ]
+};
+
+function insideBlackZone(x,y,w,h){
+  const zones=BLACK_ZONES[state.product.id]||[];
+  const nx=x/w,ny=y/h;
+  return zones.some(z=>nx>=z.x0&&nx<=z.x1&&ny>=z.y0&&ny<=z.y1);
+}
+
 function drawBlack(){
   if(!sourceImage.complete||!sourceImage.naturalWidth)return;
 
@@ -221,20 +258,26 @@ function drawBlack(){
   const img=colorCtx.getImageData(sx,sy,sw,sh);
   const data=img.data;
 
-  for(let i=0;i<data.length;i+=4){
-    const r=data[i],g=data[i+1],b=data[i+2];
-    const max=Math.max(r,g,b),min=Math.min(r,g,b);
-    const sat=(max-min)/Math.max(max,1);
-    const redLead=r-Math.max(g,b);
+  for(let y=0;y<sh;y++){
+    for(let x=0;x<sw;x++){
+      if(!insideBlackZone(x,y,sw,sh))continue;
 
-    // Recolor only confident burgundy/warm garment pixels.
-    if(r>22 && sat>.10 && redLead>5){
-      const y=luminance(r,g,b);
-      const detail=clamp((y-18)/115,0,1);
-      const v=Math.round(9 + Math.pow(detail,.86)*34);
-      data[i]=v;
-      data[i+1]=v;
-      data[i+2]=v;
+      const i=(y*sw+x)*4;
+      const r=data[i],g=data[i+1],b=data[i+2];
+      const max=Math.max(r,g,b),min=Math.min(r,g,b);
+      const sat=(max-min)/Math.max(max,1);
+      const redLead=r-Math.max(g,b);
+
+      // Recolor only confident burgundy garment pixels inside the product zones.
+      // This keeps the studio wall/floor and shadows untouched.
+      if(r>22 && sat>.10 && redLead>5){
+        const lumValue=luminance(r,g,b);
+        const detail=clamp((lumValue-18)/115,0,1);
+        const v=Math.round(9 + Math.pow(detail,.86)*34);
+        data[i]=v;
+        data[i+1]=v;
+        data[i+2]=v;
+      }
     }
   }
 
