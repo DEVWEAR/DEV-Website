@@ -84,17 +84,59 @@ function burgundyWeight(r,g,b){
   return hue*dom*sat*light;
 }
 function mapGarmentColor(r,g,b,target){
-  const src=rgbToHsl(r,g,b),trgb=hexToRgb(target.value),th=rgbToHsl(trgb.r,trgb.g,trgb.b);
-  let l,s;
-  if(target.name==="BLACK"){l=.045+src.l*.30;s=.015}
-  else if(target.name==="WHITE"){l=.70+src.l*.25;s=.01}
-  else if(target.name==="CHARCOAL"){l=.18+src.l*.33;s=.01}
-  else if(target.name==="GREY"){l=.42+src.l*.34;s=.01}
-  else{
-    l=th.l+(src.l-.28)*.58;
-    s=Math.min(th.s*.78,.68);
+  const t=hexToRgb(target.value);
+  const srcLum=.2126*r+.7152*g+.0722*b;
+  const burgundyLum=.2126*116+.7152*29+.0722*37;
+
+  if(target.name==="BLACK"){
+    const v=Math.round(clamp(10+(srcLum/255)*48,10,58));
+    return {r:v,g:v,b:v};
   }
-  return hslToRgb(th.h,s,clamp(l));
+
+  if(target.name==="WHITE"){
+    const k=clamp(.76+(srcLum/burgundyLum)*.18,.72,.98);
+    return {
+      r:Math.round(242*k),
+      g:Math.round(240*k),
+      b:Math.round(234*k)
+    };
+  }
+
+  if(target.name==="CHARCOAL"){
+    const k=clamp(.62+(srcLum/burgundyLum)*.22,.52,.92);
+    const v=Math.round(75*k);
+    return {r:v,g:v,b:v};
+  }
+
+  if(target.name==="GREY"){
+    const k=clamp(.72+(srcLum/burgundyLum)*.22,.62,1.02);
+    const v=Math.round(154*k);
+    return {r:v,g:v,b:v};
+  }
+
+  let shade=clamp(
+    (srcLum/burgundyLum)*.88+.12,
+    .38,
+    1.48
+  );
+
+  let rr=t.r*shade;
+  let gg=t.g*shade;
+  let bb=t.b*shade;
+
+  const peak=Math.max(rr,gg,bb);
+  if(peak>246){
+    const scale=246/peak;
+    rr*=scale;
+    gg*=scale;
+    bb*=scale;
+  }
+
+  return {
+    r:Math.round(clamp(rr,0,255)),
+    g:Math.round(clamp(gg,0,255)),
+    b:Math.round(clamp(bb,0,255))
+  };
 }
 function drawProduct(){
   if(!sourceProductImage.complete||!sourceProductImage.naturalWidth)return;
