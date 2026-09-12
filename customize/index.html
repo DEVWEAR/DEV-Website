@@ -1331,23 +1331,34 @@ footer{
 }
 
 .piece-button{
-  min-height:52px;
-  padding:0 12px;
+  min-height:0;
+  padding:7px;
   border:1px solid #262626;
   background:#080808;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:block;
   text-align:center;
+}
+
+.piece-button .piece-thumb{
+  display:block;
+  aspect-ratio:1 / 1;
+  background:#0b0b0b;
+}
+
+.piece-button .piece-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.piece-button .piece-title{
+  margin:9px 0 3px;
 }
 
 .piece-button.active{
   border-color:#f2f2f2;
   background:#0d0d0d;
-}
-
-.piece-thumb{
-  display:none;
 }
 
 .piece-title{
@@ -1511,8 +1522,8 @@ footer{
   }
 
   .piece-button{
-    flex:0 0 128px;
-    min-height:48px;
+    flex:0 0 118px;
+    min-height:0;
   }
 
   .preview-shell{
@@ -1546,8 +1557,8 @@ footer{
   }
 
   .piece-button{
-    flex-basis:116px;
-    min-height:46px;
+    flex-basis:108px;
+    min-height:0;
   }
 
   .piece-title{
@@ -2732,18 +2743,18 @@ function isGarmentPixel(r,g,b){
     rgbToHsl(r,g,b);
 
   const redHue =
-    hsl.h >= 325 ||
-    hsl.h <= 24;
+    hsl.h >= 318 ||
+    hsl.h <= 30;
 
   const redDominant =
-    r > g * 1.12 &&
-    r > b * 1.05;
+    r > g * 1.06 &&
+    r > b * 1.02;
 
   return (
     redHue &&
     redDominant &&
-    hsl.s > .18 &&
-    r > 28
+    hsl.s > .10 &&
+    r > 20
   );
 }
 
@@ -2772,16 +2783,16 @@ function recolorPixel(
   if(target.name === "BLACK"){
 
     newL =
-      .035 +
-      source.l * .19;
+      .055 +
+      source.l * .34;
 
   }else if(
     target.name === "WHITE"
   ){
 
     newL =
-      .70 +
-      source.l * .28;
+      .62 +
+      source.l * .34;
 
   }else if(
     target.name === "GREY" ||
@@ -2793,7 +2804,7 @@ function recolorPixel(
 
     newL =
       base +
-      (source.l - .25) * .62;
+      (source.l - .25) * .78;
 
   }else{
 
@@ -2802,7 +2813,7 @@ function recolorPixel(
 
     newL =
       base +
-      (source.l - .25) * .72;
+      (source.l - .25) * .84;
 
   }
 
@@ -2949,14 +2960,29 @@ function drawProduct(){
         state.color
       );
 
+    const edgePreserve =
+      Math.min(
+        .18,
+        Math.abs(r-g) / 255
+      );
+
     data[i] =
-      mapped.r;
+      Math.round(
+        mapped.r * (1-edgePreserve) +
+        r * edgePreserve
+      );
 
     data[i+1] =
-      mapped.g;
+      Math.round(
+        mapped.g * (1-edgePreserve) +
+        g * edgePreserve
+      );
 
     data[i+2] =
-      mapped.b;
+      Math.round(
+        mapped.b * (1-edgePreserve) +
+        b * edgePreserve
+      );
 
   }
 
