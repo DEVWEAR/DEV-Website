@@ -1971,73 +1971,85 @@ const COLORS = [
   {
     name:"BURGUNDY",
     value:"#741d25",
+    filter:"none",
     tint:false
   },
 
   {
     name:"BLACK",
     value:"#111111",
-    tint:true
+    filter:"grayscale(1) brightness(.38) contrast(1.18)",
+    tint:false
   },
 
   {
     name:"WHITE",
-    value:"#eeeeee",
-    tint:true
+    value:"#f1f1f1",
+    filter:"grayscale(1) brightness(2.15) contrast(.88)",
+    tint:false
   },
 
   {
     name:"CHARCOAL",
-    value:"#414141",
-    tint:true
+    value:"#4a4a4a",
+    filter:"grayscale(1) brightness(.72) contrast(1.05)",
+    tint:false
   },
 
   {
     name:"GREY",
-    value:"#8a8a8a",
-    tint:true
+    value:"#929292",
+    filter:"grayscale(1) brightness(1.28) contrast(.92)",
+    tint:false
   },
 
   {
     name:"NAVY",
-    value:"#17253d",
-    tint:true
+    value:"#1b2a46",
+    filter:"hue-rotate(165deg) saturate(.62) brightness(.62) contrast(1.06)",
+    tint:false
   },
 
   {
     name:"BLUE",
-    value:"#224d9c",
-    tint:true
+    value:"#2e5fb5",
+    filter:"hue-rotate(170deg) saturate(1.18) brightness(.84) contrast(1.02)",
+    tint:false
   },
 
   {
     name:"OLIVE",
-    value:"#5b6331",
-    tint:true
+    value:"#667039",
+    filter:"hue-rotate(72deg) saturate(.62) brightness(.78) contrast(1.02)",
+    tint:false
   },
 
   {
     name:"BEIGE",
-    value:"#b7a589",
-    tint:true
+    value:"#bca98a",
+    filter:"sepia(.42) saturate(.72) brightness(1.22) contrast(.92)",
+    tint:false
   },
 
   {
     name:"BROWN",
-    value:"#69432f",
-    tint:true
+    value:"#7a4f35",
+    filter:"sepia(.55) saturate(1.05) brightness(.72) contrast(1.03)",
+    tint:false
   },
 
   {
     name:"RED",
-    value:"#a61c24",
-    tint:true
+    value:"#b61f2b",
+    filter:"hue-rotate(-8deg) saturate(1.45) brightness(.95) contrast(1.05)",
+    tint:false
   },
 
   {
     name:"PURPLE",
-    value:"#56316f",
-    tint:true
+    value:"#613b7b",
+    filter:"hue-rotate(245deg) saturate(.86) brightness(.78) contrast(1.05)",
+    tint:false
   }
 
 ];
@@ -2411,26 +2423,12 @@ colorList.addEventListener(
       found.name;
 
 
-    if(
-      found.tint
-    ){
+    productPreview.style.filter =
+      found.filter || "none";
 
-      colorTint.style.background =
-        found.value;
-
-
-      colorTint.classList.add(
-        "active"
-      );
-
-    }else{
-
-      colorTint.classList.remove(
-        "active"
-      );
-
-    }
-
+    colorTint.classList.remove(
+      "active"
+    );
 
     renderColors();
 
