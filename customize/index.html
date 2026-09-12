@@ -421,30 +421,24 @@ nav{
 }
 
 
-/* tint over source photo */
+/* fixed-background product recolor canvas */
 
-.color-tint{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
+.product-preview{
   opacity:0;
-  transition:.2s;
-  z-index:2;
-
-  /* Keep the studio/background unchanged.
-     Tint is restricted to the two garment areas only. */
-  -webkit-mask:
-    radial-gradient(ellipse 30% 47% at 27% 49%, #000 0 78%, transparent 100%),
-    radial-gradient(ellipse 27% 45% at 73% 49%, #000 0 78%, transparent 100%);
-  -webkit-mask-composite: source-over;
-
-  mask:
-    radial-gradient(ellipse 30% 47% at 27% 49%, #000 0 78%, transparent 100%),
-    radial-gradient(ellipse 27% 45% at 73% 49%, #000 0 78%, transparent 100%);
 }
 
-.color-tint.active{
-  opacity:1;
+.product-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index:1;
+  pointer-events:none;
+}
+
+.color-tint{
+  display:none !important;
 }
 
 
@@ -1416,6 +1410,12 @@ footer{
           src="../tshirt.jpeg.jpeg"
           alt="DEV Custom Product">
 
+        <canvas
+          id="productCanvas"
+          class="product-canvas"
+          aria-label="DEV Custom Product Preview">
+        </canvas>
+
 
         <div
           class="color-tint"
@@ -1973,89 +1973,18 @@ const PRODUCTS = [
 
 const COLORS = [
 
-  {
-    name:"BURGUNDY",
-    value:"#741d25",
-    blend:"normal",
-    opacity:0
-  },
-
-  {
-    name:"BLACK",
-    value:"#050505",
-    blend:"multiply",
-    opacity:.88
-  },
-
-  {
-    name:"WHITE",
-    value:"#f6f6f6",
-    blend:"screen",
-    opacity:.86
-  },
-
-  {
-    name:"CHARCOAL",
-    value:"#3f3f3f",
-    blend:"color",
-    opacity:.90
-  },
-
-  {
-    name:"GREY",
-    value:"#919191",
-    blend:"color",
-    opacity:.88
-  },
-
-  {
-    name:"NAVY",
-    value:"#1b2a46",
-    blend:"color",
-    opacity:.94
-  },
-
-  {
-    name:"BLUE",
-    value:"#2e5fb5",
-    blend:"color",
-    opacity:.94
-  },
-
-  {
-    name:"OLIVE",
-    value:"#667039",
-    blend:"color",
-    opacity:.94
-  },
-
-  {
-    name:"BEIGE",
-    value:"#bca98a",
-    blend:"color",
-    opacity:.92
-  },
-
-  {
-    name:"BROWN",
-    value:"#7a4f35",
-    blend:"color",
-    opacity:.94
-  },
-
-  {
-    name:"RED",
-    value:"#b61f2b",
-    blend:"color",
-    opacity:.94
-  },
-
-  {
-    name:"PURPLE",
-    value:"#613b7b",
-    blend:"color",
-    opacity:.94
-  }
+  { name:"BURGUNDY", value:"#741d25" },
+  { name:"BLACK",    value:"#111111" },
+  { name:"WHITE",    value:"#eeeeee" },
+  { name:"CHARCOAL", value:"#4a4a4a" },
+  { name:"GREY",     value:"#929292" },
+  { name:"NAVY",     value:"#1b2a46" },
+  { name:"BLUE",     value:"#2e5fb5" },
+  { name:"OLIVE",    value:"#667039" },
+  { name:"BEIGE",    value:"#bca98a" },
+  { name:"BROWN",    value:"#7a4f35" },
+  { name:"RED",      value:"#b61f2b" },
+  { name:"PURPLE",   value:"#613b7b" }
 
 ];
 
@@ -2120,6 +2049,20 @@ const productPreview =
   document.getElementById(
     "productPreview"
   );
+
+const productCanvas =
+  document.getElementById(
+    "productCanvas"
+  );
+
+const productCtx =
+  productCanvas.getContext(
+    "2d",
+    { willReadFrequently:true }
+  );
+
+let sourceProductImage =
+  new Image();
 
 const colorTint =
   document.getElementById(
@@ -2316,6 +2259,398 @@ function renderColors(){
 
 
 /* =========================
+   FIXED BACKGROUND COLOR ENGINE
+========================= */
+
+function clamp01(value){
+  return Math.max(
+    0,
+    Math.min(1,value)
+  );
+}
+
+function hexToRgb(hex){
+  const value =
+    hex.replace("#","");
+
+  return {
+    r:parseInt(value.slice(0,2),16),
+    g:parseInt(value.slice(2,4),16),
+    b:parseInt(value.slice(4,6),16)
+  };
+}
+
+function rgbToHsl(r,g,b){
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max =
+    Math.max(r,g,b);
+
+  const min =
+    Math.min(r,g,b);
+
+  let h = 0;
+  let s = 0;
+
+  const l =
+    (max + min) / 2;
+
+  const d =
+    max - min;
+
+  if(d !== 0){
+
+    s =
+      l > .5
+      ?
+      d / (2 - max - min)
+      :
+      d / (max + min);
+
+    switch(max){
+
+      case r:
+        h =
+          ((g - b) / d) +
+          (g < b ? 6 : 0);
+        break;
+
+      case g:
+        h =
+          ((b - r) / d) + 2;
+        break;
+
+      default:
+        h =
+          ((r - g) / d) + 4;
+
+    }
+
+    h *= 60;
+
+  }
+
+  return {
+    h:h,
+    s:s,
+    l:l
+  };
+}
+
+function hslToRgb(h,s,l){
+
+  h =
+    ((h % 360) + 360) % 360;
+
+  const c =
+    (1 - Math.abs(2*l - 1)) * s;
+
+  const x =
+    c * (
+      1 -
+      Math.abs(
+        ((h / 60) % 2) - 1
+      )
+    );
+
+  const m =
+    l - c/2;
+
+  let r = 0;
+  let g = 0;
+  let b = 0;
+
+  if(h < 60){
+    r=c; g=x;
+  }else if(h < 120){
+    r=x; g=c;
+  }else if(h < 180){
+    g=c; b=x;
+  }else if(h < 240){
+    g=x; b=c;
+  }else if(h < 300){
+    r=x; b=c;
+  }else{
+    r=c; b=x;
+  }
+
+  return {
+    r:Math.round((r+m)*255),
+    g:Math.round((g+m)*255),
+    b:Math.round((b+m)*255)
+  };
+}
+
+function isGarmentPixel(r,g,b){
+
+  const hsl =
+    rgbToHsl(r,g,b);
+
+  const redHue =
+    hsl.h >= 325 ||
+    hsl.h <= 24;
+
+  const redDominant =
+    r > g * 1.12 &&
+    r > b * 1.05;
+
+  return (
+    redHue &&
+    redDominant &&
+    hsl.s > .18 &&
+    r > 28
+  );
+}
+
+function recolorPixel(
+  r,g,b,
+  target
+){
+
+  const source =
+    rgbToHsl(r,g,b);
+
+  const targetRgb =
+    hexToRgb(
+      target.value
+    );
+
+  const targetHsl =
+    rgbToHsl(
+      targetRgb.r,
+      targetRgb.g,
+      targetRgb.b
+    );
+
+  let newL;
+
+  if(target.name === "BLACK"){
+
+    newL =
+      .035 +
+      source.l * .19;
+
+  }else if(
+    target.name === "WHITE"
+  ){
+
+    newL =
+      .70 +
+      source.l * .28;
+
+  }else if(
+    target.name === "GREY" ||
+    target.name === "CHARCOAL"
+  ){
+
+    const base =
+      targetHsl.l;
+
+    newL =
+      base +
+      (source.l - .25) * .62;
+
+  }else{
+
+    const base =
+      targetHsl.l;
+
+    newL =
+      base +
+      (source.l - .25) * .72;
+
+  }
+
+  newL =
+    clamp01(newL);
+
+  const saturation =
+    (
+      target.name === "WHITE" ||
+      target.name === "BLACK" ||
+      target.name === "GREY" ||
+      target.name === "CHARCOAL"
+    )
+    ?
+    0
+    :
+    targetHsl.s;
+
+  return hslToRgb(
+    targetHsl.h,
+    saturation,
+    newL
+  );
+}
+
+function drawProduct(){
+
+  if(
+    !sourceProductImage.complete ||
+    !sourceProductImage.naturalWidth
+  ){
+    return;
+  }
+
+  const shell =
+    document.getElementById(
+      "previewShell"
+    );
+
+  const rect =
+    shell.getBoundingClientRect();
+
+  const dpr =
+    Math.min(
+      window.devicePixelRatio || 1,
+      2
+    );
+
+  const width =
+    Math.max(
+      1,
+      Math.round(rect.width * dpr)
+    );
+
+  const height =
+    Math.max(
+      1,
+      Math.round(rect.height * dpr)
+    );
+
+  productCanvas.width =
+    width;
+
+  productCanvas.height =
+    height;
+
+  productCtx.clearRect(
+    0,0,width,height
+  );
+
+  const iw =
+    sourceProductImage.naturalWidth;
+
+  const ih =
+    sourceProductImage.naturalHeight;
+
+  const scale =
+    Math.min(
+      width / iw,
+      height / ih
+    );
+
+  const dw =
+    iw * scale;
+
+  const dh =
+    ih * scale;
+
+  const dx =
+    (width - dw) / 2;
+
+  const dy =
+    (height - dh) / 2;
+
+  productCtx.drawImage(
+    sourceProductImage,
+    dx,dy,dw,dh
+  );
+
+  if(
+    state.color.name ===
+    "BURGUNDY"
+  ){
+    return;
+  }
+
+  const imageData =
+    productCtx.getImageData(
+      Math.floor(dx),
+      Math.floor(dy),
+      Math.max(1,Math.floor(dw)),
+      Math.max(1,Math.floor(dh))
+    );
+
+  const data =
+    imageData.data;
+
+  for(
+    let i=0;
+    i<data.length;
+    i+=4
+  ){
+
+    const r =
+      data[i];
+
+    const g =
+      data[i+1];
+
+    const b =
+      data[i+2];
+
+    if(
+      !isGarmentPixel(
+        r,g,b
+      )
+    ){
+      continue;
+    }
+
+    const mapped =
+      recolorPixel(
+        r,g,b,
+        state.color
+      );
+
+    data[i] =
+      mapped.r;
+
+    data[i+1] =
+      mapped.g;
+
+    data[i+2] =
+      mapped.b;
+
+  }
+
+  productCtx.putImageData(
+    imageData,
+    Math.floor(dx),
+    Math.floor(dy)
+  );
+}
+
+function loadProductImage(){
+
+  sourceProductImage =
+    new Image();
+
+  sourceProductImage.onload =
+    function(){
+
+      drawProduct();
+
+    };
+
+  sourceProductImage.src =
+    state.product.image;
+}
+
+window.addEventListener(
+  "resize",
+  function(){
+
+    drawProduct();
+
+  }
+);
+
+
+/* =========================
    PRODUCT CHANGE
 ========================= */
 
@@ -2359,8 +2694,7 @@ pieceList.addEventListener(
     productPreview.src =
       found.image;
 
-    productPreview.style.filter =
-      "none";
+    loadProductImage();
 
 
     controlNumber.textContent =
@@ -2431,22 +2765,7 @@ colorList.addEventListener(
       found.name;
 
 
-    productPreview.style.filter =
-      "none";
-
-    colorTint.style.background =
-      found.value;
-
-    colorTint.style.mixBlendMode =
-      found.blend || "color";
-
-    colorTint.style.opacity =
-      String(found.opacity ?? .94);
-
-    colorTint.classList.toggle(
-      "active",
-      (found.opacity ?? 0) > 0
-    );
+    drawProduct();
 
     renderColors();
 
@@ -3315,6 +3634,8 @@ window.addEventListener(
 /* =========================
    START
 ========================= */
+
+loadProductImage();
 
 renderProducts();
 
