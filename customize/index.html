@@ -2737,24 +2737,46 @@ function hslToRgb(h,s,l){
   };
 }
 
-function isGarmentPixel(r,g,b){
+function garmentWeight(r,g,b){
 
   const hsl =
     rgbToHsl(r,g,b);
 
-  const redHue =
-    hsl.h >= 318 ||
-    hsl.h <= 30;
+  const redHueDistance =
+    Math.min(
+      Math.abs(hsl.h),
+      Math.abs(360-hsl.h)
+    );
 
-  const redDominant =
-    r > g * 1.06 &&
-    r > b * 1.02;
+  const hueWeight =
+    clamp01(
+      1 -
+      Math.max(
+        0,
+        redHueDistance-8
+      ) / 24
+    );
+
+  const dominance =
+    clamp01(
+      (r - Math.max(g,b) + 18) / 58
+    );
+
+  const saturation =
+    clamp01(
+      (hsl.s - .08) / .30
+    );
+
+  const brightness =
+    clamp01(
+      (r - 18) / 70
+    );
 
   return (
-    redHue &&
-    redDominant &&
-    hsl.s > .10 &&
-    r > 20
+    hueWeight *
+    dominance *
+    saturation *
+    brightness
   );
 }
 
@@ -2778,59 +2800,66 @@ function recolorPixel(
       targetRgb.b
     );
 
+  const sourceLight =
+    source.l;
+
   let newL;
+  let saturation;
 
   if(target.name === "BLACK"){
 
     newL =
       .055 +
-      source.l * .34;
+      sourceLight * .30;
+
+    saturation = .02;
 
   }else if(
     target.name === "WHITE"
   ){
 
     newL =
-      .62 +
-      source.l * .34;
+      .68 +
+      sourceLight * .27;
+
+    saturation = .015;
 
   }else if(
-    target.name === "GREY" ||
     target.name === "CHARCOAL"
   ){
 
-    const base =
-      targetHsl.l;
+    newL =
+      .20 +
+      sourceLight * .34;
+
+    saturation = .015;
+
+  }else if(
+    target.name === "GREY"
+  ){
 
     newL =
-      base +
-      (source.l - .25) * .78;
+      .43 +
+      sourceLight * .34;
+
+    saturation = .012;
 
   }else{
 
-    const base =
-      targetHsl.l;
-
     newL =
-      base +
-      (source.l - .25) * .84;
+      targetHsl.l +
+      (sourceLight - .27) * .64;
+
+    saturation =
+      Math.min(
+        targetHsl.s * .82,
+        .72
+      );
 
   }
 
   newL =
     clamp01(newL);
-
-  const saturation =
-    (
-      target.name === "WHITE" ||
-      target.name === "BLACK" ||
-      target.name === "GREY" ||
-      target.name === "CHARCOAL"
-    )
-    ?
-    0
-    :
-    targetHsl.s;
 
   return hslToRgb(
     targetHsl.h,
@@ -2920,39 +2949,150 @@ function drawProduct(){
     return;
   }
 
+  const sx =
+    Math.floor(dx);
+
+  const sy =
+    Math.floor(dy);
+
+  const sw =
+    Math.max(
+      1,
+      Math.floor(dw)
+    );
+
+  const sh =
+    Math.max(
+      1,
+      Math.floor(dh)
+    );
+
   const imageData =
     productCtx.getImageData(
-      Math.floor(dx),
-      Math.floor(dy),
-      Math.max(1,Math.floor(dw)),
-      Math.max(1,Math.floor(dh))
+      sx,sy,sw,sh
     );
 
   const data =
     imageData.data;
 
+  const original =
+    new Uint8ClampedArray(
+      data
+    );
+
+  const weights =
+    new Float32Array(
+      sw * sh
+    );
+
   for(
-    let i=0;
-    i<data.length;
-    i+=4
+    let p=0;
+    p<weights.length;
+    p++
   ){
 
-    const r =
-      data[i];
+    const i =
+      p * 4;
 
-    const g =
-      data[i+1];
+    weights[p] =
+      garmentWeight(
+        original[i],
+        original[i+1],
+        original[i+2]
+      );
 
-    const b =
-      data[i+2];
+  }
 
-    if(
-      !isGarmentPixel(
-        r,g,b
-      )
+  /* Feather only existing garment pixels.
+     This prevents color leaking into the
+     fixed studio floor/background. */
+  const soft =
+    new Float32Array(
+      weights
+    );
+
+  for(
+    let y=1;
+    y<sh-1;
+    y++
+  ){
+
+    for(
+      let x=1;
+      x<sw-1;
+      x++
     ){
+
+      const p =
+        y*sw+x;
+
+      if(weights[p] <= 0){
+        continue;
+      }
+
+      let total = 0;
+      let count = 0;
+
+      for(
+        let oy=-1;
+        oy<=1;
+        oy++
+      ){
+
+        for(
+          let ox=-1;
+          ox<=1;
+          ox++
+        ){
+
+          total +=
+            weights[
+              (y+oy)*sw +
+              (x+ox)
+            ];
+
+          count++;
+
+        }
+
+      }
+
+      soft[p] =
+        Math.max(
+          weights[p],
+          total/count
+        );
+
+    }
+
+  }
+
+  for(
+    let p=0;
+    p<weights.length;
+    p++
+  ){
+
+    const alpha =
+      clamp01(
+        soft[p]
+      );
+
+    if(alpha < .025){
       continue;
     }
+
+    const i =
+      p * 4;
+
+    const r =
+      original[i];
+
+    const g =
+      original[i+1];
+
+    const b =
+      original[i+2];
 
     const mapped =
       recolorPixel(
@@ -2960,36 +3100,29 @@ function drawProduct(){
         state.color
       );
 
-    const edgePreserve =
-      Math.min(
-        .18,
-        Math.abs(r-g) / 255
-      );
-
     data[i] =
       Math.round(
-        mapped.r * (1-edgePreserve) +
-        r * edgePreserve
+        r +
+        (mapped.r-r)*alpha
       );
 
     data[i+1] =
       Math.round(
-        mapped.g * (1-edgePreserve) +
-        g * edgePreserve
+        g +
+        (mapped.g-g)*alpha
       );
 
     data[i+2] =
       Math.round(
-        mapped.b * (1-edgePreserve) +
-        b * edgePreserve
+        b +
+        (mapped.b-b)*alpha
       );
 
   }
 
   productCtx.putImageData(
     imageData,
-    Math.floor(dx),
-    Math.floor(dy)
+    sx,sy
   );
 }
 
