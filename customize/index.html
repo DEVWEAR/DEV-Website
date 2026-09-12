@@ -194,44 +194,18 @@ function renderColors(){
 function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
 function luminance(r,g,b){return .2126*r+.7152*g+.0722*b}
 
-function pointInPolygon(x,y,poly){
-  let inside=false;
-  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
-    const xi=poly[i][0],yi=poly[i][1];
-    const xj=poly[j][0],yj=poly[j][1];
-    const hit=((yi>y)!=(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi+1e-9)+xi);
-    if(hit)inside=!inside;
-  }
-  return inside;
+function isConfidentBurgundy(r,g,b){
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  const sat=(max-min)/Math.max(max,1);
+  const redLead=r-Math.max(g,b);
+  return r>22 && sat>.085 && redLead>4;
 }
 
-function tshirtBlackPolygons(w,h){
-  return [
-    [
-      [.095,.205],[.155,.165],[.245,.105],[.445,.105],[.575,.205],
-      [.545,.365],[.515,.505],[.482,.492],[.468,.845],[.175,.845],
-      [.168,.505],[.135,.515],[.078,.495]
-    ],
-    [
-      [.535,.215],[.615,.17],[.69,.14],[.865,.14],[.955,.235],
-      [.935,.355],[.915,.49],[.865,.48],[.852,.81],[.602,.81],
-      [.595,.485],[.558,.495]
-    ]
-  ].map(poly=>poly.map(([x,y])=>[x*w,y*h]));
-}
-
-function genericInsideBlackZone(x,y,w,h){
-  const zones={
-    "zip-polo":[{x0:.05,y0:.08,x1:.59,y1:.86},{x0:.51,y0:.10,x1:.96,y1:.84}],
-    "baggy-pants":[{x0:.08,y0:.06,x1:.52,y1:.93},{x0:.49,y0:.06,x1:.96,y1:.93}],
-    "hoodie":[{x0:.04,y0:.04,x1:.59,y1:.89},{x0:.49,y0:.04,x1:.97,y1:.88}],
-    "sweater":[{x0:.04,y0:.08,x1:.59,y1:.89},{x0:.49,y0:.08,x1:.97,y1:.88}],
-    "cut-off":[{x0:.10,y0:.10,x1:.51,y1:.87},{x0:.49,y0:.10,x1:.92,y1:.87}],
-    "shorts":[{x0:.06,y0:.10,x1:.54,y1:.84},{x0:.49,y0:.10,x1:.96,y1:.84}]
-  };
-  const list=zones[state.product.id]||[];
-  const nx=x/w,ny=y/h;
-  return list.some(z=>nx>=z.x0&&nx<=z.x1&&ny>=z.y0&&ny<=z.y1);
+function blackPixel(r,g,b){
+  const y=luminance(r,g,b);
+  const detail=clamp((y-18)/115,0,1);
+  const v=Math.round(9+Math.pow(detail,.86)*34);
+  return v;
 }
 
 function drawBlack(){
@@ -241,7 +215,6 @@ function drawBlack(){
   const dpr=Math.min(window.devicePixelRatio||1,2);
   const W=Math.max(1,Math.round(rect.width*dpr));
   const H=Math.max(1,Math.round(rect.height*dpr));
-
   colorCanvas.width=W;
   colorCanvas.height=H;
   colorCtx.clearRect(0,0,W,H);
@@ -262,65 +235,54 @@ function drawBlack(){
   const data=img.data;
   const original=new Uint8ClampedArray(data);
 
-  const tshirtPolys=state.product.id==="tshirt"?tshirtBlackPolygons(sw,sh):null;
-
+  // Build a mask only from clearly burgundy garment pixels. This avoids touching
+  // the studio floor/background and prevents black "strings" growing from the edges.
+  const mask=new Uint8Array(sw*sh);
   for(let y=0;y<sh;y++){
     for(let x=0;x<sw;x++){
-      const inside=state.product.id==="tshirt"
-        ? tshirtPolys.some(poly=>pointInPolygon(x,y,poly))
-        : genericInsideBlackZone(x,y,sw,sh);
-
-      if(!inside)continue;
-
       const i=(y*sw+x)*4;
       const r=original[i],g=original[i+1],b=original[i+2];
-      const max=Math.max(r,g,b),min=Math.min(r,g,b);
-      const sat=(max-min)/Math.max(max,1);
-      const redLead=r-Math.max(g,b);
-
-      // Strong garment detection. For the T-shirt polygon, also accept darker seam/edge
-      // pixels so the hem, sleeves and collar stay continuous instead of looking stringy.
-      const garmentCore=(r>22 && sat>.075 && redLead>3);
-      const darkGarment=(state.product.id==="tshirt" && max<72 && r>=g*.92 && r>=b*.92);
-
-      if(!(garmentCore||darkGarment))continue;
-
-      const lumValue=luminance(r,g,b);
-      const detail=clamp((lumValue-14)/118,0,1);
-      const v=Math.round(8 + Math.pow(detail,.88)*36);
-
-      data[i]=v;
-      data[i+1]=v;
-      data[i+2]=v;
+      if(isConfidentBurgundy(r,g,b))mask[y*sw+x]=1;
     }
   }
 
-  // Tiny 1px edge blend only inside the T-shirt silhouette.
-  if(state.product.id==="tshirt"){
-    const softened=new Uint8ClampedArray(data);
-    for(let y=1;y<sh-1;y++){
-      for(let x=1;x<sw-1;x++){
-        if(!tshirtPolys.some(poly=>pointInPolygon(x,y,poly)))continue;
-        const i=(y*sw+x)*4;
-        const r=data[i],g=data[i+1],b=data[i+2];
-        if(Math.abs(r-g)+Math.abs(r-b)>6)continue;
-
-        let total=0,count=0;
-        for(let oy=-1;oy<=1;oy++){
-          for(let ox=-1;ox<=1;ox++){
-            const ni=((y+oy)*sw+(x+ox))*4;
-            if(Math.abs(data[ni]-data[ni+1])+Math.abs(data[ni]-data[ni+2])<=6){
-              total+=data[ni];count++;
-            }
-          }
-        }
-        if(count>=4){
-          const v=Math.round(total/count);
-          softened[i]=v;softened[i+1]=v;softened[i+2]=v;
+  // Keep only locally connected garment regions; reject isolated floor/background pixels.
+  const clean=new Uint8Array(mask);
+  for(let y=1;y<sh-1;y++){
+    for(let x=1;x<sw-1;x++){
+      const p=y*sw+x;
+      if(!mask[p])continue;
+      let n=0;
+      for(let oy=-1;oy<=1;oy++){
+        for(let ox=-1;ox<=1;ox++){
+          if(mask[(y+oy)*sw+(x+ox)])n++;
         }
       }
+      if(n<3)clean[p]=0;
     }
-    data.set(softened);
+  }
+
+  // Recolor only cleaned garment pixels. Edge pixels get a small blend for anti-aliasing,
+  // but we never expand the mask beyond the original burgundy cloth.
+  for(let y=0;y<sh;y++){
+    for(let x=0;x<sw;x++){
+      const p=y*sw+x;
+      if(!clean[p])continue;
+      const i=p*4;
+      const v=blackPixel(original[i],original[i+1],original[i+2]);
+
+      let neighbors=0;
+      for(let oy=-1;oy<=1;oy++){
+        for(let ox=-1;ox<=1;ox++){
+          const xx=x+ox,yy=y+oy;
+          if(xx>=0&&yy>=0&&xx<sw&&yy<sh&&clean[yy*sw+xx])neighbors++;
+        }
+      }
+      const alpha=neighbors>=7?1:.78;
+      data[i]=Math.round(original[i]+(v-original[i])*alpha);
+      data[i+1]=Math.round(original[i+1]+(v-original[i+1])*alpha);
+      data[i+2]=Math.round(original[i+2]+(v-original[i+2])*alpha);
+    }
   }
 
   colorCtx.putImageData(img,sx,sy);
