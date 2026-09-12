@@ -69,8 +69,9 @@ function makeMask(data,w,h){
 function targetPixel(r,g,b,target,baseLum){
  const t=hexToRgb(target.value),y=lum(r,g,b),shade=clamp(y/baseLum,.30,1.55);
  if(target.name==="BLACK"){
+  /* BLACK ONLY: deep fabric black while keeping the source folds/highlights readable. */
   const detail=clamp((shade-.30)/1.25,0,1);
-  const v=Math.round(2+Math.pow(detail,1.45)*14);
+  const v=Math.round(4+Math.pow(detail,1.28)*20);
   return{r:v,g:v,b:v};
  }
  if(target.name==="WHITE"){const v=Math.round(clamp(212+shade*22,210,246));return{r:v,g:v,b:v}}
@@ -88,7 +89,20 @@ function drawProduct(){
  for(let p=0;p<mask.length;p++)if(mask[p]>.9){const i=p*4;samples.push(lum(orig[i],orig[i+1],orig[i+2]))}
  samples.sort((a,b)=>a-b);const baseLum=samples.length?samples[Math.floor(samples.length*.62)]:58;
  for(let p=0;p<mask.length;p++){
-  const a=mask[p];if(a<=0)continue;const i=p*4,r=orig[i],g=orig[i+1],b=orig[i+2],m=targetPixel(r,g,b,state.color,baseLum);
+  let a=mask[p];if(a<=0)continue;const i=p*4,r=orig[i],g=orig[i+1],b=orig[i+2];
+  /* BLACK ONLY: reject the reddish studio floor/background that the generic soft mask can catch.
+     This removes the dark patch under the BACK shirt and the halo around shoulders without
+     changing the fixed studio background or any other colour mode. */
+  if(state.color.name==="BLACK"&&state.product.id==="tshirt"){
+   const x=p%sw,y=Math.floor(p/sw),nx=x/sw,ny=y/sh;
+   const frontGarment=nx>=.075&&nx<=.585&&ny>=.145&&ny<=.785;
+   const backGarment=nx>=.515&&nx<=.955&&ny>=.175&&ny<=.765;
+   if(!(frontGarment||backGarment))continue;
+   const mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=(mx-mn)/Math.max(mx,1),redLead=r-Math.max(g,b);
+   if(a<.9&&(sat<.09||redLead<4))continue;
+   a=a>.9?1:Math.min(a,.18);
+  }
+  const m=targetPixel(r,g,b,state.color,baseLum);
   const alpha=a>.9?1:a;
   data[i]=Math.round(r+(m.r-r)*alpha);data[i+1]=Math.round(g+(m.g-g)*alpha);data[i+2]=Math.round(b+(m.b-b)*alpha);
  }
