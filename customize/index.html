@@ -416,9 +416,8 @@ nav{
 
   pointer-events:none;
 
-  transition:
-    filter .25s ease,
-    opacity .25s ease;
+  transition:opacity .25s ease;
+  z-index:1;
 }
 
 
@@ -426,20 +425,26 @@ nav{
 
 .color-tint{
   position:absolute;
-
   inset:0;
-
   pointer-events:none;
-
-  mix-blend-mode:hue;
-
   opacity:0;
-
   transition:.2s;
+  z-index:2;
+
+  /* Keep the studio/background unchanged.
+     Tint is restricted to the two garment areas only. */
+  -webkit-mask:
+    radial-gradient(ellipse 30% 47% at 27% 49%, #000 0 78%, transparent 100%),
+    radial-gradient(ellipse 27% 45% at 73% 49%, #000 0 78%, transparent 100%);
+  -webkit-mask-composite: source-over;
+
+  mask:
+    radial-gradient(ellipse 30% 47% at 27% 49%, #000 0 78%, transparent 100%),
+    radial-gradient(ellipse 27% 45% at 73% 49%, #000 0 78%, transparent 100%);
 }
 
 .color-tint.active{
-  opacity:.8;
+  opacity:1;
 }
 
 
@@ -1971,85 +1976,85 @@ const COLORS = [
   {
     name:"BURGUNDY",
     value:"#741d25",
-    filter:"none",
-    tint:false
+    blend:"normal",
+    opacity:0
   },
 
   {
     name:"BLACK",
-    value:"#111111",
-    filter:"grayscale(1) brightness(.38) contrast(1.18)",
-    tint:false
+    value:"#050505",
+    blend:"multiply",
+    opacity:.88
   },
 
   {
     name:"WHITE",
-    value:"#f1f1f1",
-    filter:"grayscale(1) brightness(2.15) contrast(.88)",
-    tint:false
+    value:"#f6f6f6",
+    blend:"screen",
+    opacity:.86
   },
 
   {
     name:"CHARCOAL",
-    value:"#4a4a4a",
-    filter:"grayscale(1) brightness(.72) contrast(1.05)",
-    tint:false
+    value:"#3f3f3f",
+    blend:"color",
+    opacity:.90
   },
 
   {
     name:"GREY",
-    value:"#929292",
-    filter:"grayscale(1) brightness(1.28) contrast(.92)",
-    tint:false
+    value:"#919191",
+    blend:"color",
+    opacity:.88
   },
 
   {
     name:"NAVY",
     value:"#1b2a46",
-    filter:"hue-rotate(165deg) saturate(.62) brightness(.62) contrast(1.06)",
-    tint:false
+    blend:"color",
+    opacity:.94
   },
 
   {
     name:"BLUE",
     value:"#2e5fb5",
-    filter:"hue-rotate(170deg) saturate(1.18) brightness(.84) contrast(1.02)",
-    tint:false
+    blend:"color",
+    opacity:.94
   },
 
   {
     name:"OLIVE",
     value:"#667039",
-    filter:"hue-rotate(72deg) saturate(.62) brightness(.78) contrast(1.02)",
-    tint:false
+    blend:"color",
+    opacity:.94
   },
 
   {
     name:"BEIGE",
     value:"#bca98a",
-    filter:"sepia(.42) saturate(.72) brightness(1.22) contrast(.92)",
-    tint:false
+    blend:"color",
+    opacity:.92
   },
 
   {
     name:"BROWN",
     value:"#7a4f35",
-    filter:"sepia(.55) saturate(1.05) brightness(.72) contrast(1.03)",
-    tint:false
+    blend:"color",
+    opacity:.94
   },
 
   {
     name:"RED",
     value:"#b61f2b",
-    filter:"hue-rotate(-8deg) saturate(1.45) brightness(.95) contrast(1.05)",
-    tint:false
+    blend:"color",
+    opacity:.94
   },
 
   {
     name:"PURPLE",
     value:"#613b7b",
-    filter:"hue-rotate(245deg) saturate(.86) brightness(.78) contrast(1.05)",
-    tint:false
+    blend:"color",
+    opacity:.94
   }
 
 ];
@@ -2354,6 +2359,9 @@ pieceList.addEventListener(
     productPreview.src =
       found.image;
 
+    productPreview.style.filter =
+      "none";
+
 
     controlNumber.textContent =
       found.number;
@@ -2424,10 +2432,20 @@ colorList.addEventListener(
 
 
     productPreview.style.filter =
-      found.filter || "none";
+      "none";
 
-    colorTint.classList.remove(
-      "active"
+    colorTint.style.background =
+      found.value;
+
+    colorTint.style.mixBlendMode =
+      found.blend || "color";
+
+    colorTint.style.opacity =
+      String(found.opacity ?? .94);
+
+    colorTint.classList.toggle(
+      "active",
+      (found.opacity ?? 0) > 0
     );
 
     renderColors();
