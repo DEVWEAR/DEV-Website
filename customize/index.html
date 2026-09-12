@@ -33,111 +33,50 @@ const lum=(r,g,b)=>.2126*r+.7152*g+.0722*b;
 function inZone(x,y,w,h){const nx=x/w,ny=y/h;return state.product.zones.some(z=>nx>=z.x0&&nx<=z.x1&&ny>=z.y0&&ny<=z.y1)}
 function makeMask(data,w,h){
  const seed=new Uint8Array(w*h);
-
- // 1) Detect only confident burgundy garment pixels.
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
   if(!inZone(x,y,w,h))continue;
-  const i=(y*w+x)*4;
-  const r=data[i],g=data[i+1],b=data[i+2];
-  const mx=Math.max(r,g,b),mn=Math.min(r,g,b);
-  const sat=(mx-mn)/Math.max(mx,1);
-  const redLead=r-Math.max(g,b);
-  if(r>20 && sat>.08 && redLead>4) seed[y*w+x]=1;
+  const i=(y*w+x)*4,r=data[i],g=data[i+1],b=data[i+2];
+  const mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=(mx-mn)/Math.max(mx,1),redLead=r-Math.max(g,b);
+  if(r>20&&sat>.08&&redLead>4)seed[y*w+x]=1;
  }
-
- // 2) Close tiny holes/gaps in seams and edges without touching remote background.
  let mask=new Uint8Array(seed);
- for(let pass=0;pass<3;pass++){
+ for(let pass=0;pass<4;pass++){
   const next=new Uint8Array(mask);
   for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){
-   const p=y*w+x;
-   if(mask[p]||!inZone(x,y,w,h))continue;
-   let n=0;
-   for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++) n+=mask[(y+oy)*w+x+ox];
-   if(n>=3) next[p]=1;
+   const p=y*w+x;if(mask[p]||!inZone(x,y,w,h))continue;
+   let n=0;for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++)n+=mask[(y+oy)*w+x+ox];
+   if(n>=2)next[p]=1;
   }
   mask=next;
  }
-
- // 3) Bridge narrow dark garment seams (up to 7 px) horizontally/vertically.
  const bridged=new Uint8Array(mask);
  for(let y=0;y<h;y++){
   let last=-999;
-  for(let x=0;x<w;x++){
-   const p=y*w+x;
-   if(mask[p]){
-    if(x-last>1 && x-last<=8){
-     for(let xx=last+1;xx<x;xx++) if(inZone(xx,y,w,h)) bridged[y*w+xx]=1;
-    }
-    last=x;
-   }
-  }
+  for(let x=0;x<w;x++)if(mask[y*w+x]){if(x-last>1&&x-last<=14){for(let xx=last+1;xx<x;xx++)if(inZone(xx,y,w,h))bridged[y*w+xx]=1}last=x}
  }
  for(let x=0;x<w;x++){
   let last=-999;
-  for(let y=0;y<h;y++){
-   const p=y*w+x;
-   if(mask[p]){
-    if(y-last>1 && y-last<=8){
-     for(let yy=last+1;yy<y;yy++) if(inZone(x,yy,w,h)) bridged[yy*w+x]=1;
-    }
-    last=y;
-   }
-  }
+  for(let y=0;y<h;y++)if(mask[y*w+x]){if(y-last>1&&y-last<=14){for(let yy=last+1;yy<y;yy++)if(inZone(x,yy,w,h))bridged[yy*w+x]=1}last=y}
  }
-
- // 4) Feather just the outside edge for natural anti-aliasing.
  const out=new Float32Array(bridged.length);
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
-  const p=y*w+x;
-  if(bridged[p]){ out[p]=1; continue; }
-  if(!inZone(x,y,w,h)) continue;
-  let near=0;
-  for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++){
-   const xx=x+ox,yy=y+oy;
-   if(xx>=0&&yy>=0&&xx<w&&yy<h&&bridged[yy*w+xx]) near++;
-  }
-  if(near>=2) out[p]=.38;
+  const p=y*w+x;if(bridged[p]){out[p]=1;continue}if(!inZone(x,y,w,h))continue;
+  let near=0;for(let oy=-2;oy<=2;oy++)for(let ox=-2;ox<=2;ox++){const xx=x+ox,yy=y+oy;if(xx>=0&&yy>=0&&xx<w&&yy<h&&bridged[yy*w+xx])near++}
+  if(near>=4)out[p]=.28;
  }
  return out;
 }
 function targetPixel(r,g,b,target,baseLum){
- const t=hexToRgb(target.value);
- const y=lum(r,g,b);
- const shade=clamp(y/baseLum,.30,1.55);
-
+ const t=hexToRgb(target.value),y=lum(r,g,b),shade=clamp(y/baseLum,.30,1.55);
  if(target.name==="BLACK"){
-  // Deep fabric black. Preserve source folds, but compress highlights so the
-  // shirt reads as black rather than charcoal on the dark studio background.
   const detail=clamp((shade-.30)/1.25,0,1);
-  const v=Math.round(2 + Math.pow(detail,1.45)*14);
+  const v=Math.round(2+Math.pow(detail,1.45)*14);
   return{r:v,g:v,b:v};
  }
- if(target.name==="WHITE"){
-  const v=Math.round(clamp(212+shade*22,210,246));
-  return{r:v,g:v,b:v};
- }
- if(target.name==="CHARCOAL"){
-  const v=Math.round(clamp(50+shade*30,48,94));
-  return{r:v,g:v,b:v};
- }
- if(target.name==="GREY"){
-  const v=Math.round(clamp(118+shade*34,112,176));
-  return{r:v,g:v,b:v};
- }
-
- // Apply selected RGB directly; use source only for brightness/texture.
- const neutralShade=clamp(.58+shade*.42,.70,1.28);
- let rr=t.r*neutralShade,gg=t.g*neutralShade,bb=t.b*neutralShade;
- const peak=Math.max(rr,gg,bb);
- if(peak>245){
-  const k=245/peak; rr*=k; gg*=k; bb*=k;
- }
- return{
-  r:Math.round(clamp(rr,0,255)),
-  g:Math.round(clamp(gg,0,255)),
-  b:Math.round(clamp(bb,0,255))
- };
+ if(target.name==="WHITE"){const v=Math.round(clamp(212+shade*22,210,246));return{r:v,g:v,b:v}}
+ if(target.name==="CHARCOAL"){const v=Math.round(clamp(50+shade*30,48,94));return{r:v,g:v,b:v}}
+ if(target.name==="GREY"){const v=Math.round(clamp(118+shade*34,112,176));return{r:v,g:v,b:v}}
+ const neutralShade=clamp(.58+shade*.42,.70,1.28);let rr=t.r*neutralShade,gg=t.g*neutralShade,bb=t.b*neutralShade;const peak=Math.max(rr,gg,bb);if(peak>245){const k=245/peak;rr*=k;gg*=k;bb*=k}return{r:Math.round(clamp(rr,0,255)),g:Math.round(clamp(gg,0,255)),b:Math.round(clamp(bb,0,255))};
 }
 function drawProduct(){
  if(!sourceImage.complete||!sourceImage.naturalWidth)return;
@@ -148,7 +87,11 @@ function drawProduct(){
  const sx=Math.floor(dx),sy=Math.floor(dy),sw=Math.max(1,Math.floor(dw)),sh=Math.max(1,Math.floor(dh)),img=ctx.getImageData(sx,sy,sw,sh),data=img.data,orig=new Uint8ClampedArray(data),mask=makeMask(orig,sw,sh),samples=[];
  for(let p=0;p<mask.length;p++)if(mask[p]>.9){const i=p*4;samples.push(lum(orig[i],orig[i+1],orig[i+2]))}
  samples.sort((a,b)=>a-b);const baseLum=samples.length?samples[Math.floor(samples.length*.62)]:58;
- for(let p=0;p<mask.length;p++){const a=mask[p];if(a<=0)continue;const i=p*4,r=orig[i],g=orig[i+1],b=orig[i+2],m=targetPixel(r,g,b,state.color,baseLum),alpha=a>.9?1:a;data[i]=Math.round(r+(m.r-r)*alpha);data[i+1]=Math.round(g+(m.g-g)*alpha);data[i+2]=Math.round(b+(m.b-b)*alpha)}
+ for(let p=0;p<mask.length;p++){
+  const a=mask[p];if(a<=0)continue;const i=p*4,r=orig[i],g=orig[i+1],b=orig[i+2],m=targetPixel(r,g,b,state.color,baseLum);
+  const alpha=a>.9?1:a;
+  data[i]=Math.round(r+(m.r-r)*alpha);data[i+1]=Math.round(g+(m.g-g)*alpha);data[i+2]=Math.round(b+(m.b-b)*alpha);
+ }
  ctx.putImageData(img,sx,sy);
 }
 function loadProduct(){sourceImage=new Image();sourceImage.onload=drawProduct;sourceImage.src=state.product.image}
