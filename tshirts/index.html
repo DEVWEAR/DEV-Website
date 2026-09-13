@@ -1187,23 +1187,33 @@ footer{
 /* SHARED STORE NAVIGATION */
 nav{min-height:82px;gap:20px;padding:0 5%;}.logo{font-size:36px;letter-spacing:7px;}.gender-nav{gap:30px;flex-shrink:0;}.gender-nav a{padding:33px 0 29px;font-size:11px;letter-spacing:2.5px;}.nav-links{margin-left:0;gap:22px;min-width:0;}.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}.search-box{position:relative;width:250px}.search-box input{width:100%;height:44px;padding:0 42px 0 17px;border:1px solid #333;border-radius:30px;outline:none;background:#111;color:#fff;font-size:12px}.search-box input::placeholder{color:#666}.search-icon{position:absolute;top:50%;right:16px;transform:translateY(-50%);pointer-events:none}.cart-button{width:46px;height:46px;display:flex;align-items:center;justify-content:center;flex-shrink:0}@media(max-width:1100px){.nav-links{display:none}}@media(max-width:700px){nav{min-height:72px;padding:0 4%;gap:14px}.logo{font-size:28px;letter-spacing:5px}.gender-nav{gap:17px}.gender-nav a{padding:27px 0 24px;font-size:9px;letter-spacing:1.5px}.search-box{width:min(190px,32vw)}.search-box input{height:40px;font-size:10px;padding-left:13px;padding-right:34px}.search-icon{right:12px}.cart-button{width:42px;height:42px}}
 
-/* DEV SHARED NAVIGATION — SAME ON EVERY PAGE */
-.site-nav{position:sticky;top:0;z-index:1000;min-height:82px;display:flex;align-items:center;gap:30px;padding:0 5%;background:rgba(5,5,5,.97);border-bottom:1px solid #1b1b1b}
-.site-logo{flex-shrink:0;color:#fff;text-decoration:none;font-size:36px;font-weight:900;letter-spacing:7px}
-.site-main-nav{display:flex;align-items:center;gap:30px}
-.site-main-nav a{position:relative;color:#888;text-decoration:none;padding:33px 0 29px;font-size:11px;font-weight:900;letter-spacing:2.5px}
-.site-main-nav a:hover,.site-main-nav a.active{color:#fff}
-.site-main-nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:20px;height:1px;background:#fff}
-.site-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
-.site-search{position:relative;width:250px}
-.site-search input{width:100%;height:44px;padding:0 42px 0 17px;border:1px solid #333;border-radius:30px;outline:none;background:#111;color:#fff;font-size:12px}
-.site-search input::placeholder{color:#666}
-.site-search span{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;color:#fff}
-.site-cart{position:relative;width:46px;height:46px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #333;border-radius:50%;background:#111;color:#fff;cursor:pointer;font-size:18px}
-.site-cart span{display:none;position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;align-items:center;justify-content:center;border-radius:20px;border:1px solid #000;background:#fff;color:#000;font-size:9px;font-weight:900}
-.site-cart span.active{display:flex}
-@media(max-width:850px){.site-nav{min-height:72px;padding:0 4%;gap:18px}.site-logo{font-size:28px;letter-spacing:5px}.site-main-nav{gap:17px}.site-main-nav a{padding:27px 0 24px;font-size:9px;letter-spacing:1.5px}.site-actions{gap:8px}.site-search{width:min(190px,32vw)}.site-search input{height:40px;font-size:10px;padding-left:13px;padding-right:34px}.site-search span{right:12px}.site-cart{width:42px;height:42px}}
-@media(max-width:600px){.site-nav{gap:12px}.site-logo{font-size:25px;letter-spacing:4px}.site-main-nav{gap:13px}.site-main-nav a{font-size:8px}.site-search{width:min(180px,32vw)}}
+
+
+
+/* DEV NAV POSITION — CATEGORY LINKS PRESERVED; MEN/WOMEN MOVED BESIDE SEARCH */
+.dev-shared-nav{position:sticky;top:0;z-index:1000;min-height:82px;display:flex;align-items:center;gap:22px;padding:0 5%;background:rgba(5,5,5,.97);border-bottom:1px solid #1b1b1b}
+.dev-logo{flex-shrink:0;color:#fff;text-decoration:none;font-size:36px;font-weight:900;letter-spacing:7px}
+.dev-category-nav{display:flex;align-items:center;gap:22px;min-width:0}
+.dev-category-nav a{color:#888;text-decoration:none;font-size:10px;font-weight:900;letter-spacing:2px;white-space:nowrap;transition:.2s}
+.dev-category-nav a:hover{color:#fff}
+.dev-nav-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.dev-gender-nav{display:flex;align-items:center;gap:26px;flex-shrink:0}
+.dev-gender-nav a{position:relative;color:#888;text-decoration:none;padding:33px 0 29px;font-size:11px;font-weight:900;letter-spacing:2.5px;white-space:nowrap}
+.dev-gender-nav a:hover{color:#fff}
+.dev-gender-nav a.active{color:#fff}
+.dev-gender-nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:20px;height:1px;background:#fff}
+.dev-search-box{position:relative;width:250px}
+.dev-search-box input{width:100%;height:44px;padding:0 42px 0 17px;border:1px solid #333;border-radius:30px;outline:none;background:#111;color:#fff;font-size:12px}
+.dev-search-box input::placeholder{color:#666}
+.dev-search-box span{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;color:#fff}
+.dev-cart-button{position:relative;width:46px;height:46px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #333;border-radius:50%;background:#111;color:#fff;cursor:pointer;font-size:18px}
+.dev-cart-button .cart-count{display:none;position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;align-items:center;justify-content:center;border-radius:20px;border:1px solid #000;background:#fff;color:#000;font-size:9px;font-weight:900}
+.dev-cart-button .cart-count.active{display:flex}
+.dev-shared-nav .menu-btn{display:none}
+@media(max-width:1200px){.dev-category-nav{gap:15px}.dev-category-nav a{font-size:9px;letter-spacing:1.5px}.dev-gender-nav{gap:18px}.dev-gender-nav a{font-size:10px}.dev-search-box{width:210px}}
+@media(max-width:900px){.dev-category-nav{display:none}.dev-nav-right{margin-left:auto}.dev-search-box{width:220px}}
+@media(max-width:600px){.dev-shared-nav{min-height:68px;padding:0 4%;gap:12px}.dev-logo{font-size:28px;letter-spacing:5px}.dev-gender-nav{gap:15px}.dev-gender-nav a{padding:27px 0 24px;font-size:9px;letter-spacing:1.5px}.dev-gender-nav a.active:after{bottom:17px}.dev-search-box{width:150px}.dev-search-box input{height:40px;font-size:10px;padding-left:13px;padding-right:34px}.dev-search-box span{right:12px}.dev-cart-button{width:42px;height:42px}}
+@media(max-width:450px){.dev-search-box{width:125px}.dev-gender-nav{gap:11px}.dev-gender-nav a{font-size:8px}.dev-cart-button{width:40px;height:40px}}
 
 </style>
 </head>
@@ -1215,18 +1225,35 @@ nav{min-height:82px;gap:20px;padding:0 5%;}.logo{font-size:36px;letter-spacing:7
 </div>
 
 
-<nav class="site-nav">
-  <a href="/DEV-Website/" class="site-logo">DEV</a>
-  <div class="site-main-nav">
-    <a href="/DEV-Website/" class="site-men active">MEN</a>
-    <a href="/DEV-Website/women/" class="site-women">WOMEN</a>
+<nav class="dev-shared-nav">
+  <a href="/DEV-Website/" class="dev-logo">DEV</a>
+
+  <div class="dev-category-nav">
+    <a href="/DEV-Website/tshirts/">T-SHIRTS</a>
+    <a href="/DEV-Website/polo/">POLO</a>
+    <a href="/DEV-Website/shorts/">SHORTS</a>
+    <a href="/DEV-Website/baggy-pants/">BAGGY PANTS</a>
+    <a href="#">HOODIES</a>
+    <a href="#">SWEATERS</a>
   </div>
-  <div class="site-actions">
-    <div class="site-search">
+
+  <div class="dev-nav-right">
+    <div class="dev-gender-nav">
+      <a href="/DEV-Website/" class="dev-men-link active">MEN</a>
+      <a href="/DEV-Website/women/" class="dev-women-link">WOMEN</a>
+    </div>
+
+    <div class="dev-search-box">
       <input id="desktopSearch" type="search" placeholder="Search collections..." aria-label="Search collections">
       <span>⌕</span>
     </div>
-    <button class="site-cart" id="cartButton" type="button" aria-label="Shopping bag">🛒<span id="cartCount">0</span></button>
+
+    <button class="dev-cart-button" id="cartButton" type="button" aria-label="Shopping bag">
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <span class="menu-btn" onclick="typeof toggleMenu === 'function' && toggleMenu()">☰</span>
   </div>
 </nav>
 
