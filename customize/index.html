@@ -33,14 +33,26 @@ nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:20px;
 .piece img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#0b0b0b}
 .piece span{display:block;margin:9px 0 3px;text-align:center;color:#666;font-size:9px;font-weight:900;letter-spacing:1.8px}
 .piece.active span{color:#fff}
-.preview{margin-top:14px;border:1px solid #2a2a2a;background:#070707}
-.stage{position:relative;aspect-ratio:16/11;overflow:hidden}
-#sourceImage{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
-.labels{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:space-around;align-items:end;padding:20px 10% 18px;background:linear-gradient(to top,#050505 0%,rgba(5,5,5,.9) 62%,transparent 100%);pointer-events:none}
-.labels span{font-size:10px;letter-spacing:5px;color:#d0d0d0}
-.edit-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.edit-row button{height:64px;border:1px solid #2c2c2c;background:#0c0c0c;color:#6f6f6f;font-size:10px;font-weight:900;letter-spacing:4px}
-.edit-row button.active{background:#fff;color:#000;border-color:#fff}
+.preview{margin-top:14px;border:1px solid #242424;background:radial-gradient(circle at 50% 42%,#1b1b1b 0,#0d0d0d 46%,#050505 82%);overflow:hidden}
+.stage{position:relative;min-height:650px;overflow:hidden;padding:28px 28px 38px;perspective:1200px}
+.studio-kicker{position:absolute;top:24px;left:28px;z-index:8;color:#666;font-size:9px;font-weight:900;letter-spacing:3px}.studio-kicker span{color:#fff}
+.garment-scene{position:relative;width:100%;height:570px;display:flex;align-items:center;justify-content:center}
+.garment-card{position:absolute;overflow:visible;transition:all .42s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 24px 35px rgba(0,0,0,.34))}
+.garment-card.main{z-index:3;width:min(54%,560px);height:90%;left:15%;top:5%}
+.garment-card.secondary{z-index:2;width:min(29%,300px);height:52%;right:9%;top:17%;opacity:.48;filter:brightness(.72) drop-shadow(0 18px 24px rgba(0,0,0,.35))}
+.garment-crop{position:absolute;inset:0;overflow:hidden;background:transparent}
+.garment-crop img{position:absolute;top:0;width:200%;height:100%;max-width:none;object-fit:contain;transition:left .42s ease,transform .42s ease}
+.garment-label{position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);color:#777;font-size:9px;font-weight:900;letter-spacing:3px;white-space:nowrap}
+.garment-card.main .garment-label{color:#fff}
+.stage[data-view="front"] .main .garment-crop img{left:0}.stage[data-view="front"] .secondary .garment-crop img{left:-100%}
+.stage[data-view="back"] .main{left:31%}.stage[data-view="back"] .secondary{right:auto;left:8%}.stage[data-view="back"] .main .garment-crop img{left:-100%}.stage[data-view="back"] .secondary .garment-crop img{left:0}
+.stage[data-view="left"] .main{left:23%;transform:rotateY(34deg) scale(.96);transform-origin:center}.stage[data-view="left"] .secondary{right:7%;opacity:.28}.stage[data-view="left"] .main .garment-crop img{left:0}.stage[data-view="left"] .secondary .garment-crop img{left:-100%}
+.stage[data-view="right"] .main{left:23%;transform:rotateY(-34deg) scale(.96);transform-origin:center}.stage[data-view="right"] .secondary{right:auto;left:5%;opacity:.28}.stage[data-view="right"] .main .garment-crop img{left:-100%}.stage[data-view="right"] .secondary .garment-crop img{left:0}
+.side-hint{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#4f4f4f;font-size:8px;font-weight:900;letter-spacing:3px}
+.edit-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.edit-row button{height:64px;border:1px solid #2c2c2c;background:#0c0c0c;color:#646464;font-size:9px;font-weight:900;letter-spacing:2.6px;cursor:pointer;transition:.2s}
+.edit-row button:hover{border-color:#555;color:#bbb}.edit-row button.active{background:#fff;color:#000;border-color:#fff}
+@media(max-width:700px){.stage{min-height:500px;padding:20px 14px 32px}.garment-scene{height:430px}.garment-card.main{width:68%;height:84%;left:5%;top:9%}.garment-card.secondary{width:34%;height:43%;right:2%;top:22%}.stage[data-view="back"] .main{left:27%}.stage[data-view="back"] .secondary{left:1%}.stage[data-view="left"] .main,.stage[data-view="right"] .main{left:14%}.edit-row{grid-template-columns:repeat(2,1fr)}.edit-row button{height:56px}.studio-kicker{left:16px;top:16px}.side-hint{letter-spacing:1.8px}}
 .panel{margin-top:14px;border:1px solid #222;background:#080808}
 .head,.group{padding:28px 30px;border-bottom:1px solid #1f1f1f}
 .no{color:#555;font-size:10px;font-weight:900;letter-spacing:3px}
@@ -145,12 +157,14 @@ footer{padding:60px 6% 28px;border-top:1px solid #171717;color:#555;text-align:c
 @media(max-width:450px){.dev-search-box{width:125px}.dev-gender-nav{gap:11px}.dev-gender-nav a{font-size:8px}.dev-cart-button{width:40px;height:40px}}
 
 
-/* CUSTOM ARTWORK PREVIEW */
-.artwork-preview{position:absolute;z-index:4;display:none;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18));transition:left .2s ease,right .2s ease,top .2s ease,width .2s ease}
+/* CUSTOM ARTWORK PREVIEW — INDEPENDENT PER SIDE */
+.artwork-preview{position:absolute;z-index:7;display:none;pointer-events:none;object-fit:contain;filter:drop-shadow(0 3px 5px rgba(0,0,0,.28));transition:all .25s ease}
 .artwork-preview.show{display:block}
-.artwork-preview.front{left:20%;right:auto;top:35%;width:15%;max-height:32%}
-.artwork-preview.back{right:20%;left:auto;top:35%;width:15%;max-height:32%}
-@media(max-width:700px){.artwork-preview.front{left:18%;top:35%;width:17%}.artwork-preview.back{right:18%;top:35%;width:17%}}
+.stage[data-view="front"] .artwork-preview{left:38%;top:34%;width:24%;max-height:34%}
+.stage[data-view="back"] .artwork-preview{left:36%;top:32%;width:28%;max-height:38%}
+.stage[data-view="left"] .artwork-preview{left:31%;top:37%;width:17%;max-height:30%;transform:skewY(-4deg)}
+.stage[data-view="right"] .artwork-preview{left:52%;top:37%;width:17%;max-height:30%;transform:skewY(4deg)}
+@media(max-width:700px){.stage[data-view="front"] .artwork-preview{left:36%;width:28%}.stage[data-view="back"] .artwork-preview{left:34%;width:32%}.stage[data-view="left"] .artwork-preview{left:27%;width:20%}.stage[data-view="right"] .artwork-preview{left:53%;width:20%}}
 
 </style>
 </head>
@@ -192,16 +206,28 @@ footer{padding:60px 6% 28px;border-top:1px solid #171717;color:#555;text-align:c
   <div class="pieces" id="pieces"></div>
 
   <section class="preview">
-    <div class="stage" id="stage">
-      <img id="sourceImage" alt="DEV Custom Product">
-      <img id="artworkPreview" class="artwork-preview front" alt="Uploaded artwork preview">
-      <div class="labels"><span>FRONT</span><span>BACK</span></div>
+    <div class="stage" id="stage" data-view="front">
+      <div class="studio-kicker">CUSTOMIZE / <span id="stageViewLabel">FRONT SIDE</span></div>
+      <div class="garment-scene">
+        <div class="garment-card secondary" id="secondaryCard">
+          <div class="garment-crop"><img id="secondaryImage" alt="Secondary garment view"></div>
+          <div class="garment-label" id="secondaryLabel">BACK</div>
+        </div>
+        <div class="garment-card main" id="mainCard">
+          <div class="garment-crop"><img id="mainImage" alt="Main garment view"></div>
+          <img id="artworkPreview" class="artwork-preview" alt="Uploaded artwork preview">
+          <div class="garment-label" id="mainLabel">FRONT</div>
+        </div>
+      </div>
+      <div class="side-hint">SELECT A SIDE TO PLACE YOUR ARTWORK</div>
     </div>
   </section>
 
   <div class="edit-row">
-    <button class="active" data-view="front">EDIT FRONT</button>
-    <button data-view="back">EDIT BACK</button>
+    <button class="active" data-view="front">FRONT SIDE</button>
+    <button data-view="back">BACK SIDE</button>
+    <button data-view="left">LEFT SIDE</button>
+    <button data-view="right">RIGHT SIDE</button>
   </div>
 
   <section class="panel">
@@ -279,9 +305,14 @@ const PRODUCTS=[
 ];
 
 const CART_KEY="dev_cart_v1";
-let state={product:PRODUCTS[0],size:null,view:"front"};
+let state={product:PRODUCTS[0],size:null,view:"front",artworks:{front:null,back:null,left:null,right:null}};
 const pieces=document.getElementById("pieces");
-const sourceImage=document.getElementById("sourceImage");
+const stage=document.getElementById("stage");
+const mainImage=document.getElementById("mainImage");
+const secondaryImage=document.getElementById("secondaryImage");
+const mainLabel=document.getElementById("mainLabel");
+const secondaryLabel=document.getElementById("secondaryLabel");
+const stageViewLabel=document.getElementById("stageViewLabel");
 const num=document.getElementById("num");
 const prodName=document.getElementById("prodName");
 const sumPiece=document.getElementById("sumPiece");
@@ -296,12 +327,30 @@ function renderPieces(){
     </button>`).join("");
 }
 
-function loadProduct(){sourceImage.src=state.product.img;}
+function loadProduct(){
+  mainImage.src=state.product.img;
+  secondaryImage.src=state.product.img;
+  renderStageView();
+}
+
+function renderStageView(){
+  const labels={front:["FRONT","BACK"],back:["BACK","FRONT"],left:["LEFT SIDE","BACK"],right:["RIGHT SIDE","FRONT"]};
+  stage.dataset.view=state.view;
+  mainLabel.textContent=labels[state.view][0];
+  secondaryLabel.textContent=labels[state.view][1];
+  stageViewLabel.textContent=labels[state.view][0];
+  renderArtworkForView();
+}
 
 pieces.addEventListener("click",e=>{
   const b=e.target.closest("[data-id]");
   if(!b)return;
   state.product=PRODUCTS.find(p=>p.id===b.dataset.id)||state.product;
+  Object.values(state.artworks).forEach(a=>{if(a&&a.url)URL.revokeObjectURL(a.url)});
+  state.artworks={front:null,back:null,left:null,right:null};
+  state.view="front";
+  document.querySelectorAll(".edit-row button").forEach(x=>x.classList.toggle("active",x.dataset.view==="front"));
+  sumView.textContent="FRONT";
   state.size=null;
   num.textContent=state.product.num;
   prodName.textContent=state.product.name;
@@ -323,39 +372,40 @@ document.querySelectorAll(".edit-row button").forEach(b=>b.addEventListener("cli
   document.querySelectorAll(".edit-row button").forEach(x=>x.classList.remove("active"));
   b.classList.add("active");
   state.view=b.dataset.view;
-  sumView.textContent=state.view.toUpperCase();
-  updateArtworkSide();
+  sumView.textContent=(state.view+" SIDE").toUpperCase();
+  artworkInput.value="";
+  renderStageView();
 }));
 
 const artworkInput=document.getElementById("artwork");
 const artworkPreview=document.getElementById("artworkPreview");
-let artworkObjectUrl=null;
 
-function updateArtworkSide(){
-  if(!artworkPreview)return;
-  artworkPreview.classList.remove("front","back");
-  artworkPreview.classList.add(state.view==="back"?"back":"front");
+function renderArtworkForView(){
+  const art=state.artworks[state.view];
+  const filename=document.getElementById("filename");
+  if(!art){
+    artworkPreview.removeAttribute("src");
+    artworkPreview.classList.remove("show");
+    filename.textContent="NO ARTWORK ON "+state.view.toUpperCase()+" SIDE — PNG, JPG or WEBP";
+    return;
+  }
+  artworkPreview.src=art.url;
+  artworkPreview.classList.add("show");
+  filename.textContent=art.name+" — "+state.view.toUpperCase()+" SIDE";
 }
 
 artworkInput.addEventListener("change",e=>{
   const f=e.target.files&&e.target.files[0];
-  document.getElementById("filename").textContent=f?f.name:"PNG, JPG or WEBP";
-  if(!f){
-    artworkPreview.removeAttribute("src");
-    artworkPreview.classList.remove("show");
-    return;
-  }
+  if(!f)return;
   if(!/^image\/(png|jpeg|webp)$/i.test(f.type)){
     alert("Please upload PNG, JPG or WEBP image.");
     artworkInput.value="";
-    document.getElementById("filename").textContent="PNG, JPG or WEBP";
     return;
   }
-  if(artworkObjectUrl) URL.revokeObjectURL(artworkObjectUrl);
-  artworkObjectUrl=URL.createObjectURL(f);
-  artworkPreview.src=artworkObjectUrl;
-  updateArtworkSide();
-  artworkPreview.classList.add("show");
+  const old=state.artworks[state.view];
+  if(old&&old.url) URL.revokeObjectURL(old.url);
+  state.artworks[state.view]={name:f.name,url:URL.createObjectURL(f)};
+  renderArtworkForView();
 });
 
 document.getElementById("save").addEventListener("click",()=>{
@@ -363,7 +413,7 @@ document.getElementById("save").addEventListener("click",()=>{
     product:state.product.id,
     size:state.size,
     view:state.view,
-    artworkName:(document.getElementById("artwork").files[0]||{}).name||null
+    artworks:Object.fromEntries(Object.entries(state.artworks).map(([side,art])=>[side,art?art.name:null]))
   }));
   alert("Design saved. Your cart is available from the bag icon.");
 });
