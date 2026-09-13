@@ -144,6 +144,14 @@ footer{padding:60px 6% 28px;border-top:1px solid #171717;color:#555;text-align:c
 @media(max-width:600px){.dev-shared-nav{min-height:68px;padding:0 4%;gap:12px}.dev-logo{font-size:28px;letter-spacing:5px}.dev-gender-nav{gap:15px}.dev-gender-nav a{padding:27px 0 24px;font-size:9px;letter-spacing:1.5px}.dev-gender-nav a.active:after{bottom:17px}.dev-search-box{width:150px}.dev-search-box input{height:40px;font-size:10px;padding-left:13px;padding-right:34px}.dev-search-box span{right:12px}.dev-cart-button{width:42px;height:42px}}
 @media(max-width:450px){.dev-search-box{width:125px}.dev-gender-nav{gap:11px}.dev-gender-nav a{font-size:8px}.dev-cart-button{width:40px;height:40px}}
 
+
+/* CUSTOM ARTWORK PREVIEW */
+.artwork-preview{position:absolute;z-index:4;display:none;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18));transition:left .2s ease,right .2s ease,top .2s ease,width .2s ease}
+.artwork-preview.show{display:block}
+.artwork-preview.front{left:20%;right:auto;top:35%;width:15%;max-height:32%}
+.artwork-preview.back{right:20%;left:auto;top:35%;width:15%;max-height:32%}
+@media(max-width:700px){.artwork-preview.front{left:18%;top:35%;width:17%}.artwork-preview.back{right:18%;top:35%;width:17%}}
+
 </style>
 </head>
 <body>
@@ -186,6 +194,7 @@ footer{padding:60px 6% 28px;border-top:1px solid #171717;color:#555;text-align:c
   <section class="preview">
     <div class="stage" id="stage">
       <img id="sourceImage" alt="DEV Custom Product">
+      <img id="artworkPreview" class="artwork-preview front" alt="Uploaded artwork preview">
       <div class="labels"><span>FRONT</span><span>BACK</span></div>
     </div>
   </section>
@@ -315,11 +324,38 @@ document.querySelectorAll(".edit-row button").forEach(b=>b.addEventListener("cli
   b.classList.add("active");
   state.view=b.dataset.view;
   sumView.textContent=state.view.toUpperCase();
+  updateArtworkSide();
 }));
 
-document.getElementById("artwork").addEventListener("change",e=>{
+const artworkInput=document.getElementById("artwork");
+const artworkPreview=document.getElementById("artworkPreview");
+let artworkObjectUrl=null;
+
+function updateArtworkSide(){
+  if(!artworkPreview)return;
+  artworkPreview.classList.remove("front","back");
+  artworkPreview.classList.add(state.view==="back"?"back":"front");
+}
+
+artworkInput.addEventListener("change",e=>{
   const f=e.target.files&&e.target.files[0];
   document.getElementById("filename").textContent=f?f.name:"PNG, JPG or WEBP";
+  if(!f){
+    artworkPreview.removeAttribute("src");
+    artworkPreview.classList.remove("show");
+    return;
+  }
+  if(!/^image\/(png|jpeg|webp)$/i.test(f.type)){
+    alert("Please upload PNG, JPG or WEBP image.");
+    artworkInput.value="";
+    document.getElementById("filename").textContent="PNG, JPG or WEBP";
+    return;
+  }
+  if(artworkObjectUrl) URL.revokeObjectURL(artworkObjectUrl);
+  artworkObjectUrl=URL.createObjectURL(f);
+  artworkPreview.src=artworkObjectUrl;
+  updateArtworkSide();
+  artworkPreview.classList.add("show");
 });
 
 document.getElementById("save").addEventListener("click",()=>{
