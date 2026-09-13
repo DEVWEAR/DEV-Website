@@ -2,24 +2,156 @@
   const BASE='/DEV-Website/';
 
   // IMPORTANT: MEN and WOMEN indexes stay completely separate.
-  // When a new product is added, add it to the correct index with name, category,
-  // colors and useful keywords so customers can find it from partial typing.
+  // Every new product must be added to the correct index with its name, category,
+  // all current colors and useful keywords so customers can find it while typing.
   const MEN_INDEX=[
-    {name:'Close Your Eyes Tee',category:'T-Shirts',colors:['White'],keywords:['close your eyes','tee','tshirt','t-shirt','shirt','oversized','white'],url:BASE+'tshirts/',image:BASE+'close-eyes-front.jpeg',price:'AED 75'},
-    {name:'Yujiro × Jack Hanma Tee',category:'T-Shirts',colors:['Black'],keywords:['yujiro','jack hanma','hanma','tee','tshirt','t-shirt','shirt','oversized','black','anime'],url:BASE+'tshirts/',image:BASE+'yujiro-jack-front.jfif',price:'AED 75'},
-    {name:'Yeah Buddy Tee',category:'T-Shirts',colors:['Black'],keywords:['yeah buddy','ronnie coleman','ronnie','light weight','tee','tshirt','t-shirt','shirt','oversized','black'],url:BASE+'tshirts/',image:BASE+'yeah-buddy-front.jpeg',price:'AED 75'},
-    {name:'DEV Zip Polo',category:'Polo',colors:['Black','Dark Olive Green','Beige'],keywords:['polo','zip polo','zipper','black','dark olive green','olive','green','beige','shirt'],url:BASE+'polo/',image:BASE+'polo-black-front.jfif',price:'AED 85'},
-    {name:'DEV Shorts',category:'Shorts',colors:['Black'],keywords:['shorts','short','gym shorts','training shorts','black'],url:BASE+'shorts/',image:BASE+'dev-shorts-front.jfif',price:'AED 80'},
-    {name:'DEV Baggy Pants',category:'Baggy Pants',colors:['Black','Light Grey'],keywords:['baggy pants','pants','pant','trousers','black','light grey','light gray','grey','gray','baggy'],url:BASE+'baggy-pants/',image:BASE+'baggy-pants-black-front.jfif',price:''},
-    {name:'Hoodies',category:'Hoodies',colors:[],keywords:['hoodie','hoodies','sweatshirt'],url:BASE+'#collections',image:BASE+'hoodies.jpeg',price:'COMING SOON'},
-    {name:'Sweaters',category:'Sweaters',colors:[],keywords:['sweater','sweaters','sweatshirt'],url:BASE+'#collections',image:BASE+'sweaters.jpeg',price:'COMING SOON'}
+    {
+      name:'Close Your Eyes Tee',
+      category:'T-Shirts',
+      colors:['White'],
+      keywords:['close your eyes','tee','tshirt','t-shirt','shirt','oversized','white','gym','training','lifestyle'],
+      url:BASE+'tshirts/',
+      image:BASE+'close-eyes-front.jfif',
+      price:'AED 75'
+    },
+    {
+      name:'Yujiro × Jack Hanma Tee',
+      category:'T-Shirts',
+      colors:['Black'],
+      keywords:['yujiro','jack hanma','hanma','tee','tshirt','t-shirt','shirt','oversized','black','anime','gym','training'],
+      url:BASE+'tshirts/',
+      image:BASE+'yujiro-jack-front.jfif',
+      price:'AED 85'
+    },
+    {
+      name:'Yeah Buddy Tee',
+      category:'T-Shirts',
+      colors:['Black'],
+      keywords:['yeah buddy','ronnie coleman','ronnie','light weight','lightweight','tee','tshirt','t-shirt','shirt','oversized','black','gym','bodybuilding'],
+      url:BASE+'tshirts/',
+      image:BASE+'yeah-buddy-front.jfif',
+      price:'AED 75'
+    },
+    {
+      name:'DEV Oversized Graphic Tee',
+      category:'T-Shirts',
+      colors:['Black','Navy Blue'],
+      keywords:['dev oversized graphic tee','graphic tee','graphic t-shirt','tee','tshirt','t-shirt','shirt','oversized','black','navy','navy blue','blue','gym','training','lifestyle'],
+      url:BASE+'tshirts/',
+      image:BASE+'graphic-tee-black-front.jpg.jpeg',
+      price:'AED 85'
+    },
+    {
+      name:'DEV Zip Polo - Black',
+      category:'Polo',
+      colors:['Black'],
+      keywords:['dev zip polo','polo','zip polo','zipper polo','black','shirt','oversized','gym','training','lifestyle'],
+      url:BASE+'polo/',
+      image:BASE+'polo-black-front.jfif',
+      price:'AED 85'
+    },
+    {
+      name:'DEV Zip Polo - Dark Olive Green',
+      category:'Polo',
+      colors:['Dark Olive Green'],
+      keywords:['dev zip polo','polo','zip polo','zipper polo','dark olive green','olive','green','dark green','shirt','oversized','gym','training','lifestyle'],
+      url:BASE+'polo/',
+      image:BASE+'polo-dark-olive-green-front.jpg',
+      price:'AED 85'
+    },
+    {
+      name:'DEV Zip Polo - Beige',
+      category:'Polo',
+      colors:['Beige'],
+      keywords:['dev zip polo','polo','zip polo','zipper polo','beige','cream','shirt','oversized','gym','training','lifestyle'],
+      url:BASE+'polo/',
+      image:BASE+'polo-beige-front.jfif',
+      price:'AED 85'
+    },
+    {
+      name:'DEV Shorts',
+      category:'Shorts',
+      colors:['Black'],
+      keywords:['dev shorts','shorts','short','gym shorts','training shorts','black','men shorts','workout'],
+      url:BASE+'shorts/',
+      image:BASE+'dev-shorts-front.jfif',
+      price:'AED 80'
+    },
+    {
+      name:'DEV Baggy Pants - Black',
+      category:'Baggy Pants',
+      colors:['Black'],
+      keywords:['dev baggy pants','baggy pants','pants','pant','trousers','black','baggy','gym pants','men pants'],
+      url:BASE+'baggy-pants/',
+      image:BASE+'baggy-pants-black-front.jfif',
+      price:''
+    },
+    {
+      name:'DEV Baggy Pants - Light Grey',
+      category:'Baggy Pants',
+      colors:['Light Grey'],
+      keywords:['dev baggy pants','baggy pants','pants','pant','trousers','light grey','light gray','grey','gray','baggy','gym pants','men pants'],
+      url:BASE+'baggy-pants/',
+      image:BASE+'baggy-pants-light-grey-front.jpeg',
+      price:''
+    },
+    {
+      name:'Hoodies',
+      category:'Hoodies',
+      colors:[],
+      keywords:['hoodie','hoodies','sweatshirt','oversized hoodie','gym hoodie'],
+      url:BASE+'#collections',
+      image:BASE+'hoodies.jpeg',
+      price:'COMING SOON'
+    },
+    {
+      name:'Sweaters',
+      category:'Sweaters',
+      colors:[],
+      keywords:['sweater','sweaters','sweatshirt','oversized sweater','gym sweater'],
+      url:BASE+'#collections',
+      image:BASE+'sweaters.jpeg',
+      price:'COMING SOON'
+    }
   ];
 
   const WOMEN_INDEX=[
-    {name:'Women Tops',category:'Tops',colors:[],keywords:['women tops','top','tops','shirt','training top','gym top'],url:BASE+'women/',image:BASE+'women-tops.png',price:''},
-    {name:'Women Leggings',category:'Leggings',colors:[],keywords:['women leggings','legging','leggings','gym leggings'],url:BASE+'women/',image:BASE+'women-leggings.png',price:''},
-    {name:'Women Shorts',category:'Shorts',colors:[],keywords:['women shorts','shorts','short','gym shorts'],url:BASE+'women/',image:BASE+'women-shorts.png',price:''},
-    {name:'Women Sets',category:'Sets',colors:[],keywords:['women sets','set','sets','matching set','gym set'],url:BASE+'women/',image:BASE+'women-sets.png',price:''}
+    {
+      name:'Women Tops',
+      category:'Tops',
+      colors:[],
+      keywords:['women tops','woman top','top','tops','shirt','training top','gym top','women shirt'],
+      url:BASE+'women/',
+      image:BASE+'women-tops.png',
+      price:''
+    },
+    {
+      name:'Women Leggings',
+      category:'Leggings',
+      colors:[],
+      keywords:['women leggings','woman leggings','legging','leggings','gym leggings','training leggings'],
+      url:BASE+'women/',
+      image:BASE+'women-leggings.png',
+      price:''
+    },
+    {
+      name:'Women Shorts',
+      category:'Shorts',
+      colors:[],
+      keywords:['women shorts','woman shorts','shorts','short','gym shorts','training shorts'],
+      url:BASE+'women/',
+      image:BASE+'women-shorts.png',
+      price:''
+    },
+    {
+      name:'Women Sets',
+      category:'Sets',
+      colors:[],
+      keywords:['women sets','woman set','set','sets','matching set','gym set','training set'],
+      url:BASE+'women/',
+      image:BASE+'women-sets.png',
+      price:''
+    }
   ];
 
   const normalize=s=>(s||'').toLowerCase().replace(/[×–—]/g,' ').replace(/[^a-z0-9]+/g,' ').trim();
@@ -73,7 +205,7 @@
     q=normalize(q);
     if(!q) return [];
     const tokens=q.split(' ').filter(Boolean);
-    return INDEX.map(item=>({item,score:score(item,q,tokens)})).filter(x=>x.score>=0).sort((a,b)=>b.score-a.score).slice(0,8).map(x=>x.item);
+    return INDEX.map(item=>({item,score:score(item,q,tokens)})).filter(x=>x.score>=0).sort((a,b)=>b.score-a.score).slice(0,12).map(x=>x.item);
   }
 
   function position(){
