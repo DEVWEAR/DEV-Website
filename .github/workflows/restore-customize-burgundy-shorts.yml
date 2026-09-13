@@ -1,0 +1,38 @@
+name: Restore Customize Burgundy Shorts
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore burgundy shorts image only for Customize
+        run: |
+          mkdir -p assets/customize
+          git show ae4b731a51a5592c72f57b557f206e1ad6012f26:shorts.jpeg > assets/customize/shorts-burgundy.jpeg
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path('customize/index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('{id:"shorts",num:"07",name:"SHORTS",img:"../shorts.jpeg"}', '{id:"shorts",num:"07",name:"SHORTS",img:"../assets/customize/shorts-burgundy.jpeg"}')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit restored Customize shorts and remove workflow
+        run: |
+          git config user.name "DEVWEAR"
+          git config user.email "devwear9@gmail.com"
+          git add assets/customize/shorts-burgundy.jpeg customize/index.html .github/workflows/restore-customize-burgundy-shorts.yml
+          git rm -f .github/workflows/restore-customize-burgundy-shorts.yml
+          git commit -m "Restore burgundy shorts image in Customize" || exit 0
+          git push
