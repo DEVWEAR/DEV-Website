@@ -1,0 +1,82 @@
+name: DEV navigation layout fix
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix-navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fix navigation alignment
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          category_pages = [
+              Path('tshirts/index.html'),
+              Path('polo/index.html'),
+              Path('shorts/index.html'),
+              Path('baggy-pants/index.html'),
+          ]
+
+          for path in category_pages:
+              s = path.read_text(encoding='utf-8')
+              s2 = re.sub(
+                  r'(\.nav-links\{[^}]*?)margin-left:auto;',
+                  r'\1margin-left:0;',
+                  s,
+                  count=1,
+                  flags=re.S,
+              )
+              if s2 != s:
+                  path.write_text(s2, encoding='utf-8')
+
+          # Women: keep MEN/WOMEN beside DEV, while search/cart stay on the far right.
+          path = Path('women/index.html')
+          s = path.read_text(encoding='utf-8')
+          s2 = s.replace(
+              '.nav-right{\n  margin-left:auto;\n  display:flex;',
+              '.nav-right{\n  margin-left:0;\n  flex:1;\n  display:flex;',
+              1,
+          )
+          s2 = s2.replace(
+              '.nav-actions{\n  display:flex;',
+              '.nav-actions{\n  margin-left:auto;\n  display:flex;',
+              1,
+          )
+          if s2 != s:
+              path.write_text(s2, encoding='utf-8')
+
+          # Customize: keep MEN/WOMEN beside DEV and the cart on the far right.
+          path = Path('customize/index.html')
+          s = path.read_text(encoding='utf-8')
+          s2 = s.replace(
+              '.main-nav{margin-left:auto;display:flex;',
+              '.main-nav{margin-left:20px;display:flex;',
+              1,
+          )
+          s2 = s2.replace(
+              '.cart{width:46px;height:46px;',
+              '.cart{margin-left:auto;width:46px;height:46px;',
+              1,
+          )
+          if s2 != s:
+              path.write_text(s2, encoding='utf-8')
+          PY
+
+      - name: Commit changes and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tshirts/index.html polo/index.html shorts/index.html baggy-pants/index.html women/index.html customize/index.html
+          git rm .github/workflows/nav-layout-fix.yml
+          git commit -m "Align navigation links to the left"
+          git push
