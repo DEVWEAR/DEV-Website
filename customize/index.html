@@ -150,8 +150,7 @@ const PRODUCTS=[
 ];
 
 const COLORS=[
-  {name:"BURGUNDY",hex:"#741d25"},
-  {name:"BLACK",hex:"#050505",tshirtImg:"../assets/customize/tshirt-black.jpg"}
+  {name:"BURGUNDY",hex:"#741d25"}
 ];
 
 let state={product:PRODUCTS[0],color:COLORS[0],size:null,view:"front"};
@@ -174,7 +173,7 @@ function renderPieces(){
 }
 
 function availableColors(){
-  return state.product.id==="tshirt" ? COLORS : COLORS.filter(c=>c.name==="BURGUNDY");
+  return COLORS;
 }
 
 function renderColors(){
@@ -197,11 +196,7 @@ function renderColors(){
 }
 
 function loadProduct(){
-  if(state.product.id==="tshirt" && state.color.name==="BLACK"){
-    sourceImage.src="../assets/customize/tshirt-black.jpg";
-  }else{
-    sourceImage.src=state.product.img;
-  }
+  sourceImage.src=state.product.img;
 }
 
 pieces.addEventListener("click",e=>{
