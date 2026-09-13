@@ -28,7 +28,8 @@ nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:20px;mi
 .piece.active span{color:#fff}
 .preview{margin-top:14px;border:1px solid #2a2a2a;background:#070707}
 .stage{position:relative;aspect-ratio:16/11;overflow:hidden}
-#sourceImage{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+#sourceImage{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+#colorCanvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
 .labels{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:space-around;align-items:end;padding:20px 10% 18px;background:linear-gradient(to top,#050505 0%,rgba(5,5,5,.9) 62%,transparent 100%);pointer-events:none}
 .labels span{font-size:10px;letter-spacing:5px;color:#d0d0d0}
 .edit-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
@@ -43,7 +44,7 @@ nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:20px;mi
 .color-option{display:flex;flex-direction:column;align-items:center;gap:10px}
 .color-swatch{width:58px;height:58px;border-radius:50%;border:1px solid #3b3b3b;cursor:pointer;box-shadow:inset 0 1px 2px rgba(255,255,255,.12),inset 0 -8px 16px rgba(0,0,0,.18)}
 .color-swatch.active{outline:2px solid #fff;outline-offset:5px}
-.color-name{font-size:9px;font-weight:900;letter-spacing:1.4px;color:#ddd}
+.color-name{font-size:9px;font-weight:900;letter-spacing:1.4px;color:#ddd;text-align:center;max-width:90px}
 .sizes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .sizes button{height:58px;border:1px solid #333;background:#090909;color:#888;font-size:11px;font-weight:900}
 .sizes button.active{background:#fff;color:#000;border-color:#fff}
@@ -87,6 +88,7 @@ footer{padding:60px 6% 28px;border-top:1px solid #171717;color:#555;text-align:c
   <section class="preview">
     <div class="stage" id="stage">
       <img id="sourceImage" alt="DEV Custom Product">
+      <canvas id="colorCanvas"></canvas>
       <div class="labels"><span>FRONT</span><span>BACK</span></div>
     </div>
   </section>
@@ -128,7 +130,7 @@ footer{padding:60px 6% 28px;border-top:1px solid #171717;color:#555;text-align:c
 
     <div class="summary">
       <div class="row"><span>PIECE</span><strong id="sumPiece">T-SHIRT</strong></div>
-      <div class="row"><span>COLOR</span><strong id="sumColor">BLACK</strong></div>
+      <div class="row"><span>COLOR</span><strong id="sumColor">BURGUNDY</strong></div>
       <div class="row"><span>SIZE</span><strong id="sumSize">NOT SELECTED</strong></div>
       <div class="row"><span>EDITING</span><strong id="sumView">FRONT</strong></div>
       <button class="save" id="save">SAVE DESIGN</button>
@@ -150,6 +152,7 @@ const PRODUCTS=[
 ];
 
 const COLORS=[
+  {name:"BURGUNDY",hex:"#741d25"},
   {name:"BLACK",hex:"#080808"},
   {name:"NAVY",hex:"#111c3a"},
   {name:"DARK GRAY",hex:"#303236"},
@@ -167,6 +170,7 @@ const COLORS=[
 let state={product:PRODUCTS[0],color:COLORS[0],size:null,view:"front"};
 const pieces=document.getElementById("pieces");
 const sourceImage=document.getElementById("sourceImage");
+const colorCanvas=document.getElementById("colorCanvas");
 const colorList=document.getElementById("colorList");
 const sumColor=document.getElementById("sumColor");
 const num=document.getElementById("num");
@@ -174,6 +178,7 @@ const prodName=document.getElementById("prodName");
 const sumPiece=document.getElementById("sumPiece");
 const sumSize=document.getElementById("sumSize");
 const sumView=document.getElementById("sumView");
+const ctx=colorCanvas.getContext("2d",{willReadFrequently:true});
 
 function renderPieces(){
   pieces.innerHTML=PRODUCTS.map(p=>`
@@ -183,31 +188,124 @@ function renderPieces(){
     </button>`).join("");
 }
 
-function availableColors(){
-  return COLORS;
-}
-
 function renderColors(){
-  const list=availableColors();
-  if(!list.some(c=>c.name===state.color.name))state.color=COLORS[0];
-
-  colorList.innerHTML=list.map(color=>`
+  colorList.innerHTML=COLORS.map(color=>`
     <div class="color-option">
-      <button
-        class="color-swatch ${color.name===state.color.name?"active":""}"
+      <button class="color-swatch ${color.name===state.color.name?"active":""}"
         data-color="${color.name}"
         style="background:${color.hex}"
-        aria-label="${color.name}">
-      </button>
+        aria-label="${color.name}"></button>
       <div class="color-name">${color.name}</div>
     </div>
   `).join("");
-
   sumColor.textContent=state.color.name;
 }
 
+function hexToRgb(hex){
+  const h=hex.replace("#","");
+  return {
+    r:parseInt(h.substring(0,2),16),
+    g:parseInt(h.substring(2,4),16),
+    b:parseInt(h.substring(4,6),16)
+  };
+}
+
+function rgbToHsl(r,g,b){
+  r/=255;g/=255;b/=255;
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  let h=0,s=0,l=(max+min)/2;
+  if(max!==min){
+    const d=max-min;
+    s=l>0.5?d/(2-max-min):d/(max+min);
+    switch(max){
+      case r:h=(g-b)/d+(g<b?6:0);break;
+      case g:h=(b-r)/d+2;break;
+      case b:h=(r-g)/d+4;break;
+    }
+    h/=6;
+  }
+  return {h,s,l};
+}
+
+function hslToRgb(h,s,l){
+  let r,g,b;
+  if(s===0){r=g=b=l;}
+  else{
+    const hue2rgb=(p,q,t)=>{
+      if(t<0)t+=1;
+      if(t>1)t-=1;
+      if(t<1/6)return p+(q-p)*6*t;
+      if(t<1/2)return q;
+      if(t<2/3)return p+(q-p)*(2/3-t)*6;
+      return p;
+    };
+    const q=l<0.5?l*(1+s):l+s-l*s;
+    const p=2*l-q;
+    r=hue2rgb(p,q,h+1/3);
+    g=hue2rgb(p,q,h);
+    b=hue2rgb(p,q,h-1/3);
+  }
+  return [Math.round(r*255),Math.round(g*255),Math.round(b*255)];
+}
+
+function colorizeImage(){
+  if(!sourceImage.complete||!sourceImage.naturalWidth)return;
+
+  const maxW=1600;
+  const scale=Math.min(1,maxW/sourceImage.naturalWidth);
+  colorCanvas.width=Math.round(sourceImage.naturalWidth*scale);
+  colorCanvas.height=Math.round(sourceImage.naturalHeight*scale);
+  ctx.clearRect(0,0,colorCanvas.width,colorCanvas.height);
+  ctx.drawImage(sourceImage,0,0,colorCanvas.width,colorCanvas.height);
+
+  const imageData=ctx.getImageData(0,0,colorCanvas.width,colorCanvas.height);
+  const data=imageData.data;
+  const target=hexToRgb(state.color.hex);
+  const targetHsl=rgbToHsl(target.r,target.g,target.b);
+
+  for(let i=0;i<data.length;i+=4){
+    const r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];
+    if(a===0)continue;
+
+    const hsl=rgbToHsl(r,g,b);
+    const redDominance=r-Math.max(g,b);
+    const warmRed=(r>g*1.08 && r>b*1.04 && redDominance>10);
+    const magentaRed=(r>b*1.03 && b>g*1.05 && r-g>12);
+    const saturatedWarm=hsl.s>0.18 && (warmRed||magentaRed);
+
+    if(!saturatedWarm)continue;
+
+    let lightness=hsl.l;
+    let saturation=hsl.s;
+
+    if(state.color.name==="BLACK"){
+      lightness=Math.max(0.035,Math.min(0.28,lightness*0.42));
+      saturation=Math.min(0.22,saturation*0.35);
+    }else if(state.color.name==="WHITE"){
+      lightness=Math.min(0.98,0.72+lightness*0.32);
+      saturation=Math.min(0.04,saturation*0.12);
+    }else if(state.color.name==="STONE GRAY"||state.color.name==="DARK GRAY"){
+      saturation=Math.min(0.08,saturation*0.18);
+      lightness=Math.max(0.18,Math.min(0.65,targetHsl.l*0.72+lightness*0.28));
+    }else{
+      saturation=Math.max(0.28,Math.min(0.95,targetHsl.s*0.9+hsl.s*0.15));
+      lightness=Math.max(0.12,Math.min(0.82,targetHsl.l*0.72+lightness*0.28));
+    }
+
+    const rgb=hslToRgb(targetHsl.h,saturation,lightness);
+    const shadowFactor=0.72+0.28*(hsl.l/Math.max(0.01,0.7));
+    data[i]=Math.min(255,Math.round(rgb[0]*shadowFactor));
+    data[i+1]=Math.min(255,Math.round(rgb[1]*shadowFactor));
+    data[i+2]=Math.min(255,Math.round(rgb[2]*shadowFactor));
+  }
+
+  ctx.putImageData(imageData,0,0);
+}
+
 function loadProduct(){
+  sourceImage.onload=colorizeImage;
   sourceImage.src=state.product.img;
+  if(sourceImage.complete)colorizeImage();
 }
 
 pieces.addEventListener("click",e=>{
@@ -218,7 +316,6 @@ pieces.addEventListener("click",e=>{
   prodName.textContent=state.product.name;
   sumPiece.textContent=state.product.name;
   renderPieces();
-  renderColors();
   loadProduct();
 });
 
@@ -227,7 +324,7 @@ colorList.addEventListener("click",e=>{
   if(!b)return;
   state.color=COLORS.find(c=>c.name===b.dataset.color)||state.color;
   renderColors();
-  loadProduct();
+  colorizeImage();
 });
 
 document.querySelectorAll(".sizes button").forEach(b=>b.addEventListener("click",()=>{
