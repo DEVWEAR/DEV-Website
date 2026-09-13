@@ -11,6 +11,8 @@
       colors:['White'],
       keywords:['close your eyes','tee','tshirt','t-shirt','shirt','oversized','white','gym','training','lifestyle'],
       url:BASE+'tshirts/',
+      productKey:'closeEyes',
+      colorKey:'white',
       image:BASE+'close-eyes-front.jfif',
       price:'AED 75'
     },
@@ -20,6 +22,8 @@
       colors:['Black'],
       keywords:['yujiro','jack hanma','hanma','tee','tshirt','t-shirt','shirt','oversized','black','anime','gym','training'],
       url:BASE+'tshirts/',
+      productKey:'yujiroJack',
+      colorKey:'black',
       image:BASE+'yujiro-jack-front.jfif',
       price:'AED 85'
     },
@@ -29,16 +33,31 @@
       colors:['Black'],
       keywords:['yeah buddy','ronnie coleman','ronnie','light weight','lightweight','tee','tshirt','t-shirt','shirt','oversized','black','gym','bodybuilding'],
       url:BASE+'tshirts/',
+      productKey:'yeahBuddy',
+      colorKey:'black',
       image:BASE+'yeah-buddy-front.jfif',
       price:'AED 75'
     },
     {
-      name:'DEV Oversized Graphic Tee',
+      name:'DEV Oversized Graphic Tee - Black',
       category:'T-Shirts',
-      colors:['Black','Navy Blue'],
-      keywords:['dev oversized graphic tee','graphic tee','graphic t-shirt','tee','tshirt','t-shirt','shirt','oversized','black','navy','navy blue','blue','gym','training','lifestyle'],
+      colors:['Black'],
+      keywords:['dev oversized graphic tee','graphic tee','graphic t-shirt','tee','tshirt','t-shirt','shirt','oversized','black','gym','training','lifestyle'],
       url:BASE+'tshirts/',
+      productKey:'originalGraphic',
+      colorKey:'black',
       image:BASE+'graphic-tee-black-front.jpg.jpeg',
+      price:'AED 85'
+    },
+    {
+      name:'DEV Oversized Graphic Tee - Navy Blue',
+      category:'T-Shirts',
+      colors:['Navy Blue'],
+      keywords:['dev oversized graphic tee','graphic tee','graphic t-shirt','tee','tshirt','t-shirt','shirt','oversized','navy','navy blue','blue','gym','training','lifestyle'],
+      url:BASE+'tshirts/',
+      productKey:'originalGraphic',
+      colorKey:'navy',
+      image:BASE+'graphic-tee-navy-front.jpg.jpeg',
       price:'AED 85'
     },
     {
@@ -47,6 +66,8 @@
       colors:['Black'],
       keywords:['dev zip polo','polo','zip polo','zipper polo','black','shirt','oversized','gym','training','lifestyle'],
       url:BASE+'polo/',
+      productKey:'black',
+      colorKey:'black',
       image:BASE+'polo-black-front.jfif',
       price:'AED 85'
     },
@@ -56,6 +77,8 @@
       colors:['Dark Olive Green'],
       keywords:['dev zip polo','polo','zip polo','zipper polo','dark olive green','olive','green','dark green','shirt','oversized','gym','training','lifestyle'],
       url:BASE+'polo/',
+      productKey:'dark-olive-green',
+      colorKey:'dark-olive-green',
       image:BASE+'polo-dark-olive-green-front.jpg',
       price:'AED 85'
     },
@@ -65,6 +88,8 @@
       colors:['Beige'],
       keywords:['dev zip polo','polo','zip polo','zipper polo','beige','cream','shirt','oversized','gym','training','lifestyle'],
       url:BASE+'polo/',
+      productKey:'beige',
+      colorKey:'beige',
       image:BASE+'polo-beige-front.jfif',
       price:'AED 85'
     },
@@ -74,6 +99,8 @@
       colors:['Black'],
       keywords:['dev shorts','shorts','short','gym shorts','training shorts','black','men shorts','workout'],
       url:BASE+'shorts/',
+      productKey:'black',
+      colorKey:'black',
       image:BASE+'dev-shorts-front.jfif',
       price:'AED 80'
     },
@@ -83,6 +110,8 @@
       colors:['Black'],
       keywords:['dev baggy pants','baggy pants','pants','pant','trousers','black','baggy','gym pants','men pants'],
       url:BASE+'baggy-pants/',
+      productKey:'black',
+      colorKey:'black',
       image:BASE+'baggy-pants-black-front.jfif',
       price:''
     },
@@ -92,6 +121,8 @@
       colors:['Light Grey'],
       keywords:['dev baggy pants','baggy pants','pants','pant','trousers','light grey','light gray','grey','gray','baggy','gym pants','men pants'],
       url:BASE+'baggy-pants/',
+      productKey:'light-grey',
+      colorKey:'light-grey',
       image:BASE+'baggy-pants-light-grey-front.jpeg',
       price:''
     },
@@ -157,6 +188,32 @@
   const normalize=s=>(s||'').toLowerCase().replace(/[×–—]/g,' ').replace(/[^a-z0-9]+/g,' ').trim();
   const section=location.pathname.toLowerCase().includes('/women')?'women':'men';
   const INDEX=section==='women'?WOMEN_INDEX:MEN_INDEX;
+
+  function resultUrl(item){
+    if(!item.productKey) return item.url;
+    const u=new URL(item.url,location.origin);
+    u.searchParams.set('product',item.productKey);
+    if(item.colorKey) u.searchParams.set('color',item.colorKey);
+    return u.pathname+u.search+u.hash;
+  }
+
+  function openDirectProductFromUrl(){
+    const params=new URLSearchParams(location.search);
+    const productKey=params.get('product');
+    const colorKey=params.get('color');
+    if(!productKey || typeof window.openProduct!=='function') return;
+
+    try{
+      window.openProduct(productKey);
+      if(colorKey && typeof window.changeColor==='function'){
+        setTimeout(()=>{
+          try{ window.changeColor(colorKey); }catch(_e){}
+          const detail=document.getElementById('productDetail');
+          if(detail) detail.scrollIntoView({behavior:'auto',block:'start'});
+        },80);
+      }
+    }catch(_e){}
+  }
 
   const style=document.createElement('style');
   style.textContent=`
@@ -228,7 +285,7 @@
     box.innerHTML=`<div class="dev-search-head">${label} SEARCH RESULTS</div>` + (results.length?results.map((r,i)=>{
       const colors=(r.colors||[]).join(' / ');
       const meta=[r.category,colors].filter(Boolean).join(' · ');
-      return `<a class="dev-search-result" role="option" data-index="${i}" href="${r.url}">
+      return `<a class="dev-search-result" role="option" data-index="${i}" href="${resultUrl(r)}">
         <img src="${r.image}" alt="${r.name}" loading="lazy">
         <div><strong>${r.name}</strong><div class="dev-search-meta">${meta}</div>${r.price?`<div class="dev-search-price">${r.price}</div>`:''}</div>
       </a>`;
@@ -254,7 +311,7 @@
     input.addEventListener('keydown',e=>{
       if(e.key==='ArrowDown'){e.preventDefault();setActive(activeIndex+1);}
       else if(e.key==='ArrowUp'){e.preventDefault();setActive(activeIndex-1);}
-      else if(e.key==='Enter'&&activeIndex>=0&&results[activeIndex]){e.preventDefault();location.href=results[activeIndex].url;}
+      else if(e.key==='Enter'&&activeIndex>=0&&results[activeIndex]){e.preventDefault();location.href=resultUrl(results[activeIndex]);}
       else if(e.key==='Escape'){box.classList.remove('open');}
     });
   }
@@ -262,6 +319,7 @@
   function init(){
     const selectors=['#desktopSearch','.search-box input[type="search"]','.nav-search input[type="search"]','.dev-search-box input[type="search"]','.mobile-search-panel input[type="search"]','nav input[type="search"]'];
     [...new Set(selectors.flatMap(s=>[...document.querySelectorAll(s)]))].forEach(attach);
+    openDirectProductFromUrl();
   }
 
   document.addEventListener('click',e=>{
