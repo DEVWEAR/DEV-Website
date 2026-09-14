@@ -3228,6 +3228,34 @@ window.addEventListener(
 );
 
 
+const cartButton=
+  document.getElementById(
+    "cartButton"
+  );
+
+if(cartButton){
+
+  cartButton.addEventListener(
+    "click",
+    openCart
+  );
+
+}
+
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(
+      event.key ===
+      CART_KEY
+    ){
+      renderCart();
+    }
+
+  }
+);
+
 renderCart();
 
 </script>
