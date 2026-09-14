@@ -637,8 +637,8 @@ footer{
 
 
     <div class="delivery-note">
-      UAE DELIVERY ONLY. DELIVERY COST AND FINAL PAYMENT METHOD
-      WILL BE CONNECTED TO THE DEV ORDER SYSTEM.
+      UAE DELIVERY ONLY. FLAT DELIVERY FEE: AED 30 TO ALL EMIRATES.
+      FINAL PAYMENT METHOD WILL BE CONNECTED TO THE DEV ORDER SYSTEM.
     </div>
 
 
@@ -698,8 +698,8 @@ footer{
         DELIVERY
       </span>
 
-      <strong>
-        CALCULATED LATER
+      <strong id="delivery">
+        AED 30
       </strong>
 
     </div>
@@ -748,6 +748,7 @@ footer{
 <script>
 
 const CART_KEY="dev_cart_v1";
+const DELIVERY_FEE=30;
 
 
 function getCart(){
@@ -817,6 +818,11 @@ function renderOrder(){
       "total"
     );
 
+  const deliveryElement=
+    document.getElementById(
+      "delivery"
+    );
+
 
   if(
     cart.length===0
@@ -831,6 +837,9 @@ function renderOrder(){
       '</div>';
 
     subtotalElement.textContent=
+      "AED 0";
+
+    deliveryElement.textContent=
       "AED 0";
 
     totalElement.textContent=
@@ -935,9 +944,13 @@ function renderOrder(){
     "AED "+
     subtotal;
 
+  deliveryElement.textContent=
+    "AED "+
+    DELIVERY_FEE;
+
   totalElement.textContent=
     "AED "+
-    subtotal;
+    (subtotal + DELIVERY_FEE);
 
 }
 
