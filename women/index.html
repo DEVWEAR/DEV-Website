@@ -1558,30 +1558,36 @@ const mobileSearchPanel =
   );
 
 
-mobileSearchButton.addEventListener(
-  "click",
-  function(){
+if(mobileSearchButton && mobileSearchPanel){
 
-    mobileSearchPanel
-    .classList
-    .toggle(
-      "active"
-    );
+  mobileSearchButton.addEventListener(
+    "click",
+    function(){
 
-    if(
       mobileSearchPanel
       .classList
-      .contains(
+      .toggle(
         "active"
-      )
-    ){
+      );
 
-      mobileSearch.focus();
+      if(
+        mobileSearchPanel
+        .classList
+        .contains(
+          "active"
+        )
+      ){
+
+        if(mobileSearch){
+          mobileSearch.focus();
+        }
+
+      }
 
     }
+  );
 
-  }
-);
+}
 
 
 /* =========================
