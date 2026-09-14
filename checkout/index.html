@@ -803,6 +803,27 @@ function renderOrder(){
   const cart=
     getCart();
 
+  const cartCount=
+    document.getElementById(
+      "cartCount"
+    );
+
+  const totalQuantity=
+    cart.reduce(
+      function(total,item){
+        return total + getQuantity(item);
+      },
+      0
+    );
+
+  cartCount.textContent=
+    totalQuantity;
+
+  cartCount.classList.toggle(
+    "active",
+    totalQuantity > 0
+  );
+
   const container=
     document.getElementById(
       "orderItems"
@@ -1042,6 +1063,41 @@ function placeOrder(){
 
 }
 
+
+const cartButton=
+  document.getElementById(
+    "cartButton"
+  );
+
+cartButton.addEventListener(
+  "click",
+  function(){
+
+    document
+    .querySelector(
+      ".order-summary"
+    )
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }
+);
+
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(
+      event.key ===
+      CART_KEY
+    ){
+      renderOrder();
+    }
+
+  }
+);
 
 renderOrder();
 
