@@ -106,6 +106,52 @@ button,input{font-family:inherit}
   .dev-search-box input{height:40px;font-size:10px}
   .dev-cart-button{width:42px;height:42px}
 }
+
+/* DEV CUSTOM STUDIO */
+.customize-space{min-height:calc(100vh - 112px);background:#070707}
+.custom-hero{padding:42px 5% 24px;border-bottom:1px solid #1b1b1b}
+.custom-kicker{font-size:9px;letter-spacing:4px;color:#777;font-weight:900}
+.custom-hero h1{font-size:clamp(34px,5vw,72px);line-height:.95;letter-spacing:-2px;margin-top:12px}
+.custom-hero p{max-width:650px;margin-top:15px;color:#8e8e8e;font-size:12px;line-height:1.8}
+.studio{display:grid;grid-template-columns:190px minmax(0,1fr) 280px;min-height:680px}
+.piece-panel,.tool-panel{background:#0a0a0a;padding:22px;border-color:#1c1c1c}
+.piece-panel{border-right:1px solid #1c1c1c}.tool-panel{border-left:1px solid #1c1c1c}
+.panel-title{font-size:9px;letter-spacing:2.5px;color:#777;font-weight:900;margin-bottom:16px}
+.piece-list{display:flex;flex-direction:column;gap:7px}
+.piece-btn{width:100%;padding:13px 12px;text-align:left;border:1px solid #222;background:#0e0e0e;color:#777;font-size:9px;letter-spacing:1.5px;font-weight:900;cursor:pointer;transition:.18s}
+.piece-btn:hover,.piece-btn.active{border-color:#777;color:#fff;background:#151515}
+.preview-area{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 38%,#1a1a1a 0,#0b0b0b 43%,#070707 75%)}
+.preview-label{position:absolute;top:20px;left:22px;font-size:9px;letter-spacing:3px;color:#555;font-weight:900}
+.garment-stage{position:relative;width:min(620px,88%);height:560px;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none}
+.garment-img{max-width:90%;max-height:92%;object-fit:contain;filter:var(--garment-filter,none);user-select:none;-webkit-user-drag:none}
+.artwork{position:absolute;left:50%;top:50%;width:150px;transform:translate(-50%,-50%) scale(1) rotate(0deg);transform-origin:center;cursor:grab;touch-action:none;user-select:none;-webkit-user-drag:none;display:none;z-index:3}
+.artwork.active{display:block}.artwork.dragging{cursor:grabbing}
+.view-switch{display:flex;gap:8px;margin:6px 0 24px}
+.view-btn{border:1px solid #2b2b2b;background:#0d0d0d;color:#666;padding:10px 24px;font-size:9px;letter-spacing:2px;font-weight:900;cursor:pointer}
+.view-btn.active{background:#fff;color:#000;border-color:#fff}
+.tool-group{padding:17px 0;border-bottom:1px solid #1d1d1d}.tool-group:first-of-type{padding-top:0}
+.tool-label{display:block;font-size:8px;letter-spacing:2px;color:#666;font-weight:900;margin-bottom:11px}
+.swatches{display:flex;gap:9px;flex-wrap:wrap}
+.swatch{width:27px;height:27px;border-radius:50%;border:2px solid #222;outline:0;cursor:pointer}
+.swatch.active{outline:1px solid #fff;outline-offset:3px}
+.size-row{display:flex;gap:6px;flex-wrap:wrap}
+.size-btn{min-width:38px;height:35px;border:1px solid #292929;background:#0e0e0e;color:#777;font-size:9px;font-weight:900;cursor:pointer}
+.size-btn.active{background:#fff;color:#000}
+.upload-box{position:relative;display:block;border:1px dashed #444;padding:18px 10px;text-align:center;color:#aaa;font-size:9px;letter-spacing:1px;cursor:pointer}
+.upload-box input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.range-row{display:grid;grid-template-columns:52px 1fr 34px;gap:8px;align-items:center;margin:9px 0;color:#777;font-size:8px}
+.range-row input{width:100%;accent-color:#fff}.range-value{text-align:right;color:#aaa}
+.tool-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}
+.mini-action,.save-design{border:1px solid #292929;background:#111;color:#aaa;padding:11px 8px;font-size:8px;letter-spacing:1.2px;font-weight:900;cursor:pointer}
+.mini-action:hover{color:#fff;border-color:#555}.danger{color:#a66}
+.save-design{width:100%;margin-top:16px;background:#fff;color:#000;border-color:#fff;padding:15px}
+.saved-note{height:18px;text-align:center;color:#8a8;font-size:8px;margin-top:9px}
+.how-it-works{padding:55px 5%;border-top:1px solid #1b1b1b}
+.how-it-works h2{font-size:clamp(24px,3vw,42px);letter-spacing:-1px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1d1d1d;margin-top:25px;border:1px solid #1d1d1d}
+.step{background:#090909;padding:25px}.step b{display:block;font-size:9px;letter-spacing:2px}.step span{display:block;color:#666;font-size:10px;line-height:1.6;margin-top:9px}
+@media(max-width:980px){.studio{grid-template-columns:150px minmax(0,1fr)}.tool-panel{grid-column:1/-1;border-left:0;border-top:1px solid #1c1c1c;display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px}.save-design,.saved-note{grid-column:1/-1}.garment-stage{height:500px}}
+@media(max-width:650px){.custom-hero{padding-top:30px}.studio{display:flex;flex-direction:column}.piece-panel{border-right:0;border-bottom:1px solid #1c1c1c;padding:15px}.piece-list{display:grid;grid-template-columns:repeat(2,1fr)}.piece-btn{font-size:8px}.preview-area{min-height:500px}.garment-stage{height:410px;width:100%}.tool-panel{display:block;padding:20px}.steps{grid-template-columns:1fr 1fr}.custom-hero h1{font-size:42px}}
 </style>
 </head>
 
@@ -143,10 +189,59 @@ button,input{font-family:inherit}
   </div>
 </nav>
 
-<main class="customize-space"></main>
+<main class="customize-space">
+  <section class="custom-hero">
+    <div class="custom-kicker">DEV CUSTOM STUDIO</div>
+    <h1>CREATE IT YOUR WAY.</h1>
+    <p>Choose your piece, pick your color, add your artwork, and place it exactly where you want. Build the DEV piece you have in mind.</p>
+  </section>
+  <section class="studio">
+    <aside class="piece-panel">
+      <div class="panel-title">01 — CHOOSE YOUR PIECE</div>
+      <div class="piece-list" id="pieceList"></div>
+    </aside>
+    <section class="preview-area">
+      <div class="preview-label" id="previewLabel">T-SHIRT / FRONT</div>
+      <div class="garment-stage" id="garmentStage">
+        <img class="garment-img" id="garmentImg" alt="DEV customizable garment">
+        <img class="artwork" id="artwork" alt="Your artwork">
+      </div>
+      <div class="view-switch">
+        <button class="view-btn active" data-view="front">FRONT</button>
+        <button class="view-btn" data-view="back">BACK</button>
+      </div>
+    </section>
+    <aside class="tool-panel">
+      <div class="panel-title">02 — BUILD YOUR PIECE</div>
+      <div class="tool-group"><span class="tool-label">COLOR</span><div class="swatches" id="swatches"></div></div>
+      <div class="tool-group"><span class="tool-label">SIZE</span><div class="size-row" id="sizes"></div></div>
+      <div class="tool-group">
+        <span class="tool-label">ADD YOUR ARTWORK</span>
+        <label class="upload-box">UPLOAD PNG / JPG<input id="artUpload" type="file" accept="image/png,image/jpeg,image/webp"></label>
+      </div>
+      <div class="tool-group">
+        <span class="tool-label">PLACE IT YOUR WAY</span>
+        <div class="range-row"><span>SCALE</span><input id="scaleRange" type="range" min="40" max="220" value="100"><span class="range-value" id="scaleValue">100%</span></div>
+        <div class="range-row"><span>ROTATE</span><input id="rotateRange" type="range" min="-180" max="180" value="0"><span class="range-value" id="rotateValue">0°</span></div>
+        <div class="tool-actions"><button class="mini-action" id="centerArt">CENTER</button><button class="mini-action danger" id="deleteArt">DELETE</button></div>
+      </div>
+      <button class="save-design" id="saveDesign">SAVE MY DESIGN</button>
+      <div class="saved-note" id="savedNote"></div>
+    </aside>
+  </section>
+  <section class="how-it-works">
+    <div class="custom-kicker">YOUR IDEA. YOUR DEV.</div>
+    <h2>SAME VISION. DIFFERENT POSSIBILITIES.</h2>
+    <div class="steps">
+      <div class="step"><b>01 — CHOOSE</b><span>Start with the DEV piece you want to make yours.</span></div>
+      <div class="step"><b>02 — COLOR</b><span>Set the base color and select your size.</span></div>
+      <div class="step"><b>03 — UPLOAD</b><span>Add your own artwork or graphic.</span></div>
+      <div class="step"><b>04 — PLACE</b><span>Move, scale and rotate until it feels right.</span></div>
+    </div>
+  </section>
+</main>
 
 <div class="cart-overlay" id="cartOverlay"></div>
-
 <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
   <div class="cart-header">
     <div class="cart-title">YOUR BAG</div>
@@ -170,6 +265,71 @@ button,input{font-family:inherit}
 </aside>
 
 <script>
+
+const pieces=[
+ {id:"tshirt",name:"T-SHIRT",img:"../tshirt.jpeg.jpeg",sizes:["M","L","XL","XXL"]},
+ {id:"zip-polo",name:"ZIP POLO",img:"../zip-polo.jpeg",sizes:["M","L","XL"]},
+ {id:"hoodie",name:"HOODIE",img:"../hoodie.jpeg",sizes:["M","L","XL","XXL"]},
+ {id:"cut-off",name:"CUT-OFF",img:"../cut-off.jpeg",sizes:["M","L","XL"]},
+ {id:"baggy",name:"BAGGY PANTS",img:"../baggy-pants.jpeg.jpeg",sizes:["M","L","XL"]},
+ {id:"sweater",name:"SWEATER",img:"../sweater.jpeg",sizes:["M","L","XL","XXL"]},
+ {id:"shorts",name:"SHORTS",img:"../shorts.jpeg",sizes:["M","L","XL"]}
+];
+const colors=[
+ {name:"BLACK",hex:"#111111",filter:"brightness(.34) saturate(.35)"},
+ {name:"WHITE",hex:"#efefeb",filter:"grayscale(1) brightness(1.75) contrast(.72)"},
+ {name:"OLIVE",hex:"#596044",filter:"sepia(.35) hue-rotate(28deg) saturate(.75) brightness(.72)"},
+ {name:"BEIGE",hex:"#c6b49a",filter:"sepia(.65) saturate(.45) brightness(1.22)"},
+ {name:"BURGUNDY",hex:"#5b1822",filter:"sepia(.25) saturate(1.25) brightness(.72)"}
+];
+let state={piece:0,color:0,size:null,view:"front",scale:1,rotation:0,x:50,y:50,art:null};
+const pieceList=document.getElementById("pieceList"),garmentImg=document.getElementById("garmentImg"),previewLabel=document.getElementById("previewLabel");
+const swatches=document.getElementById("swatches"),sizes=document.getElementById("sizes"),artwork=document.getElementById("artwork"),stage=document.getElementById("garmentStage");
+function renderPieces(){
+ pieceList.innerHTML=pieces.map((p,i)=>'<button class="piece-btn '+(i===state.piece?'active':'')+'" data-piece="'+i+'">'+p.name+'</button>').join("");
+ garmentImg.src=pieces[state.piece].img; renderSizes(); updateLabel();
+}
+function renderColors(){
+ swatches.innerHTML=colors.map((c,i)=>'<button class="swatch '+(i===state.color?'active':'')+'" data-color="'+i+'" title="'+c.name+'" style="background:'+c.hex+'"></button>').join("");
+ garmentImg.style.setProperty("--garment-filter",colors[state.color].filter);
+}
+function renderSizes(){
+ const list=pieces[state.piece].sizes;if(!list.includes(state.size))state.size=null;
+ sizes.innerHTML=list.map(s=>'<button class="size-btn '+(s===state.size?'active':'')+'" data-size="'+s+'">'+s+'</button>').join("");
+}
+function updateLabel(){previewLabel.textContent=pieces[state.piece].name+" / "+state.view.toUpperCase()}
+function updateArt(){
+ artwork.classList.toggle("active",!!state.art); if(state.art) artwork.src=state.art;
+ artwork.style.left=state.x+"%";artwork.style.top=state.y+"%";
+ artwork.style.transform='translate(-50%,-50%) scale('+state.scale+') rotate('+state.rotation+'deg)';
+ document.getElementById("scaleRange").value=Math.round(state.scale*100);document.getElementById("scaleValue").textContent=Math.round(state.scale*100)+"%";
+ document.getElementById("rotateRange").value=state.rotation;document.getElementById("rotateValue").textContent=state.rotation+"°";
+}
+pieceList.onclick=e=>{const b=e.target.closest("[data-piece]");if(!b)return;state.piece=+b.dataset.piece;state.size=null;renderPieces()};
+swatches.onclick=e=>{const b=e.target.closest("[data-color]");if(!b)return;state.color=+b.dataset.color;renderColors()};
+sizes.onclick=e=>{const b=e.target.closest("[data-size]");if(!b)return;state.size=b.dataset.size;renderSizes()};
+document.querySelectorAll(".view-btn").forEach(b=>b.onclick=()=>{state.view=b.dataset.view;document.querySelectorAll(".view-btn").forEach(x=>x.classList.toggle("active",x===b));updateLabel()});
+document.getElementById("artUpload").onchange=e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{state.art=reader.result;state.x=50;state.y=50;state.scale=1;state.rotation=0;updateArt()};reader.readAsDataURL(file)};
+document.getElementById("scaleRange").oninput=e=>{state.scale=+e.target.value/100;updateArt()};
+document.getElementById("rotateRange").oninput=e=>{state.rotation=+e.target.value;updateArt()};
+document.getElementById("centerArt").onclick=()=>{state.x=50;state.y=50;updateArt()};
+document.getElementById("deleteArt").onclick=()=>{state.art=null;updateArt()};
+let dragging=false;
+function moveArt(clientX,clientY){const r=stage.getBoundingClientRect();state.x=Math.max(5,Math.min(95,(clientX-r.left)/r.width*100));state.y=Math.max(5,Math.min(95,(clientY-r.top)/r.height*100));updateArt()}
+artwork.addEventListener("pointerdown",e=>{if(!state.art)return;dragging=true;artwork.classList.add("dragging");artwork.setPointerCapture(e.pointerId);e.preventDefault()});
+artwork.addEventListener("pointermove",e=>{if(dragging)moveArt(e.clientX,e.clientY)});
+artwork.addEventListener("pointerup",e=>{dragging=false;artwork.classList.remove("dragging");try{artwork.releasePointerCapture(e.pointerId)}catch(_){}});
+document.getElementById("saveDesign").onclick=()=>{
+ if(!state.size){document.getElementById("savedNote").textContent="SELECT A SIZE FIRST";return}
+ const saved={piece:pieces[state.piece].id,color:colors[state.color].name,size:state.size,view:state.view,scale:state.scale,rotation:state.rotation,x:state.x,y:state.y,art:state.art,savedAt:new Date().toISOString()};
+ try{localStorage.setItem("dev_custom_design_v1",JSON.stringify(saved));document.getElementById("savedNote").textContent="DESIGN SAVED ON THIS DEVICE ✓"}catch(e){document.getElementById("savedNote").textContent="DESIGN TOO LARGE — TRY A SMALLER IMAGE"}
+};
+renderPieces();renderColors();updateArt();
+try{
+ const saved=JSON.parse(localStorage.getItem("dev_custom_design_v1"));
+ if(saved){const idx=pieces.findIndex(p=>p.id===saved.piece);const ci=colors.findIndex(c=>c.name===saved.color);if(idx>=0)state.piece=idx;if(ci>=0)state.color=ci;Object.assign(state,{size:saved.size||null,view:saved.view||"front",scale:saved.scale||1,rotation:saved.rotation||0,x:saved.x||50,y:saved.y||50,art:saved.art||null});renderPieces();renderColors();updateArt();document.querySelectorAll(".view-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===state.view))}
+}catch(e){}
+
 const DEV_CART_KEY="dev_cart_v1";
 
 function getDevCart(){
