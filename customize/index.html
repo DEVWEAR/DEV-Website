@@ -196,8 +196,9 @@ button,input{font-family:inherit}
     <p>Choose your piece, pick your color, add your artwork, and place it exactly where you want. Build the DEV piece you have in mind.</p>
   </section>
   <section class="studio">
-    <aside class="piece-panel">
-      <div class="panel-title">01 — CHOOSE YOUR PIECE</div>
+    <div class="workspace">
+    <aside class="thumb-rail">
+      <div class="panel-title">01 — CHOOSE</div>
       <div class="piece-list" id="pieceList"></div>
     </aside>
     <section class="preview-area">
@@ -209,8 +210,11 @@ button,input{font-family:inherit}
       <div class="view-switch">
         <button class="view-btn active" data-view="front">FRONT</button>
         <button class="view-btn" data-view="back">BACK</button>
+        <button class="view-btn" data-view="left">LEFT SIDE</button>
+        <button class="view-btn" data-view="right">RIGHT SIDE</button>
       </div>
     </section>
+    </div>
     <aside class="tool-panel">
       <div class="panel-title">02 — BUILD YOUR PIECE</div>
       <div class="tool-group"><span class="tool-label">COLOR</span><div class="swatches" id="swatches"></div></div>
@@ -267,37 +271,40 @@ button,input{font-family:inherit}
 <script>
 
 const pieces=[
- {id:"tshirt",name:"T-SHIRT",img:"../tshirt.jpeg.jpeg",sizes:["M","L","XL","XXL"]},
- {id:"zip-polo",name:"ZIP POLO",img:"../zip-polo.jpeg",sizes:["M","L","XL"]},
- {id:"hoodie",name:"HOODIE",img:"../hoodie.jpeg",sizes:["M","L","XL","XXL"]},
- {id:"cut-off",name:"CUT-OFF",img:"../cut-off.jpeg",sizes:["M","L","XL"]},
- {id:"baggy",name:"BAGGY PANTS",img:"../baggy-pants.jpeg.jpeg",sizes:["M","L","XL"]},
- {id:"sweater",name:"SWEATER",img:"../sweater.jpeg",sizes:["M","L","XL","XXL"]},
- {id:"shorts",name:"SHORTS",img:"../shorts.jpeg",sizes:["M","L","XL"]}
+ {id:"tshirt",name:"T-SHIRT",front:"../tshirt.jpeg.jpeg",back:"../tshirt.jpeg.jpeg",sizes:["M","L","XL","XXL"]},
+ {id:"zip-polo",name:"ZIP POLO",front:"../zip-polo.jpeg",back:"../zip-polo.jpeg",sizes:["M","L","XL"]},
+ {id:"hoodie",name:"HOODIE",front:"../hoodie.jpeg",back:"../hoodie.jpeg",sizes:["M","L","XL","XXL"]},
+ {id:"cut-off",name:"CUT-OFF",front:"../cut-off.jpeg",back:"../cut-off.jpeg",sizes:["M","L","XL"]},
+ {id:"baggy",name:"BAGGY PANTS",front:"../baggy-pants-black-front.jfif",back:"../baggy-pants-black-back.jfif",sizes:["M","L","XL"]},
+ {id:"sweater",name:"SWEATER",front:"../sweater.jpeg",back:"../sweater.jpeg",sizes:["M","L","XL","XXL"]},
+ {id:"shorts",name:"SHORTS",front:"../dev-shorts-front.jfif",back:"../dev-shorts-back.jfif",sizes:["M","L","XL"]}
 ];
 const colors=[
- {name:"BLACK",hex:"#111111",filter:"brightness(.34) saturate(.35)"},
- {name:"WHITE",hex:"#efefeb",filter:"grayscale(1) brightness(1.75) contrast(.72)"},
- {name:"OLIVE",hex:"#596044",filter:"sepia(.35) hue-rotate(28deg) saturate(.75) brightness(.72)"},
- {name:"BEIGE",hex:"#c6b49a",filter:"sepia(.65) saturate(.45) brightness(1.22)"},
- {name:"BURGUNDY",hex:"#5b1822",filter:"sepia(.25) saturate(1.25) brightness(.72)"}
+ {name:"BLACK",hex:"#111111"},
+ {name:"WHITE",hex:"#efefeb"},
+ {name:"OLIVE",hex:"#596044"},
+ {name:"BEIGE",hex:"#c6b49a"},
+ {name:"BURGUNDY",hex:"#5b1822"}
 ];
 let state={piece:0,color:0,size:null,view:"front",scale:1,rotation:0,x:50,y:50,art:null};
 const pieceList=document.getElementById("pieceList"),garmentImg=document.getElementById("garmentImg"),previewLabel=document.getElementById("previewLabel");
 const swatches=document.getElementById("swatches"),sizes=document.getElementById("sizes"),artwork=document.getElementById("artwork"),stage=document.getElementById("garmentStage");
 function renderPieces(){
- pieceList.innerHTML=pieces.map((p,i)=>'<button class="piece-btn '+(i===state.piece?'active':'')+'" data-piece="'+i+'">'+p.name+'</button>').join("");
- garmentImg.src=pieces[state.piece].img; renderSizes(); updateLabel();
+ pieceList.innerHTML=pieces.map((p,i)=>'<button class="piece-btn '+(i===state.piece?'active':'')+'" data-piece="'+i+'"><img class="piece-thumb" src="'+p.front+'" alt=""><span class="piece-name">'+p.name+'</span></button>').join("");
+ updateGarmentView(); renderSizes(); updateLabel();
 }
 function renderColors(){
  swatches.innerHTML=colors.map((c,i)=>'<button class="swatch '+(i===state.color?'active':'')+'" data-color="'+i+'" title="'+c.name+'" style="background:'+c.hex+'"></button>').join("");
- garmentImg.style.setProperty("--garment-filter",colors[state.color].filter);
+ garmentImg.style.backgroundColor=colors[state.color].hex;
+ garmentImg.style.mixBlendMode="normal";
+ garmentImg.dataset.color=colors[state.color].name;
 }
 function renderSizes(){
  const list=pieces[state.piece].sizes;if(!list.includes(state.size))state.size=null;
  sizes.innerHTML=list.map(s=>'<button class="size-btn '+(s===state.size?'active':'')+'" data-size="'+s+'">'+s+'</button>').join("");
 }
-function updateLabel(){previewLabel.textContent=pieces[state.piece].name+" / "+state.view.toUpperCase()}
+function updateGarmentView(){const p=pieces[state.piece];garmentImg.src=state.view==="back"?p.back:p.front;garmentImg.style.transform=state.view==="left"?"rotateY(34deg)":state.view==="right"?"rotateY(-34deg)":"none"}
+function updateLabel(){previewLabel.textContent=pieces[state.piece].name+" / "+state.view.toUpperCase().replace("LEFT","LEFT SIDE").replace("RIGHT","RIGHT SIDE")}
 function updateArt(){
  artwork.classList.toggle("active",!!state.art); if(state.art) artwork.src=state.art;
  artwork.style.left=state.x+"%";artwork.style.top=state.y+"%";
@@ -308,7 +315,7 @@ function updateArt(){
 pieceList.onclick=e=>{const b=e.target.closest("[data-piece]");if(!b)return;state.piece=+b.dataset.piece;state.size=null;renderPieces()};
 swatches.onclick=e=>{const b=e.target.closest("[data-color]");if(!b)return;state.color=+b.dataset.color;renderColors()};
 sizes.onclick=e=>{const b=e.target.closest("[data-size]");if(!b)return;state.size=b.dataset.size;renderSizes()};
-document.querySelectorAll(".view-btn").forEach(b=>b.onclick=()=>{state.view=b.dataset.view;document.querySelectorAll(".view-btn").forEach(x=>x.classList.toggle("active",x===b));updateLabel()});
+document.querySelectorAll(".view-btn").forEach(b=>b.onclick=()=>{state.view=b.dataset.view;document.querySelectorAll(".view-btn").forEach(x=>x.classList.toggle("active",x===b));updateGarmentView();updateLabel()});
 document.getElementById("artUpload").onchange=e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{state.art=reader.result;state.x=50;state.y=50;state.scale=1;state.rotation=0;updateArt()};reader.readAsDataURL(file)};
 document.getElementById("scaleRange").oninput=e=>{state.scale=+e.target.value/100;updateArt()};
 document.getElementById("rotateRange").oninput=e=>{state.rotation=+e.target.value;updateArt()};
