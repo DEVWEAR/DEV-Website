@@ -153,6 +153,30 @@ button,input{font-family:inherit}
 @media(max-width:980px){.studio{grid-template-columns:150px minmax(0,1fr)}.tool-panel{grid-column:1/-1;border-left:0;border-top:1px solid #1c1c1c;display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px}.save-design,.saved-note{grid-column:1/-1}.garment-stage{height:500px}}
 @media(max-width:650px){.custom-hero{padding-top:30px}.studio{display:flex;flex-direction:column}.piece-panel{border-right:0;border-bottom:1px solid #1c1c1c;padding:15px}.piece-list{display:grid;grid-template-columns:repeat(2,1fr)}.piece-btn{font-size:8px}.preview-area{min-height:500px}.garment-stage{height:410px;width:100%}.tool-panel{display:block;padding:20px}.steps{grid-template-columns:1fr 1fr}.custom-hero h1{font-size:42px}}
 </style>
+<style id="customize-hotfix">
+.customize-space{min-height:calc(100vh - 112px)!important;overflow-x:hidden}
+.custom-hero{padding:38px 5% 22px!important}
+.studio{display:grid!important;grid-template-columns:minmax(0,1fr) 290px!important;min-height:690px!important}
+.workspace{display:grid!important;grid-template-columns:150px minmax(0,1fr)!important;min-width:0!important}
+.thumb-rail{display:block!important;background:#090909!important;border-right:1px solid #1c1c1c!important;padding:16px 11px!important;overflow:hidden}
+.piece-list{display:flex!important;flex-direction:column!important;gap:9px!important}
+.piece-btn{width:100%!important;padding:7px!important;border:1px solid #222!important;background:#0d0d0d!important;color:#888!important;text-align:left!important}
+.piece-btn.active{border-color:#777!important;color:#fff!important}
+.piece-thumb{display:block!important;width:100%!important;height:92px!important;object-fit:contain!important;background:#111!important}
+.piece-name{display:block!important;margin-top:6px!important;text-align:center!important;font-size:8px!important;letter-spacing:1.2px!important;font-weight:900!important}
+.preview-area{min-width:0!important;min-height:600px!important;background:#0b0b0b!important}
+.garment-stage{width:min(650px,92%)!important;height:540px!important}
+.garment-img{max-width:88%!important;max-height:90%!important;object-fit:contain!important}
+.tool-panel{display:block!important;background:#0a0a0a!important;border-left:1px solid #1c1c1c!important;padding:22px!important}
+@media(max-width:900px){.studio{grid-template-columns:1fr!important}.tool-panel{border-left:0!important;border-top:1px solid #1c1c1c!important}.workspace{grid-template-columns:130px minmax(0,1fr)!important}.piece-thumb{height:82px!important}}
+@media(max-width:600px){
+ .custom-hero{padding:26px 16px 18px!important}.custom-hero h1{font-size:38px!important}
+ .workspace{grid-template-columns:92px minmax(0,1fr)!important}.thumb-rail{padding:10px 6px!important}.piece-list{gap:7px!important}.piece-btn{padding:4px!important}.piece-thumb{height:66px!important}.piece-name{font-size:6.5px!important;letter-spacing:.6px!important}
+ .preview-area{min-height:470px!important}.preview-label{top:12px!important;left:12px!important;font-size:7px!important}.garment-stage{height:390px!important;width:100%!important}.garment-img{max-width:94%!important;max-height:90%!important}
+ .view-switch{gap:4px!important;margin:3px 5px 16px!important}.view-btn{padding:9px 8px!important;font-size:6.5px!important;letter-spacing:.7px!important}
+ .tool-panel{padding:18px 16px!important}
+}
+</style>
 </head>
 
 <body>
