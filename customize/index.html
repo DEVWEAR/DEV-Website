@@ -319,16 +319,21 @@ function renderPieces(){
 }
 function renderColors(){
  swatches.innerHTML=colors.map((c,i)=>'<button class="swatch '+(i===state.color?'active':'')+'" data-color="'+i+'" title="'+c.name+'" style="background:'+c.hex+'"></button>').join("");
- garmentImg.style.backgroundColor=colors[state.color].hex;
- garmentImg.style.mixBlendMode="normal";
  garmentImg.dataset.color=colors[state.color].name;
+ // Keep the original product photography and lighting untouched.
+ // Proper recolouring needs dedicated same-light product renders per colour.
 }
 function renderSizes(){
  const list=pieces[state.piece].sizes;if(!list.includes(state.size))state.size=null;
  sizes.innerHTML=list.map(s=>'<button class="size-btn '+(s===state.size?'active':'')+'" data-size="'+s+'">'+s+'</button>').join("");
 }
-function updateGarmentView(){const p=pieces[state.piece];garmentImg.src=state.view==="back"?p.back:p.front;garmentImg.style.transform=state.view==="left"?"rotateY(34deg)":state.view==="right"?"rotateY(-34deg)":"none"}
-function updateLabel(){previewLabel.textContent=pieces[state.piece].name+" / "+state.view.toUpperCase().replace("LEFT","LEFT SIDE").replace("RIGHT","RIGHT SIDE")}
+function updateGarmentView(){
+ const p=pieces[state.piece];
+ garmentImg.src=state.view==="back"?p.back:p.front;
+ garmentImg.style.transform="none";
+ garmentImg.style.opacity=(state.view==="left"||state.view==="right")?".42":"1";
+}
+function updateLabel(){previewLabel.textContent=pieces[state.piece].name+" / "+state.view.toUpperCase().replace("LEFT","LEFT SIDE").replace("RIGHT","RIGHT SIDE")+(state.view==="left"||state.view==="right"?" — SIDE PHOTO NEEDED":"")}
 function updateArt(){
  artwork.classList.toggle("active",!!state.art); if(state.art) artwork.src=state.art;
  artwork.style.left=state.x+"%";artwork.style.top=state.y+"%";
